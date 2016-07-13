@@ -1,6 +1,7 @@
 MeasurementController.$inject = ['$stateParams', '$scope', '$http', '$window', 'Measurement'];
 function MeasurementController($stateParams, $scope, $http,  $window, Measurement) {
-  console.log("In the measurementController");
+  $scope.debug = false;
+
   Measurement.get($stateParams.measurementId, $stateParams.measurementIdx)
   .then(function(measurement){
     $scope.measurement = measurement;
@@ -10,5 +11,9 @@ function MeasurementController($stateParams, $scope, $http,  $window, Measuremen
     console.log("Failed");
     console.log(error);
   });
+
+  $scope.toggleDebug = function() {
+    $scope.debug = !$scope.debug;
+  }
 }
 module.exports = MeasurementController;

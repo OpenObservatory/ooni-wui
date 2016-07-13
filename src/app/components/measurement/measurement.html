@@ -20,5 +20,11 @@
       <div http-header-field-manipulation ng-switch-when="http_header_field_mainpulation"></div>
 
   </div>
+  <div class="row">
+    <button class="btn btn-primary" ng-click="toggleDebug()">developer info</button>
+    <pre ng-if="debug == true">
+    {{measurement | json}}
+    </pre>
+  </div>
 </div>
 </main>
