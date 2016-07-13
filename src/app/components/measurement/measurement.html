@@ -1,0 +1,24 @@
+<main class="measurement">
+
+<div class="container">
+
+  <div class="row measurement-info">
+    <h1>
+      {{testNameLong}}
+      <small>{{measurement.test_start_time | date:'medium'}}</small>
+      {{measurement.probe_cc}}
+      <span class="country flag-icon"
+            ng-class="'flag-icon-'+measurement.probe_cc.toLowerCase()"></span>
+    </h1>
+  </div>
+  <div class="test-details" ng-switch on="measurement.test_name">
+
+      <div web-connectivity ng-switch-when="web_connectivity"></div>
+
+      <div http-invalid-request-line ng-switch-when="http_invalid_request_line"></div>
+
+      <div http-header-field-manipulation ng-switch-when="http_header_field_mainpulation"></div>
+
+  </div>
+</div>
+</main>

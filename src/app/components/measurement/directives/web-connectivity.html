@@ -1,0 +1,38 @@
+<div class="row result-info">
+  <p class="bg-info">
+    This is the result of the <strong>{{testNameLong}}</strong> for the URL
+    <code>{{measurement.input}}</code>
+  </p>
+
+  <div class="inaccessible" ng-if="measurement.test_keys.accessible == false">
+    <p class="bg-warning">The site appears to not be reachable</p>
+  </div>
+
+  <div class="inaccessible" ng-if="measurement.test_keys.accessible == true">
+    <p class="bg-success">The site appears to be reachable</p>
+  </div>
+
+  <div class="blocked" ng-if="measurement.test_keys.blocking != false">
+    <p class="bg-danger" ng-if="measurement.test_keys.blocking == 'dns'">
+    The site appears to be blocked due to DNS based censorship
+    </p>
+
+    <p class="bg-danger" ng-if="measurement.test_keys.blocking == 'http-diff'">
+    The site appears to be blocked, because it present a different HTTP response
+    </p>
+
+    <p class="bg-danger" ng-if="measurement.test_keys.blocking == 'http-failure'">
+    The site appears to be blocked, because the HTTP request failed
+    </p>
+
+    <p class="bg-danger" ng-if="measurement.test_keys.blocking == 'tcp_ip'">
+    The site appears to be blocked, by means of TCP/IP based blocking
+    </p>
+  </div>
+
+  <div class="blocked" ng-if="measurement.test_keys.blocking == false">
+    <p class="bg-success">The site appears to not be blocked</p>
+  </div>
+
+  <pre>{{measurement | json}}</pre>
+</div>
