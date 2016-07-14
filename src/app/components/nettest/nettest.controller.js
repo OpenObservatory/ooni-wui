@@ -1,7 +1,7 @@
 NettestController.$inject = ['$stateParams', '$scope', '$http', '$window'];
 function NettestController($stateParams, $scope, $http,  $window) {
 
-  $http.get('/api/net-tests')
+  $http.get('/api/nettest')
     .then(function(response){
       $scope.netTests = response.data;
       if ($stateParams.testName) {
@@ -31,7 +31,7 @@ function NettestController($stateParams, $scope, $http,  $window) {
 
     $http
       .post(
-        '/api/net-tests/'+$scope.selectedNetTest.id+'/start',
+        '/api/nettest/'+$scope.selectedNetTest.id+'/start',
         options
       )
       .then(function(response){

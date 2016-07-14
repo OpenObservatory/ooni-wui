@@ -24,6 +24,13 @@ var paths = {
 
 gulp.task('build', ['clean'], function(done) {
   var config = require('./webpack.config');
+  if (yargs.argv.watch) {
+    config.watch = true;
+  }
+  if (yargs.argv.dest) {
+    console.log("Will write output to", yargs.argv.dest);
+    config.output.path = yargs.argv.dest;
+  }
   if (yargs.argv.mobile) {
     config.entry = {
       mobile: paths.entry.mobile
@@ -37,10 +44,6 @@ gulp.task('build', ['clean'], function(done) {
           filename: 'mobile.html'
         })
       );
-
-    }
-    if (yargs.argv.watch) {
-      config.watch = true;
     }
   }
   webpack(config, function(err, status){

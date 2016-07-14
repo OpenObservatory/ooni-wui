@@ -1,6 +1,9 @@
 MeasurementSummaryController.$inject = ['$stateParams', '$scope', '$http', '$window'];
 function MeasurementSummaryController($stateParams, $scope, $http) {
-   $http.get('/api/measurement/'+$stateParams.measurementId)
+
+  $scope.measurementId = $stateParams.measurementId;
+
+  $http.get('/api/measurement/'+$scope.measurementId)
     .then(function(response){
       $scope.measurements = response.data;
     }, function(error){

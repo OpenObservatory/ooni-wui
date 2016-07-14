@@ -2,7 +2,7 @@ MeasurementController.$inject = ['$stateParams', '$scope', '$http', '$window', '
 function MeasurementController($stateParams, $scope, $http,  $window, Measurement) {
   $scope.debug = false;
 
-  Measurement.get($stateParams.measurementId, $stateParams.measurementIdx)
+  Measurement.get($stateParams.measurementId, $stateParams.idx)
   .then(function(measurement){
     $scope.measurement = measurement;
     $scope.testNameLong = measurement.test_name.replace("_", " ");

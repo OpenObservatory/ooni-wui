@@ -11,15 +11,17 @@
     </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="anomaly in measurements.anomalies" >
-
-    <td ng-if="anomaly.result == true" class="danger">
+  <tr ng-repeat="result in measurements.results">
+    <td ng-if="result.anomaly == true" class="danger">
       Anomaly detected
     </td>
-    <td ng-if="anomaly.result == false">
+    <td ng-if="result.anomaly == false">
       No anomaly detected
     </td>
-    <td>{{anomaly.url}}</td>
+    <td><a
+        ui-sref="measurement({measurementId: measurementId, idx: result.idx})">
+      {{result.url}}</a>
+    </td>
   </tr>
   </tbody>
 </table>
