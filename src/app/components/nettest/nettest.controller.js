@@ -35,9 +35,9 @@ function NettestController($stateParams, $scope, $http,  $window) {
         options
       )
       .then(function(response){
-        console.log(response);
+        $scope.selectedNetTest = undefined;
       }, function(error){
-
+        $scope.selectedNetTest = undefined;
       });
   }
 

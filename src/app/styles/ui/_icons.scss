@@ -1,0 +1,32 @@
+$fa-font-path: "~font-awesome/fonts/";
+$flag-icon-css-path: "~flag-icon-css/flags";
+
+@import "~font-awesome/scss/font-awesome";
+@import "~flag-icon-css/sass/flag-icon";
+
+.icon {
+  @include fa-icon();
+  font-size: 20px;
+}
+
+.icon-not-ok:before {
+  content: $fa-var-times-circle-o;
+}
+.icon-not-ok {
+  color: $color-red;
+}
+
+.icon-ok:before {
+  content: $fa-var-check-circle-o;
+}
+.icon-ok {
+  color: $color-unblocked;
+}
+
+.icon-unknown:before {
+  content: $fa-var-question-circle-o;
+}
+.icon-unknown {
+  color: $color-grey;
+}
+
