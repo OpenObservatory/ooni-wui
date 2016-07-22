@@ -7,7 +7,26 @@
         <div class="row">
 
           <div class="col-md-4 form-group"
-               ng-repeat="(name, options) in selectedNetTest.arguments">
+               ng-repeat="(name, options) in selectedNetTest.options">
+            <label>{{name}}</label>
+            <select class="form-control"
+                ng-if="options.type=='file/url'"
+                ng-model="selectedNetTest.arguments[name].value">
+              <option ng-repeat="input in inputs"
+                      value="{{input.filepath}}">{{input.name}}
+              </option>
+            </select>
+
+            <input class="form-control"
+                ng-if="options.type!='file/url'"
+                ng-model="selectedNetTest.arguments[name].value"
+                type="{{options.type}}">
+
+          </div>
+
+          <div class="col-md-4 form-group"
+               ng-if="showAdvancedOptions"
+               ng-repeat="(name, options) in selectedNetTest.advancedOptions">
             <label>{{name}}</label>
             <input class="form-control"
                 ng-if="options.type=='file'"
@@ -23,7 +42,11 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+          <div class="col-md-6">
+              <button class="btn btn-primary"
+                      ng-click="showAdvancedOptions = !showAdvancedOptions">
+                more options
+              </button>
               <button class="btn btn-primary" ng-click="startNetTest()">
               Start Net Test
               </button>
@@ -38,8 +61,22 @@
 </div>
 
 <div class="row">
+
   <ul class="net-test-cards">
-    <li ng-repeat="(name, details) in netTests">
+    <li ng-repeat="(name, details) in supportedNetTests">
+      <h3 class="net-test-name">{{details.name}}</h3>
+      <span class="label net-test-category-{{details.category}}">
+          {{details.category}}
+      </span>
+      <span class="label label-default">version: {{details.version}}</span>
+      <p class="net-test-description">{{details.description}}</p>
+      <button class="btn btn-default" ng-click="runNetTest(details.id)">Run</button>
+    </li>
+  </ul>
+
+  <button class="btn" ng-click="showExperimental=!showExperimental">Show experimental tests</button>
+  <ul class="net-test-cards" ng-if="showExperimental">
+    <li ng-repeat="(name, details) in experimentalNetTests">
       <h3 class="net-test-name">{{details.name}}</h3>
       <span class="label net-test-category-{{details.category}}">
           {{details.category}}

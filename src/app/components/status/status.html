@@ -1,46 +1,51 @@
-<div class="container">
-  <div class="row" ng-show="showDebug==true">
-    <pre>
-      {{ status | json }}
-    </pre>
-  </div>
-  <div class="row">
-    <div class="status-item">
-      {{status.software_name}} version {{status.software_version}}
+<div class="status-wrapper">
+  <div class="container">
+    <div class="row" ng-show="showDebug==true">
+      <pre>
+        {{ status | json }}
+      </pre>
     </div>
-    <div class="status-item">
-      director status:
-      <i class="icon icon-ok" ng-if="status.director_started == true"></i>
-      <i class="icon icon-not-ok" ng-if="status.director_started == false"></i>
-    </div>
-    <div class="status-item">
-      <span class="flag-icon"
-            ng-class="'flag-icon-'+status.country_code.toLowerCase()"></span>
-    </div>
-    <div class="status-item">
-      {{status.country_code}}
-    </div>
-    <div class="status-item">
-      {{status.asn}}
-    </div>
+    <div class="row">
+      <div class="status-item">
+        {{status.software_name}} version {{status.software_version}}
+      </div>
+      <div class="status-item">
+        director status:
+        <i class="icon icon-ok" ng-if="status.director_started == true"></i>
+        <i class="icon icon-not-ok" ng-if="status.director_started == false"></i>
+      </div>
+      <div class="status-item">
+        <span class="flag-icon"
+              ng-class="'flag-icon-'+status.country_code.toLowerCase()"></span>
+      </div>
+      <div class="status-item">
+        {{status.country_code}}
+      </div>
+      <div class="status-item">
+        {{status.asn}}
+      </div>
 
-    <div class="status-item">
-      Active measurements
-      <span class="badge">{{active_measurement_count}}</span>
+      <div class="status-item">
+        Active measurements
+        <span class="badge">{{active_measurement_count}}</span>
+      </div>
+
+      <div class="pull-right">
+        <button class="btn status-item" ui-sref="nettest"
+                ui-sref-active="active">nettests
+        </button>
+
+        <button class="btn status-item"
+                ui-sref-active="active"
+                ui-sref="measurement-list">measurements
+        </button>
+
+        <button class="btn status-item" ng-click='showDebug=!(showDebug)'>debug</button>
+      </div>
+
     </div>
-
-    <div class="pull-right">
-      <button class="btn status-item" ui-sref="nettest"
-              ui-sref-active="active">nettests
-      </button>
-
-      <button class="btn status-item"
-              ui-sref-active="active"
-              ui-sref="measurement-list">measurements
-      </button>
-
-      <button class="btn status-item" ng-click='showDebug=!(showDebug)'>debug</button>
-    </div>
-
   </div>
 </div>
+
+<notification-list>
+</notification-list>

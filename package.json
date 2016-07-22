@@ -5,6 +5,7 @@
   "repository": "https://github.com/thetorproject/ooni-probe.git",
   "dependencies": {
     "angular": "^1.5.7",
+    "angular-animate": "^1.5.8",
     "angular-ui-router": "^0.3.1",
     "bootstrap": "^3.3.6",
     "css-loader": "^0.23.1",
@@ -17,6 +18,7 @@
     "gulp-template": "^4.0.0",
     "gulp-util": "^3.0.7",
     "html-webpack-plugin": "^2.22.0",
+    "imagemin-webpack-plugin": "^1.0.8",
     "ng-annotate-loader": "^0.1.0",
     "node-sass": "^3.8.0",
     "normalize.css": "^4.2.0",

@@ -30,3 +30,19 @@
   background-color: $color-ooni-blue;
   color: $color-white;
 }
+
+.notifications {
+  z-index: 99999;
+  left: 10px;
+  top: 0px;
+  width: 75%;
+  position: fixed;
+
+  .notification {
+
+    p {
+      opacity: 1;
+      padding: 0;
+    }
+  }
+}

@@ -3,6 +3,7 @@ var path = require('path');
 
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ImageminPlugin = require('imagemin-webpack-plugin').default;
 
 var node_env = process.env.NODE_ENV || 'development';
 
@@ -32,6 +33,8 @@ module.exports = {
     ]
   },
   plugins: [
+    //new ImageminPlugin(),
+    //new webpack.optimize.UglifyJsPlugin(),
     new HtmlWebpackPlugin({
       customBeforeBodyEnd: "",
       template: path.join(rootWebPath, 'index.html'),

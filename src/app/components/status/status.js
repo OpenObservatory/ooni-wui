@@ -3,8 +3,11 @@ var uiRouter = require("angular-ui-router");
 var statusComponent = require("./status.component");
 var statusPollerFactory = require('./status.poller');
 
+var notificationsDirective = require('./directives/notifications.js');
+
 var statusModule = angular.module("status", [
-  uiRouter
+  uiRouter,
+  notificationsDirective
 ])
 .factory('StatusPoller', ['$interval', '$q', '$http', statusPollerFactory])
 .component("status", statusComponent)

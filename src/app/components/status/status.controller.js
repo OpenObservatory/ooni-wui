@@ -1,5 +1,5 @@
-StatusController.$inject = ['$scope', 'StatusPoller'];
-function StatusController($scope, StatusPoller) {
+StatusController.$inject = ['$scope', 'StatusPoller', 'Notification'];
+function StatusController($scope, StatusPoller, Notification) {
   $scope.active_measurement_count = 0;
   var statusPoller = StatusPoller.get();
   statusPoller.start();
