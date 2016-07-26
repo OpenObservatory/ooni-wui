@@ -4,28 +4,37 @@
     <span>{{summary.country_code}}</span> -
     <span>{{summary.asn}}</span> -
   </div>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Result</th>
-        <th>URL</th>
-      </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="result in summary.results">
-      <td ng-if="result.anomaly == true" class="danger">
-        Anomaly detected
-      </td>
-      <td ng-if="result.anomaly == false">
-        No anomaly detected
-      </td>
-      <td><a
-          ui-sref="measurement({measurementId: measurementId, idx: result.idx})">
-        {{result.url}}</a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+  <button class="btn btn-primary"
+          ng-click="toggleAnomalous()">Toggle anomalous</button>
+  <div ng-repeat="result in summary.results | filter:search">
+    <div class="row measurement-result measurement-anomaly"
+         ng-if="result.anomaly == true">
+      <div class="col-md-10">
+        <i class="ooni icon-censorship-tampering"></i>
+        We detected an anomaly on <strong>{{result.url}}</strong>
+      </div>
+      <div class="col-md-2">
+        <a class="btn btn-primary"
+            ui-sref="measurement({measurementId: measurementId, idx: result.idx})">
+          View measuerement
+        </a>
+      </div>
+    </div>
+    <div class="row measurement-result measurement-ok"
+         ng-if="result.anomaly == false">
+      <div class="col-md-10">
+        <i class="ooni icon-censorship-tampering"></i>
+        No anomalies detected on <strong>{{result.url}}</strong>
+      </div>
+      <div class="col-md-2">
+        <a class="btn btn-primary"
+            ui-sref="measurement({measurementId: measurementId, idx: result.idx})">
+          View measuerement
+        </a>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <div class="container" ng-if="error">

@@ -10,6 +10,14 @@ function MeasurementSummaryController($stateParams, $scope, $http, $state) {
     'netalyz'
   ];
   $scope.measurementId = $stateParams.measurementId;
+  $scope.search = {};
+  $scope.toggleAnomalous = function() {
+    if (angular.isUndefined($scope.search.anomaly)) {
+      $scope.search.anomaly = true;
+    } else {
+      delete $scope.search.anomaly;
+    }
+  }
 
   $http.get('/api/measurement/'+$scope.measurementId)
     .then(function(response){
