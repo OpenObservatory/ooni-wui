@@ -5,8 +5,6 @@ var Measurement = require('./components/measurement/measurement');
 var AppComponent = require('./mobile.component');
 
 require('normalize.css');
-require('bootstrap/dist/css/bootstrap.css');
-require('flag-icon-css/css/flag-icon.css');
 
 angular.module('app', [
     uiRouter,

@@ -1,9 +1,14 @@
 <h3>Measurement list</h3>
-<div class="row" ng-repeat="measurement in measurements">
-  <a href="{{measurement.id}}">
-    <span>{{measurement.test_start_time}}</span> -
-    <span>{{measurement.asn}}</span> -
-    <span>{{measurement.country_code}}</span> -
-    <span>{{measurement.test_name}}</span>
-  </a>
+<div class="measurement-set" ng-repeat="measurement in measurements">
+  <h3>{{measurement.test_name}}
+    <small>{{measurement.test_start_time | date}}</small>
+  </h3>
+  <div class="measurement-details">
+    <span><strong>ASN</strong> {{measurement.asn}}</span>
+    <span><strong>Country</strong> {{measurement.country_code}}</span>
+    <a class="btn btn-primary"
+     ui-sref="measurement-summary({measurementId: measurement.id})">
+    Show measurements
+    </a>
+  </div>
 </div>

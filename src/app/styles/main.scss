@@ -1,21 +1,19 @@
-// Colors
-$color-ooni-blue: #0588CB;
-$color-white: #fff;
-$color-off-white: #f2f2f2;
-$color-footer-background-color: #26292c;
-$color-footer-color: #b4b4b4;
-$color-blocked: #B83564;
-$color-unblocked: #4FD156;
-$color-red: #cc0000;
-$color-grey-light: #d9d9d9;
-$color-grey: #c1c1c1;
+@import "~bootstrap/dist/css/bootstrap.css";
 
-// Misc
-$base-spacing: 10px;
-$border-radius: 3px;
+.wordwrap
+{
+  white-space: pre; /* CSS 2.0 */
+  white-space: pre-wrap; /* CSS 2.1 */
+  white-space: pre-line; /* CSS 3.0 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  white-space: -moz-pre-wrap; /* Mozilla */
+  word-wrap: break-word; /* IE 5+ */
+}
 
-// Other
-$transition-speed: .5s;
-
-@import "base",
-        "ui/fonts";
+@import "ui/variables",
+        "base",
+        "measurement",
+        "ui/buttons",
+        "ui/fonts",
+        "ui/icons";

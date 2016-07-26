@@ -19,11 +19,24 @@ var paths = {
   },
   fixtures: path.join(__dirname, 'fixtures', 'measurement.js'),
   dest: path.join(__dirname, 'dist'),
-  rootWeb: path.join(__dirname, root)
+  rootWeb: path.join(__dirname, root),
+  templates: path.join(__dirname, 'generator', 'component/**/*.**')
 }
+
+var resolveToComponents = function(glob) {
+  glob = glob || '';
+  return path.join(root, 'app/components', glob);
+};
 
 gulp.task('build', ['clean'], function(done) {
   var config = require('./webpack.config');
+  if (yargs.argv.watch) {
+    config.watch = true;
+  }
+  if (yargs.argv.dest) {
+    console.log("Will write output to", yargs.argv.dest);
+    config.output.path = yargs.argv.dest;
+  }
   if (yargs.argv.mobile) {
     config.entry = {
       mobile: paths.entry.mobile
@@ -37,10 +50,6 @@ gulp.task('build', ['clean'], function(done) {
           filename: 'mobile.html'
         })
       );
-
-    }
-    if (yargs.argv.watch) {
-      config.watch = true;
     }
   }
   webpack(config, function(err, status){
@@ -52,6 +61,26 @@ gulp.task('build', ['clean'], function(done) {
         done();
     }
   });
+});
+
+gulp.task('component', function() {
+  var cap = function(val) {
+    return val.charAt(0).toUpperCase() + val.slice(1);
+  }
+  var name = yargs.argv.name;
+  var parentPath = yargs.argv.parent || '';
+  var destPath = path.join(resolveToComponents(), parentPath, name);
+
+  return gulp.src(paths.templates)
+    .pipe(template({
+       name: name,
+       upCaseName: cap(name)
+    }))
+    .pipe(rename(function(path){
+      path.basename = path.basename.replace('templ', name);
+    }))
+    .pipe(gulp.dest(destPath));
+
 });
 
 gulp.task('clean', function(done) {

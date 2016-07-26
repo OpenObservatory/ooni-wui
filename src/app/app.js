@@ -1,14 +1,15 @@
 var angular = require('angular');
+var ngAnimate = require('angular-animate');
 var uiRouter = require('angular-ui-router');
+var AppComponent = require('./app.component');
 var Common = require('./common/common');
 var Components = require('./components/components');
-var AppComponent = require('./app.component');
+
 require('normalize.css');
-require('bootstrap/dist/css/bootstrap.css');
-require('flag-icon-css/css/flag-icon.css');
 
 angular.module('app', [
     uiRouter,
+    ngAnimate,
     Common,
     Components
   ])

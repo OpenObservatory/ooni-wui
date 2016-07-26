@@ -1,4 +1,43 @@
 <div class="row">
-  <h2>HTTP Invalid Request Line</h2>
-  <pre>{{measurement}}</pre>
+  <div class="result">
+    <div class="anomalous-result" ng-if="measurement.test_keys.tampering == true">
+      <i class="ooni icon-censorship-tampering"></i>
+       This measurement contains data that could be a sign of network tampering or censorship.
+    </div>
+    <div class="normal-result" ng-if="measurement.test_keys.tampering == false">
+      <i class="ooni icon-censorship-tampering"></i>
+      This measurement looks normal
+    </div>
+  </div>
+
+  <div ng-if="measurement.test_keys.tampering == true">
+    <p>This means there could be a transparent HTTP proxy present on your
+      network. Click on the "Toggle exchanges" button below to see more
+      information.</p>
+  </div>
+
+  <div class="description" >
+    <span class="detail">What does this test do?</span>
+    <div ng-bind-html="description"></div>
+  </div>
+  <button class="btn btn-primary" ng-click="showExchanges = !showExchanges">
+    Toggle exchanges
+  </button>
+  <div ng-repeat="sent_data in measurement.test_keys.sent" ng-if="showExchanges">
+    <div class="col-md-6">
+      <p>I sent</p>
+      <div class="wordwrap well">
+        {{sent_data}}
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <p>I received</p>
+      <div class="wordwrap well">
+        {{measurement.test_keys.received[$index]}}
+      </div>
+    </div>
+
+  </div>
+
 </div>

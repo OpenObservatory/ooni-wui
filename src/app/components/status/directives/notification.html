@@ -1,0 +1,7 @@
+<div class="notification alert alert-{{notification.type}}"
+     role="alert" ng-transclude>
+  <button type="button" class="close" ng-click="dismiss(notification)" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  {{notification.text}}
+</div>

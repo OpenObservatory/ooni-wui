@@ -1,0 +1,47 @@
+@import '../../styles/ui/variables';
+
+.status-wrapper {
+  background-color: $color-grey-light;
+  padding: 1rem 0;
+}
+
+.status-item {
+  padding: 6px 12px;
+  cursor: crosshair;
+  font-family: "Fira Sans";
+  transition: .5s background-color,.5s color;
+  background-color: $color-white;
+  color: $color-grey;
+  font-size: 12px;
+  line-height: inherit;
+  border-radius: $border-radius;
+  display: inline-block;
+}
+
+.status-item .icon {
+  font-size: 1rem;
+}
+
+.status-item .badge {
+  background-color: $color-ooni-blue;
+}
+
+.status-item.btn.active {
+  background-color: $color-ooni-blue;
+  color: $color-white;
+}
+
+.notifications {
+  z-index: 99999;
+  left: 30px;
+  bottom: 0px;
+  position: fixed;
+
+  .notification {
+
+    p {
+      opacity: 1;
+      padding: 0;
+    }
+  }
+}
