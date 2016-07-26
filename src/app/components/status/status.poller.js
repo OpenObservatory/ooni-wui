@@ -1,15 +1,18 @@
 var angular = require('angular');
 
-var StatusPollerFactory = function($interval, $q, $http, options) {
+var StatusPollerFactory = function($interval, $q, $http) {
   
   var defaults = {
-    baseUrl: "/api/status",
+    initializeUrl: "/api/status",
+    updateUrl: "/api/status/update",
     delay: 1*1000
   };
   
-  function StatusPoller() {
+  function StatusPoller(options) {
     var props = [
-      'baseUrl'
+      'updateUrl',
+      'delay',
+      'initializeUrl'
     ];
     var self = this;
 
@@ -25,7 +28,7 @@ var StatusPollerFactory = function($interval, $q, $http, options) {
   StatusPoller.prototype.initalState = function() {
     // This fetches the first state.
     var self = this;
-    $http.get(self.baseUrl).then(
+    $http.get(self.initializeUrl).then(
       function(result) {
         self.deferred.notify(result);
       },
@@ -37,17 +40,20 @@ var StatusPollerFactory = function($interval, $q, $http, options) {
   
   StatusPoller.prototype.start = function() {
     var delay = this.delay;
+    var initializeUrl = this.initializeUrl;
     var self = this;
     var current;
 
     this.deferred = this.deferred || $q.defer();
-    this.initalState();
+    if (initializeUrl == true) {
+      this.initalState();
+    }
  
     function tick() {
       // If we haven't resolved the request don't send another one
       if (angular.isUndefined(current) ||
           current.$resolved) {
-        current = $http.get(self.baseUrl + '/update').then(
+        current = $http.get(self.updateUrl).then(
           function(result){
             current.$resolved = true;
             self.deferred.notify(result);

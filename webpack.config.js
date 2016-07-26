@@ -23,7 +23,8 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.js$/, exclude: [/node_modules/], loader: 'ng-annotate'  },
-      { test: /\.html$/, loader: 'raw' },
+      { test: /\.html$/, loader: 'html' },
+      { test: /\.md$/, loader: "html!markdown" },
       { test: /\.css$/, loader: 'style-loader!css-loader' },
       { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader' },
       { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },

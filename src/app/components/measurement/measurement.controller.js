@@ -5,9 +5,9 @@ function MeasurementController($stateParams, $scope, $http,  $window, Measuremen
   Measurement.get($stateParams.measurementId, $stateParams.idx)
   .then(function(measurement){
     $scope.measurement = measurement;
-    $scope.testNameLong = measurement.test_name.replace("_", " ");
+    $scope.testNameLong = measurement.test_name.replace(/_/g, " ");
     $scope.testNameLong = $scope.testNameLong[0].toUpperCase() + $scope.testNameLong.slice(1);
-  }, function(error){
+  }, function(error) {
     console.log("Failed");
     console.log(error);
   });
