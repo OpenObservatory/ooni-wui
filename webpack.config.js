@@ -12,6 +12,7 @@ var rootWebPath = "./src";
 var contextRoot = path.join(context, rootWebPath);
 
 module.exports = {
+  devtool: 'source-map',
   entry: {
     app: [path.join(contextRoot, "app", "app.js")]
   },
