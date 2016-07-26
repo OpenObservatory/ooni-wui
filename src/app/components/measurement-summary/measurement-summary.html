@@ -1,43 +1,45 @@
-<div class="container" ng-if="summary">
-  <div class="row">
-    <h2>{{summary.test_name}}</h2>
-    <span>{{summary.country_code}}</span> -
-    <span>{{summary.asn}}</span> -
+<div class="measurement" ng-if="summary">
+  <div class="measurement-info row">
+      <span class="detail">Measurement</span>
+      <h1>
+        <i class="ooni icon-measurement"></i>
+        {{testNameLong}}
+        <small>{{summary.test_start_time | date:'medium'}}</small>
+      </h1>
+      <p>
+        <strong>Country</strong> {{summary.country_code}}
+      </p>
+      <p>
+        <strong>ASN</strong> {{summary.asn}}
+      </p>
   </div>
   <button class="btn btn-primary"
           ng-click="toggleAnomalous()">Toggle anomalous</button>
   <div ng-repeat="result in summary.results | filter:search">
     <div class="row measurement-result measurement-anomaly"
          ng-if="result.anomaly == true">
-      <div class="col-md-10">
         <i class="ooni icon-censorship-tampering"></i>
-        We detected an anomaly on <strong>{{result.url}}</strong>
-      </div>
-      <div class="col-md-2">
         <a class="btn btn-primary"
             ui-sref="measurement({measurementId: measurementId, idx: result.idx})">
           View measuerement
         </a>
-      </div>
+        We detected an anomaly on <strong>{{result.url}}</strong>
     </div>
     <div class="row measurement-result measurement-ok"
          ng-if="result.anomaly == false">
-      <div class="col-md-10">
         <i class="ooni icon-censorship-tampering"></i>
-        No anomalies detected on <strong>{{result.url}}</strong>
-      </div>
-      <div class="col-md-2">
         <a class="btn btn-primary"
             ui-sref="measurement({measurementId: measurementId, idx: result.idx})">
           View measuerement
         </a>
-      </div>
+        No anomalies detected on <strong>{{result.url}}</strong>
+
     </div>
 
   </div>
 </div>
 
-<div class="container" ng-if="error">
+<div ng-if="error">
   <h2>Error {{error.error_code}}</h2>
   <p>{{error.error_message}}</p>
 </div>

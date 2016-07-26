@@ -28,6 +28,8 @@ function MeasurementSummaryController($stateParams, $scope, $http, $state) {
         });
       }
       $scope.summary = summary;
+      $scope.testNameLong = summary.test_name.replace(/_/g, " ");
+      $scope.testNameLong = $scope.testNameLong[0].toUpperCase() + $scope.testNameLong.slice(1);
     }, function(error) {
       $scope.error = error.data;
     });

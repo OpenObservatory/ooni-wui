@@ -4,13 +4,24 @@
   margin-top: 18px;
   margin-bottom: 18px;
   padding: 18px 22px;
-  background-color: $color-off-white;
+  i.ooni  {
+    font-size: 30px;
+    vertical-align: middle;
+  }
+  .btn {
+    margin-right: 18px;
+    margin-left: 18px;
+  }
+
 }
+
 .measurement-anomaly {
-  background-color: $color-red;
-  color: $color-off-white;
+  .ooni {
+    color: $color-red;
+  }
 }
 .measurement-ok {
-  background-color: $color-unblocked;
-  color: $color-off-white;
+  .ooni {
+    color: $color-unblocked;
+  }
 }
