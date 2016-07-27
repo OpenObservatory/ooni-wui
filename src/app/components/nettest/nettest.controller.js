@@ -56,6 +56,19 @@ function NettestController($stateParams, $scope, $http,  $window, Notification) 
     }
   }
 
+  $scope.showFileContents = function(input_id) {
+    input_id = input_id.replace("$", "");
+    $http
+      .get('/api/input/' + input_id + '/content')
+      .then(function(response) {
+        $scope.inputContent = response.data.split("\n");
+      });
+  }
+
+  $scope.hideFileContents = function() {
+    delete $scope.inputContent;
+  }
+
   $scope.startNetTest = function() {
     var options = {};
     $window.scrollTo(0, 0);

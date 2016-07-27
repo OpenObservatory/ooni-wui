@@ -45,7 +45,7 @@ var StatusPollerFactory = function($interval, $q, $http) {
     var current;
 
     this.deferred = this.deferred || $q.defer();
-    if (initializeUrl == true) {
+    if (angular.isDefined(initializeUrl)) {
       this.initalState();
     }
  

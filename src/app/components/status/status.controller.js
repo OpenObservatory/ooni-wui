@@ -1,12 +1,27 @@
-StatusController.$inject = ['$scope', 'StatusPoller', 'Notification'];
-function StatusController($scope, StatusPoller, Notification) {
-  $scope.active_measurement_count = 0;
+StatusController.$inject = ['$scope', '$rootScope', 'StatusPoller', 'Notification'];
+function StatusController($scope, $rootScope, StatusPoller, Notification) {
+  var resetStatus = function() {
+    $scope.status = {
+      "director_started": false,
+      "software_name": "ooniprobe",
+      "asn": "AS0",
+      "software_version": "unknown",
+      "country_code": "ZZ",
+      "agent_running": false
+    }
+    $rootScope.directorStarted = false;
+  }
+  resetStatus();
+
   var statusPoller = StatusPoller.get();
   statusPoller.start();
   statusPoller.promise.then(null, null, function(result) {
     if (result.status == 200) {
       $scope.status = result.data;
-      $scope.active_measurement_count = Object.keys($scope.status.active_measurements).length;
+      $scope.status["agent_running"] = true;
+      $rootScope.directorStarted = $scope.status.director_started;
+    } else {
+      resetStatus();
     }
   });
 

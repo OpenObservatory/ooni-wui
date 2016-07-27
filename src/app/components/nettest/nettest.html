@@ -9,13 +9,20 @@
           <div class="col-md-4 form-group"
                ng-repeat="(name, options) in selectedNetTest.options">
             <label>{{name}}</label>
-            <select class="form-control"
-                ng-if="options.type=='file/url'"
-                ng-model="selectedNetTest.arguments[name].value">
-              <option ng-repeat="input in inputs"
-                      value="{{input.filepath}}">{{input.name}}
-              </option>
-            </select>
+            <div class="input-group" ng-if="options.type=='file/url'">
+              <select class="form-control"
+                  ng-model="selectedNetTest.arguments[name].value">
+                <option ng-repeat="(id, input) in inputs"
+                        value="${{id}}">{{input.name}}
+                </option>
+              </select>
+              <div class="input-group-addon file-info" ng-if="selectedNetTest.arguments[name].value">
+                <button class="btn"
+                        ng-click="showFileContents(selectedNetTest.arguments[name].value)">
+                  <i class="fa fa-info-circle"></i>
+                </button>
+              </div>
+            </div>
 
             <input class="form-control"
                 ng-if="options.type!='file/url'"
@@ -57,10 +64,23 @@
 
     </div>
   </div>
+</div>
 
+<div class="row" ng-if="inputContent">
+  <h2>The following URLs will be tested</h2>
+  <button class="btn" ng-click="hideFileContents()">close</button>
+  <ul>
+    <li ng-repeat="input in inputContent">{{input}}</li>
+  </ul>
 </div>
 
 <div class="row">
+
+  <div class="alert alert-warning" ng-if="!$root.directorStarted">
+    <strong>Warning</strong>
+    ooniprobe has not finished starting.
+    You need to wait for it to start to begin running tests.
+  </div>
 
   <ul class="net-test-cards">
     <li ng-repeat="(name, details) in supportedNetTests">
@@ -70,7 +90,9 @@
       </span>
       <span class="label label-default">version: {{details.version}}</span>
       <p class="net-test-description">{{details.description}}</p>
-      <button class="btn btn-default" ng-click="runNetTest(details.id)">Run</button>
+      <button class="btn btn-default"
+              ng-disabled="!$root.directorStarted"
+              ng-click="runNetTest(details.id)">Run</button>
     </li>
   </ul>
 
@@ -83,7 +105,9 @@
       </span>
       <span class="label label-default">version: {{details.version}}</span>
       <p class="net-test-description">{{details.description}}</p>
-      <button class="btn btn-default" ng-click="runNetTest(details.id)">Run</button>
+      <button class="btn btn-default"
+              ng-disabled="!$root.directorStarted"
+              ng-click="runNetTest(details.id)">Run</button>
     </li>
   </ul>
 
