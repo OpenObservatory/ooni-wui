@@ -6,7 +6,9 @@ function StatusController($scope, StatusPoller, Notification) {
   statusPoller.promise.then(null, null, function(result) {
     if (result.status == 200) {
       $scope.status = result.data;
-      $scope.active_measurement_count = Object.keys($scope.status.active_measurements).length;
+      if ($scope.status.active_measurements) {
+        $scope.active_measurement_count = Object.keys($scope.status.active_measurements).length;
+      }
     }
   });
 

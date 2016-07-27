@@ -10,19 +10,17 @@
         {{status.software_name}} version {{status.software_version}}
       </div>
       <div class="status-item">
-        director status:
+        Status:
         <i class="icon icon-ok" ng-if="status.director_started == true"></i>
         <i class="icon icon-not-ok" ng-if="status.director_started == false"></i>
       </div>
       <div class="status-item">
+        Location:
         <span class="flag-icon"
               ng-class="'flag-icon-'+status.country_code.toLowerCase()"></span>
-      </div>
-      <div class="status-item">
         {{status.country_code}}
-      </div>
-      <div class="status-item">
-        {{status.asn}}
+
+        ({{status.asn}})
       </div>
 
       <div class="status-item">

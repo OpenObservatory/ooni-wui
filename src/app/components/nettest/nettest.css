@@ -18,9 +18,14 @@
 
 .net-test-cards li {
     display: inline-block;
+    vertical-align: top;
     list-style: none;
     width: 30.33%;
     margin: 0 1.5% 2% 1.5%;
     padding: 0 0 1.5rem 0;
     border-bottom: 1px solid #3c3c3c;
+}
+
+.net-test-description {
+    margin-top: 1em;
 }
