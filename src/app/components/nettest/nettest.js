@@ -1,6 +1,7 @@
 var angular = require("angular");
 var uiRouter = require("angular-ui-router");
 var nettestComponent = require("./nettest.component");
+var nettestDetailComponent = require("./nettest.detail.component");
 
 var nettestModule = angular.module("nettest", [
   uiRouter
@@ -10,12 +11,17 @@ var nettestModule = angular.module("nettest", [
   $urlRouterProvider.otherwise('/');
 
   $stateProvider.state('nettest', {
-    url: '/nettest/:testName?',
+    url: '/nettest',
     template: '<nettest></nettest>'
+  })
+  .state('nettest.detail', {
+    url: '/:testName?',
+    template: '<testdetail></testdetail>'
   });
 
 })
 .component("nettest", nettestComponent)
+.component("nettest.detail", nettestDetailComponent)
 .name;
 
 module.exports = nettestModule;

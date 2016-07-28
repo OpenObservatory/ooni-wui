@@ -71,6 +71,7 @@
       <span class="label label-default">version: {{details.version}}</span>
       <p class="net-test-description">{{details.description}}</p>
       <button class="btn btn-default" ng-click="runNetTest(details.id)">Run</button>
+      <button class="btn" ui-sref="nettest.detail({id: details.id})">More Info</button>
     </li>
   </ul>
 
@@ -84,6 +85,7 @@
       <span class="label label-default">version: {{details.version}}</span>
       <p class="net-test-description">{{details.description}}</p>
       <button class="btn btn-default" ng-click="runNetTest(details.id)">Run</button>
+      <button class="btn" ui-sref="nettest.detail({id: details.id})">More Info</button>
     </li>
   </ul>
 
