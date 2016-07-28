@@ -23,11 +23,11 @@ function NettestController($stateParams, $scope, $http,  $window, Notification) 
         if ($stateParams.testName) {
           $scope.runNetTest($stateParams.testName);
         }
-      }, function(error){
+      }, function(error) {
         Notification.error("Failed to fetch inputs", error);
       });
 
-    }, function(error){
+    }, function(error) {
       Notification.error("Failed to list nettests", error);
     });
 

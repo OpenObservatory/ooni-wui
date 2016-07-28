@@ -12,5 +12,13 @@
      ui-sref="measurement-summary({measurementId: measurement.id})">
     Show measurements
     </a>
+    <button class="btn btn-primary"
+     ng-click="keepMeasurement(measurement)">
+    Keep
+    </button>
+    <button class="btn btn-primary"
+     ng-click="deleteMeasurement(measurement)">
+    Delete
+    </button>
   </div>
 </div>
