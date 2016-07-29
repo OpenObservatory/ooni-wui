@@ -1,13 +1,28 @@
-NettestDetailController.$inject = ['$stateParams', '$scope'];
-function NettestDetailController($stateParams, $scope) {
+var httpInvalidRequestLineDescription = require('../measurement/directives/http-invalid-request-line.md');
+var httpHeaderFieldManipulationDescription = require('../measurement/directives/http-header-field-manipulation.md');
 
-  var detailsfor = ["web_connectivity", "http_invalid_request_line",
-                          "http_header_field_manipulation"];
-  $scope.NetTest = {
-    name: "HI",
-    version: 1
+NettestDetailController.$inject = ['$stateParams', '$scope', '$sce', '$http'];
+function NettestDetailController($stateParams, $scope, $sce, $http) {
+
+  var detailsfor = {
+//    "web_connectivity": webConnectivityDescription,
+    "http_invalid_request_line": httpInvalidRequestLineDescription,
+    "http_header_field_manipulation": httpHeaderFieldManipulationDescription
   };
 
+  $http.get('/api/nettest')
+    .then(function(response){
+      var tests = {};
+      angular.forEach(response.data, function(netTest){
+        tests[netTest.id] = netTest;
+      });
+      if ($stateParams.id && tests[$stateParams.id]) {
+        $scope.NetTest = tests[$stateParams.id];
+      }
+      if (detailsfor[$stateParams.id]) {
+        $scope.description = $sce.trustAsHtml(detailsfor[$stateParams.id]);
+      }
+    });
 };
 
 module.exports = NettestDetailController;

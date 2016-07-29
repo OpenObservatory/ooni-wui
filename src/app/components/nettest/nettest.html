@@ -1,3 +1,4 @@
+<nettest.detail></nettest.detail>
 <div class="row" ng-show="selectedNetTest">
   <div>
     <h2>Run <em>{{selectedNetTest.name}}</em> Net Test</h2>
@@ -92,7 +93,9 @@
       <button class="btn btn-default"
               ng-disabled="!$root.directorStarted"
               ng-click="runNetTest(details.id)">Run</button>
-      <button class="btn" ui-sref="nettest.detail({id: details.id})">More Info</button>
+      <button class="btn"
+              ui-sref="nettest.detail({id: details.id})"
+              ui-sref-active="active">More Info</button>
     </li>
   </ul>
 
@@ -108,7 +111,9 @@
       <button class="btn btn-default"
               ng-disabled="!$root.directorStarted"
               ng-click="runNetTest(details.id)">Run</button>
-      <button class="btn" ui-sref="nettest.detail({id: details.id})">More Info</button>
+      <button class="btn"
+              ui-sref="nettest.detail({id: details.id})"
+              ui-sref-active="active">More Info</button>
     </li>
   </ul>
 
