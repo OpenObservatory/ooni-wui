@@ -23,11 +23,11 @@ function NettestController($stateParams, $scope, $http,  $window, Notification) 
         if ($stateParams.testName) {
           $scope.runNetTest($stateParams.testName);
         }
-      }, function(error){
+      }, function(error) {
         Notification.error("Failed to fetch inputs", error);
       });
 
-    }, function(error){
+    }, function(error) {
       Notification.error("Failed to list nettests", error);
     });
 
@@ -54,6 +54,19 @@ function NettestController($stateParams, $scope, $http,  $window, Notification) 
         });
       $window.scrollTo(0, 0);
     }
+  }
+
+  $scope.showFileContents = function(input_id) {
+    input_id = input_id.replace("$", "");
+    $http
+      .get('/api/input/' + input_id + '/content')
+      .then(function(response) {
+        $scope.inputContent = response.data.split("\n");
+      });
+  }
+
+  $scope.hideFileContents = function() {
+    delete $scope.inputContent;
   }
 
   $scope.startNetTest = function() {

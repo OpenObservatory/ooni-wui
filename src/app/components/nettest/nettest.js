@@ -15,7 +15,7 @@ var nettestModule = angular.module("nettest", [
     template: '<nettest></nettest>'
   })
   .state('nettest.detail', {
-    url: '/:testName?',
+    url: '/:id?',
     template: '<testdetail></testdetail>'
   });
 
