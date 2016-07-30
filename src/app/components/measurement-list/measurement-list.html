@@ -2,6 +2,15 @@
 <h3 ng-if="measurements.length==0">No measurement run yet</h3>
 
 <div class="measurement-set" ng-repeat="measurement in measurements">
+  <div class="measurement-labels">
+    <span class="label label-success" ng-if="measurement.keep == true">keeping</span>
+    <span class="label label-success"  ng-if="measurement.running == true">
+      running
+    </span>
+    <span class="label label-warning"
+          ng-if="measurement.running != true && measurement.completed == false">
+      incomplete</span>
+  </div>
   <h3>{{measurement.test_name}}
     <small>{{measurement.test_start_time | date}}</small>
   </h3>
@@ -9,15 +18,18 @@
     <span><strong>ASN</strong> {{measurement.asn}}</span>
     <span><strong>Country</strong> {{measurement.country_code}}</span>
     <a class="btn btn-primary"
+       ng-if="measurement.completed == true"
      ui-sref="measurement-summary({measurementId: measurement.id})">
     Show measurements
     </a>
     <button class="btn btn-primary"
-     ng-click="keepMeasurement(measurement)">
+            ng-if="measurement.keep == false"
+            ng-click="keepMeasurement(measurement)">
     Keep
     </button>
-    <button class="btn btn-primary"
-     ng-click="deleteMeasurement(measurement)">
+    <button class="btn btn-danger"
+            ng-if="measurement.running == false"
+            ng-click="deleteMeasurement(measurement)">
     Delete
     </button>
   </div>

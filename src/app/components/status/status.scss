@@ -3,6 +3,12 @@
 .status-wrapper {
   background-color: $color-grey-light;
   padding: 1rem 0;
+  .ooni-logo {
+    background-size: 30px;
+    height: 30px;
+    width: 30px;
+    margin-right: 18px;
+  }
 }
 
 .status-item {
@@ -16,6 +22,7 @@
   line-height: inherit;
   border-radius: $border-radius;
   display: inline-block;
+
 }
 
 .status-item .icon {

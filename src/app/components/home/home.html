@@ -1,3 +1,30 @@
 <div>
-  <h2>Welcome to OONI</h2>
+  <h2>Welcome to the ooniprobe web interface</h2>
 </div>
+<div class="alert alert-warning">
+  This is alpha quality software so bugs are to be expected. I might even
+  eat your carpet if you are not careful.
+</div>
+
+<p>
+  Through this web interface you will be able to start ooniprobe
+  measurements and view their results.
+</p>
+
+<p>
+  Here are some things that you should know:
+  <ul>
+  <li>There is a daemon running on your computer that is responsible for
+    hosting this web interface and triggering periodic tasks</li>
+   <li>Periodic tasks include:</li>
+  <ul>
+    <li>Deleting measurements that are older than 7 days</li>
+    <li>Running the decks that have been configured on this system</li>
+    <li>Updating the inputs used by ooniprobe (every day)</li>
+  </ul>
+
+  </ul>
+</p>
+
+<p>To get started with running some measurements click on the nettest
+  button in the upper right corner</p>

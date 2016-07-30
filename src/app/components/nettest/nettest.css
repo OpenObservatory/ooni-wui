@@ -29,3 +29,7 @@
     border: 0;
     padding: 0;
 }
+
+.selected-net-test .net-test-options {
+    margin-top: 18px;
+}

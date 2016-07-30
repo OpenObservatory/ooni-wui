@@ -21,6 +21,7 @@ function MeasurementListController($scope, $http, Notification) {
   $scope.keepMeasurement = function(measurement) {
     $http.post('/api/measurement/'+measurement.id+'/keep')
       .then(function(response) {
+        measurement.keep = true;
         Notification.success("This measurement will not be deleted");
       }, function(error) {
         Notification.error("Failed to delete measurements", error);
