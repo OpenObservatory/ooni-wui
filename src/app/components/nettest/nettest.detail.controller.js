@@ -1,8 +1,8 @@
 var httpInvalidRequestLineDescription = require('../measurement/directives/http-invalid-request-line.md');
 var httpHeaderFieldManipulationDescription = require('../measurement/directives/http-header-field-manipulation.md');
 
-NettestDetailController.$inject = ['$stateParams', '$scope', '$sce', '$http'];
-function NettestDetailController($stateParams, $scope, $sce, $http) {
+NettestDetailController.$inject = ['$state', '$stateParams', '$scope', '$sce', '$http'];
+function NettestDetailController($state, $stateParams, $scope, $sce, $http) {
 
   var detailsfor = {
 //    "web_connectivity": webConnectivityDescription,
@@ -23,6 +23,11 @@ function NettestDetailController($stateParams, $scope, $sce, $http) {
         $scope.description = $sce.trustAsHtml(detailsfor[$stateParams.id]);
       }
     });
+
+  $scope.closeNettestDetail = function() {
+    $scope.NetTest = undefined;
+    $state.go('nettest');
+  };
 };
 
 module.exports = NettestDetailController;

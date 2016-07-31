@@ -38,3 +38,12 @@
 .selected-net-test .net-test-options {
     margin-top: 18px;
 }
+
+nettest .modal {
+  display: block
+}
+
+nettest .modal-body {
+  max-height: 65vh;
+  overflow-y: scroll;
+}

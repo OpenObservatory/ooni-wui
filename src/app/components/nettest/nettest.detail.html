@@ -1,10 +1,17 @@
-<div class="row" ng-show="NetTest">
-  <div>
-    <h2><em>{{NetTest.name}}</em> Net Test</h2>
-    <div>
-      version: <span class="badge badge-success">{{NetTest.version}}</span>
-
-    </div>
-  </div>
-  <div ng-bind-html="description"></div>
+<div class="modal" tabindex="-1" role="dialog" ng-show="NetTest">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="closeNettestDetail()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><em>{{NetTest.name}}</em> Net Test</h4>
+      </div>
+      <div class="modal-body">
+        <p>version: <span class="badge badge-success">{{NetTest.version}}</span></p>
+        <div ng-bind-html="description"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="closeNettestDetail()">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
 </div>

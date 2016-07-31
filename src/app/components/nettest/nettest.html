@@ -95,7 +95,7 @@
               ng-click="runNetTest(details.id)">Run</button>
       <button class="btn"
               ui-sref="nettest.detail({id: details.id})"
-              ui-sref-active="active">More Info</button>
+              ui-sref-active="active" ui-sref-opts="{reload: true}">More Info</button>
     </li>
   </ul>
 
@@ -113,7 +113,7 @@
               ng-click="runNetTest(details.id)">Run</button>
       <button class="btn"
               ui-sref="nettest.detail({id: details.id})"
-              ui-sref-active="active">More Info</button>
+              ui-sref-active="active" ui-sref-opts="{reload: true}">More Info</button>
     </li>
   </ul>
 
