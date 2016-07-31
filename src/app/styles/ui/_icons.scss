@@ -1,8 +1,6 @@
 $fa-font-path: "~font-awesome/fonts/";
-$flag-icon-css-path: "~flag-icon-css/flags";
 
 @import "~font-awesome/scss/font-awesome";
-@import "~flag-icon-css/sass/flag-icon";
 
 .icon {
   @include fa-icon();

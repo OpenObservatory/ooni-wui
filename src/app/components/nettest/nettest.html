@@ -1,10 +1,10 @@
 <nettest.detail></nettest.detail>
-<div class="row" ng-show="selectedNetTest">
+<div class="row selected-net-test" ng-show="selectedNetTest">
   <div>
-    <h2>Run <em>{{selectedNetTest.name}}</em> Net Test</h2>
+    <h2>{{selectedNetTest.name}}</h2>
     <div>
       version: <span class="badge badge-success">{{selectedNetTest.version}}</span>
-      <form name="netTestOptions">
+      <form name="netTestOptions" class="net-test-options">
         <div class="row">
 
           <div class="col-md-4 form-group"

@@ -23,7 +23,7 @@ var notificationsDirective = angular.module('notificationsDirective', [])
   return {
     transclude: true,
     link: function (scope, element, attrs) {
-      var timeout_interval = 3*1000;
+      var timeout_interval = 8*1000;
 
       scope.dismiss = function(notification) {
         $animate.addClass(element, 'fade').then(function(){
@@ -46,5 +46,4 @@ var notificationsDirective = angular.module('notificationsDirective', [])
   }
 }])
 .name;
-console.log(notificationsDirective);
 module.exports = notificationsDirective;
