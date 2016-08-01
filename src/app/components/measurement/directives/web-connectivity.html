@@ -4,7 +4,7 @@
     <code>{{measurement.input}}</code>
   </p>
 
-  <div class="result-row">
+  <div class="result-row result-accessible">
     <label>Accessible</label>
     <i class="icon icon-not-ok"
        ng-if="measurement.test_keys.accessible == false"></i>
@@ -14,12 +14,12 @@
        ng-if="measurement.test_keys.accessible == null"></i>
   </div>
 
-  <div class="result-row">
-    <label>Unblocked</label>
-    <i class="icon icon-ok"
-       ng-if="measurement.test_keys.blocking == false"></i>
+  <div class="result-row result-censored">
+    <label>Censored</label>
     <i class="icon icon-not-ok"
-       ng-if="measurement.test_keys.blocking != true &&
+       ng-if="measurement.test_keys.blocking == false"></i>
+    <i class="icon icon-ok"
+       ng-if="measurement.test_keys.blocking != false &&
               measurement.test_keys.blocking != null"></i>
     <i class="icon icon-unknown"
        ng-if="measurement.test_keys.blocking == null"></i>
@@ -45,5 +45,10 @@
     based blocking</strong>.
     Try using a censorship circumvention tool such as Tor.
   </p>
+
+  <div class="description" >
+    <span class="detail">What does this test do?</span>
+    <div ng-bind-html="description"></div>
+  </div>
 
 </div>

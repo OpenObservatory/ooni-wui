@@ -1,3 +1,15 @@
-.result-info p {
+@import '../../../styles/ui/variables';
+
+.bg-info {
     padding: 15px;
+}
+
+
+// In the censored view we use inverted icons, but we invert the colors so as to keep the color coding consistent.
+.result-censored .icon-not-ok {
+  color: $color-unblocked;
+}
+
+.result-censored .icon-ok {
+  color: $color-blocked;
 }
