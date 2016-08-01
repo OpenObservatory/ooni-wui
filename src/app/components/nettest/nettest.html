@@ -1,10 +1,10 @@
-<nettest.detail></nettest.detail>
-<div class="row selected-net-test" ng-show="selectedNetTest">
+<nettest.detail class="nettest-detail"></nettest.detail>
+<div class="row selected-nettest" ng-show="selectedNetTest">
   <div>
     <h2>{{selectedNetTest.name}}</h2>
     <div>
       version: <span class="badge badge-success">{{selectedNetTest.version}}</span>
-      <form name="netTestOptions" class="net-test-options">
+      <form name="netTestOptions" class="nettest-options">
         <div class="row">
 
           <div class="col-md-4 form-group"
@@ -82,38 +82,41 @@
     ooniprobe has not started yet. Please wait for it to start running tests.
   </div>
 
-  <ul class="net-test-cards">
+  <ul class="nettest-cards">
     <li ng-repeat="(name, details) in supportedNetTests">
-      <h3 class="net-test-name">{{details.name}}</h3>
-      <span class="label net-test-category-{{details.category}}">
+      <h3 class="nettest-name">{{details.name}}</h3>
+      <span class="label nettest-category-{{details.category}}">
           {{details.category}}
       </span>
       <span class="label label-default">version: {{details.version}}</span>
-      <p class="net-test-description">{{details.description}}</p>
-      <button class="btn btn-default"
-              ng-disabled="!$root.directorStarted"
-              ng-click="runNetTest(details.id)">Run</button>
+      <p class="nettest-description">{{details.description}}</p>
       <button class="btn"
               ui-sref="nettest.detail({id: details.id})"
               ui-sref-active="active" ui-sref-opts="{reload: true}">More Info</button>
+      <button class="btn btn-default"
+              ng-disabled="!$root.directorStarted"
+              ng-click="runNetTest(details.id)">Run</button>
+
     </li>
   </ul>
 
   <button class="btn" ng-click="showExperimental=!showExperimental">Show experimental tests</button>
-  <ul class="net-test-cards" ng-if="showExperimental">
+  <ul class="nettest-cards" ng-if="showExperimental">
     <li ng-repeat="(name, details) in experimentalNetTests">
-      <h3 class="net-test-name">{{details.name}}</h3>
-      <span class="label net-test-category-{{details.category}}">
+      <h3 class="nettest-name">{{details.name}}</h3>
+      <span class="label nettest-category-{{details.category}}">
           {{details.category}}
       </span>
       <span class="label label-default">version: {{details.version}}</span>
-      <p class="net-test-description">{{details.description}}</p>
-      <button class="btn btn-default"
-              ng-disabled="!$root.directorStarted"
-              ng-click="runNetTest(details.id)">Run</button>
+      <p class="nettest-description">{{details.description}}</p>
+
       <button class="btn"
               ui-sref="nettest.detail({id: details.id})"
               ui-sref-active="active" ui-sref-opts="{reload: true}">More Info</button>
+
+      <button class="btn btn-default"
+              ng-disabled="!$root.directorStarted"
+              ng-click="runNetTest(details.id)">Run</button>
     </li>
   </ul>
 

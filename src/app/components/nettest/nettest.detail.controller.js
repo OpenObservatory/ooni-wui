@@ -1,11 +1,12 @@
 var httpInvalidRequestLineDescription = require('../measurement/directives/http-invalid-request-line.md');
 var httpHeaderFieldManipulationDescription = require('../measurement/directives/http-header-field-manipulation.md');
+var webConnectivityDescription = require('../measurement/directives/web-connectivity.md');
 
 NettestDetailController.$inject = ['$state', '$stateParams', '$scope', '$sce', '$http'];
 function NettestDetailController($state, $stateParams, $scope, $sce, $http) {
 
   var detailsfor = {
-//    "web_connectivity": webConnectivityDescription,
+    "web_connectivity": webConnectivityDescription,
     "http_invalid_request_line": httpInvalidRequestLineDescription,
     "http_header_field_manipulation": httpHeaderFieldManipulationDescription
   };

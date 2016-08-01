@@ -1,32 +1,32 @@
-.net-test-category-blocking {
+.nettest-category-blocking {
     background-color: #DB588C;
 }
-.net-test-category-third_party {
+.nettest-category-third_party {
     background-color: #8E58DB;
 }
-.net-test-category-manipulation {
+.nettest-category-manipulation {
     background-color: #58DBC3;
 }
-.net-test-category-experimental {
+.nettest-category-experimental {
     background-color: #DB5858;
 }
 
-.net-test-cards {
+.nettest-cards {
     -webkit-padding-start: 0px;
     -webkit-margin-before: 0px;
 }
 
-.net-test-cards li {
+.nettest-cards li {
     display: inline-block;
     vertical-align: top;
     list-style: none;
     width: 30.33%;
-    margin: 0 1.5% 2% 1.5%;
-    padding: 0 0 1.5rem 0;
-    border-bottom: 1px solid #3c3c3c;
+    margin: 15px 1.5% 2% 1.5%;
+    padding: 0 0 0 10px;
+    border-left: 3px solid #3c3c3c;
 }
 
-.net-test-description {
+.nettest-description {
     margin-top: 1em;
 }
 
@@ -35,15 +35,15 @@
     padding: 0;
 }
 
-.selected-net-test .net-test-options {
+.selected-nettest .nettest-options {
     margin-top: 18px;
 }
 
-nettest .modal {
+.nettest-detail .modal {
   display: block
 }
 
-nettest .modal-body {
+.nettest-detail .modal-body {
   max-height: 65vh;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
