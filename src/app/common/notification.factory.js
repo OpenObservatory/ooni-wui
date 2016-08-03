@@ -26,7 +26,7 @@ var NotificationFactory = function() {
     },
 
     error: function(text, error) {
-      if (error.data && error.data.error_code) {
+      if (error && error.data && error.data.error_code) {
         text += " error_code: " + error.data.error_code;
         text += " backend_message: " + error.data.error_message;
       }

@@ -7,9 +7,11 @@ function StatusController($scope, $rootScope, StatusPoller, Notification) {
       "asn": "AS0",
       "software_version": "unknown",
       "country_code": "ZZ",
-      "agent_running": false
+      "agent_running": false,
+      "initialized": undefined
     }
     $rootScope.directorStarted = false;
+    $rootScope.initialized = undefined;
   }
   resetStatus();
 
@@ -20,6 +22,7 @@ function StatusController($scope, $rootScope, StatusPoller, Notification) {
       $scope.status = result.data;
       $scope.status["agent_running"] = true;
       $rootScope.directorStarted = $scope.status.director_started;
+      $rootScope.initialized = $scope.status.initialized;
     } else {
       resetStatus();
     }

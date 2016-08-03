@@ -1,4 +1,4 @@
-MeasurementSummaryController.$inject = ['$stateParams', '$scope', '$http', '$state'];
+MeasurementSummaryController.$inject = ['$stateparams', '$scope', '$http', '$state'];
 function MeasurementSummaryController($stateParams, $scope, $http, $state) {
   var singleEntryTests = [
     'http_invalid_request_line',
