@@ -3,18 +3,20 @@ var Home = require("./home/home");
 var Status = require("./status/status");
 var Setup = require("./setup/setup");
 var Nettest = require("./nettest/nettest");
+var Deck = require("./deck/deck");
 var Measurement = require("./measurement/measurement");
 var MeasurementList = require("./measurement-list/measurement-list");
 var MeasurementSummary = require("./measurement-summary/measurement-summary");
 
 var componentsModule = angular.module("app.components", [
-  Status,
-  Setup,
+  Deck,
   Home,
   Nettest,
   Measurement,
   MeasurementList,
-  MeasurementSummary
+  MeasurementSummary,
+  Setup,
+  Status
 ])
 .name;
 

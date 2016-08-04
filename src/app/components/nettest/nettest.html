@@ -100,7 +100,9 @@
     </li>
   </ul>
 
-  <button class="btn" ng-click="showExperimental=!showExperimental">Show experimental tests</button>
+  <button class="btn" ng-if="false"
+          ng-click="showExperimental=!showExperimental">Show
+    experimental tests</button>
   <ul class="nettest-cards" ng-if="showExperimental">
     <li ng-repeat="(name, details) in experimentalNetTests">
       <h3 class="nettest-name">{{details.name}}</h3>

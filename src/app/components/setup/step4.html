@@ -6,48 +6,52 @@
 </p>
 
 <div class="row">
-<div class="col-xs-6">
-<div class="checkbox">
-  <label>
-    <input type="checkbox" ng-model="configuration.include_ip">
-    Should we include your IP address in results?
-  </label>
-</div>
 
-<div class="checkbox">
-  <label>
-    <input type="checkbox" ng-model="configuration.include_asn">
-    Should we include your network information in the reports (note:
-    disabling this will make it much harder for us to draw conclusions from
-    the measurements)?
-  </label>
-</div>
+  <div class="col-xs-6">
 
-<div class="checkbox">
-  <label>
-    <input type="checkbox" ng-model="configuration.include_country">
-    Should we include your country name in the reports (note:
-    disabling this will make it much harder for us to draw conclusions from
-    the measurements)?
-  </label>
-</div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" ng-model="configuration.include_ip">
+        Should we include your IP address in results?
+      </label>
+    </div>
 
-<div class="checkbox">
-  <label>
-    <input type="checkbox" ng-model="configuration.should_upload">
-    Should we upload your results to the default ooni collector?
-  </label>
-</div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" ng-model="configuration.include_asn">
+        Should we include your network information in the reports (note:
+        disabling this will make it much harder for us to draw conclusions from
+        the measurements)?
+      </label>
+    </div>
 
-<div class="form-group">
-  <label>How should we upload your results to the collector?</label>
-  <select ng-model="configuration.preferred_backend" class="form-control">
-    <option value="onion">Tor Hidden Service</option>
-    <option value="https">HTTPS</option>
-    <option value="cloudfronted">Cloudfronting</option>
-  </select>
-</div>
-</div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" ng-model="configuration.include_country">
+        Should we include your country name in the reports (note:
+        disabling this will make it much harder for us to draw conclusions from
+        the measurements)?
+      </label>
+    </div>
+
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" ng-model="configuration.should_upload">
+        Should we upload your results to the default ooni collector?
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>How should we upload your results to the collector?</label>
+      <select ng-model="configuration.preferred_backend" class="form-control">
+        <option value="onion">Tor Hidden Service</option>
+        <option value="https">HTTPS</option>
+        <option value="cloudfronted">Cloudfronting</option>
+      </select>
+    </div>
+
+  </div>
+
 </div>
 
 <div class="navigation row">

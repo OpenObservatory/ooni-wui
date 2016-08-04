@@ -15,6 +15,7 @@ function SetupController($rootScope, $scope, $http, $state, Notification) {
   };
 
   $scope.configure = function() {
+    Notification.success("Configuring your node.");
     $http.post('/api/initialize', $scope.configuration)
       .then(function(result) {
         Notification.success("Successfully configured ooniprobe. You are" +
