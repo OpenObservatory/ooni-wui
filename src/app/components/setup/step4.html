@@ -19,7 +19,7 @@
     <div class="checkbox">
       <label>
         <input type="checkbox" ng-model="configuration.include_asn">
-        Should we include your network information in the reports (note:
+        Should we include your network information (ASN) in the reports (note:
         disabling this will make it much harder for us to draw conclusions from
         the measurements)?
       </label>
@@ -37,7 +37,8 @@
     <div class="checkbox">
       <label>
         <input type="checkbox" ng-model="configuration.should_upload">
-        Should we upload your results to the default ooni collector?
+        Should we upload your results to the default ooni collector and
+        therefore publish them?
       </label>
     </div>
 
