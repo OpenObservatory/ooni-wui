@@ -27,24 +27,70 @@
 
   <p class="bg-danger" ng-if="measurement.test_keys.blocking == 'dns'">
     The site appears to be blocked due to <strong>DNS based
-    censorship</strong>. You can circumvent it by changing your DNS resolver.
+    censorship</strong>.
   </p>
 
   <p class="bg-danger" ng-if="measurement.test_keys.blocking == 'http-diff'">
     The site appears to be blocked, because it present a <strong>different HTTP
-    response</strong>. Maybe you can try accessing it via HTTPS.
+    response</strong>.
   </p>
 
   <p class="bg-danger" ng-if="measurement.test_keys.blocking == 'http-failure'">
     The site appears to be blocked, because the <strong>HTTP request
-    failed</strong>. Maybe you can try accessing it via HTTPS.
+    failed</strong>.
   </p>
 
   <p class="bg-danger" ng-if="measurement.test_keys.blocking == 'tcp_ip'">
     The site appears to be blocked, by means of <strong>TCP/IP
     based blocking</strong>.
-    Try using a censorship circumvention tool such as Tor.
   </p>
+
+  <div class="circumvention-strategies"
+       ng-if="measurement.test_keys.blocking != false &&
+              measurement.test_keys.blocking != null">
+    <h3><i class="ooni icon-tor"></i>Circumvention strategies</h3>
+    <p>You can attempt to circumvent the blocking of the site
+      <code>{{measurement.input}}</code> by trying to do one of the
+      following.
+    </p>
+    <p>
+    Note: that not all of these techniques may work. The easiest ones to
+      implement are first and the hardest ones are last.
+    </p>
+
+    <div class="circumvention-strategy"
+         ng-if="(measurement.test_keys.blocking == 'http-diff'
+                 || measurement.test_keys.blocking == 'http-failure') &&
+                 measurement.input.substr(0, 5) != 'https'">
+      <p>You can try to visit the https version of the website in
+        question by accessing it via <a href="https{{measurement.input.substr(4)}}">https{{measurement.input.substr(4)}}</a>
+      </p>
+    </div>
+    <div class="circumvention-strategy"
+         ng-if="measurement.test_keys.blocking == 'dns'">
+      <p>You can try to change your DNS resolver to one that does not
+      implement blocking, for example the google DNS resolver:
+        <code>8.8.8.8</code>.
+      </p>
+      <p>You can find instructions on how to change your DNS resolver to the
+        google DNS resolver at the following URL: <a
+            href="https://developers.google.com/speed/public-dns/docs/using">https://developers.google.com/speed/public-dns/docs/using</a></p>
+    </div>
+    <div class="circumvention-strategy">
+      <p>In most cases you will always be able to circumvent censorship by
+        using Tor. To download Tor you should visit:
+        <a href="https://www.torproject.org/download/download.html.en">https
+          ://www.torproject.org/download/download.html.en</a></p>
+      <p>
+        If the torproject.org website is blocked in your country you should
+        be able to download Tor from a mirror of it hosted on github:
+        <a href="https://github.com/TheTorProject/gettorbrowser/">
+          https://github.com/TheTorProject/gettorbrowser/
+        </a>
+      </p>
+    </div>
+
+  </div>
 
   <div class="description" >
     <span class="detail">What does this test do?</span>

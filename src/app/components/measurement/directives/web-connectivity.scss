@@ -1,7 +1,7 @@
 @import '../../../styles/ui/variables';
 
-.bg-info {
-    padding: 15px;
+.bg-info, .bg-danger {
+  padding: 18px 22px;
 }
 
 
@@ -12,4 +12,19 @@
 
 .result-censored .icon-ok {
   color: $color-blocked;
+}
+
+.circumvention-strategies {
+  margin-top: 18px;
+  margin-bottom: 18px;
+  padding: 18px 22px;
+  background-color: $color-off-white;
+
+  .circumvention-strategy {
+    margin-top: 18px;
+    margin-bottom: 18px;
+    padding: 18px 22px;
+    background-color: $color-white;
+
+  }
 }
