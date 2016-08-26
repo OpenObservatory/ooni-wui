@@ -4,8 +4,8 @@ var MeasurementFactory = function($http, $q) {
     get = function(measurement_id, idx) {
       return $q(function(resolve, reject) {
         try {
-          var measurement = MeasurementJSON.get();
-          resolve(measurement);
+          var measurement_str = MeasurementJSON.get();
+          resolve(JSON.parse(measurement_str));
         } catch (err) {
           reject(err);
         }
