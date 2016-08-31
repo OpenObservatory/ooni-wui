@@ -51,6 +51,17 @@
       </select>
     </div>
 
+    <div class="form-group">
+      <label>Which test decks should we enable?</label>
+      <div class="checkbox" ng-repeat="deck in availableDecks">
+        <label>
+          <input type="checkbox" ng-model="configuration.deck_config[deck.id]">
+          <strong>{{deck.name}}</strong>: {{deck.description}} (will run
+          {{deck.schedule}})
+        </label>
+      </div>
+    </div>
+
   </div>
 
 </div>

@@ -11,8 +11,17 @@ function SetupController($rootScope, $scope, $http, $state, Notification) {
     include_asn: true,
     include_country: true,
     should_upload: true,
-    preferred_backend: 'onion'
+    preferred_backend: 'onion',
+    deck_config: {}
   };
+
+  $http.get('/api/initialize')
+    .then(function(result){
+      $scope.availableDecks = result.data['available_decks'];
+      angular.forEach($scope.availableDecks, function(deck){
+        $scope.configuration.deck_config[deck.id] = deck.enabled;
+      });
+    });
 
   $scope.configure = function() {
     Notification.success("Configuring your node.");
@@ -32,8 +41,6 @@ function SetupController($rootScope, $scope, $http, $state, Notification) {
       ($scope.answer.question1 === 'one') &&
       ($scope.answer.question2 === 'two')
     );
-    console.log($scope.answer);
-    console.log(result);
     if (result == false) {
       Notification.error("Your answers to one or more of the quiz questions" +
         " is wrong. Please read the Risks documentation and try again.");
