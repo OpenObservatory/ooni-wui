@@ -1,6 +1,23 @@
+@import '../../styles/ui/variables';
+
 .icons {
   .fa {
     font-size: 20px;
     padding: 5px;
+  }
+}
+
+.splash {
+  position: relative;
+  margin-bottom: 30px;
+  .ooni-logo {
+    background-size: 300px;
+    height: 300px;
+    width: 300px;
+    margin: 0 auto;
+  }
+  .welcome-message {
+    text-align: center;
+    font-family: "Fira Sans";
   }
 }
