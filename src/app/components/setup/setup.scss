@@ -1,27 +1,43 @@
 @import '../../styles/ui/variables';
 
+.wizard {
+  padding: 0 10%;
+  .page-header {
+    margin-top: 50px;
+    h2 {
+      font-size: 60px;
+    }
+  }
+}
+
+
 .status-buttons {
-   a {
-     color: $color-grey;
-     display: inline-block;
-     font-size: 12px;
-     margin-right: 10px;
-     text-align: center;
-     text-transform: uppercase;
-     text-decoration: none;
+  margin-top: 50px;
+  a {
+    color: $color-grey;
+    display: inline-block;
+    font-size: 20px;
+    margin-right: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    line-height: 50px;
   }
   a:hover {
     text-decoration: none;
   }
-  span {
+
+  a span {
     background: $color-off-white;
     display: block;
-    height: 30px;
-    margin: 0 auto 10px;
-    padding-top: 5px;
-    width: 30px;
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
+    font-family: "Fira-sans", sans-serif;
+    text-align: center;
+    transition: background-color 0.5s;
   }
+
   a.active span {
     background: $color-ooni-blue;
     color: $color-white;
@@ -35,4 +51,14 @@
 
 .wizard {
   font-size: 18px;
+  .btn {
+    background-color: $color-dark-blue;
+    color: $color-white;
+    font-family: "Fira-sans", sans-serif;
+    font-size: 20px;
+  }
+
+  .btn:hover {
+    background-color: $color-ooni-blue;
+  }
 }

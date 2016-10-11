@@ -5,6 +5,7 @@ function SetupController($rootScope, $scope, $http, $state, Notification) {
     question2: undefined
   };
   $scope.answeredQuiz = false;
+  $scope.$state = $state;
 
   $scope.configuration = {
     include_ip: false,
