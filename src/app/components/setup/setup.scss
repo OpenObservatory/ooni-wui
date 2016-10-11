@@ -2,14 +2,37 @@
 
 .wizard {
   padding: 0 10%;
+  font-size: 18px;
+
   .page-header {
     margin-top: 50px;
     h2 {
       font-size: 60px;
     }
   }
-}
 
+  .radio {
+    margin-left: 20px;
+  }
+
+  .btn-block {
+    background-color: $color-dark-blue;
+    color: $color-white;
+    font-family: "Fira-sans", sans-serif;
+    font-size: 20px;
+  }
+
+  .btn:hover {
+    background-color: $color-ooni-blue;
+  }
+
+  .contextual-help {
+    padding-top: 20px;
+    padding-right: 20px;
+
+    color: $color-off-black;
+  }
+}
 
 .status-buttons {
   margin-top: 50px;
@@ -49,16 +72,6 @@
   margin-bottom: 18px;
 }
 
-.wizard {
-  font-size: 18px;
-  .btn {
-    background-color: $color-dark-blue;
-    color: $color-white;
-    font-family: "Fira-sans", sans-serif;
-    font-size: 20px;
-  }
-
-  .btn:hover {
-    background-color: $color-ooni-blue;
-  }
+.advanced-options {
+  padding-top: 30px;
 }
