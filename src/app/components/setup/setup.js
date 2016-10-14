@@ -17,19 +17,23 @@ var setupModule = angular.module("setup", [
   })
   .state('setup.step1', {
     url: '/step1',
-    template: step1
+    template: step1,
+    title: 'Greetings!'
   })
   .state('setup.step2', {
     url: '/step2',
-    template: step2
+    template: step2,
+    title: 'Risks'
   })
   .state('setup.step3', {
     url: '/step3',
-    template: step3
+    template: step3,
+    title: 'Quiz'
   })
   .state('setup.step4', {
     url: '/step4',
-    template: step4
+    template: step4,
+    title: 'Configuration'
   });
 
   $urlRouterProvider.otherwise('/step1');

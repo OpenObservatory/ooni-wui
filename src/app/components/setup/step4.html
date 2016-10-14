@@ -1,4 +1,6 @@
-<h2>Configuration</h2>
+<h1>Congratulations!</h1>
+<p>You have answered the quiz successfully!</p>
+
 <p>
   Certain aspects of how ooniprobe operates can be customized.
   Usually the default values are the best option, so only change these if
@@ -8,48 +10,6 @@
 <div class="row">
 
   <div class="col-xs-6">
-
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" ng-model="configuration.include_ip">
-        Should we include your IP address in results?
-      </label>
-    </div>
-
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" ng-model="configuration.include_asn">
-        Should we include your network information (ASN) in the reports (note:
-        disabling this will make it much harder for us to draw conclusions from
-        the measurements)?
-      </label>
-    </div>
-
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" ng-model="configuration.include_country">
-        Should we include your country name in the reports (note:
-        disabling this will make it much harder for us to draw conclusions from
-        the measurements)?
-      </label>
-    </div>
-
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" ng-model="configuration.should_upload">
-        Should we upload your results to the default ooni collector and
-        therefore publish them?
-      </label>
-    </div>
-
-    <div class="form-group">
-      <label>How should we upload your results to the collector?</label>
-      <select ng-model="configuration.preferred_backend" class="form-control">
-        <option value="onion">Tor Hidden Service</option>
-        <option value="https">HTTPS</option>
-        <option value="cloudfront">Cloudfronting</option>
-      </select>
-    </div>
 
     <div class="form-group">
       <label>Which test decks should we enable?</label>
@@ -61,18 +21,110 @@
         </label>
       </div>
     </div>
-
   </div>
 
 </div>
+<div class="row">
+  <div class="col-xs-6">
+    <button class="btn"
+            ng-click="showAdvanced=!showAdvanced">
+      <span ng-if="showAdvanced">Hide</span>
+      <span ng-if="!showAdvanced">Show</span> advanced options
+    </button>
+  </div>
+</div>
+
+<div class="advanced-options" ng-if="showAdvanced">
+
+  <div class="row">
+    <div class="col-xs-6">
+
+      <div class="form-group">
+        <label>How should we upload your results to the collector?</label>
+        <select ng-model="configuration.preferred_backend" class="form-control">
+          <option value="onion">Tor Hidden Service</option>
+          <option value="https">HTTPS</option>
+          <option value="cloudfront">Cloudfronting</option>
+        </select>
+      </div>
+
+
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="configuration.include_asn">
+          Should we include your network information (ASN) in the reports (note:
+          disabling this will make it much harder for us to draw conclusions from
+          the measurements)?
+        </label>
+      </div>
+
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="configuration.include_country">
+          Should we include your country name in the reports (note:
+          disabling this will make it much harder for us to draw conclusions from
+          the measurements)?
+        </label>
+      </div>
+
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="configuration.should_upload">
+          Should we upload your results to the default ooni collector and
+          therefore publish them?
+        </label>
+      </div>
+
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="configuration.include_ip">
+          Should we include your IP address in results?
+        </label>
+      </div>
+
+    </div>
+    <div class="col-xs-6 contextual-help">
+      <span class="glyphicon glyphicon-info-sign"></span>
+      <p ng-if="configuration.preferred_backend == 'onion'">
+        <strong>This is the recommended setting.</strong>
+        By using Tor Hidden Service based backends you will be using the Tor
+        Network to submit OONI measurements and to communicate to OONI's
+        control servers. This means that while anyone monitoring your network
+        traffic will be able to tell that you are a Tor user, they will not
+        be able to know that you are communicating with OONI servers. This
+        also means that OONI is not able to identify you.
+      </p>
+      <p ng-if="configuration.preferred_backend == 'https'">
+        By using HTTPS based backends you will be submitting the results of
+        OONI measurements and communicating to our control servers via an
+        encrypted HTTPS connection. This means that anyone monitoring your
+        internet connection will be able to know that you are communicating
+        to OONI servers. Use this setting if you would prefer to have better
+        performance, but are not worried about being identified as an ooniprobe
+        user.
+      </p>
+      <p ng-if="configuration.preferred_backend == 'cloudfront'">
+        When using cloudfronted backends to submit your measurements to OONI,
+        anyone monitoring your internet activity will only see connections to
+        a popular Content Delivery Network (CDN) and not directly to OONI
+        servers. As such they will not be able to directly identify you as
+        an ooniprobe user. This however means that Amazon (or other
+        cloudfronting services) will know your IP and the content of the
+        communication to OONI servers.
+        Use this only if you are worried about your ISP or country knowing
+        that you are an ooniprobe user, but don't want to use Tor.
+      </p>
+    </div>
+  </div>
+</div>
 
 <div class="navigation row">
-  <div class="col-xs-6">
+  <div class="col-xs-3">
       <a ui-sref="setup.step3" class="btn btn-block btn-info">
-       <span class="glyphicon glyphicon-circle-arrow-left"></span> Previous
+       Previous
       </a>
   </div>
-  <div class="col-xs-6">
+  <div class="col-xs-3 col-xs-offset-6">
       <button ng-click="configure()" class="btn btn-block btn-info">
       Configure
       </button>

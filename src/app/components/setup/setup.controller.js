@@ -4,7 +4,9 @@ function SetupController($rootScope, $scope, $http, $state, Notification) {
     question1: undefined,
     question2: undefined
   };
-  $scope.answeredQuiz = false;
+  $scope.answeredQuiz = $state.current.url == '/step4';
+
+  $scope.$state = $state;
 
   $scope.configuration = {
     include_ip: false,
