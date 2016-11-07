@@ -1,4 +1,6 @@
 var gulp = require('gulp');
+var gulpSass = require("gulp-sass");
+var gulpSequence = require("gulp-sequence");
 var webpack = require('webpack');
 var path = require('path');
 var rename = require('gulp-rename');
@@ -23,10 +25,36 @@ var paths = {
   templates: path.join(__dirname, 'generator', 'component/**/*.**')
 }
 
+var modulesPath = path.join(__dirname, "node_modules");
+
 var resolveToComponents = function(glob) {
   glob = glob || '';
   return path.join(root, 'app/components', glob);
 };
+
+gulp.task("dist:mobile-css", function() {
+  var bootstrapPath = path.dirname(require.resolve("bootstrap-sass/package.json"));
+  var files = [
+    path.join(root, "app", "components", "setup", "setup-mobile.scss"),
+  ];
+
+  return gulp.src(files)
+    .pipe(
+      gulpSass({
+        includePaths: [
+            modulesPath
+        ]
+      }).on("error", gulpSass.logError)
+    )
+    .pipe(gulp.dest(path.join(paths.dest, "css")));
+});
+
+gulp.task('dist:mobile', function(done) {
+  return gulpSequence([
+    "clean",
+    "dist:mobile-css"
+  ])(done);
+});
 
 gulp.task('build', ['clean'], function(done) {
   var config = require('./webpack.config');
