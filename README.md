@@ -13,7 +13,7 @@ The OONI web UI is based on the following main components:
 * [webpack](https://webpack.github.io/) for building and dependency management
 * [gulp](http://gulpjs.com/) Gulp for build automation tasks.
 * [bootstrap](http://getbootstrap.com/) to make styling less painful
-* [custom icons](/thetorproject/ooni-wui#custom-icons) for all apps and design
+* [custom icons](https://github.com/thetorproject/ooni-wui#custom-icons) for all apps and design
 
 ## Setting up a development environment
 
