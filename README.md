@@ -9,14 +9,11 @@ measurement results).
 The OONI web UI is based on the following main components:
 
 * [klein](https://klein.readthedocs.org/) for the backend API routing
-
 * [angular.js](https://angularjs.org/) as the frontend web framework
-
 * [webpack](https://webpack.github.io/) for building and dependency management
-
 * [gulp](http://gulpjs.com/) Gulp for build automation tasks.
-
 * [bootstrap](http://getbootstrap.com/) to make styling less painful
+* [custom icons](#custom-icons)
 
 ## Setting up a development environment
 
@@ -82,16 +79,19 @@ gulp build
 ```
 
 To build the mobile version of the web app do:
+
 ```
 gulp build --mobile
 ```
 
 To build the mobile version of the web app with test fixtures do:
+
 ```
 gulp build --mobile --fixtures
 ```
 
 To enable watching do:
+
 ```
 gulp build --mobile --fixtures --watch
 ```
@@ -100,3 +100,11 @@ This will generate the bundled web application inside of `dist/build`.
 
 The file `dist/build/mobile.html` is the mobile version, while
 `dist/build/index.html` is the index for ooniprobe.
+
+## Custom Icons
+
+The suite of OONI applications use icons created & maintained by [Open Source Design](https://github.com/opensourcedesign/icons). Currently, the OONI related icons are located here:
+
+- [network-censorship](https://github.com/opensourcedesign/icons/tree/master/network-censorship)
+- [network-interference](https://github.com/opensourcedesign/icons/tree/master/network-interference)
+- [networks-and-protocols](https://github.com/opensourcedesign/icons/tree/master/networks-and-protocols)
