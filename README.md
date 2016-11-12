@@ -13,7 +13,7 @@ The OONI web UI is based on the following main components:
 * [webpack](https://webpack.github.io/) for building and dependency management
 * [gulp](http://gulpjs.com/) Gulp for build automation tasks.
 * [bootstrap](http://getbootstrap.com/) to make styling less painful
-* [custom icons](#custom-icons)
+* [custom icons](/thetorproject/ooni-wui#custom-icons) for all apps and design
 
 ## Setting up a development environment
 
@@ -103,7 +103,9 @@ The file `dist/build/mobile.html` is the mobile version, while
 
 ## Custom Icons
 
-The suite of OONI applications use icons created & maintained by [Open Source Design](https://github.com/opensourcedesign/icons). Currently, the OONI related icons are located here:
+The suite of OONI applications use icons created & maintained by [Open Source
+Design](http://opensourcedesign.net). Currently, the OONI related icons are
+located in this [icons repository](https://github.com/opensourcedesign/icons) :
 
 - [network-censorship](https://github.com/opensourcedesign/icons/tree/master/network-censorship)
 - [network-interference](https://github.com/opensourcedesign/icons/tree/master/network-interference)
