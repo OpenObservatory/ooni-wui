@@ -29,9 +29,15 @@
 
       <div http-header-field-manipulation ng-switch-when="http_header_field_manipulation"></div>
 
+      <div facebook-messenger ng-switch-when="facebook_messenger"></div>
+
+      <div whatsapp ng-switch-when="whatsapp"></div>
+
   </div>
+
   <div class="row">
-    <button class="btn btn-primary" ng-click="toggleDebug()">developer info</button>
+    <button class="btn btn-primary" ng-click="toggleDebug()">raw
+      results</button>
     <pre ng-if="debug == true">
     {{measurement | json}}
     </pre>

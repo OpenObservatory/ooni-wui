@@ -1,22 +1,31 @@
 NettestController.$inject = ['$stateParams', '$scope', '$http', '$window', 'Notification'];
 function NettestController($stateParams, $scope, $http,  $window, Notification) {
 
-  var supportedTestIds = ["web_connectivity", "http_invalid_request_line",
-                          "http_header_field_manipulation"];
+  var supportedNetTestIds = [
+    "web_connectivity",
+    "whatsapp",
+    "facebook_messenger",
+    "http_invalid_request_line",
+    "http_header_field_manipulation",
+    "vanilla_tor"
+  ];
+  var supportedNetTests = {};
+  var experimentalNetTests = {};
 
   $http.get('/api/nettest')
     .then(function(response){
-      var supportedNetTests = {};
-      var experimentalNetTests = {};
       angular.forEach(response.data, function(netTest){
-        if (supportedTestIds.indexOf(netTest.id) == -1) {
+        if (supportedNetTestIds.indexOf(netTest.id) == -1) {
           experimentalNetTests[netTest.id] = netTest;
         } else {
           supportedNetTests[netTest.id] = netTest;
         }
       });
       $http.get('/api/input').then(function(response){
-        $scope.supportedNetTests = supportedNetTests;
+        $scope.supportedNetTests = [];
+        angular.forEach(supportedNetTestIds, function(netTestId){
+          $scope.supportedNetTests.push(supportedNetTests[netTestId]);
+        });
         $scope.experimentalNetTests = experimentalNetTests;
         console.log($scope.supportedNetTests);
         $scope.inputs = response.data;
@@ -32,12 +41,12 @@ function NettestController($stateParams, $scope, $http,  $window, Notification) 
     });
 
   $scope.runNetTest = function(testName) {
-    if ($scope.supportedNetTests[testName]) {
-      $scope.selectedNetTest = $scope.supportedNetTests[testName];
-    } else if ($scope.experimentalNetTests[testName]) {
+    if (supportedNetTests[testName]) {
+      $scope.selectedNetTest = supportedNetTests[testName];
+    } else if (experimentalNetTests[testName]) {
       // XXX maybe show a message saying this test is experimental and you
       // are running it at your own risk.
-      $scope.selectedNetTest = $scope.experimentalNetTests[testName];
+      $scope.selectedNetTest = experimentalNetTests[testName];
     }
     if ($scope.selectedNetTest) {
       $scope.selectedNetTest.options = {};
