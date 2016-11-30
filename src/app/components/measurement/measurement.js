@@ -6,13 +6,19 @@ var measurementFactory = require('./measurement.factory');
 
 var webConnectivityDirective = require('./directives/web-connectivity');
 var httpInvalidRequestLineDirective = require('./directives/http-invalid-request-line');
-var httpHeaderFieldManipulation = require('./directives/http-header-field-manipulation');
+var httpHeaderFieldManipulationDirective = require('./directives/http-header-field-manipulation');
+
+var facebookMessengerDirective = require('./directives/facebook-messenger');
+var whatsappDirective = require('./directives/whatsapp');
 
 var measurementModule = angular.module("measurement", [
   uiRouter,
   webConnectivityDirective,
   httpInvalidRequestLineDirective,
-  httpHeaderFieldManipulation
+  httpHeaderFieldManipulationDirective,
+
+  facebookMessengerDirective,
+  whatsappDirective
 ])
 .config(function($stateProvider, $urlRouterProvider){
 

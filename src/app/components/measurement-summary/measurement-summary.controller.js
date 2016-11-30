@@ -22,7 +22,7 @@ function MeasurementSummaryController($stateParams, $scope, $http, $state) {
   $http.get('/api/measurement/'+$scope.measurementId)
     .then(function(response){
       var summary = response.data;
-      if (singleEntryTests.indexOf(summary['test_name']) != -1) {
+      if (summary['results'].length == 1) {
         $state.go('measurement', {
           measurementId: $scope.measurementId, idx: 0
         });

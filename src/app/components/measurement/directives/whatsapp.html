@@ -1,0 +1,30 @@
+<div class="row result-info">
+  <p class="bg-success"
+     ng-if="measurement.test_keys.registration_server_status === 'ok' &&
+            measurement.test_keys.whatsapp_web_status === 'ok' &&
+            measurement.test_keys.registration_server_status === 'ok'">
+    WhatsApp appears to be working properly.
+  </p>
+
+  <p class="bg-danger"
+     ng-if="measurement.test_keys.whatsapp_endpoints_status === 'blocked'">
+    The WhatsApp application is blocked
+  </p>
+
+  <p class="bg-danger"
+     ng-if="measurement.test_keys.whatsapp_web_status === 'blocked'">
+    WhatsApp Web is blocked
+  </p>
+
+  <p class="bg-danger"
+     ng-if="measurement.test_keys.facebook_tcp_blocking === true">
+    WhatsApp appears to be blocked to due to TCP/IP blocking
+  </p>
+
+  <p class="bg-danger"
+     ng-if="measurement.test_keys.registration_server_status === 'blocked'">
+    WhatsApp registration server is blocked
+    <string>DNS</string>
+  </p>
+
+</div>
