@@ -1,6 +1,6 @@
 {
   "name": "ooni-wui",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "license": "BSD",
   "repository": "https://github.com/thetorproject/ooni-probe.git",
   "dependencies": {
