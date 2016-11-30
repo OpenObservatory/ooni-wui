@@ -1,0 +1,25 @@
+<div class="row">
+  <h1>Logs for ooniprobe</h1>
+</div>
+
+<div class="row" ng-if="submitting">
+  <p>uploading logs...</p>
+</div>
+
+<div class="row" ng-if="shareLink">
+  <p>The logs are available here: <a href="{{shareLink}}">{{shareLink}}</a>
+  </p>
+</div>
+
+<div class="row">
+  <textarea class="logs-view" show-tail
+            ng-model="logs.latest"></textarea>
+  <button class="btn" ng-click="shareLatestLog()">share</button>
+</div>
+
+<div class="row">
+  <h2>Older logs</h2>
+</div>
+<div ng-repeat="log_data in logs.older" class="row">
+  <textarea show-tail class="logs-view">{{log_data}}</textarea>
+</div>
