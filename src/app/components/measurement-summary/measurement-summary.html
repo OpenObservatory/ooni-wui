@@ -14,7 +14,13 @@
       </p>
   </div>
   <button class="btn btn-primary"
-          ng-click="toggleAnomalous()">Toggle anomalous</button>
+          ng-if="!search.anomaly"
+          ng-click="toggleNormal()">Hide normal</button>
+
+  <button class="btn btn-primary"
+          ng-if="search.anomaly"
+          ng-click="toggleNormal()">Show normal</button>
+
   <div ng-repeat="result in summary.results | filter:search">
     <div class="row measurement-result measurement-anomaly"
          ng-if="result.anomaly == true">
