@@ -6,6 +6,10 @@
   <p>uploading logs...</p>
 </div>
 
+<div class="row bg-warning" ng-if="submitFailed">
+  <p>Failed to upload logs. Please try again.</p>
+</div>
+
 <div class="row" ng-if="shareLink">
   <p>The logs are available here: <a href="{{shareLink}}">{{shareLink}}</a>
   </p>

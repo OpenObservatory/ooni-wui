@@ -6,9 +6,11 @@ function LogsController($scope, $http) {
     });
 
   $scope.submitting = false;
+  $scope.submitFailed = false;
 
   $scope.shareLatestLog = function() {
     $scope.submitting = true;
+    $scope.submitFailed = false;
     $http.post('https://api.github.com/gists', {
       'description': 'ooniprobe logs',
       'public': false,
@@ -20,6 +22,8 @@ function LogsController($scope, $http) {
     }).then(function(response) {
       $scope.submitting = false;
       $scope.shareLink = response.data.html_url;
+    }, function(error){
+      $scope.submitFailed = true;
     });
   };
 }
