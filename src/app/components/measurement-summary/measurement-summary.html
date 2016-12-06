@@ -29,7 +29,7 @@
             ui-sref="measurement({measurementId: measurementId, idx: result.idx})">
           View measuerement
         </a>
-        We detected an anomaly on <strong>{{result.url}}</strong>
+        We detected an anomaly on <strong>{{result.url | cut:60}}</strong>
     </div>
     <div class="row measurement-result measurement-ok"
          ng-if="result.anomaly == false">
@@ -38,7 +38,7 @@
             ui-sref="measurement({measurementId: measurementId, idx: result.idx})">
           View measuerement
         </a>
-        No anomalies detected on <strong>{{result.url}}</strong>
+        No anomalies detected on <strong>{{result.url | cut:60}}</strong>
 
     </div>
 
