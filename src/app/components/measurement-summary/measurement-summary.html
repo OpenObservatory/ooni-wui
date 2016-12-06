@@ -25,8 +25,7 @@
     <div class="row measurement-result measurement-anomaly"
          ng-if="result.anomaly == true">
         <i class="ooni icon-censorship-tampering"></i>
-        <a class="btn btn-primary"
-            ui-sref="measurement({measurementId: measurementId, idx: result.idx})">
+        <a ui-sref="measurement({measurementId: measurementId, idx: result.idx})">
           View measuerement
         </a>
         We detected an anomaly on <strong>{{result.url | cut:60}}</strong>
@@ -34,8 +33,7 @@
     <div class="row measurement-result measurement-ok"
          ng-if="result.anomaly == false">
         <i class="ooni icon-censorship-tampering"></i>
-        <a class="btn btn-primary"
-            ui-sref="measurement({measurementId: measurementId, idx: result.idx})">
+        <a ui-sref="measurement({measurementId: measurementId, idx: result.idx})">
           View measuerement
         </a>
         No anomalies detected on <strong>{{result.url | cut:60}}</strong>
