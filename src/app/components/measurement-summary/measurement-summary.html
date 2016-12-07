@@ -14,26 +14,43 @@
       </p>
   </div>
   <button class="btn btn-primary"
-          ng-click="toggleAnomalous()">Toggle anomalous</button>
+          ng-if="!search.anomaly"
+          ng-click="toggleNormal()">Hide normal</button>
+
+  <button class="btn btn-primary"
+          ng-if="search.anomaly"
+          ng-click="toggleNormal()">Show normal</button>
+
   <div ng-repeat="result in summary.results | filter:search">
     <div class="row measurement-result measurement-anomaly"
          ng-if="result.anomaly == true">
         <i class="ooni icon-censorship-tampering"></i>
-        <a class="btn btn-primary"
-            ui-sref="measurement({measurementId: measurementId, idx: result.idx})">
-          View measuerement
+
+        We detected an anomaly on <strong>{{result.url | cut:60}}</strong>
+        <a ui-sref="measurement({measurementId: measurementId, idx: result.idx})">
+          View measurement
         </a>
-        We detected an anomaly on <strong>{{result.url}}</strong>
     </div>
     <div class="row measurement-result measurement-ok"
          ng-if="result.anomaly == false">
         <i class="ooni icon-censorship-tampering"></i>
-        <a class="btn btn-primary"
-            ui-sref="measurement({measurementId: measurementId, idx: result.idx})">
-          View measuerement
-        </a>
-        No anomalies detected on <strong>{{result.url}}</strong>
 
+        No anomalies detected on <strong>{{result.url | cut:60}}</strong>
+
+        <a ui-sref="measurement({measurementId: measurementId, idx: result.idx})">
+          View measurement
+        </a>
+    </div>
+
+    <div class="row measurement-result measurement-unknown"
+         ng-if="result.anomaly == undefined">
+        <i class="ooni icon-censorship-tampering"></i>
+
+        Unknown result for <strong>{{result.url | cut:60}}</strong>
+
+        <a ui-sref="measurement({measurementId: measurementId, idx: result.idx})">
+          View measurement
+        </a>
     </div>
 
   </div>

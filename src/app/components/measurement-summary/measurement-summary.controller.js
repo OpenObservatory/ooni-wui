@@ -11,7 +11,7 @@ function MeasurementSummaryController($stateParams, $scope, $http, $state) {
   ];
   $scope.measurementId = $stateParams.measurementId;
   $scope.search = {};
-  $scope.toggleAnomalous = function() {
+  $scope.toggleNormal = function() {
     if (angular.isUndefined($scope.search.anomaly)) {
       $scope.search.anomaly = true;
     } else {

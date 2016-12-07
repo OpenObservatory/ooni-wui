@@ -12,6 +12,9 @@
       </p>
       <p>
         <strong>Report ID</strong> {{measurement.report_id}}
+
+        <span ng-if="explorerLink">(<a href="{{explorerLink}}">view on explorer</a>)</span>
+
       </p>
       <p>
         <strong>Country</strong> {{measurement.probe_cc}}
