@@ -1,5 +1,9 @@
 LogsController.$inject = ['$scope', '$http', '$anchorScroll', 'Notification'];
 function LogsController($scope, $http) {
+  $scope.logs = {
+    latest: "Loading..."
+  };
+
   $http.get('/api/logs')
     .then(function(response){
       $scope.logs = response.data;
@@ -26,6 +30,14 @@ function LogsController($scope, $http) {
       $scope.submitFailed = true;
     });
   };
+  $scope.loadAll = function() {
+    $scope.loadingOlder = true;
+    $http.get('/api/logs?all=true')
+      .then(function(response){
+        $scope.loadingOlder = false;
+        $scope.logs = response.data;
+      });
+  }
 }
 
 module.exports = LogsController;

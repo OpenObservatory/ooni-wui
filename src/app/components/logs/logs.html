@@ -19,11 +19,21 @@
   <textarea class="logs-view" show-tail
             ng-model="logs.latest"></textarea>
   <button class="btn" ng-click="shareLatestLog()">share</button>
+  <button class="btn" ng-if="logs.older.length == 0"
+          ng-click="loadAll()">show older logs</button>
 </div>
 
-<div class="row">
+<div class="row" >
+  <div ng-if="loadingOlder" class="loading">
+    <span><i class="fa fa-spinner fa-spin"></i> Loading</span>
+  </div>
+</div>
+
+<div class="row" ng-if="logs.older && logs.older.length != 0">
   <h2>Older logs</h2>
 </div>
-<div ng-repeat="log_data in logs.older" class="row">
+
+<div ng-repeat="log_data in logs.older" class="row"
+     ng-if="logs.older && logs.older.length != 0">
   <textarea show-tail class="logs-view">{{log_data}}</textarea>
 </div>
