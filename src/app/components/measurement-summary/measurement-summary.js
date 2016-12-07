@@ -8,6 +8,7 @@ var measurementSummaryModule = angular.module("measurementSummary", [
 .filter('cut', function () {
   return function (value, wordwise, max, tail) {
     if (!value) return '';
+    value = String(value);
 
     max = parseInt(max, 10);
     if (!max) return value;

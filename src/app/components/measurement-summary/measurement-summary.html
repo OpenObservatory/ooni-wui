@@ -42,6 +42,17 @@
         </a>
     </div>
 
+    <div class="row measurement-result measurement-unknown"
+         ng-if="result.anomaly == undefined">
+        <i class="ooni icon-censorship-tampering"></i>
+
+        Unknown result for <strong>{{result.url | cut:60}}</strong>
+
+        <a ui-sref="measurement({measurementId: measurementId, idx: result.idx})">
+          View measurement
+        </a>
+    </div>
+
   </div>
 </div>
 
