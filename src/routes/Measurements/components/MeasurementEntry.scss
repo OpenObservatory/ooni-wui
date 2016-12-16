@@ -1,0 +1,21 @@
+@import '../../../styles/variables/colors';
+
+.measurement-set {
+  margin-top: 10px;
+  margin-bottom: 18px;
+  padding-top: 10px;
+  padding-bottom: 18px;
+  padding-left: 22px;
+  padding-right: 22px;
+  background-color: $color-off-white;
+  h3 {
+    display: inline-block;
+  }
+  .measurement-details {
+    display: inline-block;
+    margin-left: 18px;
+  }
+  .btn {
+    margin-left: 18px;
+  }
+}

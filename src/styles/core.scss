@@ -1,0 +1,83 @@
+@import 'base';
+@import '~normalize.css/normalize';
+@import '~bootstrap/scss/bootstrap';
+@import '~react-toggle/style.css';
+@import '~react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
+
+// Some best-practice CSS that's useful for most apps
+// Just remove them if they're not what you want
+html {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.five-cols {
+  @include make-col(1, 5);
+}
+
+.large-icon {
+  font-size: 200px;
+  color: $color-ooni-blue;
+}
+
+.medium-icon {
+  font-size: 60px;
+  color: $color-ooni-blue;
+}
+
+.icon-btn {
+  color: $color-ooni-blue;
+}
+
+.icon-btn:hover,
+.icon-btn-off:hover,
+.icon-btn-on:hover {
+  color: $color-ooni-dark-blue;
+}
+
+.icon-ok,
+.icon-btn-on {
+  color: $color-status-ok-green;
+}
+
+.icon-btn-off {
+  color: $color-grey;
+}
+
+.icon-btn-cancel {
+  color: $color-status-ok-green;
+}
+.icon-error,
+.icon-btn-cancel:hover {
+  color: $color-status-bad-red;
+  animation: none;
+}
+.icon-btn-cancel:hover:before {
+  content: "\f00d";
+}
+
+.modal-dialog {
+  overflow-y: initial !important
+}
+.modal-body{
+  height: 200px;
+  overflow-y: scroll;
+}
+@media (min-height: 500px) {
+  .modal-body { height: 300px; }
+}
+@media (min-height: 800px) {
+  .modal-body { height: 500px; }
+}

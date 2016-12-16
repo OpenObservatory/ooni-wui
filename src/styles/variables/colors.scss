@@ -1,0 +1,34 @@
+// Colors
+$color-ooni-blue: #0588CB;
+$color-ooni-dark-blue: darken($color-ooni-blue, 10%);
+$color-white: #ffffff;
+$color-off-white: #f2f2f2;
+$color-off-black: #777777;
+
+$color-status-ok-green: #4FD156;
+$color-status-bad-red: #cc0000;
+$color-status-warning-orange: #ffa500;
+
+$color-footer-background-color: #26292c;
+$color-footer-color: #b4b4b4;
+
+$color-red: #cc0000;
+$color-grey-light: #d9d9d9;
+$color-grey: #c1c1c1;
+
+$color-blocked: #B83564;
+$color-unblocked: #4FD156;
+
+$color-grey-light: #d9d9d9;
+$color-grey: #c1c1c1;
+
+$color-off-black: #777777;
+
+$button-border: 1px solid $color-ooni-blue;
+
+// Misc
+$base-spacing: 10px;
+$border-radius: 3px;
+
+// Other
+$transition-speed: .5s;

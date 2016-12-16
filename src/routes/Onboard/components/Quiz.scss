@@ -1,0 +1,9 @@
+@import '../../../styles/variables/colors';
+
+.questions input[type=radio] {
+  margin-right: 10px;
+}
+.questions label {
+  color: $color-ooni-blue;
+  font-size: 24px;
+}

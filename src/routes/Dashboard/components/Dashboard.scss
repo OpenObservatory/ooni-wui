@@ -1,0 +1,23 @@
+@import '../../../styles/variables/colors';
+
+.status {
+  color: $color-grey;
+}
+
+.status-running {
+  color: $color-status-ok-green;
+  font-weight: bold;
+}
+
+.status-not-running {
+  color: $color-status-bad-red;
+  font-weight: bold;
+}
+
+.recent-results {
+  margin-top: 3em;
+}
+
+.decks {
+  margin-top: 2em;
+}
