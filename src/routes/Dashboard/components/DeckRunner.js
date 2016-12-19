@@ -38,14 +38,15 @@ export const DeckRunner = ({
               actionClassName = 'icon-btn fa fa-play';
               onClick = () => onTestRun(testID);
             }
-            return <div key="{test}" className="row">
-              <div className="test-runner">
+            return <div key={testID} className="row">
+              <div className="test-runner col-md-8">
                 <span className="test-name">{tests[testID].name}</span>
                 <i className={actionClassName} onClick={onClick}/>
                 {activeTest.id == testID
                  && <div className="test-options">
                     {tests[testID].description}
-                 </div>}
+                    <button className="btn btn-primary">Run</button>
+                    </div>}
               </div>
             </div>
           })
