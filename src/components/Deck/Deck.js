@@ -130,7 +130,7 @@ Deck.propTypes = {
   infoBoxOpen: React.PropTypes.bool,
 
   onDeckToggled: React.PropTypes.func,
-  onDeckRun: React.PropTypes.func.isRequired
+  onDeckRun: React.PropTypes.func
 };
 
 export default Deck;

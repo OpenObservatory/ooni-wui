@@ -6,15 +6,14 @@ import {
   nextStep,
   lastStep,
   settingsChanged,
-  decksChanged,
-  deckInfoClick,
+  deckToggled,
   quizAnswered,
   quizChanged,
   quizClosed,
   finalize
-} from '../modules/onboard';
+} from '../../../actions/onboard';
 
-import {updateStatus} from '../../../modules/status';
+import {updateStatus} from '../../../actions/status';
 
 import {browserHistory} from 'react-router';
 
@@ -44,7 +43,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         dispatch(gotoStep(number));
       };
     },
-    handleSettingsChange: (key) => {
+    onSettingsChange: (key) => {
       return (event) => {
         let value = false;
         if (event.target.checked) {
@@ -53,33 +52,22 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         dispatch(settingsChanged(key, value))
       }
     },
-    handleDeckInfo: (deck_id) => {
-      return () => {
-        dispatch(deckInfoClick(deck_id))
-      }
+    onDeckToggled: (deck_id) => {
+      dispatch(deckToggled(deck_id))
     },
-    handleDecksChange: (deck_id) => {
-      return (event) => {
-        let value = false;
-        if (event.target.checked) {
-          value = true
-        }
-        dispatch(decksChanged(deck_id, value))
-      }
-   },
-   handleCloseQuiz: () => {
+    onCloseQuiz: () => {
       dispatch(quizClosed());
     },
-    handleAnswerQuiz: () => {
+    onAnswerQuiz: () => {
       dispatch(quizAnswered());
     },
-    handleAnswerChange: (key) => {
+    onAnswerChange: (key) => {
       return (event) => {
         const value = (event.target.value == 'true') ? true : false;
         dispatch(quizChanged(key, value));
       }
     },
-    handleFinalize: () => {
+    onFinalize: () => {
       dispatch(finalize()).then(() => {
         dispatch(updateStatus({...ownProps.status, initialized: true}))
         browserHistory.push('/');

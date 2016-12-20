@@ -2,17 +2,12 @@ import CoreLayout from '../layouts/CoreLayout/CoreLayout'
 import Dashboard from './Dashboard';
 import MeasurementsRoute from './Measurements';
 import OnboardRoute from './Onboard';
-import { injectReducer } from '../store/reducers'
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
 
 const requireInitialized = (store) => {
-  const {statusReducer, fetchStatus} = require('../modules/status');
-  injectReducer(store, {
-    key: 'status',
-    reducer: statusReducer
-  });
+  const {fetchStatus} = require('../actions/status');
   return (nextState, replace) => {
     const {status} = store.getState();
     if (nextState.location.pathname === '/onboard' || status === true) {

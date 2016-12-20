@@ -11,13 +11,12 @@ import './OnboardSteps.scss';
 
 const OnboardSteps = ({
   currentStep, lastStep, gotoStep, onNextClick, onSkipClick,
-  handleSettingsChange, settings,
-  handleDecksChange, decks,
-  handleDeckInfo,
-  handleAnswerQuiz, handleCloseQuiz, handleAnswerChange,
+  onSettingsChange, settings,
+  onDeckToggled, decks,
+  onAnswerQuiz, onCloseQuiz, onAnswerChange,
   quizAnswers,
   quizCorrect, quizOpen,
-  handleFinalize
+  onFinalize
 }) => {
   return (
     <div className="container">
@@ -30,24 +29,25 @@ const OnboardSteps = ({
         }
         {currentStep == 2
          && <SetupSharing
-              handleSettingsChange={handleSettingsChange}
               settings={settings}
+              onSettingsChange={onSettingsChange}
               onNextClick={onNextClick}/>
         }
         {currentStep == 3
          && <SetupYourTests
-              handleDeckInfo={handleDeckInfo}
-              handleDecksChange={handleDecksChange}
+              onDeckToggled={onDeckToggled}
               decks={decks}
-              onNextClick={handleFinalize}/>
+              onNextClick={onFinalize}/>
         }
         <Quiz
           quizAnswers={quizAnswers}
-          handleAnswerQuiz={handleAnswerQuiz}
-          handleCloseQuiz={handleCloseQuiz}
-          handleAnswerChange={handleAnswerChange}
           quizOpen={quizOpen}
           quizCorrect={quizCorrect}
+
+          onAnswerQuiz={onAnswerQuiz}
+          onCloseQuiz={onCloseQuiz}
+          onAnswerChange={onAnswerChange}
+
           onNextClick={onNextClick}
         />
 
@@ -65,17 +65,16 @@ OnboardSteps.propTypes = {
   lastStep: React.PropTypes.number,
   onNextClick: React.PropTypes.func.isRequired,
   onSkipClick: React.PropTypes.func.isRequired,
-  handleSettingsChange: React.PropTypes.func.isRequired,
-  handleFinalize: React.PropTypes.func.isRequired,
+  onSettingsChange: React.PropTypes.func.isRequired,
+  onFinalize: React.PropTypes.func.isRequired,
   settings: React.PropTypes.object.isRequired,
   gotoStep: React.PropTypes.func.isRequired,
-  handleDecksChange: React.PropTypes.func.isRequired,
-  handleDeckInfo: React.PropTypes.func.isRequired,
+  onDeckToggled: React.PropTypes.func.isRequired,
   decks: React.PropTypes.array.isRequired,
   quizAnswers: React.PropTypes.object.isRequired,
-  handleAnswerQuiz: React.PropTypes.func.isRequired,
-  handleCloseQuiz: React.PropTypes.func.isRequired,
-  handleAnswerChange: React.PropTypes.func.isRequired,
+  onAnswerQuiz: React.PropTypes.func.isRequired,
+  onCloseQuiz: React.PropTypes.func.isRequired,
+  onAnswerChange: React.PropTypes.func.isRequired,
   quizOpen: React.PropTypes.bool.isRequired,
   quizCorrect: React.PropTypes.bool
 };

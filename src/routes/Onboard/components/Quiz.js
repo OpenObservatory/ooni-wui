@@ -4,23 +4,23 @@ import './Quiz.scss';
 
 const Quiz = ({
   quizAnswers,
-  handleAnswerQuiz,
+  onAnswerQuiz,
   quizOpen,
-  handleAnswerChange,
+  onAnswerChange,
   quizCorrect,
-  handleCloseQuiz,
+  onCloseQuiz,
   onNextClick
 }) => {
   return (
     <div>
       <Modal
         className="Modal__Bootstrap modal-dialog"
-        onRequestClose={handleAnswerQuiz}
+        onRequestClose={onAnswerQuiz}
         contentLabel="Pop Quiz"
         isOpen={quizOpen}>
         <div className="modal-content">
           <div className="modal-header text-xs-center">
-            <button type="button" className="close" onClick={handleCloseQuiz}>
+            <button type="button" className="close" onClick={onCloseQuiz}>
               <span aria-hidden="true">&times;</span>
               <span className="sr-only">Close</span>
             </button>
@@ -33,7 +33,7 @@ const Quiz = ({
                 <div className="radio">
                   <label>
                     <input type="radio" value={true}
-                           onChange={handleAnswerChange('question1')}
+                           onChange={onAnswerChange('question1')}
                            checked={quizAnswers.question1 === true} />
                     True
                   </label>
@@ -41,7 +41,7 @@ const Quiz = ({
                 <div className="radio">
                   <label>
                     <input type="radio"
-                           onChange={handleAnswerChange('question1')}
+                           onChange={onAnswerChange('question1')}
                            value={false} checked={quizAnswers.question1 === false} />
                     False
                   </label>
@@ -51,7 +51,7 @@ const Quiz = ({
                 <div className="radio">
                   <label>
                     <input type="radio"
-                           onChange={handleAnswerChange('question2')}
+                           onChange={onAnswerChange('question2')}
                            value={true} checked={quizAnswers.question2 === true} />
                     True
                   </label>
@@ -59,7 +59,7 @@ const Quiz = ({
                 <div className="radio">
                   <label>
                     <input type="radio"
-                           onChange={handleAnswerChange('question2')}
+                           onChange={onAnswerChange('question2')}
                            value={false} checked={quizAnswers.question2 === false} />
                     False
                   </label>
@@ -82,7 +82,7 @@ const Quiz = ({
           </div>
           <div className="modal-footer text-xs-center">
             {(quizCorrect == null)
-            && <button className="btn btn-primary" onClick={handleAnswerQuiz}>
+            && <button className="btn btn-primary" onClick={onAnswerQuiz}>
               How did I do?
             </button>
             }
@@ -92,7 +92,7 @@ const Quiz = ({
             </button>
             }
             {(quizCorrect == false)
-            && <button className="btn btn-primary" onClick={handleCloseQuiz}>
+            && <button className="btn btn-primary" onClick={onCloseQuiz}>
               Read the risks again
             </button>
             }
@@ -107,9 +107,9 @@ Quiz.propTypes = {
   quizOpen: React.PropTypes.bool.isRequired,
   quizCorrect: React.PropTypes.bool,
   quizAnswers: React.PropTypes.object.isRequired,
-  handleAnswerQuiz: React.PropTypes.func.isRequired,
-  handleAnswerChange: React.PropTypes.func.isRequired,
-  handleCloseQuiz: React.PropTypes.func.isRequired,
+  onAnswerQuiz: React.PropTypes.func.isRequired,
+  onAnswerChange: React.PropTypes.func.isRequired,
+  onCloseQuiz: React.PropTypes.func.isRequired,
   onNextClick: React.PropTypes.func.isRequired
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Toggle from 'react-toggle';
 
-const SetupSharing = ({onNextClick, handleSettingsChange, settings}) => {
+const SetupSharing = ({onNextClick, onSettingsChange, settings}) => {
   return (
   <div>
 
@@ -20,7 +20,7 @@ const SetupSharing = ({onNextClick, handleSettingsChange, settings}) => {
         <div className="row">
           <Toggle
             defaultChecked={settings.includeNetwork}
-            onChange={handleSettingsChange('includeNetwork')}/>
+            onChange={onSettingsChange('includeNetwork')}/>
         </div>
       </div>
 
@@ -30,7 +30,7 @@ const SetupSharing = ({onNextClick, handleSettingsChange, settings}) => {
         <div className="row">
           <Toggle
             defaultChecked={settings.includeNetwork}
-            onChange={handleSettingsChange('includeNetwork')}/>
+            onChange={onSettingsChange('includeNetwork')}/>
         </div>
       </div>
 
@@ -40,7 +40,7 @@ const SetupSharing = ({onNextClick, handleSettingsChange, settings}) => {
         <div className="row">
           <Toggle
             defaultChecked={settings.includeCountry}
-            onChange={handleSettingsChange('includeCountry')}/>
+            onChange={onSettingsChange('includeCountry')}/>
         </div>
       </div>
 
@@ -50,7 +50,7 @@ const SetupSharing = ({onNextClick, handleSettingsChange, settings}) => {
         <div className="row">
           <Toggle
             defaultChecked={settings.shareResults}
-            onChange={handleSettingsChange('shareResults')}/>
+            onChange={onSettingsChange('shareResults')}/>
         </div>
       </div>
 
@@ -60,7 +60,7 @@ const SetupSharing = ({onNextClick, handleSettingsChange, settings}) => {
         <div className="row">
           <Toggle
             defaultChecked={settings.includeIP}
-            onChange={handleSettingsChange('includeIP')}/>
+            onChange={onSettingsChange('includeIP')}/>
         </div>
       </div>
 
@@ -85,7 +85,7 @@ const SetupSharing = ({onNextClick, handleSettingsChange, settings}) => {
 
 SetupSharing.propTypes = {
   onNextClick: React.PropTypes.func.isRequired,
-  handleSettingsChange: React.PropTypes.func,
+  onSettingsChange: React.PropTypes.func,
   settings: React.PropTypes.object
 };
 

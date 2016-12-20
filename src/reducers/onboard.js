@@ -1,92 +1,15 @@
-export const GOTO_STEP = 'GOTO_STEP';
-export const NEXT_STEP = 'NEXT_STEP';
+import {
+  GOTO_STEP,
+  NEXT_STEP,
+  SETTINGS_CHANGED,
+  DECK_TOGGLED,
+  QUIZ_CLOSED,
+  QUIZ_CHANGED,
+  QUIZ_ANSWERED,
+  lastStep,
+  quizStep
+} from '../actions/onboard'
 
-export const SETTINGS_CHANGED = 'SETTINGS_CHANGED';
-
-export const DECKS_CHANGED = 'DECKS_CHANGED';
-export const DECK_INFO_CLICKED = 'DECK_INFO_CLICKED';
-
-export const QUIZ_ANSWERED = 'QUIZ_ANSWERED';
-export const QUIZ_CHANGED = 'QUIZ_CHANGED';
-export const QUIZ_CLOSED = 'QUIZ_CLOSED';
-
-export const lastStep = 3;
-export const quizStep = 1;
-
-export function nextStep() {
-  return {
-    type: NEXT_STEP
-  }
-}
-
-export function finalize() {
-  return (dispatch, getState) => {
-    const state = getState();
-    console.log(state);
-    const settings = {};
-    return fetch('/api/initialize', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(settings)
-    });
-  }
-}
-
-export function gotoStep(stepNumber) {
-  return {
-    type: GOTO_STEP,
-    payload: stepNumber
-  }
-}
-
-export function deckInfoClick(deckID) {
-  return {
-    type: DECK_INFO_CLICKED,
-    payload: deckID
-  }
-}
-
-export function settingsChanged(key, value) {
-  return {
-    type: SETTINGS_CHANGED,
-    key: key,
-    value: value
-  }
-}
-
-export function decksChanged(key, value) {
-  return {
-    type: DECKS_CHANGED,
-    key: key,
-    value: value
-  }
-}
-
-export function quizAnswered() {
-  return {
-    type: QUIZ_ANSWERED
-  }
-}
-
-export function quizClosed() {
-  return {
-    type: QUIZ_CLOSED
-  }
-}
-
-export function quizChanged(key, value) {
-  return {
-    type: QUIZ_CHANGED,
-    key: key,
-    value: value
-  }
-}
-
-// ------------------------------------
-// Action Handlers
-// ------------------------------------
 const ACTION_HANDLERS = {
   [GOTO_STEP]: (state, action) => {
     if (state.currentStep < action.payload) return state;
@@ -106,21 +29,11 @@ const ACTION_HANDLERS = {
     settings[action.key] = action.value;
     return ({...state, settings: settings})
   },
-  [DECKS_CHANGED]: (state, action) => {
-    let decks = [];
-    state.decks.forEach((deck) => {
-      if (deck.id == action.key) {
-        deck.enabled = action.value;
-      }
-      decks.push(deck);
-    });
-    return ({...state, decks: decks})
-  },
-  [DECK_INFO_CLICKED]: (state, action) => {
+  [DECK_TOGGLED]: (state, action) => {
     let decks = [];
     state.decks.forEach((deck) => {
       if (deck.id == action.payload) {
-        deck.infoBoxOpen = !deck.infoBoxOpen;
+        deck.enabled = !deck.enabled;
       }
       decks.push(deck);
     });
@@ -136,7 +49,7 @@ const ACTION_HANDLERS = {
   },
   [QUIZ_ANSWERED]: (state) => {
     if (state.quizAnswers.question1 == true
-        && state.quizAnswers.question2 == true) {
+      && state.quizAnswers.question2 == true) {
       return ({...state, quizCorrect: true});
     }
     return ({...state, quizCorrect: false});
@@ -200,6 +113,5 @@ const initialState = {
 
 export function onboardReducer(state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type];
-
   return handler ? handler(state, action) : state
 }

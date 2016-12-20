@@ -6,7 +6,7 @@ export default (store) => ({
     require.ensure([], (require) => {
       const Onboard = require('./containers/OnboardContainer').default;
 
-      const {onboardReducer} = require('./modules/onboard');
+      const {onboardReducer} = require('../../reducers/onboard');
 
       injectReducer(store, {
         key: 'onboard',
