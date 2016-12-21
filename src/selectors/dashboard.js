@@ -18,7 +18,7 @@ export const getActiveNettest = createSelector(
   [getActiveNettestId, getNettests],
   (activeNettestId, nettests) => {
     if (!activeNettestId) return null
-    return nettests[activeNettestId]
+    return {...nettests[activeNettestId], id: activeNettestId}
   }
 )
 

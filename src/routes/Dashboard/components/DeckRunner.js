@@ -3,6 +3,13 @@ import {connect} from 'react-redux'
 import Modal from 'react-modal'
 import { Field, reduxForm } from 'redux-form'
 
+import {
+  runNettest
+} from '../../../actions/nettest'
+import {
+  closedRunDeck
+} from '../../../actions/dashboard'
+
 import './DeckRunner.scss';
 
 
@@ -33,7 +40,7 @@ let NettestRunnerOptions = ({
 
 
 NettestRunnerOptions = reduxForm({
-  form: 'nettestRunnerOptions'
+  form: 'nettestRunnerOptions',
 })(NettestRunnerOptions)
 
 NettestRunnerOptions = connect((state, ownProps) => {
@@ -45,6 +52,12 @@ NettestRunnerOptions = connect((state, ownProps) => {
     }
   })
   return {
+    onSubmit: (options, dispatch) => {
+      runNettest(ownProps.nettestId, options)
+        .then(() => {
+          dispatch(closedRunDeck())
+        })
+    },
     initialValues
   }
 })(NettestRunnerOptions)
@@ -62,7 +75,9 @@ const NettestRunner = ({
         </a> {nettest.name}
       </h2>
       <p>{nettest.description}</p>
-      <NettestRunnerOptions fields={nettest.arguments} />
+      <NettestRunnerOptions
+        nettestId={nettest.id}
+        fields={nettest.arguments} />
     </div>
     <div className="modal-footer text-xs-center">
       <button className="btn btn-primary" onClick={onTestStart}>

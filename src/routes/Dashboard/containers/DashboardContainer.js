@@ -1,14 +1,11 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
+import { submit } from 'redux-form'
 
 import {
   runDeck,
   toggleDeck
 } from '../../../actions/deck'
-
-import {
-  runNettest
-} from '../../../actions/nettest'
 
 import {
   clickedRunTest,
@@ -33,7 +30,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onDeckToggled: bindActionCreators(toggleDeck, dispatch),
 
-  onTestStart: bindActionCreators(runNettest, dispatch),
+  onTestStart: () => {
+    // This triggers the form
+    dispatch(submit('nettestRunnerOptions'))
+  },
 
   onDeckRun: bindActionCreators(clickedRunDeck, dispatch),
   onDeckRunClose: bindActionCreators(closedRunDeck, dispatch),

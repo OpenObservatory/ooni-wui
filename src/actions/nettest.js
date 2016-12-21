@@ -1,4 +1,5 @@
-import fetch from 'isomorphic-fetch';
+import {fetch} from './api';
+
 import {receivedNotification} from '../actions/notification'
 
 export const RUN_NETTEST = 'RUN_NETTEST';
@@ -7,12 +8,8 @@ export const LOADING_NETTESTS = 'LOADING_NETTESTS';
 export const LOADING_NETTESTS_SUCCEEDED = 'LOADING_NETTESTS_SUCCEEDED';
 export const LOADING_NETTESTS_FAILED = 'LOADING_NETTESTS_FAILED';
 
-export const runNettest = (testId, options) => {
-  return {
-    type: RUN_NETTEST,
-    testId,
-    options
-  }
+export const runNettest = (nettestId, options) => {
+  return fetch('/api/nettest/${nettestId}', {'method': 'POST'})
 }
 
 export const loadingNettests = () => ({
