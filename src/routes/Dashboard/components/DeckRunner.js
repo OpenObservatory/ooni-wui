@@ -1,6 +1,53 @@
 import React from 'react'
-import Modal from 'react-modal';
+import {connect} from 'react-redux'
+import Modal from 'react-modal'
+import { Field, reduxForm } from 'redux-form'
+
 import './DeckRunner.scss';
+
+
+let NettestRunnerOptions = ({
+  fields,
+  handleSubmit
+}) => {
+  return (
+    <form onSubmit={handleSubmit}>
+      {
+        Object.keys(fields).map((key) => {
+          const field = fields[key]
+          return (
+            <div key={key} className="form-group">
+              <label>{key}</label>
+              <Field
+                className="form-control"
+                name={key}
+                component="input"
+                type={field.type}/>
+            </div>
+          )
+        })
+      }
+    </form>
+  )
+}
+
+
+NettestRunnerOptions = reduxForm({
+  form: 'nettestRunnerOptions'
+})(NettestRunnerOptions)
+
+NettestRunnerOptions = connect((state, ownProps) => {
+  const {fields} = ownProps;
+  let initialValues = {}
+  Object.keys(fields).forEach((k) => {
+    if (fields[k].value) {
+      initialValues[k] = fields[k].value
+    }
+  })
+  return {
+    initialValues
+  }
+})(NettestRunnerOptions)
 
 const NettestRunner = ({
   nettest,
@@ -9,19 +56,13 @@ const NettestRunner = ({
 }) => (
   <div>
     <div className="modal-body">
-      <button className="btn btn-primary" onClick={onTestRunClose}>back</button>
-      <h2>{nettest.name}</h2>
+      <h2>
+        <a onClick={onTestRunClose} className="btn">
+          <i className="fa fa-arrow-left" />
+        </a> {nettest.name}
+      </h2>
       <p>{nettest.description}</p>
-      <form>
-        <div className="form-group">
-          <label>Header</label>
-          <input type="text" className="form-control" placeholder="Enter email" />
-        </div>
-        <div className="form-group">
-          <label>Backend</label>
-          <input type="text" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-        </div>
-      </form>
+      <NettestRunnerOptions fields={nettest.arguments} />
     </div>
     <div className="modal-footer text-xs-center">
       <button className="btn btn-primary" onClick={onTestStart}>

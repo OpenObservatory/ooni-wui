@@ -3,24 +3,22 @@ import Dashboard from './Dashboard';
 import MeasurementsRoute from './Measurements';
 import OnboardRoute from './Onboard';
 
-/*  Note: Instead of using JSX, we recommend using react-router
-    PlainRoute objects to build route definitions.   */
-
-const requireInitialized = (store) => {
+const requireInitialized = (store) => (nextState, replace, next) => {
   const {fetchStatus} = require('../actions/status');
-  return (nextState, replace, next) => {
-    const {status} = store.getState();
-    if (nextState.location.pathname === '/onboard' || status.initialized === true) {
-      next()
-      return
-    }
+  const {status} = store.getState();
+  console.log("Initialized status...", status.initialized)
+  if (nextState.location.pathname === '/onboard' || status.initialized === true) {
+    next()
+  } else {
     store.dispatch(fetchStatus()).then(() => {
       if (status.initialized === false) {
         replace('/onboard')
         next()
+      } else {
+        next()
       }
     });
-  };
+  }
 };
 
 export const createRoutes = (store) => ({
@@ -37,23 +35,5 @@ export const createRoutes = (store) => ({
     OnboardRoute(store)
   ]
 });
-
-/*  Note: childRoutes can be chunked or otherwise loaded programmatically
-    using getChildRoutes with the following signature:
-
-    getChildRoutes (location, cb) {
-      require.ensure([], (require) => {
-        cb(null, [
-          // Remove imports!
-          require('./Counter').default(store)
-        ])
-      })
-    }
-
-    However, this is not necessary for code-splitting! It simply provides
-    an API for async route definitions. Your code splitting should occur
-    inside the route `getComponent` function, since it is only invoked
-    when the route exists and matches.
-*/
 
 export default createRoutes
