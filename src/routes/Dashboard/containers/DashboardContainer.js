@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
 
 import {
   runDeck,
@@ -24,18 +25,21 @@ import {
 
 import Dashboard from '../components/Dashboard'
 
-const mapDispatchToProps = {
-  onDeckStart: runDeck,
-  onDeckToggled: toggleDeck,
+const mapDispatchToProps = (dispatch) => ({
+  onDeckStart: (deckId) => {
+    dispatch(runDeck(deckId)).then(() => {
+      dispatch(closedRunDeck())
+    })
+  },
+  onDeckToggled: bindActionCreators(toggleDeck, dispatch),
 
-  onTestStart: runNettest,
+  onTestStart: bindActionCreators(runNettest, dispatch),
 
-  onDeckRun: clickedRunDeck,
-  onDeckRunClose: closedRunDeck,
-  onTestRun: clickedRunTest,
-  onTestRunClose: closedRunTest,
-
-};
+  onDeckRun: bindActionCreators(clickedRunDeck, dispatch),
+  onDeckRunClose: bindActionCreators(closedRunDeck, dispatch),
+  onTestRun: bindActionCreators(clickedRunTest, dispatch),
+  onTestRunClose: bindActionCreators(closedRunTest, dispatch),
+});
 
 const mapStateToProps = (state) => {
   const deckIcons = state.deck.decks.reduce(
@@ -44,6 +48,7 @@ const mapStateToProps = (state) => {
       return o;
     }, {});
   return {
+    // XXX this can maybe be a selector as well..
     deckIcons: deckIcons,
 
     softwareVersion: state.status.softwareVersion,

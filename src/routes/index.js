@@ -8,14 +8,17 @@ import OnboardRoute from './Onboard';
 
 const requireInitialized = (store) => {
   const {fetchStatus} = require('../actions/status');
-  return (nextState, replace) => {
+  return (nextState, replace, next) => {
     const {status} = store.getState();
-    if (nextState.location.pathname === '/onboard' || status === true) {
-      return;
+    if (nextState.location.pathname === '/onboard' || status.initialized === true) {
+      next()
+      return
     }
     store.dispatch(fetchStatus()).then(() => {
-      const {status} = store.getState();
-      if (status.initialized === false) replace('/onboard');
+      if (status.initialized === false) {
+        replace('/onboard')
+        next()
+      }
     });
   };
 };

@@ -36,9 +36,12 @@ export const Dashboard = ({
   decks,
   deckIcons,
   recentResults,
+
   onDeckToggled,
   onDeckRun,
   onDeckRunClose,
+
+  onDeckStart,
 
   onTestRun,
   onTestRunClose,
@@ -86,7 +89,7 @@ export const Dashboard = ({
     </div>
 
     <DeckRunner
-      onDeckStart={() => onDeckRun(activeDeck)}
+      onDeckStart={() => onDeckStart(activeDeck.id)}
       onDeckClose={onDeckRunClose}
       onTestStart={onTestStart}
       onTestRun={onTestRun}
@@ -136,8 +139,8 @@ Dashboard.propTypes = {
   deckIcons: React.PropTypes.object,
   recentResults: React.PropTypes.array,
 
-  onDeckToggled: React.PropTypes.func,
   onDeckStart: React.PropTypes.func,
+  onDeckToggled: React.PropTypes.func,
   onDeckRun: React.PropTypes.func,
   onDeckRunClose: React.PropTypes.func,
 

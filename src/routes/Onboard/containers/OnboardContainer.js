@@ -13,7 +13,7 @@ import {
   finalize
 } from '../../../actions/onboard';
 
-import {updateStatus} from '../../../actions/status';
+import {fetchStatus} from '../../../actions/status';
 
 import {browserHistory} from 'react-router';
 
@@ -25,8 +25,7 @@ const mapStoreToProps = (state) => {
     decks: state.onboard.decks,
     quizAnswers: state.onboard.quizAnswers,
     quizOpen: state.onboard.quizOpen,
-    quizCorrect: state.onboard.quizCorrect,
-    currentStatus: state.status.status
+    quizCorrect: state.onboard.quizCorrect
   });
 };
 
@@ -69,8 +68,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     onFinalize: () => {
       dispatch(finalize()).then(() => {
-        dispatch(updateStatus({...ownProps.status, initialized: true}))
-        browserHistory.push('/');
+        dispatch(fetchStatus()).then(()=> {
+          browserHistory.push('/');
+        })
       });
     }
   }

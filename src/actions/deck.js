@@ -5,13 +5,16 @@ export const TOGGLE_DECK = 'TOGGLE_DECK'
 export const RUN_DECK_SUCCEEDED = 'RUN_DECK_SUCCEEDED'
 export const RUN_DECK_FAILED = 'RUN_DECK_FAILED'
 
+export const CANCEL_DECK_SUCCEEDED = 'CANCEL_DECK_SUCCEEDED'
+export const CANCEL_DECK_FAILED = 'CANCEL_DECK_FAILED'
+
 export const LOADING_DECKS = 'LOADING_DECKS'
 export const LOADING_DECKS_SUCCEEDED = 'LOADING_DECKS_SUCCEEDED'
 export const LOADING_DECKS_FAILED = 'LOADING_DECKS_FAILED'
 
-export const runDeckSucceeded = (deckId) => ({
+export const runDeckSucceeded = (decks) => ({
   type: RUN_DECK_SUCCEEDED,
-  deckId
+  decks
 })
 
 export const runDeckFailed = (deckId, ex) => ({
@@ -23,7 +26,17 @@ export const runDeckFailed = (deckId, ex) => ({
 export const runDeck = (deckId) => (dispatch, getState) => {
   return fetch(`/api/deck/${deckId}/run`, {method: 'POST'})
     .then(data => data.json())
-    .then(json => dispatch(runDeckSucceeded(deckId)))
+    .then((json) => {
+      // XXX maybe check the return value?
+      let decks = getState().deck.decks.map((deck) => {
+        if (deck.id == deckId) {
+          return {...deck, running: true}
+        }
+        return {...deck}
+      })
+      return decks
+    })
+    .then(decks => dispatch(runDeckSucceeded(decks)))
     .catch((ex) => {
       dispatch(runDeckFailed(deckId, ex))
     })

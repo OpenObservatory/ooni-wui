@@ -7,11 +7,9 @@ import {
 } from '../actions/deck'
 
 const ACTION_HANDLERS = {
-  [RUN_DECK_SUCCEEDED]: (state, action) => {
-    let runningDecks = {...state.runningDecks}
-    runningDecks.push(action.deckId)
-    return {...state, runningDecks}
-  },
+  [RUN_DECK_SUCCEEDED]: (state, action) => ({
+    ...state, decks: action.decks
+  }),
   [LOADING_DECKS]: (state, action) => ({...state, loading: true}),
   [LOADING_DECKS_SUCCEEDED]: (state, action) => {
     return {...state, decks: action.decks, loading: false};

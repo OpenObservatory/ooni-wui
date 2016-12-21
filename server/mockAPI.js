@@ -624,6 +624,9 @@ app.post('/deck/*/enable', function(req, res) {
 app.post('/deck/*/disable', function(req, res) {
   res.json({});
 });
+app.post('/deck/*/run', function(req, res) {
+  res.json({});
+});
 
 app.get('/measurement', function(req, res) {
  res.json({
@@ -639,6 +642,8 @@ app.get('/measurement', function(req, res) {
       "asn": "AS1241",
       "stale": false,
       "id": "20161214T085527Z-GR-AS1241-tcp_connect",
+      // These are added
+      "result": "ok",
       "deck_id": "tor"
     },
     {
@@ -652,6 +657,7 @@ app.get('/measurement', function(req, res) {
       "asn": "AS1241",
       "stale": false,
       "id": "20161214T080637Z-GR-AS1241-meek_fronted_requests_test",
+      "result": "ok",
       "deck_id": "web"
     },
     {
@@ -665,6 +671,7 @@ app.get('/measurement', function(req, res) {
       "asn": "AS1241",
       "stale": false,
       "id": "20161214T080551Z-GR-AS1241-facebook_messenger",
+      "result": "ok",
       "deck_id": "web"
     },
     {
@@ -678,6 +685,7 @@ app.get('/measurement', function(req, res) {
       "asn": "AS1241",
       "stale": false,
       "id": "20161214T080502Z-GR-AS1241-web_connectivity",
+      "result": "error",
       "deck_id": "web"
     }
   ]

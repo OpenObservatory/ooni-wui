@@ -17,7 +17,7 @@ const ACTION_HANDLERS = {
   },
   [CLOSED_RUN_TEST]: (state, action) => {
     return ({...state, activeNettestId: null})
-  },
+  }
 };
 
 const initialState = {
