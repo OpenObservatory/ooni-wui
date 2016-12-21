@@ -25,7 +25,7 @@ const ACTION_HANDLERS = {
     return ({...state, currentStep: state.currentStep + 1, quizOpen: false})
   },
   [SETTINGS_CHANGED]: (state, action) => {
-    let settings = Object.assign({}, state.settings);
+    let settings = {...state.settings};
     settings[action.key] = action.value;
     return ({...state, settings: settings})
   },
@@ -43,7 +43,7 @@ const ACTION_HANDLERS = {
     return ({...state, quizCorrect: null, quizOpen: false})
   },
   [QUIZ_CHANGED]: (state, action) => {
-    let answers = Object.assign({}, state.quizAnswers);
+    let answers = {...state.quizAnswers};
     answers[action.key] = action.value;
     return ({...state, quizAnswers: answers})
   },

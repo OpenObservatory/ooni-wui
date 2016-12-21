@@ -6,9 +6,6 @@ const ACTION_HANDLERS = {
   }
 };
 
-// ------------------------------------
-// Reducer
-// ------------------------------------
 const initialState = {initialized: null};
 export function statusReducer(state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type];

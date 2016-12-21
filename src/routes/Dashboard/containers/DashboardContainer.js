@@ -1,6 +1,8 @@
 import { connect } from 'react-redux'
 
 import Dashboard from '../components/Dashboard'
+
+/*
 import {
   toggleDeck,
   runDeckClicked,
@@ -10,37 +12,69 @@ import {
   startDeck,
   startTest
 } from '../modules/dashboard';
+*/
+
+/*
+import {
+  load as loadMeasurements
+} from '../../../actions/measurement'
+*/
+
+import {
+  runDeck,
+  toggleDeck
+} from '../../../actions/deck'
+
+import {
+  runNettest
+} from '../../../actions/nettest'
+
+import {
+  clickedRunTest,
+  closedRunTest,
+  clickedRunDeck,
+  closedRunDeck
+} from '../../../actions/dashboard'
 
 const mapDispatchToProps = {
+  onDeckStart: runDeck,
   onDeckToggled: toggleDeck,
-  onDeckRun: runDeckClicked,
-  onDeckRunClose: runDeckClose,
-  onDeckStart: startDeck,
-  onTestRun: runTestClicked,
-  onTestRunClose: runTestClose,
-  onTestStart: startTest
+
+  onTestStart: runNettest,
+
+  onDeckRun: clickedRunDeck,
+  onDeckRunClose: closedRunDeck,
+  onTestRun: clickedRunTest,
+  onTestRunClose: closedRunTest,
+
 };
 
 const mapStateToProps = (state) => {
-  const deckIcons = state.dashboard.decks.reduce(
+  const deckIcons = state.deck.decks.reduce(
     (o, v) => {
       o[v.id] = v.icon;
       return o;
     }, {});
   return {
+    // XXX This can become a selector
+    deckIcons: deckIcons,
+    // XXX This can become a selector
+    recentResults: state.measurement.measurements,
+
     softwareVersion: state.status.software_version,
     running: state.status.director_started,
     quotaWarning: state.status.quota_warning,
     countryCode: state.status.country_code,
     asn: state.status.asn,
-    decks: state.dashboard.decks,
-    deckIcons: deckIcons,
-    recentResults: state.dashboard.recentResults,
+
+    decks: state.deck.decks,
+    loadingDecks: state.deck.loading,
+
+    tests: state.nettest.tests,
+
     runOpen: state.dashboard.runOpen,
     activeDeck: state.dashboard.activeDeck,
-    activeTest: state.dashboard.activeTest,
-    tests: state.dashboard.tests,
-    loadingDecks: state.dashboard.loadingDecks
+    activeTest: state.dashboard.activeTest
 }};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)
