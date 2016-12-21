@@ -1,25 +1,5 @@
 import { connect } from 'react-redux'
 
-import Dashboard from '../components/Dashboard'
-
-/*
-import {
-  toggleDeck,
-  runDeckClicked,
-  runDeckClose,
-  runTestClicked,
-  runTestClose,
-  startDeck,
-  startTest
-} from '../modules/dashboard';
-*/
-
-/*
-import {
-  load as loadMeasurements
-} from '../../../actions/measurement'
-*/
-
 import {
   runDeck,
   toggleDeck
@@ -35,6 +15,14 @@ import {
   clickedRunDeck,
   closedRunDeck
 } from '../../../actions/dashboard'
+
+import {
+  getActiveDeck,
+  getActiveNettest,
+  getRecentMeasurements
+} from '../../../selectors/dashboard'
+
+import Dashboard from '../components/Dashboard'
 
 const mapDispatchToProps = {
   onDeckStart: runDeck,
@@ -56,25 +44,24 @@ const mapStateToProps = (state) => {
       return o;
     }, {});
   return {
-    // XXX This can become a selector
     deckIcons: deckIcons,
-    // XXX This can become a selector
-    recentResults: state.measurement.measurements,
 
-    softwareVersion: state.status.software_version,
-    running: state.status.director_started,
-    quotaWarning: state.status.quota_warning,
-    countryCode: state.status.country_code,
+    softwareVersion: state.status.softwareVersion,
+    running: state.status.running,
+    quotaWarning: state.status.quotaWarning,
+    countryCode: state.status.countryCode,
     asn: state.status.asn,
 
     decks: state.deck.decks,
     loadingDecks: state.deck.loading,
 
-    tests: state.nettest.tests,
+    nettests: state.nettest.nettests,
 
     runOpen: state.dashboard.runOpen,
-    activeDeck: state.dashboard.activeDeck,
-    activeTest: state.dashboard.activeTest
+
+    activeDeck: getActiveDeck(state),
+    activeNettest: getActiveNettest(state),
+    recentResults: getRecentMeasurements(state)
 }};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

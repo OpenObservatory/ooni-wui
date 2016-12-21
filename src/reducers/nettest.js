@@ -19,7 +19,7 @@ const ACTION_HANDLERS = {
 
 const initialState = {
   loading: false,
-  nettests: []
+  nettests: {}
 };
 export function nettestReducer(state = initialState, action) {
     const handler = ACTION_HANDLERS[action.type];

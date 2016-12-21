@@ -570,7 +570,7 @@ app.get('/deck', function(req, res) {
         "enabled": true,
         "running": false,
         "name": "Tor test deck",
-        "tests": [
+        "nettests": [
           "vanilla_tor"
         ],
         "description": "This deck runs test related to testing the reachability of the Tor network"
@@ -582,7 +582,7 @@ app.get('/deck', function(req, res) {
         "enabled": true,
         "running": false,
         "name": "Web test deck",
-        "tests": [
+        "nettests": [
           "http_header_field_manipulation",
           "web_connectivity"
         ],
@@ -595,7 +595,7 @@ app.get('/deck', function(req, res) {
         "enabled": true,
         "running": false,
         "name": "Instant Messaging deck",
-        "tests": [
+        "nettests": [
           "http_header_field_manipulation",
           "web_connectivity"
         ],
@@ -608,7 +608,7 @@ app.get('/deck', function(req, res) {
         "enabled": true,
         "running": true,
         "name": "HTTP Invalid Request Line",
-        "tests": [
+        "nettests": [
           "http_invalid_request_line"
         ],
         "description": "This deck runs HTTP Invalid Request Line test"

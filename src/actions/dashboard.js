@@ -14,9 +14,9 @@ export const closedRunDeck = () => ({
 })
 
 // XXX this should be nettest
-export const clickedRunTest = (testId) => ({
+export const clickedRunTest = (nettestId) => ({
   type: CLICKED_RUN_TEST,
-  testId
+  nettestId
 })
 export const closedRunTest = () => ({
   type: CLOSED_RUN_TEST

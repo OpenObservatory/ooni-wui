@@ -47,8 +47,8 @@ export const Dashboard = ({
 
   runOpen,
   activeDeck,
-  activeTest,
-  tests,
+  activeNettest,
+  nettests,
   loadingDecks
 }) => (
   <div>
@@ -92,8 +92,8 @@ export const Dashboard = ({
       onTestRun={onTestRun}
       onTestRunClose={onTestRunClose}
       isOpen={runOpen}
-      activeTest={activeTest}
-      tests={tests}
+      activeNettest={activeNettest}
+      nettests={nettests}
       deck={activeDeck} />
 
     {recentResults.length == 0 ?
@@ -145,11 +145,11 @@ Dashboard.propTypes = {
   onTestRun: React.PropTypes.func,
   onTestRunClose: React.PropTypes.func,
 
+  nettests: React.PropTypes.object,
   runOpen: React.PropTypes.bool,
   activeDeck: React.PropTypes.object,
-  activeTest: React.PropTypes.object,
-  loadingDecks: React.PropTypes.bool,
-  tests: React.PropTypes.object
+  activeNettest: React.PropTypes.object,
+  loadingDecks: React.PropTypes.bool
 };
 
 export default Dashboard

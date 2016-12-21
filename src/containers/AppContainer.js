@@ -2,6 +2,9 @@ import React, { Component, PropTypes } from 'react'
 import { browserHistory, Router } from 'react-router'
 import { Provider } from 'react-redux'
 
+import Modal from 'react-modal'
+Modal.defaultStyles.overlay.backgroundColor  = 'rgba(0, 0, 0, 0.5)'
+
 class AppContainer extends Component {
   static propTypes = {
     routes : PropTypes.object.isRequired,

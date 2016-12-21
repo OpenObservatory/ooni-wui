@@ -23,6 +23,7 @@ export const loadingNettestsSucceeded = (nettests) => ({
   type: LOADING_NETTESTS_SUCCEEDED,
   nettests
 })
+
 export const loadingNettestsFailed = () => (dispatch) => {
   dispatch(receivedNotification(
     "Failed to fetch tests", `${ex.message}`, "error")
@@ -37,7 +38,7 @@ export const load = () => (dispatch) => {
 
   fetch('/api/nettest')
     .then(data => data.json())
-    .then(json => dispatch(loadingNettestsSucceeded(json.nettests)))
+    .then(json => dispatch(loadingNettestsSucceeded(json)))
     .catch((ex) => {
       dispatch(loadingNettestsFailed(ex))
     });

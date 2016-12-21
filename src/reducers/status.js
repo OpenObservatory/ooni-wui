@@ -1,12 +1,21 @@
-import STATUS_UPDATE from '../actions/status'
+import {
+  UPDATING_STATUS_SUCCEEDED
+} from '../actions/status'
 
 const ACTION_HANDLERS = {
-  [STATUS_UPDATE]: (state, action) => {
-    return ({...action.payload})
+  [UPDATING_STATUS_SUCCEEDED]: (state, action) => {
+    return ({...action.status})
   }
 };
 
-const initialState = {initialized: null};
+const initialState = {
+  initialized: null,
+  softwareVersion: null,
+  running: false,
+  quotaWarning: false,
+  countryCode: 'XX',
+  asn: 'XX'
+};
 export function statusReducer(state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type];
 

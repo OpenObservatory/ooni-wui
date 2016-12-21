@@ -51,6 +51,7 @@
     "redux": "^3.6.0",
     "redux-form": "^6.3.2",
     "redux-thunk": "^2.0.0",
+    "reselect": "^2.5.4",
     "rimraf": "^2.5.4",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
