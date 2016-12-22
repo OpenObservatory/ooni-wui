@@ -3,6 +3,59 @@ const express = require('express');
 const app = express();
 let initialized = false;
 
+const newDecksSchema = [
+  {
+    "id": "tor",
+    "icon": "fa-wrench",
+    "schedule": "@daily",
+    "enabled": true,
+    "running": false,
+    "name": "Tor test deck",
+    "nettests": [
+      "vanilla_tor"
+    ],
+    "description": "This deck runs test related to testing the reachability of the Tor network"
+  },
+  {
+    "id": "web",
+    "icon": "fa-unlink",
+    "schedule": "@daily",
+    "enabled": true,
+    "running": false,
+    "name": "Web test deck",
+    "nettests": [
+      "http_header_field_manipulation",
+      "web_connectivity"
+    ],
+    "description": "This deck runs HTTP Header Field Manipulation and the Web Connectivity test"
+  },
+  {
+    "id": "im",
+    "icon": "fa-comment-o",
+    "schedule": "@daily",
+    "enabled": true,
+    "running": false,
+    "name": "Instant Messaging deck",
+    "nettests": [
+      "http_header_field_manipulation",
+      "web_connectivity"
+    ],
+    "description": "This test deck will check to see if instant messaging applications are working"
+  },
+  {
+    "id": "http-invalid",
+    "icon": "fa-eye",
+    "schedule": "@daily",
+    "enabled": true,
+    "running": true,
+    "name": "HTTP Invalid Request Line",
+    "nettests": [
+      "http_invalid_request_line"
+    ],
+    "description": "This deck runs HTTP Invalid Request Line test"
+  }
+];
+
 app.get('/status', function(req, res) {
   res.json({
     "software_name": "ooniprobe",
@@ -15,6 +68,9 @@ app.get('/status', function(req, res) {
   });
 });
 
+app.post('/nettest/*/start', function(req, res) {
+  res.json({});
+});
 
 app.get('/nettest', function(req, res) {
   res.json({
@@ -501,6 +557,12 @@ app.get('/nettest', function(req, res) {
   });
 });
 
+app.get('/initialize', function(req, res) {
+  res.json({
+    'available_decks': newDecksSchema
+  });
+});
+
 app.post('/initialize', function(req, res) {
   initialized = true;
   res.json({});
@@ -562,58 +624,7 @@ app.get('/deck', function(req, res) {
     }
   };
   const newSchema = {
-    "decks": [
-      {
-        "id": "tor",
-        "icon": "fa-wrench",
-        "schedule": "@daily",
-        "enabled": true,
-        "running": false,
-        "name": "Tor test deck",
-        "nettests": [
-          "vanilla_tor"
-        ],
-        "description": "This deck runs test related to testing the reachability of the Tor network"
-      },
-      {
-        "id": "web",
-        "icon": "fa-unlink",
-        "schedule": "@daily",
-        "enabled": true,
-        "running": false,
-        "name": "Web test deck",
-        "nettests": [
-          "http_header_field_manipulation",
-          "web_connectivity"
-        ],
-        "description": "This deck runs HTTP Header Field Manipulation and the Web Connectivity test"
-      },
-      {
-        "id": "im",
-        "icon": "fa-comment-o",
-        "schedule": "@daily",
-        "enabled": true,
-        "running": false,
-        "name": "Instant Messaging deck",
-        "nettests": [
-          "http_header_field_manipulation",
-          "web_connectivity"
-        ],
-        "description": "This test deck will check to see if instant messaging applications are working"
-      },
-      {
-        "id": "http-invalid",
-        "icon": "fa-eye",
-        "schedule": "@daily",
-        "enabled": true,
-        "running": true,
-        "name": "HTTP Invalid Request Line",
-        "nettests": [
-          "http_invalid_request_line"
-        ],
-        "description": "This deck runs HTTP Invalid Request Line test"
-      }
-    ]
+    "decks": newDecksSchema
   };
   res.json(newSchema);
 });
@@ -625,6 +636,9 @@ app.post('/deck/*/disable', function(req, res) {
   res.json({});
 });
 app.post('/deck/*/run', function(req, res) {
+  res.json({});
+});
+app.post('/deck/*/start', function(req, res) {
   res.json({});
 });
 
@@ -690,6 +704,7 @@ app.get('/measurement', function(req, res) {
     }
   ]
  });
+
 });
 
 app.delete('/measurement/*', function(req, res) {

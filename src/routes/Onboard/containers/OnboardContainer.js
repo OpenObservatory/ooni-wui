@@ -44,9 +44,14 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     onSettingsChange: (key) => {
       return (event) => {
-        let value = false;
-        if (event.target.checked) {
-          value = true
+        let value;
+        if (key === 'uploadMethod') {
+          value = event.target.value
+        } else {
+          value = false;
+          if (event.target.checked) {
+            value = true
+          }
         }
         dispatch(settingsChanged(key, value))
       }

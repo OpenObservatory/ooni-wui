@@ -6,6 +6,9 @@ import {
   QUIZ_CLOSED,
   QUIZ_CHANGED,
   QUIZ_ANSWERED,
+  LOADING_INITIAL_DECKS_SUCCEEDED,
+  LOADING_INITIAL_DECKS_FAILED,
+  LOADING_INITIAL_DECKS,
   lastStep,
   quizStep
 } from '../actions/onboard'
@@ -53,6 +56,15 @@ const ACTION_HANDLERS = {
       return ({...state, quizCorrect: true});
     }
     return ({...state, quizCorrect: false});
+  },
+  [LOADING_INITIAL_DECKS]: (state) => {
+    return ({...state, loadingDecks: true})
+  },
+  [LOADING_INITIAL_DECKS_SUCCEEDED]: (state, action) => {
+    return ({...state, loadingDecks: false, decks: action.decks})
+  },
+  [LOADING_INITIAL_DECKS_FAILED]: (state) => {
+    return ({...state, loadingDecks: false})
   }
 };
 
@@ -74,41 +86,8 @@ const initialState = {
     includeIP: false,
     shareResults: true
   },
-  decks: [
-    // XXX Move these into a fetch
-    {
-      id: 'web',
-      name: 'Test URLs',
-      icon: 'fa-unlink',
-      description: 'Lorem',
-      enabled: true,
-      infoBoxOpen: false
-    },
-    {
-      id: 'im',
-      name: 'Test Messaging Apps',
-      icon: 'fa-comment-o',
-      description: 'Lorem',
-      enabled: true,
-      infoBoxOpen: false
-    },
-    {
-      id: 'tor',
-      name: 'Test Circumvention Tools',
-      icon: 'fa-wrench',
-      description: 'Lorem',
-      enabled: true,
-      infoBoxOpen: false
-    },
-    {
-      id: 'http-invalid-request-line',
-      name: 'Test for Surveillance',
-      icon: 'fa-eye',
-      description: 'Lorem',
-      enabled: true,
-      infoBoxOpen: false
-    }
-  ]
+  loadingDecks: false,
+  decks: []
 };
 
 export function onboardReducer(state = initialState, action) {

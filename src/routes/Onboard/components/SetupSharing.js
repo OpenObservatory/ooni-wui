@@ -18,9 +18,11 @@ const SetupSharing = ({onNextClick, onSettingsChange, settings}) => {
         <h6>How should we upload your results?</h6>
         <i className="medium-icon fa fa-upload"/>
         <div className="row">
-          <Toggle
-            defaultChecked={settings.includeNetwork}
-            onChange={onSettingsChange('includeNetwork')}/>
+          <select onChange={onSettingsChange('uploadMethod')}>
+            <option value="onion">Tor Hidden Service</option>
+            <option value="https">HTTPS</option>
+            <option value="cloudfront">Cloudfront</option>
+          </select>
         </div>
       </div>
 

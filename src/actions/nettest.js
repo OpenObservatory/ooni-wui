@@ -9,7 +9,13 @@ export const LOADING_NETTESTS_SUCCEEDED = 'LOADING_NETTESTS_SUCCEEDED';
 export const LOADING_NETTESTS_FAILED = 'LOADING_NETTESTS_FAILED';
 
 export const runNettest = (nettestId, options) => {
-  return fetch('/api/nettest/${nettestId}', {'method': 'POST'})
+  return fetch(`/api/nettest/${nettestId}/start`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(options)
+  })
 }
 
 export const loadingNettests = () => ({
@@ -40,4 +46,3 @@ export const load = () => (dispatch) => {
       dispatch(loadingNettestsFailed(ex))
     });
 }
-
