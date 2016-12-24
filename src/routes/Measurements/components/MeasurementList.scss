@@ -1,0 +1,14 @@
+@import '../../../styles/variables/colors';
+
+.shown-deck {
+  color: $color-ooni-blue
+}
+
+.hidden-deck {
+  h2 {
+    color: $color-grey
+  }
+  .medium-icon {
+    color: $color-grey
+  }
+}

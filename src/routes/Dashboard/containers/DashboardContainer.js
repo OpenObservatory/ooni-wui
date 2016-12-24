@@ -20,6 +20,10 @@ import {
   getRecentMeasurements
 } from '../../../selectors/dashboard'
 
+import {
+  getDeckIcons,
+} from '../../../selectors/deck'
+
 import Dashboard from '../components/Dashboard'
 
 const mapDispatchToProps = (dispatch) => ({
@@ -42,14 +46,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => {
-  const deckIcons = state.deck.decks.reduce(
-    (o, v) => {
-      o[v.id] = v.icon;
-      return o;
-    }, {});
   return {
-    // XXX this can maybe be a selector as well..
-    deckIcons: deckIcons,
+    deckIcons: getDeckIcons(state),
 
     softwareVersion: state.status.softwareVersion,
     running: state.status.running,

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router';
-import moment from 'moment';
 
 import Deck from '../../../components/Deck';
 import DeckRunner from './DeckRunner';
@@ -10,22 +9,11 @@ import './Dashboard.scss'
 
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 
-const formatName = (deckIcons) => (cell, row) => {
-  const deckIcon = deckIcons[row.deck_id];
-  return <span><i className={`fa ${deckIcon}`} />{` ${cell}`}</span>
-};
-
-const formatTime = (cell, row) => {
-  return moment(cell).format('lll')
-};
-
-const formatResult = (cell, row) => {
-  if (cell == 'ok') {
-    return <i className="icon-ok fa fa-check-circle-o" />
-  } else if (cell == 'error') {
-    return <i className="icon-error fa fa-warning" />
-  }
-};
+import {
+  formatName,
+  formatTime,
+  formatResult
+} from '../../../util/table'
 
 export const Dashboard = ({
   softwareVersion,

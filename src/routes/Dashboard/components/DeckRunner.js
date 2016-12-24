@@ -20,7 +20,10 @@ let NettestRunnerOptions = ({
   return (
     <form onSubmit={handleSubmit}>
       {
-        Object.keys(fields).map((key) => {
+        Object.keys(fields)
+          // XXX we currently skip file type fields
+          .filter((key) => (fields[key].type !== 'file'))
+          .map((key) => {
           const field = fields[key]
           return (
             <div key={key} className="form-group">

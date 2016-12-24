@@ -4,13 +4,13 @@ import OnboardSteps from '../components/OnboardSteps';
 import {
   gotoStep,
   nextStep,
-  lastStep,
   settingsChanged,
   deckToggled,
   quizAnswered,
   quizChanged,
   quizClosed,
-  finalize
+  finalize,
+  lastStep
 } from '../../../actions/onboard';
 
 import {fetchStatus} from '../../../actions/status';

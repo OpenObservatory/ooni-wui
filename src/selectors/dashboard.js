@@ -1,8 +1,10 @@
 import { createSelector } from 'reselect'
 
-export const getActiveDeckId = (state) => state.dashboard.activeDeckId
-export const getDecks = (state) => state.deck.decks
+import {
+  getDecks
+} from './deck'
 
+export const getActiveDeckId = (state) => state.dashboard.activeDeckId
 export const getActiveNettestId = (state) => state.dashboard.activeNettestId
 export const getNettests = (state) => state.nettest.nettests
 

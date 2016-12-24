@@ -10,7 +10,15 @@ const Welcome = ({onNextClick, onSkipClick}) => {
         <h2>OONI's software is an investigatory tool</h2>
         <img src={OONILogoImage} className="ooni-logo"/>
         <p>
-          Bacon ipsum dolor amet hamburger bacon jerky salami frankfurter, fatback turducken ball tip cow meatball. Porchetta capicola jowl, alcatra short ribs spare ribs venison turducken pork chop tenderloin turkey. Fatback andouille meatloaf tri-tip pork filet mignon ground round brisket landjaeger tenderloin shankle tongue. Shoulder venison chuck pork loin turducken doner ham hock shankle filet mignon biltong porchetta landjaeger strip steak pig bresaola.
+          Ooniprobe is free and open source software that enables you to examine internet censorship in your network!
+
+          By running this app, you can examine whether and how websites are blocked, and whether censorship and/or surveillance systems are present in your network.
+
+          You can also run this app to measure the speed and performance of your network.
+
+          The data that you can collect through this app can serve as evidence of censorship events.
+
+          Keep in mind though that ooniprobe is an investigatory tool and as such, may pose some risks.
         </p>
       </div>
 

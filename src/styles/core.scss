@@ -24,6 +24,10 @@ body {
   box-sizing: inherit;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 .five-cols {
   @include make-col(1, 5);
 }
@@ -72,13 +76,12 @@ body {
 .modal-dialog {
   overflow-y: initial !important
 }
-.modal-body{
-  height: 200px;
-  overflow-y: scroll;
+
+.modal-body {
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
 }
-@media (min-height: 500px) {
-  .modal-body { height: 300px; }
-}
-@media (min-height: 800px) {
-  .modal-body { height: 500px; }
+.modal-body-no-header {
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
 }
