@@ -12,7 +12,8 @@ import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import {
   formatName,
   formatTime,
-  formatResult
+  formatResult,
+  rowClassNameFormat
 } from '../../../util/table'
 
 export const Dashboard = ({
@@ -100,8 +101,12 @@ export const Dashboard = ({
       <div className="row recent-results text-xs-center">
         <h2>Last {recentResults.length} tests</h2>
         <BootstrapTable
-          bordered={ false }
+          bordered={false}
           headerStyle={{'display': 'none'}}
+          tableStyle={{border: 'none'}}
+          containerStyle={{border: 'none'}}
+          bodyStyle={{border: 'none'}}
+          trClassName={rowClassNameFormat}
           data={recentResults}>
           <TableHeaderColumn dataField="id" isKey={true} hidden>ID</TableHeaderColumn>
           <TableHeaderColumn dataAlign='center' dataField="test_name" dataFormat={formatName(deckIcons)}></TableHeaderColumn>

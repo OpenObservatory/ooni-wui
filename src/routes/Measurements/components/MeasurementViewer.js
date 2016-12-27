@@ -1,9 +1,16 @@
 import React from 'react'
 import Modal from 'react-modal'
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 
 import MeasurementDetails from './MeasurementDetails'
 
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
+
+import {
+  formatViewButton,
+  snakeToHuman,
+  formatDate,
+  rowClassNameFormat
+} from '../../../util/table'
 
 const MeasurementViewer = ({
   selectedMeasurements,
@@ -26,22 +33,25 @@ const MeasurementViewer = ({
         </a>
       </div>
       <div className="text-xs-center">
-        <h1>{selectedMeasurements.test_name}</h1>
+        <h1>{snakeToHuman(selectedMeasurements.test_name)}</h1>
+        <p className="copy">Date and Time: {formatDate(selectedMeasurements.test_start_time)}</p>
+        <p className="copy">ASN: {selectedMeasurements.asn}</p>
+        <p className="copy">Country: {selectedMeasurements.country_code}</p>
       </div>
-        {selectedMeasurements.asn} - {selectedMeasurements.country_code} -
 
       <BootstrapTable
-        options={tableOptions}
-        bordered={true}
-        hover={true}
+        tableStyle={{border: 'none'}}
+        containerStyle={{border: 'none'}}
+        trClassName={rowClassNameFormat}
         data={selectedMeasurements.results}>
-        <TableHeaderColumn dataField="idx" isKey={true} hidden></TableHeaderColumn>
         <TableHeaderColumn dataAlign='center' dataField="url">
           Url
         </TableHeaderColumn>
-        <TableHeaderColumn width="100" dataAlign='center' dataField="anomaly">
-          Anomaly
+        <TableHeaderColumn width="100" dataAlign='center' dataField="anomaly"
+                           dataFormat={formatViewButton(tableOptions.onRowClick)}>
+          Result
         </TableHeaderColumn>
+        <TableHeaderColumn dataField="idx" isKey={true} hidden></TableHeaderColumn>
       </BootstrapTable>
 
       <Modal

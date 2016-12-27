@@ -1,7 +1,8 @@
 import CoreLayout from '../layouts/CoreLayout/CoreLayout'
-import Dashboard from './Dashboard';
-import MeasurementsRoute from './Measurements';
-import OnboardRoute from './Onboard';
+import Dashboard from './Dashboard'
+import MeasurementsRoute from './Measurements'
+import OnboardRoute from './Onboard'
+import LogsRoute from './Logs'
 
 const requireInitialized = (store) => (nextState, replace, next) => {
   const {fetchStatus} = require('../actions/status');
@@ -29,7 +30,8 @@ export const createRoutes = (store) => ({
       indexRoute: Dashboard(store),
       onEnter: requireInitialized(store),
       childRoutes: [
-        MeasurementsRoute(store)
+        MeasurementsRoute(store),
+        LogsRoute(store)
       ]
     },
     OnboardRoute(store)

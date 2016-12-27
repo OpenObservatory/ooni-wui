@@ -1,10 +1,11 @@
 import React from 'react'
 import {
   formatTime,
-  formatResult,
+  formatViewButton,
   formatDeckName,
   renderCarret,
-  snakeToHuman
+  snakeToHuman,
+  rowClassNameFormat
 } from '../../../util/table'
 
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
@@ -22,9 +23,6 @@ const MeasurementList = ({
   deckIcons,
   deckNames
 }) => {
-  let tableOptions = {
-    onRowClick: onRowClick
-  }
   return (
     <div>
       {selectedMeasurements ?
@@ -47,11 +45,11 @@ const MeasurementList = ({
             }
           </div>
           <BootstrapTable
-            options={tableOptions}
             bordered={true}
-            hover={true}
+            tableStyle={{border: 'none'}}
+            containerStyle={{border: 'none'}}
+            trClassName={rowClassNameFormat}
             data={measurements}>
-            <TableHeaderColumn dataField="id" isKey={true} hidden>ID</TableHeaderColumn>
             <TableHeaderColumn dataAlign='center' dataFormat={snakeToHuman}
                                dataField="test_name">Name</TableHeaderColumn>
             <TableHeaderColumn dataAlign='center'
@@ -69,9 +67,11 @@ const MeasurementList = ({
                                dataField="deck_id">
               Test Deck
             </TableHeaderColumn>
-            <TableHeaderColumn width="100" dataAlign='center' dataField="result" dataFormat={formatResult}>
+            <TableHeaderColumn width="100" dataAlign='center' dataField="result"
+                               dataFormat={formatViewButton(onRowClick)}>
               Result
             </TableHeaderColumn>
+            <TableHeaderColumn dataField="id" isKey={true} hidden>ID</TableHeaderColumn>
           </BootstrapTable>
         </div>
       }

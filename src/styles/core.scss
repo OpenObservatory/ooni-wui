@@ -24,6 +24,11 @@ body {
   box-sizing: inherit;
 }
 
+.copy {
+  color: $color-ooni-blue;
+  font-weight: bold;
+}
+
 .clickable {
   cursor: pointer;
 }
@@ -84,4 +89,17 @@ body {
 .modal-body-no-header {
   max-height: calc(100vh - 120px);
   overflow-y: auto;
+}
+
+.tr-row td {
+  border: 0px;
+}
+
+.tr-row {
+  font-weight: bold;
+  color: $color-ooni-blue;
+}
+
+.tr-row-anomaly {
+  color: $color-status-bad-red;
 }
