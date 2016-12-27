@@ -4,7 +4,7 @@ export const StatusWithStore = (store) => ({
   getComponent (nextState, cb) {
     require.ensure([], (require) => {
       const Status = require('./containers/StatusContainer').default;
-      const {statusReducer, fetchStatus} = require('././status');
+      const {statusReducer, fetchStatus} = require('./status');
 
       injectReducer(store, {
         key: 'status',
