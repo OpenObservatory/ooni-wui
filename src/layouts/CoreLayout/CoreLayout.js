@@ -2,6 +2,7 @@ import React from 'react'
 import './CoreLayout.scss'
 import '../../styles/core.scss'
 import Header from '../../components/Header'
+import Footer from '../../components/Footer'
 import Notification from '../../components/Notification'
 
 export const CoreLayout = ({ children }) => (
@@ -13,6 +14,7 @@ export const CoreLayout = ({ children }) => (
         {children}
       </div>
     </div>
+    <Footer />
   </div>
 );
 
