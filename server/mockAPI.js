@@ -4,10 +4,6 @@ const app = express();
 let initialized = false;
 
 
-const randomStr = (length) => {
-
-}
-
 const newDecksSchema = [
   {
     "id": "tor",
@@ -62,6 +58,7 @@ const newDecksSchema = [
 ];
 
 app.get('/status', function(req, res) {
+  res.cookie('XSRF-TOKEN', "I am a happy token");
   res.json({
     "software_name": "ooniprobe",
     "software_version": "2.1.0",
