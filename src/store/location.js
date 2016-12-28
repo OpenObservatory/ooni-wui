@@ -1,3 +1,9 @@
+import { useRouterHistory } from 'react-router'
+import { createHistory, createHashHistory } from 'history'
+
+export const history = (__DEV__) ? useRouterHistory(createHistory)()
+                                 : useRouterHistory(createHashHistory)()
+
 // ------------------------------------
 // Constants
 // ------------------------------------

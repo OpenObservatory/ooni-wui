@@ -1,8 +1,10 @@
 import React, { Component, PropTypes } from 'react'
-import { browserHistory, Router } from 'react-router'
+import { Router } from 'react-router'
 import { Provider } from 'react-redux'
 
 import Modal from 'react-modal'
+import { history } from '../store/location'
+
 Modal.defaultStyles.overlay.backgroundColor  = 'rgba(0, 0, 0, 0.5)'
 
 class AppContainer extends Component {
@@ -21,7 +23,7 @@ class AppContainer extends Component {
     return (
       <Provider store={store}>
         <div style={{ height: '100%' }}>
-          <Router history={browserHistory} children={routes} />
+          <Router history={history} children={routes} />
         </div>
       </Provider>
     )
