@@ -32,7 +32,10 @@ export const selectMeasurements = (measurementId) => (dispatch, getState) => {
     .then(data => data.json())
     .then(json => {
       dispatch(loadingMeasurementListSucceeded())
-      return dispatch(selectedMeasurements({...json, id: measurementId}))
+      dispatch(selectedMeasurements({...json, id: measurementId}))
+      if (json.results.length == 1) {
+        return dispatch(openMeasurement(measurementId, 0))
+      }
     })
     .catch((ex) => {
       dispatch(loadingMeasurementListFailed())
@@ -52,9 +55,12 @@ export const opennedMeasurement = (measurement) => ({
   measurement
 })
 
-export const closeMeasurement = () => ({
-  type: CLOSE_MEASUREMENT
-})
+export const closeMeasurement = () => (dispatch, getState) => {
+  if (getState().measurementList.selectedMeasurements.results.length == 1) {
+    dispatch(selectedMeasurements(null))
+  }
+  dispatch({type: CLOSE_MEASUREMENT})
+}
 
 export const openMeasurement = (measurementId, measurementIdx) => (dispatch, getState) => {
   dispatch(loadingMeasurementList())

@@ -27,32 +27,36 @@ const MeasurementViewer = ({
   }
   return (
     <div>
-      <div className="text-xs-left">
-        <a className="text-primary clickable" onClick={onBackClick}>
-          <i className="fa fa-arrow-circle-o-left" /> Return
-        </a>
-      </div>
-      <div className="text-xs-center">
-        <h1>{snakeToHuman(selectedMeasurements.test_name)}</h1>
-        <p className="copy">Date and Time: {formatDate(selectedMeasurements.test_start_time)}</p>
-        <p className="copy">ASN: {selectedMeasurements.asn}</p>
-        <p className="copy">Country: {selectedMeasurements.country_code}</p>
-      </div>
+      {selectedMeasurements.results.length > 1 &&
+        <div>
+          <div className="text-xs-left">
+            <a className="text-primary clickable" onClick={onBackClick}>
+              <i className="fa fa-arrow-circle-o-left" /> Return
+            </a>
+          </div>
+          <div className="text-xs-center">
+            <h1>{snakeToHuman(selectedMeasurements.test_name)}</h1>
+            <p className="copy">Date and Time: {formatDate(selectedMeasurements.test_start_time)}</p>
+            <p className="copy">ASN: {selectedMeasurements.asn}</p>
+            <p className="copy">Country: {selectedMeasurements.country_code}</p>
+          </div>
 
-      <BootstrapTable
-        tableStyle={{border: 'none'}}
-        containerStyle={{border: 'none'}}
-        trClassName={rowClassNameFormat}
-        data={selectedMeasurements.results}>
-        <TableHeaderColumn dataAlign='center' dataField="url">
-          Url
-        </TableHeaderColumn>
-        <TableHeaderColumn width="100" dataAlign='center' dataField="anomaly"
-                           dataFormat={formatViewButton(tableOptions.onRowClick)}>
-          Result
-        </TableHeaderColumn>
-        <TableHeaderColumn dataField="idx" isKey={true} hidden></TableHeaderColumn>
-      </BootstrapTable>
+          <BootstrapTable
+            tableStyle={{border: 'none'}}
+            containerStyle={{border: 'none'}}
+            trClassName={rowClassNameFormat}
+            data={selectedMeasurements.results}>
+            <TableHeaderColumn dataAlign='center' dataField="url">
+              Url
+            </TableHeaderColumn>
+            <TableHeaderColumn width="100" dataAlign='center' dataField="anomaly"
+                               dataFormat={formatViewButton(tableOptions.onRowClick)}>
+              Result
+            </TableHeaderColumn>
+            <TableHeaderColumn dataField="idx" isKey={true} hidden></TableHeaderColumn>
+          </BootstrapTable>
+        </div>
+      }
 
       <Modal
         className="Modal__Bootstrap modal-dialog"

@@ -35,6 +35,8 @@ const webpackCompiler = (webpackConfig) =>
 
 const compile = () => {
   debug('Starting compiler.')
+  debug('Deleting dist directory')
+  fs.removeSync(project.paths.dist())
   return Promise.resolve()
     .then(() => webpackCompiler(webpackConfig))
     .then(stats => {

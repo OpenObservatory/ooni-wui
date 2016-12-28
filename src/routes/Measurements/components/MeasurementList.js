@@ -25,8 +25,10 @@ const MeasurementList = ({
 }) => {
   return (
     <div>
-      {selectedMeasurements ?
-        <MeasurementViewer /> :
+      {selectedMeasurements &&
+      <MeasurementViewer />
+      }
+      {(!selectedMeasurements || (selectedMeasurements.results && selectedMeasurements.results.length == 1))&&
         <div className="text-xs-center">
           <h1>Past measurements</h1>
           <div className="row">
