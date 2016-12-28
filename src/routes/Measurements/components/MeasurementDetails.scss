@@ -1,0 +1,16 @@
+@import '../../../styles/variables/colors';
+
+.measurement-metadata {
+  h2 {
+    color: $color-off-black;
+  }
+  .measurement-input {
+    color: $color-off-black;
+    font-weight: 200;
+    margin-bottom: 20px;
+  }
+}
+
+.measurement-results {
+  text-transform: uppercase;
+}

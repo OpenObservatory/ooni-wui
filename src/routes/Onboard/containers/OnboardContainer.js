@@ -15,7 +15,7 @@ import {
 
 import {fetchStatus} from '../../../actions/status';
 
-import {browserHistory} from 'react-router';
+import {history} from '../../../store/location'
 
 const mapStoreToProps = (state) => {
   return ({
@@ -74,7 +74,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     onFinalize: () => {
       dispatch(finalize()).then(() => {
         dispatch(fetchStatus()).then(()=> {
-          browserHistory.push('/');
+          history.push('/');
         })
       });
     }
