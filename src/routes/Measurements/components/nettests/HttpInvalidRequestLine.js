@@ -11,7 +11,7 @@ export const HttpInvalidRequestLineDetails = ({measurement}) => {
       </p>
       }
       {measurement.test_keys.tampering === false &&
-      <p className="text-danger copy">
+      <p className="text-success copy">
         <i className="ooni icon-censorship-tampering" />
         This measurement looks normal
       </p>
