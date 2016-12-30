@@ -1,4 +1,4 @@
-import { fetch } from './api'
+import { fetch } from '../util/api'
 
 export const TOGGLE_DECK = 'TOGGLE_DECK'
 

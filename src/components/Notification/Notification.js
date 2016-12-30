@@ -20,7 +20,6 @@ class Notification extends Component {
   render() {
     return (
       <ToastContainer
-
         toastMessageFactory={ToastMessageFactory} ref="container"
         className="toast-container toast-bottom-right"/>
     );

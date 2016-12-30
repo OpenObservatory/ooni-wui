@@ -1,4 +1,4 @@
-import {fetch} from '../../../actions/api'
+import {fetch} from '../../../util/api'
 
 export const LOADING_MEASUREMENT_LIST = 'LOADING_MEASUREMENT_LIST'
 export const LOADING_MEASUREMENT_LIST_SUCCEEDED = 'LOADING_MEASUREMENT_LIST_SUCCEEDED'

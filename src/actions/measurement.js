@@ -1,4 +1,4 @@
-import {fetch} from './api'
+import {fetch} from '../util/api'
 
 export const LOADING_MEASUREMENTS = 'LOADING_MEASUREMENTS'
 export const LOADING_MEASUREMENTS_FAILED = 'LOADING_MEASUREMENTS_FAILED'

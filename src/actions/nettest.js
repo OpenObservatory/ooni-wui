@@ -1,4 +1,4 @@
-import {fetch} from './api';
+import {fetch} from '../util/api';
 
 import {receivedNotification} from '../actions/notification'
 

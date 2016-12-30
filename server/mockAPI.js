@@ -70,6 +70,46 @@ app.get('/status', function(req, res) {
   });
 });
 
+app.get('/status/update', function(req, res) {
+  setTimeout(function() {
+    res.json({
+      "software_name": "ooniprobe",
+      "software_version": "2.1.0",
+      "director_started": true,
+      "country_code": "GR",
+      "quota_warning": false,
+      "initialized": initialized,
+      "asn": "AS1241"
+    });
+  }, 2000);
+})
+
+let notifyIdx = 0;
+app.get('/notify', function(req, res) {
+  let nullMessage = {
+      "message": "",
+      "type": "null"
+  }
+  let successMessage = {
+      "message": "this is a success",
+      "type": "success"
+  }
+  let errorMessage = {
+      "message": "this is an error",
+      "type": "error"
+  }
+  setTimeout(function() {
+    notifyIdx += 1;
+    if (notifyIdx % 11 == 0) {
+      res.json(successMessage);
+    } else if (notifyIdx % 13 == 0) {
+      res.json(errorMessage);
+    } else {
+      res.json(nullMessage)
+    }
+  }, 2000);
+})
+
 app.post('/nettest/*/start', function(req, res) {
   res.json({});
 });
@@ -742,7 +782,6 @@ app.post('/measurement/*/keep', function(req, res) {
 
 
 app.get('/logs', function (req, res) {
-
   let older = []
   if (req.query.all === 'true') {
     older = ["This is an older log 1", "This is an older log 2"]

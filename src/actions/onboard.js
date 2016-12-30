@@ -1,4 +1,4 @@
-import {fetch} from './api'
+import {fetch} from '../util/api'
 
 export const GOTO_STEP = 'GOTO_STEP';
 export const NEXT_STEP = 'NEXT_STEP';

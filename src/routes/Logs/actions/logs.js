@@ -1,6 +1,6 @@
 import {
   fetch
-} from '../../../actions/api'
+} from '../../../util/api'
 
 export const UPLOADING_LOGS = 'UPLOADING_LOGS'
 export const UPLOADING_LOGS_SUCCEEDED = 'UPLOADING_LOGS_SUCCEEDED'
