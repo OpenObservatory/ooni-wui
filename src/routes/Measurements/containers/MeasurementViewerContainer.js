@@ -23,7 +23,7 @@ const mapStateToProps = (state) => {
     selectedMeasurements: state.measurementList.selectedMeasurements,
     isMeasurementOpen: state.measurementList.isMeasurementOpen,
     openMeasurement: state.measurementList.openMeasurement
-  });
-};
+  })
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(MeasurementViewer)

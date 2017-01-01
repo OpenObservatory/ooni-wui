@@ -16,10 +16,10 @@ export const CoreLayout = ({ children }) => (
     </div>
     <Footer />
   </div>
-);
+)
 
 CoreLayout.propTypes = {
   children : React.PropTypes.element.isRequired
-};
+}
 
-export default CoreLayout;
+export default CoreLayout

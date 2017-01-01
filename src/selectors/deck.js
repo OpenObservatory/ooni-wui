@@ -7,9 +7,9 @@ export const getDeckIcons = createSelector(
   (decks) => {
     return decks.reduce(
       (o, v) => {
-        o[v.id] = v.icon;
-        return o;
-      }, {});
+        o[v.id] = v.icon
+        return o
+      }, {})
   }
 )
 
@@ -18,8 +18,8 @@ export const getDeckNames = createSelector(
   (decks) => {
     return decks.reduce(
       (o, v) => {
-        o[v.id] = v.name;
-        return o;
-      }, {});
+        o[v.id] = v.name
+        return o
+      }, {})
   }
 )

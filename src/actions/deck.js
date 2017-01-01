@@ -1,4 +1,5 @@
 import { fetch } from '../util/api'
+import { receivedNotification } from './notification'
 
 export const TOGGLE_DECK = 'TOGGLE_DECK'
 
@@ -24,46 +25,46 @@ export const runDeckFailed = (deckId, ex) => ({
 })
 
 export const runDeck = (deckId) => (dispatch, getState) => {
-  return fetch(`/api/deck/${deckId}/run`, {method: 'POST'})
+  return fetch(`/api/deck/${deckId}/run`, { method: 'POST' })
     .then(data => data.json())
     .then((json) => {
       // XXX maybe check the return value?
       let decks = getState().deck.decks.map((deck) => {
-        if (deck.id == deckId) {
-          return {...deck, running: true}
+        if (deck.id === deckId) {
+          return { ...deck, running: true }
         }
-        return {...deck}
+        return { ...deck }
       })
       return decks
     })
     .then(decks => dispatch(runDeckSucceeded(decks)))
     .catch((ex) => {
+      dispatch(receivedNotification('Error', `Could not run deck ${deckId}`, 'error'))
       dispatch(runDeckFailed(deckId, ex))
     })
 }
 
 export const toggleDeck = (deckId) => (dispatch, getState) => {
-  let action = null;
+  let action = null
   let decks = getState().deck.decks.map((deck) => {
-    if (deck.id == deckId) {
+    if (deck.id === deckId) {
       action = deck.enabled ? 'disable' : 'enable'
-      return {...deck, enabled: !deck.enabled}
+      return { ...deck, enabled: !deck.enabled }
     }
-    return {...deck}
+    return { ...deck }
   })
   if (action === null) {
     // XXX handle this case
     return
   }
-  return fetch(`/api/deck/${deckId}/${action}`, {method: 'POST'})
+  return fetch(`/api/deck/${deckId}/${action}`, { method: 'POST' })
     .then(data => data.json())
     .then(json => {
-      dispatch(loadingDecksSucceeded(decks));
+      dispatch(loadingDecksSucceeded(decks))
     })
     .catch((ex) => {
-      // XXX handle this case
-      console.log("Failed to load decks", ex);
-    });
+      dispatch(receivedNotification('Failed to load decks', ex.toString(), 'error'))
+    })
 }
 
 export const loadingDecks = () => ({
@@ -80,14 +81,15 @@ export const loadingDecksFailed = (ex) => ({
 })
 
 export const load = () => (dispatch, getState) => {
-  dispatch(loadingDecks());
+  dispatch(loadingDecks())
 
   fetch('/api/deck')
     .then(data => data.json())
     // XXX take out of here infoBoxOpen
-    .then(json => json.decks.map((deck) => ({...deck, infoBoxOpen: false})))
+    .then(json => json.decks.map((deck) => ({ ...deck, infoBoxOpen: false })))
     .then(decks => dispatch(loadingDecksSucceeded(decks)))
     .catch((ex) => {
+      dispatch(receivedNotification('Failed to load decks', ex.toString(), 'error'))
       dispatch(loadingDecksFailed(ex))
-    });
+    })
 }

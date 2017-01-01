@@ -10,22 +10,22 @@ const ACTION_HANDLERS = {
   [RUN_DECK_SUCCEEDED]: (state, action) => ({
     ...state, decks: action.decks
   }),
-  [LOADING_DECKS]: (state, action) => ({...state, loading: true}),
+  [LOADING_DECKS]: (state, action) => ({ ...state, loading: true }),
   [LOADING_DECKS_SUCCEEDED]: (state, action) => {
-    return {...state, decks: action.decks, loading: false};
+    return { ...state, decks: action.decks, loading: false }
   },
   // XXX Handle thse
   [RUN_DECK_FAILED]: (state, action) => state,
-  [LOADING_DECKS_FAILED]: (state, action) => state,
-};
+  [LOADING_DECKS_FAILED]: (state, action) => state
+}
 
 const initialState = {
   runningDecks: [],
   loading: false,
   decks: []
-};
+}
 
-export function deckReducer(state = initialState, action) {
-    const handler = ACTION_HANDLERS[action.type];
-    return handler ? handler(state, action) : state
+export function deckReducer (state = initialState, action) {
+  const handler = ACTION_HANDLERS[action.type]
+  return handler ? handler(state, action) : state
 }

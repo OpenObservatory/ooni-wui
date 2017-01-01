@@ -4,7 +4,6 @@ import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 
 import MeasurementDetails from './MeasurementDetails'
 
-
 import {
   formatViewButton,
   snakeToHuman,
@@ -29,51 +28,51 @@ const MeasurementViewer = ({
     <div>
       {selectedMeasurements.results.length > 1 &&
         <div>
-          <div className="text-xs-left">
-            <a className="text-primary clickable" onClick={onBackClick}>
-              <i className="fa fa-arrow-circle-o-left" /> Return
+          <div className='text-xs-left'>
+            <a className='text-primary clickable' onClick={onBackClick}>
+              <i className='fa fa-arrow-circle-o-left' /> Return
             </a>
           </div>
-          <div className="text-xs-center">
+          <div className='text-xs-center'>
             <h1>{snakeToHuman(selectedMeasurements.test_name)}</h1>
-            <p className="copy">Date and Time: {formatDate(selectedMeasurements.test_start_time)}</p>
-            <p className="copy">ASN: {selectedMeasurements.asn}</p>
-            <p className="copy">Country: {selectedMeasurements.country_code}</p>
+            <p className='copy'>Date and Time: {formatDate(selectedMeasurements.test_start_time)}</p>
+            <p className='copy'>ASN: {selectedMeasurements.asn}</p>
+            <p className='copy'>Country: {selectedMeasurements.country_code}</p>
           </div>
 
           <BootstrapTable
-            tableStyle={{border: 'none'}}
-            containerStyle={{border: 'none'}}
+            tableStyle={{ border: 'none' }}
+            containerStyle={{ border: 'none' }}
             trClassName={rowClassNameFormat}
             data={selectedMeasurements.results}>
-            <TableHeaderColumn dataAlign='center' dataField="url">
+            <TableHeaderColumn dataAlign='center' dataField='url'>
               Url
             </TableHeaderColumn>
-            <TableHeaderColumn width="100" dataAlign='center' dataField="anomaly"
-                               dataFormat={formatViewButton(tableOptions.onRowClick)}>
+            <TableHeaderColumn width='100' dataAlign='center' dataField='anomaly'
+              dataFormat={formatViewButton(tableOptions.onRowClick)}>
               Result
             </TableHeaderColumn>
-            <TableHeaderColumn dataField="idx" isKey={true} hidden></TableHeaderColumn>
+            <TableHeaderColumn dataField='idx' isKey hidden />
           </BootstrapTable>
         </div>
       }
 
       <Modal
-        className="Modal__Bootstrap modal-dialog"
+        className='Modal__Bootstrap modal-dialog'
         onRequestClose={onCloseClick}
-        contentLabel="Measurement details"
+        contentLabel='Measurement details'
         isOpen={isMeasurementOpen}>
-        <div className="modal-content">
-          <button type="button" className="close" onClick={onCloseClick}>
-            <span aria-hidden="true">&times;</span>
-            <span className="sr-only">Close</span>
+        <div className='modal-content'>
+          <button type='button' className='close' onClick={onCloseClick}>
+            <span aria-hidden='true'>&times;</span>
+            <span className='sr-only'>Close</span>
           </button>
-          <div className="modal-body modal-body-no-header">
+          <div className='modal-body modal-body-no-header'>
             <MeasurementDetails
-              measurement={openMeasurement}/>
+              measurement={openMeasurement} />
           </div>
-          <div className="modal-footer text-xs-center">
-            <button className="btn btn-primary" onClick={onCloseClick}>
+          <div className='modal-footer text-xs-center'>
+            <button className='btn btn-primary' onClick={onCloseClick}>
               Return
             </button>
           </div>
@@ -90,6 +89,6 @@ MeasurementViewer.propTypes = {
   onCloseClick: React.PropTypes.func,
   isMeasurementOpen: React.PropTypes.bool,
   openMeasurement: React.PropTypes.object
-};
+}
 
 export default MeasurementViewer

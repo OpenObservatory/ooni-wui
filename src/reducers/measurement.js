@@ -5,16 +5,16 @@ import {
 } from '../actions/measurement'
 
 const ACTION_HANDLERS = {
-    [LOADING_MEASUREMENTS_FAILED]: (state, action) => {
-      return ({...state, failed: true, loading: false, failure: action.ex})
-    },
-    [LOADING_MEASUREMENTS_SUCCEEDED]: (state, action) => {
-        return ({...state, loading: false, measurements: action.measurements})
-    },
-    [LOADING_MEASUREMENTS]: (state) => {
-      return ({...state, loading: true})
-    }
-};
+  [LOADING_MEASUREMENTS_FAILED]: (state, action) => {
+    return ({ ...state, failed: true, loading: false, failure: action.ex })
+  },
+  [LOADING_MEASUREMENTS_SUCCEEDED]: (state, action) => {
+    return ({ ...state, loading: false, measurements: action.measurements })
+  },
+  [LOADING_MEASUREMENTS]: (state) => {
+    return ({ ...state, loading: true })
+  }
+}
 
 const initialState = {
   failed: false,
@@ -22,8 +22,8 @@ const initialState = {
   loading: false,
   measurements: []
 }
-export function measurementReducer(state = initialState, action) {
-    const handler = ACTION_HANDLERS[action.type];
+export function measurementReducer (state = initialState, action) {
+  const handler = ACTION_HANDLERS[action.type]
 
-    return handler ? handler(state, action) : state
+  return handler ? handler(state, action) : state
 }

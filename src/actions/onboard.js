@@ -1,31 +1,31 @@
-import {fetch} from '../util/api'
+import { fetch } from '../util/api'
 
-export const GOTO_STEP = 'GOTO_STEP';
-export const NEXT_STEP = 'NEXT_STEP';
+export const GOTO_STEP = 'GOTO_STEP'
+export const NEXT_STEP = 'NEXT_STEP'
 
-export const SETTINGS_CHANGED = 'SETTINGS_CHANGED';
+export const SETTINGS_CHANGED = 'SETTINGS_CHANGED'
 
-export const DECK_TOGGLED = 'DECK_TOGGLED';
+export const DECK_TOGGLED = 'DECK_TOGGLED'
 
-export const QUIZ_ANSWERED = 'QUIZ_ANSWERED';
-export const QUIZ_CHANGED = 'QUIZ_CHANGED';
-export const QUIZ_CLOSED = 'QUIZ_CLOSED';
+export const QUIZ_ANSWERED = 'QUIZ_ANSWERED'
+export const QUIZ_CHANGED = 'QUIZ_CHANGED'
+export const QUIZ_CLOSED = 'QUIZ_CLOSED'
 
 export const LOADING_INITIAL_DECKS = 'LOADING_INITIAL_DECKS'
 export const LOADING_INITIAL_DECKS_SUCCEEDED = 'LOADING_INITIAL_DECKS_SUCCEEDED'
 export const LOADING_INITIAL_DECKS_FAILED = 'LOADING_INITIAL_DECKS_FAILED'
 
-export const lastStep = 3;
-export const quizStep = 1;
+export const lastStep = 3
+export const quizStep = 1
 
-export function nextStep() {
+export const nextStep = () => {
   return {
     type: NEXT_STEP
   }
 }
 
 export const loadingDecks = () => ({
-  type: LOADING_INITIAL_DECKS,
+  type: LOADING_INITIAL_DECKS
 })
 
 export const loadingDecksSucceeded = (decks) => ({
@@ -43,13 +43,13 @@ export const loadDecks = () => (dispatch, getState) => {
     .then(data => data.json())
     .then(json => dispatch(loadingDecksSucceeded(json.available_decks)))
     .catch((ex) => {
-      console.log("Got error", ex)
+      console.log('Got error', ex)
     })
 }
 
-export function finalize() {
+export const finalize = () => {
   return (dispatch, getState) => {
-    const {onboard, deck} = getState();
+    const { onboard } = getState()
     let options = {
       include_ip: onboard.settings.includeIP,
       include_asn: onboard.settings.includeNetwork,
@@ -67,48 +67,36 @@ export function finalize() {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(options)
-    });
+    })
   }
 }
 
-export function gotoStep(stepNumber) {
-  return {
-    type: GOTO_STEP,
-    payload: stepNumber
-  }
-}
+export const gotoStep = (stepNumber) => ({
+  type: GOTO_STEP,
+  payload: stepNumber
+})
 
-export function settingsChanged(key, value) {
-  return {
-    type: SETTINGS_CHANGED,
-    key: key,
-    value: value
-  }
-}
+export const settingsChanged = (key, value) => ({
+  type: SETTINGS_CHANGED,
+  key: key,
+  value: value
+})
 
-export function deckToggled(deckID) {
-  return {
-    type: DECK_TOGGLED,
-    payload: deckID
-  }
-}
+export const deckToggled = (deckID) => ({
+  type: DECK_TOGGLED,
+  payload: deckID
+})
 
-export function quizAnswered() {
-  return {
-    type: QUIZ_ANSWERED
-  }
-}
+export const quizAnswered = () => ({
+  type: QUIZ_ANSWERED
+})
 
-export function quizClosed() {
-  return {
-    type: QUIZ_CLOSED
-  }
-}
+export const quizClosed = () => ({
+  type: QUIZ_CLOSED
+})
 
-export function quizChanged(key, value) {
-  return {
-    type: QUIZ_CHANGED,
-    key: key,
-    value: value
-  }
-}
+export const quizChanged = (key, value) => ({
+  type: QUIZ_CHANGED,
+  key: key,
+  value: value
+})

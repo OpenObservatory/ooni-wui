@@ -1,6 +1,6 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import OnboardSteps from '../components/OnboardSteps';
+import OnboardSteps from '../components/OnboardSteps'
 import {
   gotoStep,
   nextStep,
@@ -11,11 +11,11 @@ import {
   quizClosed,
   finalize,
   lastStep
-} from '../../../actions/onboard';
+} from '../../../actions/onboard'
 
-import {fetchStatus} from '../../../actions/status';
+import { fetchStatus } from '../../../actions/status'
 
-import {history} from '../../../store/location'
+import { history } from '../../../store/location'
 
 const mapStoreToProps = (state) => {
   return ({
@@ -26,29 +26,29 @@ const mapStoreToProps = (state) => {
     quizAnswers: state.onboard.quizAnswers,
     quizOpen: state.onboard.quizOpen,
     quizCorrect: state.onboard.quizCorrect
-  });
-};
+  })
+}
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onNextClick: () => {
-      dispatch(nextStep());
+      dispatch(nextStep())
     },
     onSkipClick: () => {
-      dispatch(gotoStep(lastStep));
+      dispatch(gotoStep(lastStep))
     },
     gotoStep: (number) => {
       return () => {
-        dispatch(gotoStep(number));
-      };
+        dispatch(gotoStep(number))
+      }
     },
     onSettingsChange: (key) => {
       return (event) => {
-        let value;
+        let value
         if (key === 'uploadMethod') {
           value = event.target.value
         } else {
-          value = false;
+          value = false
           if (event.target.checked) {
             value = true
           }
@@ -56,29 +56,29 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         dispatch(settingsChanged(key, value))
       }
     },
-    onDeckToggled: (deck_id) => {
-      dispatch(deckToggled(deck_id))
+    onDeckToggled: (deckId) => {
+      dispatch(deckToggled(deckId))
     },
     onCloseQuiz: () => {
-      dispatch(quizClosed());
+      dispatch(quizClosed())
     },
     onAnswerQuiz: () => {
-      dispatch(quizAnswered());
+      dispatch(quizAnswered())
     },
     onAnswerChange: (key) => {
       return (event) => {
-        const value = (event.target.value == 'true') ? true : false;
-        dispatch(quizChanged(key, value));
+        const value = (event.target.value === 'true')
+        dispatch(quizChanged(key, value))
       }
     },
     onFinalize: () => {
       dispatch(finalize()).then(() => {
-        dispatch(fetchStatus()).then(()=> {
-          history.push('/');
+        dispatch(fetchStatus()).then(() => {
+          history.push('/')
         })
-      });
+      })
     }
   }
-};
+}
 
 export default connect(mapStoreToProps, mapDispatchToProps)(OnboardSteps)

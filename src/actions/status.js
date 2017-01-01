@@ -1,10 +1,10 @@
-import {fetch} from '../util/api'
-import {Poller} from '../util/poller'
-import {receivedNotification} from './notification'
+import { fetch } from '../util/api'
+import { Poller } from '../util/poller'
+import { receivedNotification } from './notification'
 
-export const UPDATING_STATUS = 'UPDATING_STATUS';
-export const UPDATING_STATUS_SUCCEEDED = 'UPDATING_STATUS_SUCCEEDED';
-export const UPDATING_STATUS_FAILED = 'UPDATING_STATUS_FAILED';
+export const UPDATING_STATUS = 'UPDATING_STATUS'
+export const UPDATING_STATUS_SUCCEEDED = 'UPDATING_STATUS_SUCCEEDED'
+export const UPDATING_STATUS_FAILED = 'UPDATING_STATUS_FAILED'
 
 export const updatingStatusSucceeded = (status) => ({
   type: UPDATING_STATUS_SUCCEEDED,
@@ -23,16 +23,16 @@ export const fetchStatus = () => (dispatch) => {
     .then(data => data.json())
     .then(json => dispatch(updatingStatusSucceeded(json)))
     .catch((ex) => {
-      console.log(ex)
-      console.log("Failed to update status");
-    });
+      dispatch(receivedNotification('Failed to update status', ex.toString(), 'error'))
+    })
 }
 
-export const startStatusPoller = () => (dispatch) => {
+export const startStatusPoller = () => (dispatch, getStatus) => {
   let poller = new Poller('/api/status/update', '/api/status')
   poller.start((json) => {
     dispatch(updatingStatusSucceeded(json))
   }, (error) => {
-    dispatch(receivedNotification('Error in status update', error, 'error'))
+    dispatch(receivedNotification('Error in status update', error.toString(), 'error'))
+    dispatch({ ...getStatus(), running: false })
   })
 }

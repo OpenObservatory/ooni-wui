@@ -1,24 +1,25 @@
-import {fetch} from './api'
+import { fetch } from './api'
 
 export class Poller {
 
-  constructor(updateUrl = '/api/status/update',
-              initializeUrl = '/api/status',
-              delay = 1*1000) {
+  constructor (updateUrl = '/api/status/update',
+               initializeUrl = '/api/status',
+               delay = 1 * 1000) {
     this.initializeUrl = initializeUrl
     this.updateUrl = updateUrl
     this.delay = delay
   }
 
-  start(onNotifySuccess, onNotifyError) {
+  start (onNotifySuccess, onNotifyError) {
+    console.log(`Starting long polling on ${this.updateUrl}`)
     if (onNotifySuccess === undefined) {
       onNotifySuccess = (result) => {
-        console.log("Unbound onNotifySuccess", result)
+        console.log('Unbound onNotifySuccess', result)
       }
     }
     if (onNotifyError === undefined) {
       onNotifyError = (error) => {
-        console.log("Unbound onNotifyError", error)
+        console.log('Unbound onNotifyError', error)
       }
     }
     let self = this
@@ -30,11 +31,11 @@ export class Poller {
           onNotifySuccess(json)
         })
         .catch((ex) => {
-          onNotifyError(ex)
+          onNotifyError(ex.toString())
         })
     }
     const tick = () => {
-      if (current === undefined || current.$resolved)  {
+      if (current === undefined || current.$resolved) {
         current = fetch(self.updateUrl)
           .then((result) => result.json())
           .then((json) => {
@@ -43,7 +44,7 @@ export class Poller {
           })
           .catch((ex) => {
             current.$resolved = true
-            onNotifyError(ex)
+            onNotifyError(ex.toString())
           })
       }
       current.$resolved = false

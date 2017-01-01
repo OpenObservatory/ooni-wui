@@ -9,7 +9,7 @@ export default (store) => ({
   getComponent (nextState, cb) {
     require.ensure([], (require) => {
       const Onboard = require('./containers/OnboardContainer').default
-      const {onboardReducer} = require('../../reducers/onboard')
+      const { onboardReducer } = require('../../reducers/onboard')
 
       injectReducer(store, {
         key: 'onboard',

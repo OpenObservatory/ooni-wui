@@ -1,32 +1,32 @@
-const express = require('express');
-const debug = require('debug')('app:server');
-const webpack = require('webpack');
-const webpackConfig = require('../config/webpack.config');
-const project = require('../config/project.config');
-const compress = require('compression');
+const express = require('express')
+const debug = require('debug')('app:server')
+const webpack = require('webpack')
+const webpackConfig = require('../config/webpack.config')
+const project = require('../config/project.config')
+const compress = require('compression')
 
-const app = express();
+const app = express()
 
 if (project.env === 'development') {
-  debug('Enabling mocked API');
-  app.use('/api', require('./mockAPI'));
+  debug('Enabling mocked API')
+  app.use('/api', require('./mockAPI'))
 }
 
 // This rewrites all routes requests to the root /index.html file
 // (ignoring file requests). If you want to implement universal
 // rendering, you'll want to remove this middleware.
-app.use(require('connect-history-api-fallback')());
+app.use(require('connect-history-api-fallback')())
 
 // Apply gzip compression
-app.use(compress());
+app.use(compress())
 
 // ------------------------------------
 // Apply Webpack HMR Middleware
 // ------------------------------------
 if (project.env === 'development') {
-  const compiler = webpack(webpackConfig);
+  const compiler = webpack(webpackConfig)
 
-  debug('Enabling webpack dev and HMR middleware');
+  debug('Enabling webpack dev and HMR middleware')
   app.use(require('webpack-dev-middleware')(compiler, {
     publicPath  : webpackConfig.output.publicPath,
     contentBase : project.paths.client(),
@@ -35,8 +35,8 @@ if (project.env === 'development') {
     noInfo      : project.compiler_quiet,
     lazy        : false,
     stats       : project.compiler_stats
-  }));
-  app.use(require('webpack-hot-middleware')(compiler));
+  }))
+  app.use(require('webpack-hot-middleware')(compiler))
 
   // Serve static assets from ~/public since Webpack is unaware of
   // these files. This middleware doesn't need to be enabled outside

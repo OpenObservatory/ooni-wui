@@ -1,13 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router';
+import { Link } from 'react-router'
 
-import Deck from '../../../components/Deck';
-import DeckRunner from './DeckRunner';
+import Deck from '../../../components/Deck'
+import DeckRunner from './DeckRunner'
 
 import OONILogoImage from '../assets/ooni-logo.svg'
 import './Dashboard.scss'
 
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 
 import {
   formatName,
@@ -45,34 +45,34 @@ export const Dashboard = ({
 }) => (
   <div>
 
-    <div className="row text-xs-center">
+    <div className='row text-xs-center'>
       <h1>ooniprobe Dashboard</h1>
-      <div className="status">
-        ooniprobe {softwareVersion} { "| " }
-        {running == true
-         && <span className="status-running">
-            running <i className="fa fa-check-circle-o" />
-            </span>
+      <div className='status'>
+        ooniprobe {softwareVersion} { '| ' }
+        {running === true &&
+        <span className='status-running'>
+            running <i className='fa fa-check-circle-o' />
+        </span>
         }
-        {running == false
-         && <span className="status-not-running">
-              not running <i className="fa fa-close" />
-            </span>
+        {running === false &&
+        <span className='status-not-running'>
+              not running <i className='fa fa-close' />
+        </span>
         }
-        { " | " }
+        { ' | ' }
         Location: {countryCode} { `(${asn})` }
       </div>
     </div>
 
-    <div className="row decks">
+    <div className='row decks'>
       {
         decks.map((deck) => {
           return <Deck
-                    key={deck.id}
-                    deck={deck}
-                    onDeckToggled={onDeckToggled}
-                    onDeckRun={onDeckRun}
-                    fullControls={true}/>
+            key={deck.id}
+            deck={deck}
+            onDeckToggled={onDeckToggled}
+            onDeckRun={onDeckRun}
+            fullControls />
         })
       }
     </div>
@@ -88,39 +88,39 @@ export const Dashboard = ({
       nettests={nettests}
       deck={activeDeck} />
 
-    {recentResults.length == 0 ?
-      <div className="row recent-results">
-        <div className="col-md-3 offset-md-3">
-          <img src={OONILogoImage} width="200px" height="200px" className="ooni-logo"/>
+    {recentResults.length === 0
+      ? <div className='row recent-results'>
+        <div className='col-md-3 offset-md-3'>
+          <img src={OONILogoImage} width='200px' height='200px' className='ooni-logo' />
         </div>
-        <div className="col-md-3">
+        <div className='col-md-3'>
           <h2>Your recent test results will appear here once the tests have finished running!
             As you run more tests, you can view past results in the "Measurements" page.</h2>
         </div>
-      </div> :
-      <div className="row recent-results text-xs-center">
+      </div>
+      : <div className='row recent-results text-xs-center'>
         <h2>Last {recentResults.length} tests</h2>
         <BootstrapTable
           bordered={false}
-          headerStyle={{'display': 'none'}}
-          tableStyle={{border: 'none'}}
-          containerStyle={{border: 'none'}}
-          bodyStyle={{border: 'none'}}
+          headerStyle={{ 'display': 'none' }}
+          tableStyle={{ border: 'none' }}
+          containerStyle={{ border: 'none' }}
+          bodyStyle={{ border: 'none' }}
           trClassName={rowClassNameFormat}
           data={recentResults}>
-          <TableHeaderColumn dataField="id" isKey={true} hidden>ID</TableHeaderColumn>
-          <TableHeaderColumn dataAlign='center' dataField="test_name" dataFormat={formatName(deckIcons)}></TableHeaderColumn>
-          <TableHeaderColumn dataAlign='center' dataField="test_start_time" dataFormat={formatTime}></TableHeaderColumn>
-          <TableHeaderColumn width="150" dataAlign='center' dataField="asn"></TableHeaderColumn>
-          <TableHeaderColumn width="100" dataAlign='center' dataField="country_code"></TableHeaderColumn>
-          <TableHeaderColumn width="40" dataAlign='center' dataField="result" dataFormat={formatResult}></TableHeaderColumn>
+          <TableHeaderColumn dataField='id' isKey hidden>ID</TableHeaderColumn>
+          <TableHeaderColumn dataAlign='center' dataField='test_name' dataFormat={formatName(deckIcons)} />
+          <TableHeaderColumn dataAlign='center' dataField='test_start_time' dataFormat={formatTime} />
+          <TableHeaderColumn width='150' dataAlign='center' dataField='asn' />
+          <TableHeaderColumn width='100' dataAlign='center' dataField='country_code' />
+          <TableHeaderColumn width='40' dataAlign='center' dataField='result' dataFormat={formatResult} />
         </BootstrapTable>
-        <Link to="/measurements" className="btn btn-primary">View your measurements</Link>
+        <Link to='/measurements' className='btn btn-primary'>View your measurements</Link>
       </div>
     }
 
   </div>
-);
+)
 
 Dashboard.propTypes = {
   softwareVersion: React.PropTypes.string,
@@ -146,6 +146,6 @@ Dashboard.propTypes = {
   activeDeck: React.PropTypes.object,
   activeNettest: React.PropTypes.object,
   loadingDecks: React.PropTypes.bool
-};
+}
 
 export default Dashboard

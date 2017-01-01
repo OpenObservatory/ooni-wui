@@ -6,7 +6,7 @@ const getMeasurements = (state) => state.measurement.measurements
 export const getVisibleMeasurements = createSelector(
   [getVisibilityFilter, getMeasurements],
   (visibilityFilter, measurements) => {
-    return measurements.filter(measurement => visibilityFilter.hiddenDecks.indexOf(measurement.deck_id) === -1);
+    return measurements.filter(measurement => visibilityFilter.hiddenDecks.indexOf(measurement.deck_id) === -1)
   }
 )
 

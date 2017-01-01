@@ -1,5 +1,5 @@
-import { connect } from 'react-redux';
-import MeasurementList from '../components/MeasurementList';
+import { connect } from 'react-redux'
+import MeasurementList from '../components/MeasurementList'
 
 import {
   showHideDeck,
@@ -32,7 +32,7 @@ const mapStateToProps = (state) => {
     decks: state.deck.decks,
     deckIcons: getDeckIcons(state),
     deckNames: getDeckNames(state)
-  });
-};
+  })
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(MeasurementList)

@@ -1,12 +1,12 @@
-import {fetch} from '../util/api';
+import { fetch } from '../util/api'
 
-import {receivedNotification} from '../actions/notification'
+import { receivedNotification } from '../actions/notification'
 
-export const RUN_NETTEST = 'RUN_NETTEST';
+export const RUN_NETTEST = 'RUN_NETTEST'
 
-export const LOADING_NETTESTS = 'LOADING_NETTESTS';
-export const LOADING_NETTESTS_SUCCEEDED = 'LOADING_NETTESTS_SUCCEEDED';
-export const LOADING_NETTESTS_FAILED = 'LOADING_NETTESTS_FAILED';
+export const LOADING_NETTESTS = 'LOADING_NETTESTS'
+export const LOADING_NETTESTS_SUCCEEDED = 'LOADING_NETTESTS_SUCCEEDED'
+export const LOADING_NETTESTS_FAILED = 'LOADING_NETTESTS_FAILED'
 
 export const runNettest = (nettestId, options) => {
   return fetch(`/api/nettest/${nettestId}/start`, {
@@ -27,9 +27,9 @@ export const loadingNettestsSucceeded = (nettests) => ({
   nettests
 })
 
-export const loadingNettestsFailed = () => (dispatch) => {
+export const loadingNettestsFailed = (ex) => (dispatch) => {
   dispatch(receivedNotification(
-    "Failed to fetch tests", `${ex.message}`, "error")
+    'Failed to fetch tests', `${ex.message}`, 'error')
   )
   return {
     type: LOADING_NETTESTS_FAILED
@@ -37,12 +37,12 @@ export const loadingNettestsFailed = () => (dispatch) => {
 }
 
 export const load = () => (dispatch) => {
-  dispatch(loadingNettests());
+  dispatch(loadingNettests())
 
   fetch('/api/nettest')
     .then(data => data.json())
     .then(json => dispatch(loadingNettestsSucceeded(json)))
     .catch((ex) => {
       dispatch(loadingNettestsFailed(ex))
-    });
+    })
 }

@@ -29,17 +29,17 @@ const jsonTreeTheme = {
 }
 
 const NETTEST_HANDLERS = {
-  ['web_connectivity']: (measurement) => (<WebConnectivityDetails measurement={measurement}/>),
-  ['facebook_messenger']: (measurement) => (<FacebookMessengerDetails measurement={measurement}/>),
-  ['http_header_field_manipulation']: (measurement) => (<HttpHeaderFieldManipulationDetails measurement={measurement}/>),
-  ['http_invalid_request_line']: (measurement) => (<HttpInvalidRequestLineDetails measurement={measurement}/>),
-  ['whatsapp']: (measurement) => (<WhatsappDetails measurement={measurement}/>),
+  'web_connectivity': (measurement) => (<WebConnectivityDetails measurement={measurement} />),
+  'facebook_messenger': (measurement) => (<FacebookMessengerDetails measurement={measurement} />),
+  'http_header_field_manipulation': (measurement) => (<HttpHeaderFieldManipulationDetails measurement={measurement} />),
+  'http_invalid_request_line': (measurement) => (<HttpInvalidRequestLineDetails measurement={measurement} />),
+  'whatsapp': (measurement) => (<WhatsappDetails measurement={measurement} />)
 }
 
 export const getNettestDetails = (measurement) => {
-    const handler = NETTEST_HANDLERS[measurement.test_name];
+  const handler = NETTEST_HANDLERS[measurement.test_name]
 
-    return handler ? handler(measurement) : <div/>
+  return handler ? handler(measurement) : <div />
 }
 
 export const MeasurementDetails = ({
@@ -47,9 +47,9 @@ export const MeasurementDetails = ({
 }) => {
   return (
     <div>
-      <div className="text-xs-center measurement-metadata">
-        {measurement.input != "" &&
-          <div className="measurement-input">
+      <div className='text-xs-center measurement-metadata'>
+        {measurement.input !== '' &&
+          <div className='measurement-input'>
             <span>{measurement.input}</span>
           </div>
         }
@@ -60,10 +60,10 @@ export const MeasurementDetails = ({
       <div>
         {getNettestDetails(measurement)}
       </div>
-      <h2><i className="ooni icon-measurement"/> Technical measurement data</h2>
+      <h2><i className='ooni icon-measurement' /> Technical measurement data</h2>
       <JSONTree
         theme={jsonTreeTheme}
-        hideRoot={true}
+        hideRoot
         invertTheme={false}
         shouldExpandNode={(keyName, data, level) => {
           const collapsedKeys = ['request', 'response']

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux'
 import { submit } from 'redux-form'
 
 import {
@@ -21,7 +21,7 @@ import {
 } from '../../../selectors/dashboard'
 
 import {
-  getDeckIcons,
+  getDeckIcons
 } from '../../../selectors/deck'
 
 import Dashboard from '../components/Dashboard'
@@ -42,8 +42,8 @@ const mapDispatchToProps = (dispatch) => ({
   onDeckRun: bindActionCreators(clickedRunDeck, dispatch),
   onDeckRunClose: bindActionCreators(closedRunDeck, dispatch),
   onTestRun: bindActionCreators(clickedRunTest, dispatch),
-  onTestRunClose: bindActionCreators(closedRunTest, dispatch),
-});
+  onTestRunClose: bindActionCreators(closedRunTest, dispatch)
+})
 
 const mapStateToProps = (state) => {
   return {
@@ -65,6 +65,7 @@ const mapStateToProps = (state) => {
     activeDeck: getActiveDeck(state),
     activeNettest: getActiveNettest(state),
     recentResults: getRecentMeasurements(state)
-}};
+  }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

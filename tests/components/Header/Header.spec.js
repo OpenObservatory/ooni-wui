@@ -1,6 +1,5 @@
 import React from 'react'
 import { Header } from 'components/Header/Header'
-import { IndexLink, Link } from 'react-router'
 import { shallow } from 'enzyme'
 
 describe('(Component) Header', () => {
@@ -14,5 +13,4 @@ describe('(Component) Header', () => {
     const ooniLogo = _wrapper.find('.ooni-logo')
     expect(ooniLogo).to.have.length(1)
   })
-
 })

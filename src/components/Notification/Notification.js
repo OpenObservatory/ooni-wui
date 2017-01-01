@@ -1,49 +1,53 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-import {ToastContainer, ToastMessage} from 'react-toastr';
+import { ToastContainer, ToastMessage } from 'react-toastr'
 
-let ToastMessageFactory = React.createFactory(ToastMessage.animation);
+let ToastMessageFactory = React.createFactory(ToastMessage.animation)
 
 class Notification extends Component {
-  constructor(props) {
-    super(props);
-    this.addAlert = this.addAlert.bind(this);
+  propTypes = {
+    messages: React.PropTypes.array
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.messages != nextProps.messages) {
-      this.addAlert(nextProps.messages.pop(0));
+  constructor (props) {
+    super(props)
+    this.addAlert = this.addAlert.bind(this)
+  }
+
+  componentWillReceiveProps (nextProps) {
+    if (this.props.messages !== nextProps.messages) {
+      this.addAlert(nextProps.messages.pop(0))
     }
   }
 
-  render() {
+  render () {
     return (
       <ToastContainer
-        toastMessageFactory={ToastMessageFactory} ref="container"
-        className="toast-container toast-bottom-right"/>
-    );
+        toastMessageFactory={ToastMessageFactory} ref='container'
+        className='toast-container toast-bottom-right' />
+    )
   }
 
-  addAlert(message) {
+  addAlert (message) {
     this.refs.container[message.type](
       message.message,
       message.title,
       {
         timeOut: 3000,
         extendedTimeOut: 1000,
-        showAnimation: "animated fadeInUp",
-        hideAnimation: "animated fadeOutUp",
+        showAnimation: 'animated fadeInUp',
+        hideAnimation: 'animated fadeOutUp',
         closeButton: true
       }
-    );
+    )
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     messages: state.notification.messages
-  };
+  }
 }
 
-export default connect(mapStateToProps)(Notification);
+export default connect(mapStateToProps)(Notification)

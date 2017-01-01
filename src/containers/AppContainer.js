@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import Modal from 'react-modal'
 import { history } from '../store/location'
 
-Modal.defaultStyles.overlay.backgroundColor  = 'rgba(0, 0, 0, 0.5)'
+Modal.defaultStyles.overlay.backgroundColor = 'rgba(0, 0, 0, 0.5)'
 
 class AppContainer extends Component {
   static propTypes = {

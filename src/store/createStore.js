@@ -37,7 +37,7 @@ export default (initialState = {}) => {
   store.asyncReducers = {}
 
   // To unsubscribe, invoke `store.unsubscribeHistory()` anytime
-  //store.unsubscribeHistory = browserHistory.listen(updateLocation(store))
+  // store.unsubscribeHistory = browserHistory.listen(updateLocation(store))
   store.unsubscribeHistory = history.listen(updateLocation(store))
 
   if (module.hot) {

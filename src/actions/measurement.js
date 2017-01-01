@@ -1,4 +1,4 @@
-import {fetch} from '../util/api'
+import { fetch } from '../util/api'
 
 export const LOADING_MEASUREMENTS = 'LOADING_MEASUREMENTS'
 export const LOADING_MEASUREMENTS_FAILED = 'LOADING_MEASUREMENTS_FAILED'
@@ -26,5 +26,5 @@ export const load = () => (dispatch, getState) => {
     .then(json => dispatch(loadingSucceeded(json.measurements)))
     .catch((ex) => {
       dispatch(loadingFailed(ex))
-    });
+    })
 }

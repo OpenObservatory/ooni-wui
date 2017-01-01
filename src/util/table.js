@@ -8,21 +8,21 @@ export const formatDate = (d) => {
 export const renderCarret = (direction) => {
   if (direction === 'asc') {
     return (
-      <span> <i className="fa fa-sort-amount-asc" /></span>
+      <span> <i className='fa fa-sort-amount-asc' /></span>
     )
   }
   if (direction === 'desc') {
     return (
-      <span> <i className="fa fa-sort-amount-desc" /></span>
+      <span> <i className='fa fa-sort-amount-desc' /></span>
     )
   }
   return (
-    <span/>
+    <span />
   )
 }
 
 export const formatName = (deckIcons) => (cell, row) => {
-  const deckIcon = deckIcons[row.deck_id];
+  const deckIcon = deckIcons[row.deck_id]
   return <span><i className={`fa ${deckIcon}`} />{` ${cell}`}</span>
 }
 
@@ -37,23 +37,22 @@ export const formatTime = (cell, row) => {
 }
 
 export const formatResult = (cell, row) => {
-  if (cell == 'ok') {
-    return <i className="icon-ok fa fa-check-circle-o" />
-  } else if (cell == 'error') {
-    return <i className="icon-error fa fa-warning" />
+  if (cell === 'ok') {
+    return <i className='icon-ok fa fa-check-circle-o' />
+  } else if (cell === 'error') {
+    return <i className='icon-error fa fa-warning' />
   }
 }
 
 export const formatViewButton = (onClick) => (cell, row) => {
-  return <button className="btn btn-primary" onClick={() => onClick(row)}>View</button>
+  return <button className='btn btn-primary' onClick={() => onClick(row)}>View</button>
 }
 
 export const rowClassNameFormat = (row, rowIdx) => {
   let className = 'tr-row'
-  if (row.anomaly === true || row.result == 'error') {
+  if (row.anomaly === true || row.result === 'error') {
     className += ' tr-row-anomaly'
-  }
-  else if (row.anomaly === false || row.result == 'ok') {
+  } else if (row.anomaly === false || row.result === 'ok') {
     className += ' tr-row-normal'
   }
   return className

@@ -18,15 +18,15 @@ const ACTION_HANDLERS = {
   [CLOSED_RUN_TEST]: (state, action) => ({
     ...state, activeNettestId: null
   })
-};
+}
 
 const initialState = {
   runOpen: false,
   activeDeckId: null,
   activeNettestId: null
-};
+}
 
-export function dashboardReducer(state = initialState, action) {
-    const handler = ACTION_HANDLERS[action.type];
-    return handler ? handler(state, action) : state
+export function dashboardReducer (state = initialState, action) {
+  const handler = ACTION_HANDLERS[action.type]
+  return handler ? handler(state, action) : state
 }

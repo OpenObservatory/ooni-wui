@@ -1,5 +1,5 @@
-import React from 'react';
-import Deck from './Deck';
+import React from 'react'
+import Deck from './Deck'
 
 export default class DeckContainer extends React.Component {
   static propTypes = {
@@ -16,33 +16,35 @@ export default class DeckContainer extends React.Component {
     onDeckRun: React.PropTypes.func
   };
 
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       infoBoxOpen: false
-    };
+    }
   }
 
-  openDeckInfo() {
-    this.setState({...this.state, infoBoxOpen: true});
+  openDeckInfo () {
+    this.setState({ ...this.state, infoBoxOpen: true })
   }
 
-  closeDeckInfo() {
-    this.setState({...this.state, infoBoxOpen: false});
+  closeDeckInfo () {
+    this.setState({ ...this.state, infoBoxOpen: false })
   }
 
-  render() {
+  render () {
     return (
       <Deck
         deck={this.props.deck}
         infoBoxOpen={this.state.infoBoxOpen}
+        // XXX: https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md
+        // eslint-disable-next-line
         openDeckInfo={this.openDeckInfo.bind(this)}
+        // eslint-disable-next-line
         closeDeckInfo={this.closeDeckInfo.bind(this)}
         onDeckRun={this.props.onDeckRun}
         onDeckToggled={this.props.onDeckToggled}
-        fullControls={this.props.fullControls}/>
+        fullControls={this.props.fullControls} />
     )
   }
 }
-
 
