@@ -29,6 +29,9 @@ export const formatName = (deckIcons) => (cell, row) => {
 export const formatDeckName = (deckIcons, deckNames) => (cell, row) => {
   const deckIcon = deckIcons[row.deck_id]
   const deckName = deckNames[row.deck_id]
+  if (deckName === undefined) {
+    return <span><i className='fa fa-square' /> none</span>
+  }
   return <span><i className={`fa ${deckIcon}`} />{` ${deckName}`}</span>
 }
 
@@ -45,6 +48,12 @@ export const formatResult = (cell, row) => {
 }
 
 export const formatViewButton = (onClick) => (cell, row) => {
+  if (row.running === true) {
+    return <i className='fa fa-spinner fa-pulse' />
+  }
+  if (row.stale === true) {
+    return <i className='icon-warning fa fa-warning' />
+  }
   return <button className='btn btn-primary' onClick={() => onClick(row)}>View</button>
 }
 

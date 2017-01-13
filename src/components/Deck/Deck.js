@@ -4,20 +4,25 @@ import Modal from 'react-modal'
 
 import './Deck.scss'
 
-const FullControls = ({ deckId, enabled, running, openDeckInfo, onDeckToggled, onDeckRun }) => (
+const FullControls = ({ deckId, enabled, running, runningScheduled, openDeckInfo, onDeckToggled, onDeckRun }) => (
   <div className='row'>
     <div className='col-md-2 offset-md-3' onClick={openDeckInfo}>
       <i className='icon-btn fa fa-info-circle' />
     </div>
     <div className='col-md-2'>
-      {enabled
-        ? <i className='icon-btn-on fa fa-clock-o' onClick={() => onDeckToggled(deckId)} />
-        : <i className='icon-btn-off fa fa-clock-o' onClick={() => onDeckToggled(deckId)} />
+      {runningScheduled &&
+      <i className='icon-btn-cancel fa fa-circle-o-notch fa-spin' />
+      }
+      {enabled && !runningScheduled &&
+      <i className='icon-btn-on fa fa-clock-o' onClick={() => onDeckToggled(deckId)} />
+      }
+      {!enabled && !runningScheduled &&
+      <i className='icon-btn-off fa fa-clock-o' onClick={() => onDeckToggled(deckId)} />
       }
     </div>
     <div className='col-md-2'>
       {running
-        ? <i className='icon-btn-cancel fa fa-spinner fa-spin' />
+        ? <i className='icon-btn-cancel fa fa-spinner fa-pulse' />
         : <i className='icon-btn fa fa-play' onClick={() => onDeckRun(deckId)} />
       }
     </div>
@@ -27,6 +32,7 @@ FullControls.propTypes = {
   deckId: React.PropTypes.string,
   enabled: React.PropTypes.bool,
   running: React.PropTypes.bool,
+  runningScheduled: React.PropTypes.bool,
   openDeckInfo: React.PropTypes.func,
 
   onDeckToggled: React.PropTypes.func,
@@ -79,6 +85,7 @@ export const Deck = ({
           deckId={deck.id}
           enabled={deck.enabled}
           running={deck.running}
+          runningScheduled={deck.running_scheduled}
           openDeckInfo={openDeckInfo}
           onDeckRun={onDeckRun}
           onDeckToggled={onDeckToggled} />

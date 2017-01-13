@@ -2,8 +2,9 @@ import React from 'react'
 
 export const HttpHeaderFieldManipulationDetails = ({ measurement }) => {
   let anomaly = false
-  measurement.test_keys.tampering.forEach((value) => {
-    if (value === true) {
+  const tampering = measurement.test_keys.tampering
+  Object.keys(tampering).forEach((key) => {
+    if (tampering[key] === true) {
       anomaly = true
     }
   })
@@ -11,13 +12,11 @@ export const HttpHeaderFieldManipulationDetails = ({ measurement }) => {
     <div>
       {anomaly === true &&
       <p className='text-danger copy'>
-        <i className='ooni icon-censorship-tampering' />
       This measurement contains data that could be a sign of network tampering or censorship.
     </p>
     }
       {anomaly === false &&
       <p className='text-success copy'>
-        <i className='ooni icon-censorship-tampering' />
         This measurement looks normal
       </p>
     }
