@@ -24,7 +24,13 @@ const webpackConfig = {
 // ------------------------------------
 // Entry Points
 // ------------------------------------
-const APP_ENTRY = project.paths.client('main.js')
+let APP_ENTRY = project.paths.client('main.js')
+let APP_INDEX = project.paths.client('index.html')
+if (process.env.NODE_ENV === 'mobile') {
+  debug('Building mobile version')
+  APP_INDEX = project.paths.client('index.mobile.html')
+  APP_ENTRY = project.paths.client('main.mobile.js')
+}
 
 webpackConfig.entry = {
   app : __DEV__
@@ -56,7 +62,7 @@ webpackConfig.externals['react/addons'] = true
 webpackConfig.plugins = [
   new webpack.DefinePlugin(project.globals),
   new HtmlWebpackPlugin({
-    template : project.paths.client('index.html'),
+    template : APP_INDEX,
     hash     : false,
     favicon  : project.paths.public('favicon.ico'),
     filename : 'index.html',
@@ -179,12 +185,12 @@ webpackConfig.postcss = [
 // File loaders
 /* eslint-disable */
 webpackConfig.module.loaders.push(
-  { test: /\.woff(\?.*)?$/,  loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff' },
-  { test: /\.woff2(\?.*)?$/, loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff2' },
-  { test: /\.otf(\?.*)?$/,   loader: 'file?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=font/opentype' },
-  { test: /\.ttf(\?.*)?$/,   loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/octet-stream' },
-  { test: /\.eot(\?.*)?$/,   loader: 'file?prefix=fonts/&name=[path][name].[ext]' },
-  { test: /\.svg(\?.*)?$/,   loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml' },
+  { test: /\.woff(\?.*)?$/,  loader: 'url?prefix=fonts/&name=fonts/[name].[hash].[ext]&limit=10000&mimetype=application/font-woff' },
+  { test: /\.woff2(\?.*)?$/, loader: 'url?prefix=fonts/&name=fonts/[name].[hash].[ext]&limit=10000&mimetype=application/font-woff2' },
+  { test: /\.otf(\?.*)?$/,   loader: 'file?prefix=fonts/&name=fonts/[name].[hash].[ext]&limit=10000&mimetype=font/opentype' },
+  { test: /\.ttf(\?.*)?$/,   loader: 'url?prefix=fonts/&name=fonts/[name].[hash].[ext]&limit=10000&mimetype=application/octet-stream' },
+  { test: /\.eot(\?.*)?$/,   loader: 'file?prefix=fonts/&name=fonts/[name].[hash].[ext]' },
+  { test: /\.svg(\?.*)?$/,   loader: 'url?prefix=fonts/&name=fonts/[name].[hash].[ext]&limit=10000&mimetype=image/svg+xml' },
   { test: /\.(png|jpg)$/,    loader: 'url?limit=8192' }
 )
 /* eslint-enable */
