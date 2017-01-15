@@ -27,6 +27,7 @@ module.exports = {
     }
   }),
   mobile: (config) => ({
+    compiler_public_path     : '',
     compiler_fail_on_warning : false,
     compiler_hash_type       : 'hash',
     compiler_devtool         : null,
