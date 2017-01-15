@@ -23,7 +23,8 @@ export const WhatsappDetails = ({ measurement }) => {
       </p>
       }
 
-      {measurement.test_keys.facebook_tcp_blocking === true &&
+      { // XXX
+      measurement.test_keys.facebook_tcp_blocking === true &&
       <p className='text-danger copy'>
         WhatsApp appears to be blocked to due to TCP/IP blocking
       </p>

@@ -1,16 +1,54 @@
 @import '../../../styles/variables/colors';
 
-.measurement-metadata {
-  h2 {
-    color: $color-off-black;
-  }
-  .measurement-input {
-    color: $color-off-black;
-    font-weight: 200;
-    margin-bottom: 20px;
-  }
+.measurement-input {
+  color: $color-off-black;
+  font-size: 1.5em;
+  font-family: "Source Code Pro", monospace;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .measurement-results {
   text-transform: uppercase;
+}
+
+.nettest-details {
+  margin-top: 20px;
+}
+
+.result-item {
+  .result-item-name {
+    color: $color-ooni-blue;
+    font-size: 1.5rem;
+    display: block;
+  }
+
+  .result-item-value {
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+
+  .result-item-unit {
+    color: $color-off-black;
+    font-size: 1.5rem;
+    padding-left: 2px;
+  }
+}
+
+.result-success {
+  color: $color-status-ok-green;
+}
+
+.result-danger {
+  color: $color-status-bad-red;
+}
+
+.result-warning {
+  color: $color-status-warning-orange;
+}
+
+.copy {
+  strong {
+    color: $color-ooni-blue;
+  }
 }

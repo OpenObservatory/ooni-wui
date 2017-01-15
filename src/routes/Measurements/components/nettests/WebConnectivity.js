@@ -3,51 +3,54 @@ import React from 'react'
 export const WebConnectivityDetails = ({ measurement }) => {
   return (
     <div>
-      <div className='measurement-results text-xs-center'>
-        {measurement.test_keys.accessible === false &&
-        <p className='text-danger copy'>not accessible</p>
-        }
-        {measurement.test_keys.accessible === true &&
-        <p className='text-success copy'>accessible</p>
-        }
-        {measurement.test_keys.accessible === null &&
-        <p className='text-muted copy'>accessibility unknown</p>
-        }
-
-        {measurement.test_keys.blocking === false &&
-        <p className='text-success copy'>uncensored</p>
-        }
-        {measurement.test_keys.blocking !== false && measurement.test_keys.blocking !== null &&
-        <p className='text-danger copy'>censored</p>
-        }
-        {measurement.test_keys.blocking == null &&
-        <p className='text-muted copy'>censorship unknown</p>
-        }
-
+      {/* Normal measurement */}
+      {measurement.test_keys.accessible !== false && measurement.test_keys.blocking === false &&
+      <div>
+        <h2 className='result-success'><i className='fa fa-circle-check-o' /> No censorship detected</h2>
+        <p>The website <code>http://google.com/</code> is accessible and uncensored from this network.</p>
       </div>
+      }
+
+      {/* Site inaccessible */}
+      {measurement.test_keys.accessible === false && (
+          measurement.test_keys.blocking === false || measurement.test_keys.blocking === null
+        ) &&
+        <div>
+          <h2 className='result-warning'><i className='fa fa-exclamation-circle' /> Website unavailable</h2>
+          <p>The website <code>http://google.com/</code> appears to not be available at the moment.
+            Requests from the control vantage point are also failing.</p>
+        </div>
+      }
+
+      {/* Evidence of censorship */}
+      {measurement.test_keys.blocking !== null && measurement.test_keys.blocking !== false &&
+      <div>
+        <h2 className='result-danger'><i className='fa fa-times-circle-o' /> Evidence of censorship</h2>
+      </div>
+      }
 
       {measurement.test_keys.blocking === 'dns' &&
-      <p className='text-danger'>
+      <p>
         The site appears to be blocked due to <strong>DNS based
         censorship</strong>.
       </p>}
 
       {measurement.test_keys.blocking === 'http-diff' &&
-      <p className='text-danger copy'>
+      <p>
         The site appears to be blocked because it presents a <strong>different HTTP
         response</strong>.
       </p>
       }
 
       {measurement.test_keys.blocking === 'http-failure' &&
-      <p className='text-danger copy'>
+      <p>
         The site appears to be blocked because the <strong>HTTP request
         failed</strong>.
       </p>
       }
 
       {measurement.test_keys.blocking === 'tcp_ip' &&
-      <p className='text-danger'>
+      <p>
         The site appears to be blocked by means of <strong>TCP/IP
         based blocking</strong>.
       </p>
