@@ -9,6 +9,8 @@ import WhatsappDetails from './nettests/Whatsapp'
 
 import './MeasurementDetails.scss'
 
+import { getPrettyNettestName } from '../../../util/nettest'
+
 const jsonTreeTheme = {
   base00: '#ffffff',
   base01: '#ffffff',
@@ -36,25 +38,10 @@ const NETTEST_HANDLERS = {
   'whatsapp': (measurement) => (<WhatsappDetails measurement={measurement} />)
 }
 
-const NETTEST_PRETTY_NAMES = {
-  'web_connectivity': 'Web Connectivity',
-  'facebook_messenger': 'Facebook Messenger',
-  'http_header_field_manipulation': 'HTTP Header Field Manipulation',
-  'http_invalid_request_line': 'HTTP Invalid Request Line',
-  'whatsapp': 'WhatsApp',
-  'ndt': 'NDT Speed Test'
-}
-
 export const getNettestDetails = (measurement) => {
   const handler = NETTEST_HANDLERS[measurement.test_name]
 
   return handler ? handler(measurement) : <div />
-}
-
-export const getPrettyNettestName = (measurement) => {
-  const name = NETTEST_PRETTY_NAMES[measurement.test_name]
-
-  return name || measurement.test_name
 }
 
 export const MeasurementDetails = ({
@@ -64,7 +51,7 @@ export const MeasurementDetails = ({
     <div>
       <div>
 
-        <h1 className='text-xs-center'>{getPrettyNettestName(measurement)}</h1>
+        <h1 className='text-xs-center'>{getPrettyNettestName(measurement.test_name)}</h1>
 
         <div className='row'>
           <div className='col-md-4 result-item'>
@@ -96,16 +83,18 @@ export const MeasurementDetails = ({
         {getNettestDetails(measurement)}
       </div>
 
-      <h2><i className='ooni icon-measurement' /> Technical measurement data</h2>
-      <JSONTree
-        theme={jsonTreeTheme}
-        hideRoot
-        invertTheme={false}
-        shouldExpandNode={(keyName, data, level) => {
-          const collapsedKeys = ['request', 'response']
-          return (collapsedKeys.indexOf(keyName[0]) === -1)
-        }}
-        data={measurement} />
+      <div className='technical-data'>
+        <h2><i className='ooni icon-measurement' /> Technical measurement data</h2>
+        <JSONTree
+          theme={jsonTreeTheme}
+          hideRoot
+          invertTheme={false}
+          shouldExpandNode={(keyName, data, level) => {
+            const collapsedKeys = ['request', 'response']
+            return (collapsedKeys.indexOf(keyName[0]) === -1)
+          }}
+          data={measurement} />
+      </div>
     </div>
   )
 }

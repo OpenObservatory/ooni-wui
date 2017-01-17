@@ -47,8 +47,10 @@
   color: $color-status-warning-orange;
 }
 
-.copy {
-  strong {
-    color: $color-ooni-blue;
-  }
+strong {
+  color: $color-ooni-blue;
+}
+
+.technical-data {
+  margin-top: 20px;
 }

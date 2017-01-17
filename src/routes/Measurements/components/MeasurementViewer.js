@@ -6,10 +6,11 @@ import MeasurementDetails from './MeasurementDetails'
 
 import {
   formatViewButton,
-  snakeToHuman,
   formatDate,
   rowClassNameFormat
 } from '../../../util/table'
+
+import { getPrettyNettestName } from '../../../util/nettest'
 
 const MeasurementViewer = ({
   selectedMeasurements,
@@ -34,7 +35,7 @@ const MeasurementViewer = ({
             </a>
           </div>
           <div className='text-xs-center'>
-            <h1>{snakeToHuman(selectedMeasurements.test_name)}</h1>
+            <h1>{getPrettyNettestName(selectedMeasurements.test_name)}</h1>
             <p className='copy'>Date and Time: {formatDate(selectedMeasurements.test_start_time)}</p>
             <p className='copy'>ASN: {selectedMeasurements.asn}</p>
             <p className='copy'>Country: {selectedMeasurements.country_code}</p>

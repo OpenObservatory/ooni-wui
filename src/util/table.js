@@ -66,12 +66,3 @@ export const rowClassNameFormat = (row, rowIdx) => {
   }
   return className
 }
-
-export const snakeToHuman = (string) => {
-  string = string || ''
-  string = string.toString()
-  string = string.trim()
-  string = string.replace(/_/g, ' ')
-  string = string.charAt(0).toUpperCase() + string.slice(1)
-  return string
-}

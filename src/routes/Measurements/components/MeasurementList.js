@@ -4,10 +4,10 @@ import {
   formatViewButton,
   formatDeckName,
   renderCarret,
-  snakeToHuman,
   rowClassNameFormat
 } from '../../../util/table'
 
+import { getPrettyNettestName } from '../../../util/nettest'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 
 import './MeasurementList.scss'
@@ -52,7 +52,7 @@ const MeasurementList = ({
             containerStyle={{ border: 'none' }}
             trClassName={rowClassNameFormat}
             data={measurements}>
-            <TableHeaderColumn dataAlign='center' dataFormat={snakeToHuman}
+            <TableHeaderColumn dataAlign='center' dataFormat={getPrettyNettestName}
               dataField='test_name'>Name</TableHeaderColumn>
             <TableHeaderColumn dataAlign='center'
               caretRender={renderCarret}

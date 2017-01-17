@@ -6,7 +6,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
       {/* Normal measurement */}
       {measurement.test_keys.accessible !== false && measurement.test_keys.blocking === false &&
       <div>
-        <h2 className='result-success'><i className='fa fa-circle-check-o' /> No censorship detected</h2>
+        <h2 className='result-success'><i className='fa fa-check-circle-o' /> No censorship detected</h2>
         <p>The website <code>http://google.com/</code> is accessible and uncensored from this network.</p>
       </div>
       }
@@ -45,7 +45,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
       {measurement.test_keys.blocking === 'http-failure' &&
       <p>
         The site appears to be blocked because the <strong>HTTP request
-        failed</strong>.
+        failed</strong> with <code>{measurement.test_keys.http_experiment_failure}</code>
       </p>
       }
 
@@ -68,6 +68,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
           measurement.test_keys.blocking === 'http-failure') &&
         measurement.input.substr(0, 5) !== 'https' &&
         <div className='circumvention-strategy'>
+          <h3>Use Secure HTTP (HTTPS)</h3>
           <p>Try visiting the <strong>HTTPS</strong> version of the website in
             question by accessing it via
             <a href={`https${measurement.input.substr(4)}`}>https{measurement.input.substr(4)}</a>
@@ -76,6 +77,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
         }
         {measurement.test_keys.blocking === 'dns' &&
         <div className='circumvention-strategy'>
+          <h3>Change your DNS</h3>
           <p>Try <strong>changing your DNS resolver</strong> to one that does not
             implement blocking, such as the Google DNS resolver:
             <code>8.8.8.8</code>.
@@ -88,15 +90,15 @@ export const WebConnectivityDetails = ({ measurement }) => {
         </div>
         }
         <div className='circumvention-strategy'>
+          <h3>Use Tor</h3>
           <p>In most cases you should be able to circumvent censorship by
-            using <strong>Tor</strong>. To download Tor visit:
-            <a href='https://www.torproject.org/download/download.html.en'>https
-              ://www.torproject.org/download/download.html.en</a></p>
+            using <strong>Tor</strong>.
+            To download Tor visit: <a href='https://www.torproject.org/download/download.html.en'>
+              https://www.torproject.org/download/download.html.en</a></p>
           <p>
-            If the torproject.org website is blocked in your country you can
-            download Tor from a mirror of it hosted on github:
-            <a href='https://github.com/TheTorProject/gettorbrowser/'>
-              https://github.com/TheTorProject/gettorbrowser/</a>
+            If the torproject.org website is blocked in your country you can download Tor from a mirror of it
+            hosted on github: <a href='https://github.com/TheTorProject/gettorbrowser'>
+              https://github.com/TheTorProject/gettorbrowser</a>
           </p>
         </div>
 

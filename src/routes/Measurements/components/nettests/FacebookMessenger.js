@@ -5,21 +5,24 @@ export const FacebookMessengerDetails = ({ measurement }) => {
     <div>
       {measurement.test_keys.facebook_dns_blocking === false &&
        measurement.test_keys.facebook_tcp_blocking === false &&
-       <p className='text-success'>
-        Facebook Messenger appears to be working properly.
-       </p>
+       <div>
+         <h2 className='result-success'><i className='fa fa-check-circle-o' /> Facebook Messenger is working</h2>
+       </div>
       }
       {measurement.test_keys.facebook_dns_blocking === true &&
-      <p className='text-danger copy'>
-        Facebook Messenger appears to be blocked via
-        <strong>DNS</strong>
-      </p>
+      <div>
+        <h2 className='result-danger'><i className='fa fa-times-circle-o' /> Evidence of censorship</h2>
+        <p>Facebook Messenger appears to be <strong className='text-danger'>blocked</strong> via <strong>DNS</strong>
+        </p>
+      </div>
       }
 
       {measurement.test_keys.facebook_tcp_blocking === true &&
-      <p className='text-danger copy'>
-        Facebook Messenger appears to be blocked to due to TCP/IP blocking
-      </p>
+      <div>
+        <h2 className='result-danger'><i className='fa fa-times-circle-o' /> Evidence of censorship</h2>
+        <p>Facebook Messenger appears to be <strong className='text-danger'>blocked</strong> via <strong>TCP/IP</strong>
+        </p>
+      </div>
       }
     </div>
   )

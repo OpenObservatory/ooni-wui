@@ -11,20 +11,21 @@ export const HttpHeaderFieldManipulationDetails = ({ measurement }) => {
   return (
     <div>
       {anomaly === true &&
-      <p className='text-danger copy'>
-      This measurement contains data that could be a sign of network tampering or censorship.
-    </p>
-    }
-      {anomaly === false &&
-      <p className='text-success copy'>
-        This measurement looks normal
-      </p>
-    }
-      {anomaly === true &&
-      <p>This means there could be a transparent HTTP proxy present on your
-      network.</p>
-    }
+      <div>
+        <h2 className='result-danger'><i className='fa fa-times-circle-o' /> Evidence of network tampering</h2>
+        <p>When contacting our control servers we noticed that our traffic was being manipulated.
+          This means that there could be a <strong>“middle box”</strong> which could be responsible for censorship
+          and/or traffic manipulation.
+        </p>
+      </div>
+      }
 
+      {anomaly === false &&
+      <div>
+        <h2 className='result-success'><i className='fa fa-check-circle-o' /> Everything is OK</h2>
+        <p>There was no anomaly in communicating to our control servers.</p>
+      </div>
+      }
     </div>
   )
 }

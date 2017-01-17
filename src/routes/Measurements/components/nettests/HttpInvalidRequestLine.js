@@ -1,55 +1,86 @@
 import React from 'react'
 
-export const HttpInvalidRequestLineDetails = ({ measurement }) => {
-  return (
-    <div>
-      {measurement.test_keys.tampering === true &&
-      <p className='text-danger copy'>
-        <i className='ooni icon-censorship-tampering' />
-        This measurement contains data that could be a sign of network tampering or censorship.
-      </p>
-      }
-      {measurement.test_keys.tampering === false &&
-      <p className='text-success copy'>
-        <i className='ooni icon-censorship-tampering' />
-        This measurement looks normal
-      </p>
-      }
+export class HttpInvalidRequestLineDetails extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = { exchangesEnabled: false }
+  }
 
-      {measurement.test_keys.tampering === true &&
-      <p className='copy'>This means there could be a transparent HTTP proxy present on your
-        network. Click on the "Toggle exchanges" button below to see more
-        information.</p>
-      }
+  toggleExchanges () {
+    this.setState({ exchangesEnabled: !this.state.exchangesEnabled })
+  }
 
-      <button className='btn btn-primary'>
-        Toggle exchanges
-      </button>
-      {measurement.test_keys.sent.map((sentData, index) => {
-        return (
-          <div className='row'>
+  render () {
+    const { measurement } = this.props
+
+    const getExchangeClassName = (index) => {
+      let className = 'row'
+      if (measurement.test_keys.received[index] !== measurement.test_keys.sent[index]) {
+        className += ' text-danger'
+      }
+      return className
+    }
+
+    return (
+      <div>
+        {measurement.test_keys.tampering === true &&
+        <div>
+          <h2 className='result-danger'><i className='fa fa-times-circle-o' /> Evidence of network tampering</h2>
+          <p>When contacting our control servers we noticed that our traffic was being manipulated.
+            This means that there could be a <strong>“middle box”</strong> which could be responsible for censorship
+            and/or traffic manipulation. Click on "Show exchanges" below to see what our server saw and what was sent.
+          </p>
+        </div>
+        }
+        {measurement.test_keys.tampering === false &&
+        <div>
+          <h2 className='result-success'><i className='fa fa-check-circle-o' /> Everything is OK</h2>
+          <p>There was no anomaly in communicating to our control servers.
+            Click on "Show exchanges" below to see what our server saw and what was sent.</p>
+        </div>
+        }
+
+        <div className='row'>
+          <div className='col-sm-6'>
+            <button className='btn btn-primary' onClick={() => this.toggleExchanges()}>
+              {this.state.exchangesEnabled ? 'Hide' : 'Show'} exchanges
+            </button>
+          </div>
+        </div>
+        {this.state.exchangesEnabled &&
+        <div>
+          <div className='row text-xs-center' style={{ marginTop: '20px' }}>
             <div className='col-sm-6'>
-              <div className='card card-block'>
-                <h3 className='card-title'>I sent</h3>
-                <p className='card-text wordwrap'>
-                  {sentData}
-                </p>
-              </div>
+              <h3>I sent</h3>
             </div>
             <div className='col-sm-6'>
-              <div className='card card-block'>
-                <h3 className='card-title'>I received</h3>
-                <p className='card-text wordwrap'>
-                  {measurement.test_keys.received[index]}
-                </p>
-              </div>
+              <h3>I received</h3>
             </div>
           </div>
-        )
-      })}
-
-    </div>
-  )
+          {measurement.test_keys.sent.map((sentData, index) => {
+            return (
+              <div className={getExchangeClassName(index)} key={index}>
+                <div className='col-sm-6'>
+                  <div className='card card-block'>
+                    <p className='card-text wordwrap'>
+                      {sentData}
+                    </p>
+                  </div>
+                </div>
+                <div className='col-sm-6'>
+                  <div className='card card-block'>
+                    <p className='card-text wordwrap'>
+                      {measurement.test_keys.received[index]}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </div>}
+      </div>
+    )
+  }
 }
 
 HttpInvalidRequestLineDetails.propTypes = {
