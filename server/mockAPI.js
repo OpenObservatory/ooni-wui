@@ -638,65 +638,9 @@ app.post('/initialize', function (req, res) {
 })
 
 app.get('/deck', function (req, res) {
-  // eslint-disable-next-line no-unused-vars
-  const currentSchema = {
-    'available': {
-      'tor': {
-        'schedule': '@daily',
-        'enabled': true,
-        'name': 'Tor test deck',
-        'description': 'This deck runs test related to testing the reachability of the Tor network'
-      },
-      'web': {
-        'schedule': '@daily',
-        'enabled': true,
-        'name': 'Web test deck',
-        'description': 'This deck runs HTTP Header Field Manipulation and the Web Connectivity test'
-      },
-      'im': {
-        'schedule': '@daily',
-        'enabled': true,
-        'name': 'Instant Messaging deck',
-        'description': 'This test deck will check to see if instant messaging applications are working'
-      },
-      'http-invalid': {
-        'schedule': '@daily',
-        'enabled': true,
-        'name': 'HTTP Invalid Request Line',
-        'description': 'This deck runs HTTP Invalid Request Line test'
-      }
-    },
-    'enabled': {
-      'tor': {
-        'schedule': '@daily',
-        'enabled': true,
-        'name': 'Tor test deck',
-        'description': 'This deck runs test related to testing the reachability of the Tor network'
-      },
-      'web': {
-        'schedule': '@daily',
-        'enabled': true,
-        'name': 'Web test deck',
-        'description': 'This deck runs HTTP Header Field Manipulation and the Web Connectivity test'
-      },
-      'im': {
-        'schedule': '@daily',
-        'enabled': true,
-        'name': 'Instant Messaging deck',
-        'description': 'This test deck will check to see if instant messaging applications are working'
-      },
-      'http-invalid': {
-        'schedule': '@daily',
-        'enabled': true,
-        'name': 'HTTP Invalid Request Line',
-        'description': 'This deck runs HTTP Invalid Request Line test'
-      }
-    }
-  }
-  const newSchema = {
+  res.json({
     'decks': newDecksSchema
-  }
-  res.json(newSchema)
+  })
 })
 
 app.post('/deck/*/enable', function (req, res) {
@@ -712,92 +656,474 @@ app.post('/deck/*/start', function (req, res) {
   res.json({})
 })
 
-app.get('/measurement', function (req, res) {
-  res.json({
-    'measurements': [
-      {
-        'size': -1,
-        'running': false,
-        'country_code': 'GR',
-        'test_name': 'tcp_connect',
-        'test_start_time': '20161214T085527Z',
-        'completed': true,
-        'keep': false,
-        'asn': 'AS1241',
-        'stale': false,
-        'id': '20161214T085527Z-GR-AS1241-tcp_connect',
-      // These are added
-        'result': 'ok',
-        'deck_id': 'tor'
+
+const getSampleMeasurement = (test_name, test_keys, input = '', annotations = {}) => {
+  let sampleMeasurement = {
+    'annotations': annotations,
+    'data_format_version': '0.2.0',
+    'id': 'c1939d27-7f6e-4d88-aafc-c31336b7a469',
+    'input': input,
+    'input_hashes': [],
+    'measurement_start_time': '2017-01-12 00:29:22',
+    'options': [
+      '--file',
+      '$tor_bridge_lines'
+    ],
+    'probe_asn': 'AS30722',
+    'probe_cc': 'IT',
+    'probe_city': null,
+    'probe_ip': '127.0.0.1',
+    'report_id': '20170112T002818Z_AS30722_GsvkWjyQ5OGY2ylqJ0gMiPzwIhZXXKBfhvSthWyxo8ta1Afha0',
+    'software_name': 'ooniprobe',
+    'software_version': '2.1.0',
+    'test_helpers': {},
+    'test_keys': test_keys,
+    'test_name': test_name,
+    'test_runtime': 0.057000160217285156,
+    'test_start_time': '2017-01-12 00:29:22',
+    'test_version': '0.2.0'
+  }
+  return sampleMeasurement
+}
+
+const baseHttpTempl = {
+  'agent': 'agent',
+  'requests': [
+    {
+      'failure': null,
+      'request': {
+        'body': null,
+        'headers': {
+          'Host': 'az668014.vo.msecnd.net'
+        },
+        'method': 'GET',
+        'tor': {
+          'exit_ip': null,
+          'exit_name': null,
+          'is_tor': false
+        },
+        'url': 'https://example.com/'
       },
-      {
-        'size': -1,
-        'running': false,
-        'country_code': 'GR',
-        'test_name': 'meek_fronted_requests_test',
-        'test_start_time': '20161214T080637Z',
-        'completed': true,
-        'keep': false,
-        'asn': 'AS1241',
-        'stale': false,
-        'id': '20161214T080637Z-GR-AS1241-meek_fronted_requests_test',
-        'result': 'ok',
-        'deck_id': 'web'
-      },
-      {
-        'size': -1,
-        'running': true,
-        'country_code': 'GR',
-        'test_name': 'facebook_messenger',
-        'test_start_time': '20161214T080551Z',
-        'completed': true,
-        'keep': false,
-        'asn': 'AS1241',
-        'stale': false,
-        'id': '20161214T080551Z-GR-AS1241-facebook_messenger',
-        'result': 'ok',
-        'deck_id': 'web'
-      },
-      {
-        'size': -1,
-        'running': false,
-        'country_code': 'GR',
-        'test_name': 'web_connectivity',
-        'test_start_time': '20161214T080502Z',
-        'completed': true,
-        'keep': true,
-        'asn': 'AS1241',
-        'stale': false,
-        'id': '20161214T080502Z-GR-AS1241-web_connectivity',
-        'result': 'error',
-        'deck_id': 'web'
-      },
-      {
-        'size': -1,
-        'running': false,
-        'country_code': 'GR',
-        'test_name': 'web_connectivity',
-        'test_start_time': '20161213T080502Z',
-        'completed': true,
-        'keep': true,
-        'asn': 'AS1241',
-        'stale': false,
-        'id': '20161213T080502Z-GR-AS1241-web_connectivity',
-        'result': 'ok',
-        'deck_id': 'web'
+      'response': {
+        'body': 'I\u2019m just a happy little web server.\n',
+        'code': 200,
+        'headers': {
+          'Accept-Ranges': 'bytes',
+          'Content-Type': 'text/plain; charset=utf-8',
+          'Date': 'Thu, 12 Jan 2017 00:29:21 GMT',
+          'Last-Modified': 'Sat, 07 Jan 2017 09:12:51 GMT',
+          'Server': 'ECAcc (mxp/0FAA)',
+          'X-Cache': 'HIT'
+        }
       }
+    }
+  ],
+  'socksproxy': null
+}
+
+const mockMeasurements = [
+  {
+    'size': -1,
+    'running': false,
+    'country_code': 'GR',
+    'test_name': 'tcp_connect',
+    'test_start_time': '20161214T085527Z',
+    'completed': true,
+    'keep': false,
+    'asn': 'AS1241',
+    'stale': false,
+    'id': '20161214T085527Z-GR-AS1241-tcp_connect',
+    // These are added
+    'result': 'ok',
+    'deck_id': 'tor',
+    'summary': {
+      'test_start_time': '2017-01-12 00:29:22',
+      'anomaly': false,
+      'country_code': 'GR',
+      'asn': 'AS10',
+      'test_name': 'tcp_connect',
+      'results': [
+        { 'anomaly': false, 'idx': 0, 'url': 'obfs4 109.105.109.165:24215' },
+        { 'anomaly': true, 'idx': 1, 'url': 'obfs3 222.111.109.165:24215' }
+      ]
+    },
+    'sample_measurements': [
+      getSampleMeasurement('tcp_connect', { 'connection': 'success' },
+        'obfs4 1.1.1.1:111', { 'test_class': 'tor_bridge_reachability' }
+      ),
+      getSampleMeasurement('tcp_connect', { 'connection': 'generic_timeout_error' },
+        'obfs4 2.2.2.2:111', { 'test_class': 'tor_bridge_reachability' }
+      )
     ]
+  },
+  {
+    'size': -1,
+    'running': false,
+    'country_code': 'GR',
+    'test_name': 'meek_fronted_requests_test',
+    'test_start_time': '20161214T080637Z',
+    'completed': true,
+    'keep': false,
+    'asn': 'AS1241',
+    'stale': false,
+    'id': '20161214T080637Z-GR-AS1241-meek_fronted_requests_test',
+    'result': 'ok',
+    'deck_id': 'web',
+    'summary': {
+      'test_start_time': '2017-01-12 00:29:22',
+      'anomaly': false,
+      'country_code': 'GR',
+      'asn': 'AS10',
+      'test_name': 'meek_fronted_requests_test',
+      'results': [
+        { 'anomaly': false, 'idx': 0, 'url': ['meeka', 'meekb'] },
+        { 'anomaly': true, 'idx': 1, 'url': ['meekc', 'meekd'] }
+      ]
+    },
+    'sample_measurements': [
+      getSampleMeasurement('meek_fronted_requests_test', Object.assign({}, baseHttpTempl, { 'success': true }),
+        ['meeka', 'meekb']
+      ),
+      getSampleMeasurement('meek_fronted_requests_test',
+        Object.assign({}, baseHttpTempl, { 'success': false, 'error': 'generic_timeout_failure' }),
+        ['meeka', 'meekb']
+      )
+    ]
+  },
+  {
+    'size': -1,
+    'running': false,
+    'country_code': 'GR',
+    'test_name': 'facebook_messenger',
+    'test_start_time': '20161214T080551Z',
+    'completed': true,
+    'keep': false,
+    'asn': 'AS1241',
+    'stale': false,
+    'id': '20161214T080551Z-GR-AS1241-facebook_messenger',
+    'result': 'ok',
+    'deck_id': 'web',
+    'summary': {
+      'test_start_time': '2017-01-12 00:29:22',
+      'anomaly': false,
+      'country_code': 'GR',
+      'asn': 'AS10',
+      'test_name': 'facebook_messenger',
+      'results': [
+        { 'url': null, 'idx': 0 }
+      ]
+    },
+    'sample_measurements': [
+      getSampleMeasurement('facebook_messenger',
+        { facebook_b_api_dns_consistent: false,
+          facebook_b_api_reachable: true,
+          facebook_b_graph_dns_consistent: true,
+          facebook_b_graph_reachable: true,
+          facebook_dns_blocking: false,
+          facebook_edge_dns_consistent: true,
+          facebook_edge_reachable: true,
+          facebook_external_cdn_dns_consistent: true,
+          facebook_external_cdn_reachable: true,
+          facebook_scontent_cdn_dns_consistent: true,
+          facebook_scontent_cdn_reachable: true,
+          facebook_star_dns_consistent: true,
+          facebook_star_reachable: true,
+          facebook_stun_dns_consistent: true,
+          facebook_stun_reachable: null,
+          facebook_tcp_blocking: false }
+      ),
+      getSampleMeasurement('facebook_messenger',
+        { facebook_b_api_dns_consistent: true,
+          facebook_b_api_reachable: true,
+          facebook_b_graph_dns_consistent: true,
+          facebook_b_graph_reachable: true,
+          facebook_dns_blocking: false,
+          facebook_edge_dns_consistent: true,
+          facebook_edge_reachable: true,
+          facebook_external_cdn_dns_consistent: true,
+          facebook_external_cdn_reachable: true,
+          facebook_scontent_cdn_dns_consistent: true,
+          facebook_scontent_cdn_reachable: true,
+          facebook_star_dns_consistent: true,
+          facebook_star_reachable: true,
+          facebook_stun_dns_consistent: true,
+          facebook_stun_reachable: null,
+          facebook_tcp_blocking: false }
+      )
+    ]
+  },
+  {
+    'size': -1,
+    'running': false,
+    'country_code': 'GR',
+    'test_name': 'http_invalid_request_line',
+    'test_start_time': '20161214T080551Z',
+    'completed': true,
+    'keep': false,
+    'asn': 'AS1241',
+    'stale': false,
+    'id': '20161214T080551Z-GR-AS1241-http_invalid_request_line',
+    'result': 'ok',
+    'deck_id': 'web',
+    'summary': {
+      'test_start_time': '2017-01-12 00:29:22',
+      'anomaly': false,
+      'country_code': 'GR',
+      'asn': 'AS10',
+      'test_name': 'http_invalid_request_line',
+      'results': [
+        { 'url': null, 'idx': 0 }
+      ]
+    },
+    'sample_measurements': [
+      getSampleMeasurement('http_invalid_request_line', {
+        'received': [
+          '0G21 / HTTP/1.1\\n\\r',
+          'AAAAAa/ HTTP/1.1\\n\\r',
+          'GET / HTTP/fmD\\n\\r',
+          'PNLHq Dnt8h OYVR7 TOGLY\\n\\r'
+        ],
+        'sent': [
+          '0G21 / HTTP/1.1\\n\\r',
+          'DIFFERENT',
+          'GET / HTTP/fmD\\n\\r',
+          'PNLHq Dnt8h OYVR7 TOGLY\\n\\r'
+        ],
+        'tampering': true
+      })
+    ]
+  },
+  {
+    'size': -1,
+    'running': false,
+    'country_code': 'GR',
+    'test_name': 'http_invalid_request_line',
+    'test_start_time': '20161214T080551Z',
+    'completed': true,
+    'keep': false,
+    'asn': 'AS1241',
+    'stale': false,
+    'id': '20161212T080551Z-GR-AS1241-http_invalid_request_line',
+    'result': 'ok',
+    'deck_id': 'web',
+    'summary': {
+      'test_start_time': '2017-01-12 00:29:22',
+      'anomaly': false,
+      'country_code': 'GR',
+      'asn': 'AS10',
+      'test_name': 'http_invalid_request_line',
+      'results': [
+        { 'url': null, 'idx': 0 }
+      ]
+    },
+    'sample_measurements': [
+      getSampleMeasurement('http_invalid_request_line', {
+        'received': [
+          '0G21 / HTTP/1.1\\n\\r',
+          'AAAAAAAa/ HTTP/1.1\\n\\r',
+          'GET / HTTP/fmD\\n\\r',
+          'PNLHq Dnt8h OYVR7 TOGLY\\n\\r'
+        ],
+        'sent': [
+          '0G21 / HTTP/1.1\\n\\r',
+          'AAAAAAAAAAAa/ HTTP/1.1\\n\\r',
+          'GET / HTTP/fmD\\n\\r',
+          'PNLHq Dnt8h OYVR7 TOGLY\\n\\r'
+        ],
+        'tampering': false
+      })
+    ]
+  },
+  {
+    'size': -1,
+    'running': false,
+    'country_code': 'GR',
+    'test_name': 'http_header_field_manipulation',
+    'test_start_time': '20161214T080551Z',
+    'completed': true,
+    'keep': false,
+    'asn': 'AS1241',
+    'stale': false,
+    'id': '20161212T080551Z-GR-AS1241-http_header_field_manipulation',
+    'result': 'ok',
+    'deck_id': 'web',
+    'summary': {
+      'test_start_time': '2017-01-12 00:29:22',
+      'anomaly': false,
+      'country_code': 'GR',
+      'asn': 'AS10',
+      'test_name': 'http_header_field_manipulation',
+      'results': [
+        { 'url': null, 'idx': 0 }
+      ]
+    },
+    'sample_measurements': [
+      getSampleMeasurement('http_header_field_manipulation', {
+        'tampering': {
+          'header_field_name': false,
+          'header_field_number': false,
+          'header_field_value': false,
+          'header_name_capitalization': false,
+          'header_name_diff': [],
+          'request_line_capitalization': false,
+          'total': false
+        }
+      })
+    ]
+  },
+  {
+    'size': -1,
+    'running': false,
+    'country_code': 'GR',
+    'test_name': 'web_connectivity',
+    'test_start_time': '20161214T080502Z',
+    'completed': true,
+    'keep': true,
+    'asn': 'AS1241',
+    'stale': false,
+    'id': '20161214T080502Z-GR-AS1241-web_connectivity',
+    'result': 'error',
+    'deck_id': 'web',
+    'summary': {
+      'test_start_time': '2017-01-12 00:29:22',
+      'anomaly': false,
+      'country_code': 'GR',
+      'asn': 'AS10',
+      'test_name': 'web_connectivity',
+      'results': [
+        { 'anomaly': false, 'idx': 0, 'url': 'http://example.unblocked.org' },
+        { 'anomaly': true, 'idx': 1, 'url': 'http://example.dns.blocked.org' },
+        { 'anomaly': true, 'idx': 2, 'url': 'http://example.tcp.blocked.org' },
+        { 'anomaly': true, 'idx': 3, 'url': 'http://example.http-failure.blocked.org' },
+        { 'anomaly': true, 'idx': 4, 'url': 'http://example.http-diff.blocked.org' },
+        { 'anomaly': true, 'idx': 5, 'url': 'http://example.unreachable.org' }
+      ]
+    },
+    'sample_measurements': [
+      getSampleMeasurement('web_connectivity', Object.assign({},
+        baseHttpTempl, {
+          'status_code_match': true,
+          'title_match': true,
+          'control_failure': null,
+          'dns_consistency': 'consistent',
+          'dns_experiment_failure': null,
+          'headers_match': true,
+          'http_experiment_failure': null,
+          'accessible': true,
+          'blocking': false,
+          'body_length_match': true,
+          'body_proportion': 1.0,
+          'client_resolver': '91.80.37.105'
+        }), 'http://example.unblocked.org'),
+      getSampleMeasurement('web_connectivity', Object.assign({},
+        baseHttpTempl, {
+          'status_code_match': true,
+          'title_match': true,
+          'control_failure': null,
+          'dns_consistency': 'inconsistent',
+          'dns_experiment_failure': null,
+          'headers_match': true,
+          'http_experiment_failure': null,
+          'accessible': true,
+          'blocking': 'dns',
+          'body_length_match': true,
+          'body_proportion': 1.0,
+          'client_resolver': '91.80.37.105'
+        }), 'http://example.dns.blocked.org'),
+      getSampleMeasurement('web_connectivity', Object.assign({},
+        baseHttpTempl, {
+          'status_code_match': true,
+          'title_match': true,
+          'control_failure': 'generic_timeout_failure',
+          'dns_consistency': 'consistent',
+          'dns_experiment_failure': null,
+          'headers_match': true,
+          'http_experiment_failure': null,
+          'accessible': true,
+          'blocking': 'tcp_ip',
+          'body_length_match': true,
+          'body_proportion': 1.0,
+          'client_resolver': '91.80.37.105'
+        }), 'http://example.tcp.blocked.org'),
+      getSampleMeasurement('web_connectivity', Object.assign({},
+        baseHttpTempl, {
+          'status_code_match': true,
+          'title_match': true,
+          'control_failure': 'generic_timeout_failure',
+          'dns_consistency': 'consistent',
+          'dns_experiment_failure': null,
+          'headers_match': true,
+          'http_experiment_failure': 'generic_timeout_error',
+          'accessible': true,
+          'blocking': 'http-failure',
+          'body_length_match': true,
+          'body_proportion': 1.0,
+          'client_resolver': '91.80.37.105'
+        }), 'http://example.http-failure.blocked.org'),
+      getSampleMeasurement('web_connectivity', Object.assign({},
+        baseHttpTempl, {
+          'status_code_match': true,
+          'title_match': true,
+          'control_failure': 'generic_timeout_failure',
+          'dns_consistency': 'consistent',
+          'dns_experiment_failure': null,
+          'headers_match': true,
+          'http_experiment_failure': null,
+          'accessible': true,
+          'blocking': 'http-diff',
+          'body_length_match': true,
+          'body_proportion': 1.0,
+          'client_resolver': '91.80.37.105'
+        }), 'http://example.http-diff.blocked.org'),
+      getSampleMeasurement('web_connectivity', Object.assign({},
+        baseHttpTempl, {
+          'status_code_match': true,
+          'title_match': true,
+          'control_failure': 'generic_timeout_failure',
+          'dns_consistency': 'consistent',
+          'dns_experiment_failure': null,
+          'headers_match': true,
+          'http_experiment_failure': null,
+          'accessible': false,
+          'blocking': false,
+          'body_length_match': true,
+          'body_proportion': 1.0,
+          'client_resolver': '91.80.37.105'
+        }), 'http://example.unreachable.org/')
+    ]
+  }
+]
+//
+//
+//
+//
+// 20161213T080502Z-GR-AS1241-web_connectivity
+// 20161214T085527Z-GR-AS1241-tcp_connect
+
+app.get('/measurement', function (req, res) {
+  let measurementList = mockMeasurements.map((m) => {
+    let measurement = Object.assign({}, m, {})
+    delete measurement['sample_measurements']
+    delete measurement['summary']
+    return measurement
+  })
+  res.json({
+    'measurements': measurementList
   })
 })
 
-app.get('/measurement/*/*', function (req, res) {
-  // eslint-disable-next-line max-len
-  res.json({ 'test_keys': { 'accessible': true, 'control': { 'tcp_connect': { '66.254.117.154:80': { 'status': true, 'failure': null } }, 'http_request': { 'body_length': 16167, 'failure': null, 'status_code': 200, 'headers': { 'X-Varnish': '897946656 896981080', 'X-Cache': 'HIT', 'content-encoding': '', 'Set-Cookie': 'id=nd5000; expires=Wed, 21-Dec-2016 23:35:45 GMT; Max-Age=86400; path=/; domain=8thstreetlatinas.com', 'Age': '1393', 'Charset': 'UTF-8', 'Vary': 'Accept-Encoding', 'asisCache': '1', 'Via': '1.1 varnish-v4', 'Cache-control': 'max-age=3600, public, private', 'Date': 'Tue, 20 Dec 2016 23:35:45 GMT', 'Server': 'Apache/2.2.22 (Debian)', 'Content-Type': 'text/html;charset=UTF-8', 'Accept-Ranges': 'bytes' }, 'title': '8thStreetLatinas Official Porn Website' }, 'dns': { 'failure': null, 'addrs': ['66.254.117.154'] } }, 'control_failure': null, 'socksproxy': null, 'headers_match': true, 'http_experiment_failure': null, 'agent': 'redirect', 'title_match': true, 'client_resolver': '193.92.3.5', 'retries': 1, 'dns_consistency': 'consistent', 'dns_experiment_failure': null, 'body_proportion': 1.0, 'queries': [{ 'resolver_hostname': null, 'query_type': 'A', 'hostname': '8thstreetlatinas.com', 'answers': [{ 'ipv4': '66.254.117.154', 'answer_type': 'A' }], 'failure': null, 'resolver_port': null }], 'body_length_match': true, 'requests': [{ 'failure': null, 'request': { 'body': null, 'headers': { 'Accept-Language': 'en-US;q=0.8,en;q=0.5', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8', 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36' }, 'url': 'http://www.8thstreetlatinas.com/', 'method': 'GET', 'tor': { 'is_tor': false, 'exit_name': null, 'exit_ip': null } }, 'response': { 'body': '<BODY></BODY>', 'headers': { 'X-Varnish': '651136891 649776740', 'X-Cache': 'HIT', 'content-encoding': '', 'Set-Cookie': 'id=nd5000; expires=Wed, 21-Dec-2016 23:37:29 GMT; Max-Age=86400; path=/; domain=8thstreetlatinas.com', 'Age': '1370', 'Charset': 'UTF-8', 'Vary': 'Accept-Encoding', 'asisCache': '1', 'Via': '1.1 varnish-v4', 'Cache-control': 'max-age=3600, public, private', 'Date': 'Tue, 20 Dec 2016 23:37:29 GMT', 'Server': 'Apache/2.2.22 (Debian)', 'Content-Type': 'text/html;charset=UTF-8', 'Accept-Ranges': 'bytes' }, 'code': 200 } }, { 'failure': null, 'request': { 'body': null, 'headers': { 'Accept-Language': 'en-US;q=0.8,en;q=0.5', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8', 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36' }, 'url': 'http://8thstreetlatinas.com', 'method': 'GET', 'tor': { 'is_tor': false, 'exit_name': null, 'exit_ip': null } }, 'response': { 'body': null, 'headers': { 'X-Varnish': '893843918 897946249', 'X-Cache': 'HIT', 'Set-Cookie': 'RNLBSERVERID=rk_v1; path=/', 'Age': '139', 'Vary': 'Accept-Encoding', 'Server': 'Apache/2.2.22 (Debian)', 'Via': '1.1 varnish-v4', 'Location': 'http://www.8thstreetlatinas.com/', 'Cache-control': 'private', 'Date': 'Tue, 20 Dec 2016 23:57:59 GMT', 'Content-Type': 'text/html; charset=iso-8859-1' }, 'code': 301 } }], 'tcp_connect': [{ 'status': { 'failure': null, 'success': true, 'blocked': false }, 'ip': '66.254.117.154', 'port': 80 }], 'blocking': 'dns', 'status_code_match': true }, 'software_version': '2.1.0', 'test_runtime': 2.7851650714874268, 'test_start_time': '2016-12-21 00:00:17', 'input_hashes': [], 'software_name': 'ooniprobe', 'options': ['--file', '$citizenlab_global_urls'], 'data_format_version': '0.2.0', 'measurement_start_time': '2016-12-21 00:00:17', 'test_version': '0.1.0', 'probe_city': null, 'test_name': 'web_connectivity', 'id': 'ea0234fe-c846-4bb3-ac8e-84e5d262fb59', 'input': 'http://8thstreetlatinas.com', 'probe_ip': '127.0.0.1', 'probe_cc': 'GR', 'probe_asn': 'AS1241', 'annotations': { 'platform': 'macos' }, 'test_helpers': { 'backend': { 'type': 'https', 'address': 'https://a.web-connectivity.th.ooni.io:4442' } }, 'report_id': '20161220T235951Z_AS1241_BRmSgeOEw83exlPlVbcI5Fz2IjnP7fFCrtma6iteTcFlyDOyeJ' })
+mockMeasurements.forEach((measurement) => {
+  app.get('/measurement/' + measurement.id, function(req, res) {
+    res.json(measurement.summary)
+  })
 })
 
-app.get('/measurement/*', function (req, res) {
-  // eslint-disable-next-line max-len
-  res.json({ 'test_start_time': '2016-12-23 10:57:08', 'test_name': 'tcp_connect', 'results': [{ 'url': 'obfs4 109.105.109.165:24215', 'anomaly': false, 'idx': 0 }, { 'url': 'obfs4 109.105.109.146:27668', 'anomaly': false, 'idx': 1 }, { 'url': 'obfs4 109.105.109.165:10527', 'anomaly': false, 'idx': 2 }, { 'url': 'obfs4 109.105.109.147:13764', 'anomaly': false, 'idx': 3 }, { 'url': 'obfs4 178.209.52.110:443', 'anomaly': true, 'idx': 4 }, { 'url': 'obfs4 83.212.101.3:41213', 'anomaly': false, 'idx': 5 }, { 'url': 'obfs4 83.212.101.3:50000', 'anomaly': false, 'idx': 6 }, { 'url': 'obfs4 83.212.101.3:50001', 'anomaly': false, 'idx': 7 }, { 'url': 'obfs4 83.212.101.3:50002', 'anomaly': false, 'idx': 8 }, { 'url': 'obfs4 83.212.101.3:50003', 'anomaly': false, 'idx': 9 }, { 'url': 'obfs4 83.212.101.3:50004', 'anomaly': false, 'idx': 10 }, { 'url': 'obfs4 83.212.101.3:50005', 'anomaly': false, 'idx': 11 }, { 'url': 'obfs4 83.212.101.3:50006', 'anomaly': false, 'idx': 12 }, { 'url': 'obfs4 83.212.101.3:50007', 'anomaly': false, 'idx': 13 }, { 'url': 'obfs4 83.212.101.3:50008', 'anomaly': false, 'idx': 14 }, { 'url': 'obfs4 83.212.101.3:50009', 'anomaly': false, 'idx': 15 }, { 'url': 'obfs3 83.212.101.3:80', 'anomaly': false, 'idx': 16 }, { 'url': '83.212.101.3:22', 'anomaly': false, 'idx': 17 }, { 'url': 'scramblesuit 83.212.101.3:443', 'anomaly': true, 'idx': 18 }, { 'url': '109.105.109.165:22', 'anomaly': true, 'idx': 19 }, { 'url': '109.105.109.146:22', 'anomaly': true, 'idx': 20 }, { 'url': '178.209.52.110:22', 'anomaly': true, 'idx': 21 }, { 'url': 'obfs4 198.245.60.50:443', 'anomaly': false, 'idx': 22 }, { 'url': '198.245.60.50:22', 'anomaly': false, 'idx': 23 }, { 'url': 'obfs4 192.99.11.54:443', 'anomaly': false, 'idx': 24 }, { 'url': '192.99.11.54:22', 'anomaly': false, 'idx': 25 }, { 'url': 'obfs4 104.131.108.182:56880', 'anomaly': true, 'idx': 26 }, { 'url': 'fte 192.240.101.106:80', 'anomaly': true, 'idx': 27 }, { 'url': 'obfs4 154.35.22.9:60873', 'anomaly': true, 'idx': 28 }, { 'url': 'obfs4 154.35.22.9:1984', 'anomaly': true, 'idx': 29 }, { 'url': 'obfs4 154.35.22.9:443', 'anomaly': true, 'idx': 30 }, { 'url': 'obfs4 154.35.22.9:80', 'anomaly': true, 'idx': 31 }, { 'url': 'obfs4 154.35.22.9:5881', 'anomaly': true, 'idx': 32 }, { 'url': 'obfs4 154.35.22.9:7013', 'anomaly': true, 'idx': 33 }, { 'url': 'obfs4 154.35.22.9:12166', 'anomaly': true, 'idx': 34 }, { 'url': 'obfs4 154.35.22.9:14303', 'anomaly': true, 'idx': 35 }, { 'url': 'obfs4 154.35.22.9:25427', 'anomaly': true, 'idx': 36 }, { 'url': 'obfs4 154.35.22.9:29733', 'anomaly': true, 'idx': 37 }, { 'url': 'obfs4 154.35.22.9:40782', 'anomaly': true, 'idx': 38 }, { 'url': 'obfs4 154.35.22.10:41835', 'anomaly': false, 'idx': 39 }, { 'url': 'obfs4 154.35.22.10:1984', 'anomaly': false, 'idx': 40 }, { 'url': 'obfs4 154.35.22.10:443', 'anomaly': false, 'idx': 41 }, { 'url': 'obfs4 154.35.22.10:80', 'anomaly': false, 'idx': 42 }, { 'url': 'obfs4 154.35.22.10:2934', 'anomaly': false, 'idx': 43 }, { 'url': 'obfs4 154.35.22.10:9332', 'anomaly': false, 'idx': 44 }, { 'url': 'obfs4 154.35.22.10:15937', 'anomaly': false, 'idx': 45 }, { 'url': 'obfs4 154.35.22.10:24338', 'anomaly': false, 'idx': 46 }, { 'url': 'obfs4 154.35.22.10:26336', 'anomaly': false, 'idx': 47 }, { 'url': 'obfs4 154.35.22.10:26703', 'anomaly': false, 'idx': 48 }, { 'url': 'obfs4 154.35.22.10:40348', 'anomaly': false, 'idx': 49 }, { 'url': 'obfs4 154.35.22.10:46345', 'anomaly': false, 'idx': 50 }, { 'url': 'obfs4 154.35.22.10:55622', 'anomaly': false, 'idx': 51 }, { 'url': 'obfs4 154.35.22.10:56472', 'anomaly': false, 'idx': 52 }, { 'url': '154.35.22.10:22', 'anomaly': false, 'idx': 53 }, { 'url': 'obfs4 154.35.22.11:49868', 'anomaly': false, 'idx': 54 }, { 'url': 'obfs4 154.35.22.11:1984', 'anomaly': false, 'idx': 55 }, { 'url': 'obfs4 154.35.22.11:443', 'anomaly': false, 'idx': 56 }, { 'url': 'obfs4 154.35.22.11:80', 'anomaly': false, 'idx': 57 }, { 'url': 'obfs4 154.35.22.9:42487', 'anomaly': true, 'idx': 58 }, { 'url': 'obfs4 154.35.22.9:48869', 'anomaly': true, 'idx': 59 }, { 'url': 'obfs4 154.35.22.9:50819', 'anomaly': true, 'idx': 60 }, { 'url': 'obfs4 154.35.22.11:2413', 'anomaly': true, 'idx': 61 }, { 'url': 'obfs4 154.35.22.11:7920', 'anomaly': true, 'idx': 62 }, { 'url': 'obfs4 154.35.22.11:16488', 'anomaly': true, 'idx': 63 }, { 'url': 'obfs4 154.35.22.11:17613', 'anomaly': true, 'idx': 64 }, { 'url': 'obfs4 154.35.22.11:36652', 'anomaly': true, 'idx': 65 }, { 'url': 'obfs4 154.35.22.11:44594', 'anomaly': true, 'idx': 66 }, { 'url': 'obfs4 154.35.22.11:54823', 'anomaly': true, 'idx': 67 }, { 'url': 'obfs4 154.35.22.11:58028', 'anomaly': true, 'idx': 68 }, { 'url': '154.35.22.11:22', 'anomaly': false, 'idx': 69 }, { 'url': 'obfs4 154.35.22.12:80', 'anomaly': false, 'idx': 70 }, { 'url': 'obfs4 154.35.22.12:443', 'anomaly': false, 'idx': 71 }, { 'url': 'obfs4 154.35.22.12:1984', 'anomaly': false, 'idx': 72 }, { 'url': 'obfs4 154.35.22.12:1894', 'anomaly': false, 'idx': 73 }, { 'url': 'obfs4 154.35.22.12:4148', 'anomaly': false, 'idx': 74 }, { 'url': 'obfs4 154.35.22.12:4304', 'anomaly': false, 'idx': 75 }, { 'url': 'obfs4 154.35.22.12:13023', 'anomaly': false, 'idx': 76 }, { 'url': 'obfs4 154.35.22.12:26715', 'anomaly': false, 'idx': 77 }, { 'url': 'obfs4 154.35.22.12:26919', 'anomaly': false, 'idx': 78 }, { 'url': 'obfs4 154.35.22.12:34939', 'anomaly': false, 'idx': 79 }, { 'url': 'obfs4 154.35.22.12:36882', 'anomaly': false, 'idx': 80 }, { 'url': 'obfs4 154.35.22.12:40033', 'anomaly': false, 'idx': 81 }, { 'url': 'obfs4 154.35.22.12:44899', 'anomaly': false, 'idx': 82 }, { 'url': '154.35.22.12:22', 'anomaly': false, 'idx': 83 }, { 'url': 'obfs4 154.35.22.11:60166', 'anomaly': true, 'idx': 84 }, { 'url': 'obfs4 154.35.22.11:64841', 'anomaly': true, 'idx': 85 }, { 'url': 'obfs4 154.35.22.13:80', 'anomaly': true, 'idx': 86 }, { 'url': 'obfs4 154.35.22.13:443', 'anomaly': true, 'idx': 87 }, { 'url': 'obfs4 154.35.22.13:1984', 'anomaly': true, 'idx': 88 }, { 'url': 'obfs4 154.35.22.13:4319', 'anomaly': true, 'idx': 89 }, { 'url': 'obfs4 154.35.22.13:6041', 'anomaly': true, 'idx': 90 }, { 'url': 'obfs4 154.35.22.13:16815', 'anomaly': true, 'idx': 91 }, { 'url': 'obfs4 154.35.22.13:17878', 'anomaly': true, 'idx': 92 }, { 'url': 'obfs4 154.35.22.13:29243', 'anomaly': true, 'idx': 93 }, { 'url': 'obfs4 154.35.22.13:30956', 'anomaly': true, 'idx': 94 }, { 'url': 'obfs4 154.35.22.13:39004', 'anomaly': true, 'idx': 95 }, { 'url': 'obfs4 154.35.22.13:50681', 'anomaly': true, 'idx': 96 }, { 'url': 'obfs4 192.95.36.142:443', 'anomaly': false, 'idx': 97 }, { 'url': '192.95.36.142:2200', 'anomaly': false, 'idx': 98 }, { 'url': '85.17.30.79:22', 'anomaly': false, 'idx': 99 }, { 'url': 'obfs4 85.17.30.79:443', 'anomaly': false, 'idx': 100 }, { 'url': 'obfs3 169.229.59.74:31493', 'anomaly': false, 'idx': 101 }, { 'url': 'obfs3 169.229.59.75:46328', 'anomaly': false, 'idx': 102 }, { 'url': 'obfs3 109.105.109.163:38980', 'anomaly': false, 'idx': 103 }, { 'url': 'obfs3 109.105.109.163:47779', 'anomaly': false, 'idx': 104 }, { 'url': 'fte 131.252.210.150:8080', 'anomaly': false, 'idx': 105 }, { 'url': 'fte 128.105.214.161:8080', 'anomaly': false, 'idx': 106 }, { 'url': '128.105.214.162:8080', 'anomaly': false, 'idx': 107 }, { 'url': 'fte 128.105.214.163:8080', 'anomaly': false, 'idx': 108 }, { 'url': '128.31.0.39:9101', 'anomaly': false, 'idx': 109 }, { 'url': '128.31.0.39:9131', 'anomaly': false, 'idx': 110 }, { 'url': '86.59.21.38:443', 'anomaly': false, 'idx': 111 }, { 'url': '86.59.21.38:80', 'anomaly': false, 'idx': 112 }, { 'url': '194.109.206.212:443', 'anomaly': false, 'idx': 113 }, { 'url': '194.109.206.212:80', 'anomaly': false, 'idx': 114 }, { 'url': '37.218.247.217:443', 'anomaly': false, 'idx': 115 }, { 'url': '37.218.247.217:80', 'anomaly': false, 'idx': 116 }, { 'url': '131.188.40.189:443', 'anomaly': false, 'idx': 117 }, { 'url': '131.188.40.189:80', 'anomaly': false, 'idx': 118 }, { 'url': '193.23.244.244:443', 'anomaly': false, 'idx': 119 }, { 'url': '193.23.244.244:80', 'anomaly': false, 'idx': 120 }, { 'url': '171.25.193.9:80', 'anomaly': false, 'idx': 121 }, { 'url': '171.25.193.9:443', 'anomaly': false, 'idx': 122 }, { 'url': '154.35.175.225:443', 'anomaly': false, 'idx': 123 }, { 'url': '154.35.175.225:80', 'anomaly': false, 'idx': 124 }, { 'url': '199.254.238.52:443', 'anomaly': false, 'idx': 125 }, { 'url': '199.254.238.52:80', 'anomaly': false, 'idx': 126 }, { 'url': 'obfs4 154.35.22.13:59765', 'anomaly': true, 'idx': 127 }, { 'url': 'obfs4 154.35.22.13:62623', 'anomaly': true, 'idx': 128 }, { 'url': '154.35.22.13:22', 'anomaly': true, 'idx': 129 }], 'country_code': 'GR', 'asn': 'AS1241' })
+mockMeasurements.forEach((measurement) => {
+  measurement.sample_measurements.forEach((sample, idx) => {
+    app.get(`/measurement/${measurement.id}/${idx}`, function(req, res) {
+      res.json(sample)
+    })
+  })
 })
 
 app.delete('/measurement/*', function (req, res) {
