@@ -6,6 +6,7 @@ import FacebookMessengerDetails from './nettests/FacebookMessenger'
 import HttpHeaderFieldManipulationDetails from './nettests/HttpHeaderFieldManipulation'
 import HttpInvalidRequestLineDetails from './nettests/HttpInvalidRequestLine'
 import WhatsappDetails from './nettests/Whatsapp'
+import NdtDetails from './nettests/Ndt'
 
 import './MeasurementDetails.scss'
 
@@ -35,7 +36,8 @@ const NETTEST_HANDLERS = {
   'facebook_messenger': (measurement) => (<FacebookMessengerDetails measurement={measurement} />),
   'http_header_field_manipulation': (measurement) => (<HttpHeaderFieldManipulationDetails measurement={measurement} />),
   'http_invalid_request_line': (measurement) => (<HttpInvalidRequestLineDetails measurement={measurement} />),
-  'whatsapp': (measurement) => (<WhatsappDetails measurement={measurement} />)
+  'whatsapp': (measurement) => (<WhatsappDetails measurement={measurement} />),
+  'ndt': (measurement) => (<NdtDetails measurement={measurement} />)
 }
 
 export const getNettestDetails = (measurement) => {
