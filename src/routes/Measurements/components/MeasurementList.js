@@ -50,6 +50,7 @@ const MeasurementList = ({
             bordered
             tableStyle={{ border: 'none' }}
             containerStyle={{ border: 'none' }}
+            tableBodyClass='measurement-list-table'
             trClassName={rowClassNameFormat}
             data={measurements}>
             <TableHeaderColumn dataAlign='center' dataFormat={getPrettyNettestName}

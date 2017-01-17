@@ -64,10 +64,12 @@ const MeasurementViewer = ({
         contentLabel='Measurement details'
         isOpen={isMeasurementOpen}>
         <div className='modal-content'>
-          <button type='button' className='close' onClick={onCloseClick}>
-            <span aria-hidden='true'>&times;</span>
-            <span className='sr-only'>Close</span>
-          </button>
+          <div className='modal-header' style={{ borderBottom: '0', padding: '0' }}>
+            <button type='button' className='close' onClick={onCloseClick}>
+              <span aria-hidden='true'>&times;</span>
+              <span className='sr-only'>Close</span>
+            </button>
+          </div>
           <div className='modal-body modal-body-no-header'>
             <MeasurementDetails
               measurement={openMeasurement} />

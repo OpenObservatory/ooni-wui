@@ -145,13 +145,15 @@ export class NdtDetails extends React.Component {
           </div>
         </div>
 
+        {this.state.advancedEnabled ||
         <div className='row'>
           <div className='col-sm-6'>
             <button className='btn btn-secondary' onClick={() => this.toggledAdvanced()}>
-              {this.state.advancedEnabled ? 'Less' : 'More'}
+              More
             </button>
           </div>
         </div>
+        }
         {this.state.advancedEnabled &&
         <div>
 
@@ -201,6 +203,14 @@ export class NdtDetails extends React.Component {
               <span className='result-item-value-big'>
                 {measurement.test_keys.advanced.timeouts}
               </span>
+            </div>
+          </div>
+
+          <div className='row'>
+            <div className='col-sm-6'>
+              <button className='btn btn-secondary' onClick={() => this.toggledAdvanced()}>
+                Less
+              </button>
             </div>
           </div>
 

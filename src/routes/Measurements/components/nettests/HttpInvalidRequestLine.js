@@ -40,13 +40,6 @@ export class HttpInvalidRequestLineDetails extends React.Component {
         </div>
         }
 
-        <div className='row'>
-          <div className='col-sm-6'>
-            <button className='btn btn-primary' onClick={() => this.toggleExchanges()}>
-              {this.state.exchangesEnabled ? 'Hide' : 'Show'} exchanges
-            </button>
-          </div>
-        </div>
         {this.state.exchangesEnabled &&
         <div>
           <div className='row text-xs-center' style={{ marginTop: '20px' }}>
@@ -78,6 +71,13 @@ export class HttpInvalidRequestLineDetails extends React.Component {
             )
           })}
         </div>}
+        <div className='row'>
+          <div className='col-sm-6'>
+            <button className='btn btn-secondary' onClick={() => this.toggleExchanges()}>
+              {this.state.exchangesEnabled ? 'Hide' : 'Show'} exchanges
+            </button>
+          </div>
+        </div>
       </div>
     )
   }

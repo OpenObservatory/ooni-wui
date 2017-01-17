@@ -1,5 +1,9 @@
 @import '../../../styles/variables/colors';
 
+.table tbody>tr>td {
+  vertical-align: middle;
+}
+
 .shown-deck {
   color: $color-ooni-blue
 }

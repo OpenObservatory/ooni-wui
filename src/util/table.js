@@ -54,7 +54,7 @@ export const formatViewButton = (onClick) => (cell, row) => {
   if (row.stale === true) {
     return <i className='icon-warning fa fa-warning' />
   }
-  return <button className='btn btn-primary' onClick={() => onClick(row)}>View</button>
+  return <button className='btn btn-secondary' onClick={() => onClick(row)}>View</button>
 }
 
 export const rowClassNameFormat = (row, rowIdx) => {
