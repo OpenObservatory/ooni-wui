@@ -55,21 +55,10 @@ export const MeasurementDetails = ({
 
         <h1 className='text-xs-center'>{getPrettyNettestName(measurement.test_name)}</h1>
 
-        <div className='row'>
-          <div className='col-md-4 result-item'>
-            <span className='result-item-name'>Runtime</span>
-            <span className='result-item-value'>{measurement.test_runtime.toFixed(2)}</span>
-            <span className='result-item-unit'>s</span>
-          </div>
-
-          <div className='col-md-4 result-item'>
-            <span className='result-item-name'>Network</span>
-            <span className='result-item-value'>{measurement.probe_asn}</span>
-          </div>
-
-          <div className='col-md-4 result-item'>
-            <span className='result-item-name'>Country</span>
-            <span className='result-item-value'>{measurement.probe_cc}</span>
+        <div className='row text-xs-center'>
+          <div className='result-metadata'>
+            {measurement.test_runtime.toFixed(2)}s Runtime {' | '}
+            Location: {measurement.probe_cc} ({measurement.probe_asn})
           </div>
         </div>
 
