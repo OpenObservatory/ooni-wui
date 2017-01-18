@@ -35,10 +35,12 @@ const MeasurementViewer = ({
             </a>
           </div>
           <div className='text-xs-center'>
+
             <h1>{getPrettyNettestName(selectedMeasurements.test_name)}</h1>
-            <p className='copy'>Date and Time: {formatDate(selectedMeasurements.test_start_time)}</p>
-            <p className='copy'>ASN: {selectedMeasurements.asn}</p>
-            <p className='copy'>Country: {selectedMeasurements.country_code}</p>
+            <div className='result-metadata'>
+              {formatDate(selectedMeasurements.test_start_time)} {' | '}
+              Location: {selectedMeasurements.country_code} ({selectedMeasurements.asn})
+            </div>
           </div>
 
           <BootstrapTable
@@ -47,11 +49,11 @@ const MeasurementViewer = ({
             trClassName={rowClassNameFormat}
             data={selectedMeasurements.results}>
             <TableHeaderColumn dataAlign='center' dataField='url'>
-              Url
+              <strong>Url</strong>
             </TableHeaderColumn>
             <TableHeaderColumn width='100' dataAlign='center' dataField='anomaly'
               dataFormat={formatViewButton(tableOptions.onRowClick)}>
-              Result
+              <strong>Result</strong>
             </TableHeaderColumn>
             <TableHeaderColumn dataField='idx' isKey hidden />
           </BootstrapTable>

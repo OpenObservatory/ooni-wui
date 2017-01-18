@@ -12,42 +12,85 @@ import {
 
 import './DeckRunner.scss'
 
-let NettestRunnerOptions = ({
-  fields,
-  handleSubmit
-}) => {
-  return (
-    <form onSubmit={handleSubmit}>
-      {
-        Object.keys(fields)
-          // XXX we currently skip file type fields
-          .filter((key) => (fields[key].type !== 'file'))
-          .map((key) => {
-            const field = fields[key]
-            return (
-              <div key={key} className='form-group'>
-                <label>{key}</label>
-                <Field
-                  className='form-control'
-                  name={key}
-                  component='input'
-                  type={field.type} />
-              </div>
-            )
-          })
-      }
-    </form>
-  )
+class NettestRunnerOptionsInner extends React.Component {
+
+  constructor (props) {
+    super(props)
+    this.state = { showAdvanced: false }
+  }
+
+  toggleAdvanced () {
+    this.setState({ showAdvanced: !this.state.showAdvanced })
+  }
+
+  render () {
+    let { fields, handleSubmit, simpleOptions } = this.props
+    // XXX this a workaround a bug of the ooniprobe API
+    if (!Array.isArray(simpleOptions)) {
+      simpleOptions = []
+    }
+    console.log('Simple options are', simpleOptions)
+    return (
+      <div>
+        <form onSubmit={handleSubmit}>
+          {this.state.showAdvanced
+            ? <div>
+              {Object.keys(fields)
+              // XXX we currently skip file type fields
+                .filter((key) => (fields[key].type !== 'file'))
+                .map((key) => {
+                  const field = fields[key]
+                  return (
+                    <div key={key} className='form-group'>
+                      <label>{key}</label>
+                      <Field
+                        className='form-control'
+                        name={key}
+                        component='input'
+                        type={field.type} />
+                    </div>
+                  )
+                })
+              }
+            </div>
+            : <div>
+              {simpleOptions.map((option) => {
+                const key = option.name
+                const optType = fields[key].type
+                if (optType === 'file') {
+                  return
+                }
+                return (
+                  <div key={key} className='form-group'>
+                    <label>{key}</label>
+                    <Field
+                      className='form-control'
+                      name={key}
+                      component='input'
+                      type={optType} />
+                  </div>
+                )
+              })}
+            </div>
+          }
+        </form>
+        <button className='btn btn-secondary' onClick={() => this.toggleAdvanced()}>
+          {this.state.showAdvanced ? 'Hide' : 'Show' } advanced options
+        </button>
+      </div>
+    )
+  }
 }
 
-NettestRunnerOptions.propTypes = {
+NettestRunnerOptionsInner.propTypes = {
   fields: React.PropTypes.object,
+  simpleOptions: React.PropTypes.array,
   handleSubmit: React.PropTypes.func
 }
 
-NettestRunnerOptions = reduxForm({
+let NettestRunnerOptions = reduxForm({
   form: 'nettestRunnerOptions'
-})(NettestRunnerOptions)
+})(NettestRunnerOptionsInner)
 
 NettestRunnerOptions = connect((state, ownProps) => {
   const { fields } = ownProps
@@ -83,6 +126,7 @@ const NettestRunner = ({
       <p>{nettest.description}</p>
       <NettestRunnerOptions
         nettestId={nettest.id}
+        simpleOptions={nettest.simple_options}
         fields={nettest.arguments} />
     </div>
     <div className='modal-footer text-xs-center'>
