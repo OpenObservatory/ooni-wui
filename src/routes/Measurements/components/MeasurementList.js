@@ -21,12 +21,26 @@ const MeasurementList = ({
   onShowHideDeck,
   hiddenDecks,
   deckIcons,
-  deckNames
+  deckNames,
+  loadingMeasurements,
+  loadingMeasurementsFailed
 }) => {
   return (
     <div>
       {selectedMeasurements &&
       <MeasurementViewer />
+      }
+      {loadingMeasurementsFailed &&
+        <div className='text-xs-center' style={{ marginTop: '2rem' }}>
+          <p className='text-danger'>
+            <i className='fa fa-exclamation-circle' /> failed to load measurements
+          </p>
+        </div>
+      }
+      {loadingMeasurements &&
+        <div className='text-xs-center' style={{ marginTop: '2rem' }}>
+          <i className='fa fa-spinner fa-pulse fa-3x fa-fw' /> loading measurements
+        </div>
       }
       {(!selectedMeasurements || (selectedMeasurements.results && selectedMeasurements.results.length === 1)) &&
         <div className='text-xs-center'>
@@ -39,7 +53,7 @@ const MeasurementList = ({
                   <div key={deck.id} className='col-md-3'>
                     <div className={className} onClick={() => onShowHideDeck(deck.id)}>
                       <h2>{deck.name}</h2>
-                      <i className={`medium-icon fa ${deck.icon}`} />
+                      <i className={`medium-icon icon-btn fa ${deck.icon}`} />
                     </div>
                   </div>
                 )
@@ -54,25 +68,25 @@ const MeasurementList = ({
             trClassName={rowClassNameFormat}
             data={measurements}>
             <TableHeaderColumn dataAlign='center' dataFormat={getPrettyNettestName}
-              dataField='test_name'>Name</TableHeaderColumn>
+              dataField='test_name'><strong>Name</strong></TableHeaderColumn>
             <TableHeaderColumn dataAlign='center'
               caretRender={renderCarret}
               dataSort dataField='test_start_time' dataFormat={formatTime}>
-              Date
+              <strong>Date</strong>
             </TableHeaderColumn>
             <TableHeaderColumn width='100' dataAlign='center' dataField='asn'>
-              Network
+              <strong>Network</strong>
             </TableHeaderColumn>
             <TableHeaderColumn width='100' dataAlign='center' dataField='country_code'>
-              Country
+              <strong>Country</strong>
             </TableHeaderColumn>
             <TableHeaderColumn width='150' dataAlign='center' dataFormat={formatDeckName(deckIcons, deckNames)}
               dataField='deck_id'>
-              Test Deck
+              <strong>Test Deck</strong>
             </TableHeaderColumn>
             <TableHeaderColumn width='100' dataAlign='center' dataField='result'
               dataFormat={formatViewButton(onRowClick)}>
-              Result
+              <strong>Result</strong>
             </TableHeaderColumn>
             <TableHeaderColumn dataField='id' isKey hidden>ID</TableHeaderColumn>
             <TableHeaderColumn dataField='running' hidden>Running</TableHeaderColumn>
@@ -86,6 +100,8 @@ const MeasurementList = ({
 
 MeasurementList.propTypes = {
   measurements: React.PropTypes.array,
+  loadingMeasurements: React.PropTypes.bool,
+  loadingMeasurementsFailed: React.PropTypes.bool,
   selectedMeasurements: React.PropTypes.object,
   decks: React.PropTypes.array,
   deckIcons: React.PropTypes.object,

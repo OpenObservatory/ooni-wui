@@ -20,7 +20,7 @@ class LogViewer extends React.Component {
   }
 
   handleChange (event) {
-    this.setState({ value: event.target.value })
+    this.setState({ logData: event.target.value })
   }
 
   onShare () {

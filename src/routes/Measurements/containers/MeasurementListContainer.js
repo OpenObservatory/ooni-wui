@@ -27,6 +27,9 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => {
   return ({
     measurements: getVisibleMeasurements(state),
+    loadingMeasurements: state.measurement.loading,
+    loadingMeasurementsFailed: state.measurement.failed,
+
     selectedMeasurements: state.measurementList.selectedMeasurements,
     hiddenDecks: state.measurementList.visibilityFilter.hiddenDecks,
     decks: state.deck.decks,
