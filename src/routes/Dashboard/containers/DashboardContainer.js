@@ -57,6 +57,10 @@ const mapStateToProps = (state) => {
 
     decks: state.deck.decks,
     loadingDecks: state.deck.loading,
+    loadingDecksFailed: state.deck.loadingFailed,
+
+    loadingRecentResults: state.measurement.loading,
+    loadingRecentResultsFailed: state.measurement.failed,
 
     nettests: state.nettest.nettests,
 

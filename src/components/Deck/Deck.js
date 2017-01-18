@@ -11,13 +11,13 @@ const FullControls = ({ deckId, enabled, running, runningScheduled, openDeckInfo
     </div>
     <div className='col-md-2'>
       {runningScheduled &&
-      <i className='icon-btn-cancel fa fa-circle-o-notch fa-spin' />
+      <i className='icon-btn icon-btn-cancel fa fa-circle-o-notch fa-spin' />
       }
       {enabled && !runningScheduled &&
-      <i className='icon-btn-on fa fa-clock-o' onClick={() => onDeckToggled(deckId)} />
+      <i className='icon-btn icon-btn-on fa fa-clock-o' onClick={() => onDeckToggled(deckId)} />
       }
       {!enabled && !runningScheduled &&
-      <i className='icon-btn-off fa fa-clock-o' onClick={() => onDeckToggled(deckId)} />
+      <i className='icon-btn icon-btn-off fa fa-clock-o' onClick={() => onDeckToggled(deckId)} />
       }
     </div>
     <div className='col-md-2'>
@@ -95,6 +95,7 @@ export const Deck = ({
           openDeckInfo={openDeckInfo}
           onDeckToggled={onDeckToggled} />
       }
+
       <Modal
         className='Modal__Bootstrap modal-dialog'
         onRequestClose={closeDeckInfo}

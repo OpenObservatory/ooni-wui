@@ -9,10 +9,10 @@ const ACTION_HANDLERS = {
     return ({ ...state, failed: true, loading: false, failure: action.ex })
   },
   [LOADING_MEASUREMENTS_SUCCEEDED]: (state, action) => {
-    return ({ ...state, loading: false, measurements: action.measurements })
+    return ({ ...state, loading: false, failed: false, measurements: action.measurements })
   },
   [LOADING_MEASUREMENTS]: (state) => {
-    return ({ ...state, loading: true })
+    return ({ ...state, loading: true, failed: false, failure: null })
   }
 }
 

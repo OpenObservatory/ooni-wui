@@ -41,7 +41,10 @@ export const Dashboard = ({
   activeDeck,
   activeNettest,
   nettests,
-  loadingDecks
+  loadingDecks,
+  loadingDecksFailed,
+  loadingRecentResults,
+  loadingRecentResultsFailed
 }) => (
   <div>
 
@@ -65,7 +68,19 @@ export const Dashboard = ({
     </div>
 
     <div className='row decks'>
-      {
+      { loadingDecksFailed &&
+        <div className='text-xs-center' style={{ marginTop: '2rem' }}>
+          <p className='text-danger'>
+            <i className='fa fa-exclamation-circle' /> failed to load decks
+          </p>
+        </div>
+      }
+      { loadingDecks &&
+        <div className='text-xs-center' style={{ marginTop: '2rem' }}>
+          <i className='fa fa-spinner fa-pulse fa-3x fa-fw' /> loading decks
+        </div>
+      }
+      { !loadingDecks && !loadingDecksFailed &&
         decks.map((deck) => {
           return <Deck
             key={deck.id}
@@ -88,35 +103,52 @@ export const Dashboard = ({
       nettests={nettests}
       deck={activeDeck} />
 
-    {recentResults.length === 0
-      ? <div className='row recent-results'>
-        <div className='col-md-3 offset-md-3'>
-          <img src={OONILogoImage} width='200px' height='200px' className='ooni-logo' />
-        </div>
-        <div className='col-md-3'>
-          <h2>Your recent test results will appear here once the tests have finished running!
-            As you run more tests, you can view past results in the "Measurements" page.</h2>
-        </div>
+    {loadingRecentResults &&
+    <div className='text-xs-center' style={{ marginTop: '2rem' }}>
+      <i className='fa fa-spinner fa-pulse fa-3x fa-fw' /> loading recent results
+    </div>
+    }
+
+    {loadingRecentResultsFailed &&
+    <div className='text-xs-center' style={{ marginTop: '2rem' }}>
+      <p className='text-danger'>
+        <i className='fa fa-exclamation-circle' /> failed to load recent results
+      </p>
+    </div>
+    }
+
+    {!loadingRecentResults && !loadingRecentResultsFailed && recentResults.length === 0 &&
+    <div className='row recent-results'>
+      <div className='col-md-3 offset-md-3'>
+        <img src={OONILogoImage} width='200px' height='200px' className='ooni-logo'/>
       </div>
-      : <div className='row recent-results text-xs-center'>
-        <h2>Last {recentResults.length} tests</h2>
-        <BootstrapTable
-          bordered={false}
-          headerStyle={{ 'display': 'none' }}
-          tableStyle={{ border: 'none' }}
-          containerStyle={{ border: 'none' }}
-          bodyStyle={{ border: 'none' }}
-          trClassName={rowClassNameFormat}
-          data={recentResults}>
-          <TableHeaderColumn dataField='id' isKey hidden>ID</TableHeaderColumn>
-          <TableHeaderColumn dataAlign='center' dataField='test_name' dataFormat={formatName(deckIcons)} />
-          <TableHeaderColumn dataAlign='center' dataField='test_start_time' dataFormat={formatTime} />
-          <TableHeaderColumn width='150' dataAlign='center' dataField='asn' />
-          <TableHeaderColumn width='100' dataAlign='center' dataField='country_code' />
-          <TableHeaderColumn width='40' dataAlign='center' dataField='result' dataFormat={formatResult} />
-        </BootstrapTable>
-        <Link to='/measurements' className='btn btn-primary'>View your measurements</Link>
+      <div className='col-md-3'>
+        <h2>Your recent test results will appear here once the tests have finished running!
+          As you run more tests, you can view past results in the "Measurements" page.</h2>
       </div>
+    </div>
+    }
+
+    {!loadingRecentResults && !loadingRecentResultsFailed && recentResults.length >= 0 &&
+    <div className='row recent-results text-xs-center'>
+      <h2>Last {recentResults.length} tests</h2>
+      <BootstrapTable
+        bordered={false}
+        headerStyle={{'display': 'none'}}
+        tableStyle={{border: 'none'}}
+        containerStyle={{border: 'none'}}
+        bodyStyle={{border: 'none'}}
+        trClassName={rowClassNameFormat}
+        data={recentResults}>
+        <TableHeaderColumn dataField='id' isKey hidden>ID</TableHeaderColumn>
+        <TableHeaderColumn dataAlign='center' dataField='test_name' dataFormat={formatName(deckIcons)}/>
+        <TableHeaderColumn dataAlign='center' dataField='test_start_time' dataFormat={formatTime}/>
+        <TableHeaderColumn width='150' dataAlign='center' dataField='asn'/>
+        <TableHeaderColumn width='100' dataAlign='center' dataField='country_code'/>
+        <TableHeaderColumn width='40' dataAlign='center' dataField='result' dataFormat={formatResult}/>
+      </BootstrapTable>
+      <Link to='/measurements' className='btn btn-primary'>View your measurements</Link>
+    </div>
     }
 
   </div>
@@ -132,6 +164,9 @@ Dashboard.propTypes = {
   deckIcons: React.PropTypes.object,
   recentResults: React.PropTypes.array,
 
+  loadingRecentResults: React.PropTypes.bool,
+  loadingRecentResultsFailed: React.PropTypes.bool,
+
   onDeckStart: React.PropTypes.func,
   onDeckToggled: React.PropTypes.func,
   onDeckRun: React.PropTypes.func,
@@ -145,7 +180,8 @@ Dashboard.propTypes = {
   runOpen: React.PropTypes.bool,
   activeDeck: React.PropTypes.object,
   activeNettest: React.PropTypes.object,
-  loadingDecks: React.PropTypes.bool
+  loadingDecks: React.PropTypes.bool,
+  loadingDecksFailed: React.PropTypes.bool
 }
 
 export default Dashboard

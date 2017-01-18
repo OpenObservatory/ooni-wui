@@ -21,3 +21,19 @@
   }
 }
 
+.refresh-button {
+  i {
+    color: $color-white !important;
+    padding: 0.5rem;
+  }
+  display: inline-block;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.refresh-button:hover {
+  i {
+    color: $color-ooni-blue !important;
+  }
+  background-color: $color-white;
+}

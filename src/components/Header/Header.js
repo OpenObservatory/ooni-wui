@@ -2,6 +2,7 @@ import React from 'react'
 import { IndexLink, Link } from 'react-router'
 import './Header.scss'
 import OONILogoImage from './assets/ooni-logo.svg'
+import { refresh } from '../../store/location'
 
 export const Header = () => (
   <div className='header'>
@@ -21,6 +22,9 @@ export const Header = () => (
       <Link to='/logs' activeClassName='route--active' className='btn btn-primary'>
           Logs
         </Link>
+      <div className='refresh-button rounded-circle'>
+        <i className='icon-btn fa fa-refresh' onClick={() => refresh()} />
+      </div>
     </div>
   </div>
 )

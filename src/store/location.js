@@ -26,6 +26,11 @@ export const updateLocation = ({ dispatch }) => {
   return (nextLocation) => dispatch(locationChange(nextLocation))
 }
 
+export const refresh = () => {
+  const location = history.getCurrentLocation()
+  history.replace(location)
+}
+
 // ------------------------------------
 // Reducer
 // ------------------------------------
