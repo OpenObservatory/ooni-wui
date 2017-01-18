@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import Welcome from './Welcome'
 import UnderstandTheLaws from './UnderstandTheLaws'
@@ -19,26 +20,47 @@ const OnboardSteps = ({
   onFinalize
 }) => {
   return (
-    <div className='container'>
+    <div>
       <div className='onboard__viewport'>
-        {currentStep === 0 &&
-        <Welcome onNextClick={onNextClick} onSkipClick={onSkipClick} />
-        }
-        {currentStep === 1 &&
-        <UnderstandTheLaws onNextClick={onNextClick} />
-        }
-        {currentStep === 2 &&
-        <SetupSharing
-          settings={settings}
-          onSettingsChange={onSettingsChange}
-          onNextClick={onNextClick} />
-        }
-        {currentStep === 3 &&
-        <SetupYourTests
-          onDeckToggled={onDeckToggled}
-          decks={decks}
-          onNextClick={onFinalize} />
-        }
+        <div className='onboard__steps'>
+          <ReactCSSTransitionGroup
+            component='div'
+            transitionName='onboard__transition'
+            transitionEnterTimeout={800}
+            transitionLeaveTimeout={500}
+          >
+            {currentStep === 0 &&
+              <div className='onboard__step'>
+                <Welcome onNextClick={onNextClick} onSkipClick={onSkipClick} />
+              </div>
+            }
+            {currentStep === 1 &&
+            <div className='onboard__step'>
+              <UnderstandTheLaws onNextClick={onNextClick} />
+            </div>
+            }
+            {currentStep === 2 &&
+            <div className='onboard__step'>
+              <SetupSharing
+                settings={settings}
+                onSettingsChange={onSettingsChange}
+                onNextClick={onNextClick} />
+            </div>
+            }
+            {currentStep === 3 &&
+            <div className='onboard__step'>
+              <SetupYourTests
+                onDeckToggled={onDeckToggled}
+                decks={decks}
+                onNextClick={onFinalize} />
+            </div>
+            }
+          </ReactCSSTransitionGroup>
+        </div>
+        <div className='container'>
+          {currentStep > 0 && <StepIndicator gotoStep={gotoStep} currentStep={currentStep} lastStep={lastStep} />}
+        </div>
+
         <Quiz
           quizAnswers={quizAnswers}
           quizOpen={quizOpen}
@@ -51,7 +73,6 @@ const OnboardSteps = ({
           onNextClick={onNextClick}
         />
 
-        {currentStep > 0 && <StepIndicator gotoStep={gotoStep} currentStep={currentStep} lastStep={lastStep} />}
       </div>
     </div>
   )

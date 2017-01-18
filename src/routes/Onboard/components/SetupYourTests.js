@@ -3,7 +3,7 @@ import Deck from '../../../components/Deck'
 
 const SetupYourTests = ({ onNextClick, onDeckToggled, decks }) => {
   return (
-    <div>
+    <div className='container'>
 
       <div className='row text-xs-center'>
         <h1>Setup your tests!</h1>

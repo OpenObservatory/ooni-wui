@@ -5,7 +5,7 @@ import OONISparkles from '../assets/OONI-sparkles.svg'
 
 const Welcome = ({ onNextClick, onSkipClick }) => {
   return (
-    <div>
+    <div className='container'>
       <div className='row text-xs-center welcome'>
         <h1>Welcome to ooniprobe!</h1>
         <img src={OONISparkles} className='welcome-logo' />

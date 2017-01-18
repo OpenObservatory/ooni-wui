@@ -4,7 +4,7 @@ import SharingOptions from '../../../components/Settings/SharingOptions'
 
 const SetupSharing = ({ onNextClick, onSettingsChange, settings }) => {
   return (
-    <div>
+    <div className='container'>
 
       <div className='row text-xs-center' style={{ marginBottom: '2rem' }}>
         <h1>Setup sharing</h1>

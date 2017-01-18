@@ -2,7 +2,7 @@ import React from 'react'
 
 const UnderstandTheLaws = ({ currentStep, onNextClick }) => {
   return (
-    <div>
+    <div className='container'>
       <div className='row text-xs-center'>
         <h1>Potential risks</h1>
         <p>Anyone monitoring your internet activity (e.g. ISP, government, employer) can know that
