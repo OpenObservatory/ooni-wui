@@ -29,7 +29,9 @@ const Quiz = ({
           <div className='modal-body'>
             {(quizCorrect == null) &&
             <div className='questions'>
-              <p>Question 1: What is the foo bar?</p>
+              <p>Question 1: Anyone monitoring my internet activity (e.g. ISP, government or employer)
+                might be able to see that I am running ooniprobe, even though OONI takes precautions to make
+                this hard?</p>
               <div className='radio'>
                 <label>
                   <input type='radio' value
@@ -47,7 +49,8 @@ const Quiz = ({
                   </label>
               </div>
 
-              <p>Question 2: What is the foo bar?</p>
+              <p>Question 2: My measurements will by default get published by OONI and might include
+                personally-identifiable information?</p>
               <div className='radio'>
                 <label>
                   <input type='radio'

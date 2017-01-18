@@ -6,29 +6,24 @@ const SetupSharing = ({ onNextClick, onSettingsChange, settings }) => {
   return (
     <div>
 
-      <div className='row text-xs-center'>
+      <div className='row text-xs-center' style={{ marginBottom: '2rem' }}>
         <h1>Setup sharing</h1>
         <p>
-        Bacon ipsum dolor amet hamburger bacon jerky salami frankfurter, fatback turducken ball tip cow meatball.
-          Porchetta capicola jowl, alcatra short ribs spare ribs venison turducken pork chop tenderloin turkey.
-          Fatback andouille meatloaf tri-tip pork filet mignon ground round brisket landjaeger tenderloin shankle
-          tongue. Shoulder venison chuck pork loin turducken doner ham hock shankle filet mignon biltong
-          porchetta landjaeger strip steak pig bresaola.
-      </p>
+          All measurements are by default sent to OONI's measurement collector and are automatically
+          published on OONI Explorer and OONI's measurement API.
+        </p>
       </div>
 
       <SharingOptions onSettingsChange={onSettingsChange} settings={settings} />
 
-      <div className='row text-xs-center'>
-        <p>
-        Bacon ipsum dolor amet hamburger bacon jerky salami frankfurter, fatback turducken ball tip cow meatball.
-          Porchetta capicola jowl, alcatra short ribs spare ribs venison turducken pork chop tenderloin turkey.
-          Fatback andouille meatloaf tri-tip pork filet mignon ground round brisket landjaeger tenderloin shankle
-          tongue. Shoulder venison chuck pork loin turducken doner ham hock shankle filet mignon biltong
-      </p>
+      <div className='row text-xs-center' style={{ marginTop: '3rem' }}>
+        <p>Published data will include your approximate location, the time of the test, and
+          the network (ASN) you are connecting from. Other identifying information, such as your
+          IP address, is not deliberately collected, but might be included in HTTP headers or other metadata.
+        </p>
       </div>
 
-      <div className='row'>
+      <div className='row next-step'>
         <button onClick={onNextClick} className='btn btn-primary mx-auto'
           style={{ 'display': 'block' }}>
         I'm all "set" - let's run a test!

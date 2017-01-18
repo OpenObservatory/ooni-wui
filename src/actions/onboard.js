@@ -2,6 +2,7 @@ import { fetch } from '../util/api'
 
 export const GOTO_STEP = 'GOTO_STEP'
 export const NEXT_STEP = 'NEXT_STEP'
+export const SKIP_TO_END = 'SKIP_TO_END'
 
 export const SETTINGS_CHANGED = 'SETTINGS_CHANGED'
 
@@ -74,6 +75,10 @@ export const finalize = () => {
 export const gotoStep = (stepNumber) => ({
   type: GOTO_STEP,
   payload: stepNumber
+})
+
+export const skipToEnd = () => ({
+  type: SKIP_TO_END
 })
 
 export const settingsChanged = (key, value) => ({

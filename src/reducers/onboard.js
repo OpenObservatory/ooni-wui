@@ -9,6 +9,7 @@ import {
   LOADING_INITIAL_DECKS_SUCCEEDED,
   LOADING_INITIAL_DECKS_FAILED,
   LOADING_INITIAL_DECKS,
+  SKIP_TO_END,
   lastStep,
   quizStep
 } from '../actions/onboard'
@@ -17,6 +18,9 @@ const ACTION_HANDLERS = {
   [GOTO_STEP]: (state, action) => {
     if (state.currentStep < action.payload) return state
     return ({ ...state, currentStep: action.payload, quizOpen: false })
+  },
+  [SKIP_TO_END]: (state) => {
+    return ({ ...state, currentStep: lastStep, quizOpen: false })
   },
   [NEXT_STEP]: (state) => {
     if (state.currentStep === lastStep) {

@@ -30,6 +30,10 @@ body {
   font-weight: bold;
 }
 
+.low-viz {
+  font-weight: 200;
+}
+
 .clickable {
   cursor: pointer;
 }
@@ -39,17 +43,18 @@ body {
 }
 
 .large-icon {
-  font-size: 200px;
+  font-size: 9rem;
   color: $color-ooni-blue;
 }
 
 .medium-icon {
-  font-size: 60px;
+  font-size: 5rem;
   color: $color-ooni-blue;
 }
 
 .icon-btn {
   color: $color-ooni-blue;
+  cursor: pointer;
 }
 
 .icon-btn:hover,

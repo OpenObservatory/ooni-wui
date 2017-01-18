@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 
 import OnboardSteps from '../components/OnboardSteps'
 import {
+  skipToEnd,
   gotoStep,
   nextStep,
   settingsChanged,
@@ -35,7 +36,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(nextStep())
     },
     onSkipClick: () => {
-      dispatch(gotoStep(lastStep))
+      dispatch(skipToEnd())
     },
     gotoStep: (number) => {
       return () => {

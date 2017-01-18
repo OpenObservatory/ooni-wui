@@ -1,0 +1,26 @@
+@import '../../../styles/variables/colors';
+
+.welcome {
+
+  h1 {
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    margin-bottom: 2rem;
+  }
+
+  .welcome-logo {
+    padding-bottom: 2rem;
+  }
+}
+
+.skip-to-end {
+  margin-top: 1rem;
+  display: block;
+}
+
+a.skip-to-end:hover {
+  cursor: pointer;
+  color: $color-ooni-blue !important;
+}

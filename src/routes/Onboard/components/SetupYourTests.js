@@ -8,14 +8,13 @@ const SetupYourTests = ({ onNextClick, onDeckToggled, decks }) => {
       <div className='row text-xs-center'>
         <h1>Setup your tests!</h1>
         <p>
-        Bacon ipsum dolor amet hamburger bacon jerky salami frankfurter, fatback turducken ball tip cow meatball.
-          Porchetta capicola jowl, alcatra short ribs spare ribs venison turducken pork chop tenderloin turkey.
-          Fatback andouille meatloaf tri-tip pork filet mignon ground round brisket landjaeger tenderloin shankle
-          tongue. Shoulder venison chuck pork loin turducken doner ham hock shankle filet mignon biltong
-      </p>
+          Your tests are setup to run daily by default.
+          If you’d like to turn this off, click the <i className='fa fa-clock-o' /> button!
+        </p>
+        <p>To learn more about each test, click the <i className='fa fa-info-circle' /> button.</p>
       </div>
 
-      <div className='row text-xs-center'>
+      <div className='row text-xs-center' style={{ marginBottom: '2rem', marginTop: '2rem' }}>
         {
         decks.map((deck) => {
           return (
@@ -32,14 +31,11 @@ const SetupYourTests = ({ onNextClick, onDeckToggled, decks }) => {
 
       <div className='row text-xs-center'>
         <p>
-        Bacon ipsum dolor amet hamburger bacon jerky salami frankfurter, fatback turducken ball tip cow meatball.
-          Porchetta capicola jowl, alcatra short ribs spare ribs venison turducken pork chop tenderloin turkey.
-          Fatback andouille meatloaf tri-tip pork filet mignon ground round brisket landjaeger tenderloin shankle
-          tongue. Shoulder venison chuck pork loin turducken doner ham hock shankle filet mignon biltong
-      </p>
+          To see the results of your first batch of tests, click <strong>Go to my dashboard!</strong>
+        </p>
       </div>
 
-      <div className='row'>
+      <div className='row next-step'>
         <button onClick={onNextClick} className='btn btn-primary mx-auto'
           style={{ 'display': 'block' }}>
         Go to my dashboard!

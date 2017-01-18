@@ -4,23 +4,33 @@ const UnderstandTheLaws = ({ currentStep, onNextClick }) => {
   return (
     <div>
       <div className='row text-xs-center'>
-        <h1>Understand the laws</h1>
-        <p>
-        Bacon ipsum dolor amet hamburger bacon jerky salami frankfurter, fatback turducken ball tip cow meatball.
-          Porchetta capicola jowl, alcatra short ribs spare ribs venison turducken pork chop tenderloin turkey.
-          Fatback andouille meatloaf tri-tip pork filet mignon ground round brisket landjaeger tenderloin shankle
-          tongue. Shoulder venison chuck pork loin turducken doner ham hock shankle filet mignon biltong
+        <h1>Potential risks</h1>
+        <p>Anyone monitoring your internet activity (e.g. ISP, government, employer) can know that
+          you are running ooniprobe (even though OONI tries to make this hard).</p>
+
+        <p>When testing websites for censorship, you will connect to and download data from provocative or
+          objectionable sites (e.g. pornography) that might be illegal in your country.
         </p>
-        <i className='large-icon fa fa-gavel' />
         <p>
-        Bacon ipsum dolor amet hamburger bacon jerky salami frankfurter, fatback turducken ball tip cow meatball.
-          Porchetta capicola jowl, alcatra short ribs spare ribs venison turducken pork chop tenderloin turkey.
-          Fatback andouille meatloaf tri-tip pork filet mignon ground round brisket landjaeger tenderloin shankle
-          tongue. Shoulder venison chuck pork loin turducken doner ham hock shankle filet mignon biltong
+          OONI’s HTTP invalid request line test might trigger the suspicion of your ISP and could be viewed
+          as a form of “hacking”.</p>
+
+        <i className='large-icon fa fa-bomb' style={{ marginTop: '1rem', marginBottom: '2rem' }}/>
+
+        <p>Unless you configure your settings otherwise, all data collected from your tests will by default be
+          published by OONI and might include some personally- identifiable information (though OONI
+          tries to prevent this from happening).</p>
+        <p>The use of ooniprobe could be viewed as a form of espionage, regardless of the laws in your country.
         </p>
+        <p>
+        To our knowledge, no ooniprobe user has ever faced consequences from the use of our platform.
+          However, many countries have a lengthy history of targeting and abusing digital rights activists,
+          which could leave ooniprobe users subject to severe civil, criminal, or extra-judicial
+          penalties. <a href='https://ooni.torproject.org/about/risks'>Learn more here</a>.</p>
+        <p>We encourage you to consult with a lawyer prior to installing and running ooniprobe.</p>
       </div>
 
-      <div className='row'>
+      <div className='row next-step'>
         <button onClick={onNextClick} className='btn btn-primary mx-auto'
           style={{ 'display': 'block' }}>
           I understand the risk.
