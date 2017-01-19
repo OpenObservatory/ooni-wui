@@ -102,7 +102,7 @@ NettestRunnerOptions = connect((state, ownProps) => {
   })
   return {
     onSubmit: (options, dispatch) => {
-      runNettest(ownProps.nettestId, options)
+      dispatch(runNettest(ownProps.nettestId, options))
         .then(() => {
           dispatch(closedRunDeck())
         })
@@ -154,7 +154,7 @@ const DeckInfo = ({
       {
         deck.nettests && deck.nettests.map((nettestId) => {
           return (
-            <div key={nettestId} className='text-xs-center'>
+            <div key={nettestId} className='text-xs-center' style={{ marginTop: '2rem', marginBottom: '2rem' }}>
               <h2>{nettests[nettestId].name}</h2>
               <p>{nettests[nettestId].description}</p>
               <button className='btn btn-secondary' onClick={() => onTestRun(nettestId)}>

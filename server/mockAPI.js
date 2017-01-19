@@ -656,8 +656,7 @@ app.post('/deck/*/start', function (req, res) {
   res.json({})
 })
 
-
-const getSampleMeasurement = (test_name, test_keys, input = '', annotations = {}) => {
+const getSampleMeasurement = (testName, testKeys, input = '', annotations = {}) => {
   let sampleMeasurement = {
     'annotations': annotations,
     'data_format_version': '0.2.0',
@@ -677,8 +676,8 @@ const getSampleMeasurement = (test_name, test_keys, input = '', annotations = {}
     'software_name': 'ooniprobe',
     'software_version': '2.1.0',
     'test_helpers': {},
-    'test_keys': test_keys,
-    'test_name': test_name,
+    'test_keys': testKeys,
+    'test_name': testName,
     'test_runtime': 0.057000160217285156,
     'test_start_time': '2017-01-12 00:29:22',
     'test_version': '0.2.0'
@@ -790,7 +789,7 @@ const mockMeasurements = [
       )
     ]
   },
-   {
+  {
     'size': -1,
     'running': false,
     'country_code': 'GR',
@@ -959,6 +958,30 @@ const mockMeasurements = [
         'tampering': false
       })
     ]
+  },
+  {
+    'size': -1,
+    'running': true,
+    'progress': 20,
+    'country_code': 'GR',
+    'test_name': 'web_connectivity',
+    'test_start_time': '20161214T090551Z',
+    'completed': true,
+    'keep': false,
+    'asn': 'AS1241',
+    'stale': false,
+    'id': '20161212T090551Z-GR-AS1241-web_connectivity',
+    'result': 'ok',
+    'deck_id': 'web',
+    'summary': {
+      'test_start_time': '2017-01-12 00:29:22',
+      'anomaly': false,
+      'country_code': 'GR',
+      'asn': 'AS10',
+      'test_name': 'web_connectivity',
+      'results': []
+    },
+    'sample_measurements': []
   },
   {
     'size': -1,
@@ -1170,12 +1193,6 @@ const mockMeasurements = [
     ]
   }
 ]
-//
-//
-//
-//
-// 20161213T080502Z-GR-AS1241-web_connectivity
-// 20161214T085527Z-GR-AS1241-tcp_connect
 
 app.get('/measurement', function (req, res) {
   let measurementList = mockMeasurements.map((m) => {
@@ -1190,14 +1207,14 @@ app.get('/measurement', function (req, res) {
 })
 
 mockMeasurements.forEach((measurement) => {
-  app.get('/measurement/' + measurement.id, function(req, res) {
+  app.get('/measurement/' + measurement.id, function (req, res) {
     res.json(measurement.summary)
   })
 })
 
 mockMeasurements.forEach((measurement) => {
   measurement.sample_measurements.forEach((sample, idx) => {
-    app.get(`/measurement/${measurement.id}/${idx}`, function(req, res) {
+    app.get(`/measurement/${measurement.id}/${idx}`, function (req, res) {
       res.json(sample)
     })
   })

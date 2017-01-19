@@ -49,7 +49,9 @@ export const formatResult = (cell, row) => {
 
 export const formatViewButton = (onClick) => (cell, row) => {
   if (row.running === true) {
-    return <i className='fa fa-spinner fa-pulse' />
+    return <div>
+      {row.progress.toFixed(1)}% <i className='fa fa-spinner fa-pulse' />
+    </div>
   }
   if (row.stale === true) {
     return <i className='icon-warning fa fa-warning' />
