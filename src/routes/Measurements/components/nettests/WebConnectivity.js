@@ -10,6 +10,18 @@ export const WebConnectivityDetails = ({ measurement }) => {
         <p>The website <code>http://google.com/</code> is accessible and uncensored from this network.</p>
       </div>
       }
+      {(measurement.test_keys.accessible === true || measurement.test_keys.accessible === null) &&
+      measurement.test_keys.blocking === null &&
+      <div>
+        <h2 className='result-warning'><i className='fa fa-exclamation-circle' /> Error in measurement</h2>
+        {measurement.test_keys.accessible === true &&
+        <p>The website is up, however there was a problem in assessing if whether or not it is being censored.</p>
+        }
+        {measurement.test_keys.accessible === null &&
+        <p>There was an error in understanding if this site is up and/or censored.</p>
+        }
+      </div>
+      }
 
       {/* Site inaccessible */}
       {measurement.test_keys.accessible === false && (
@@ -17,7 +29,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
         ) &&
         <div>
           <h2 className='result-warning'><i className='fa fa-exclamation-circle' /> Website unavailable</h2>
-          <p>The website <code>http://google.com/</code> appears to not be available at the moment.
+          <p>The website appears to not be available at the moment.
             Requests from the control vantage point are also failing.</p>
         </div>
       }

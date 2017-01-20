@@ -134,18 +134,18 @@ export const Dashboard = ({
       <h2>Last {recentResults.length} tests</h2>
       <BootstrapTable
         bordered={false}
-        headerStyle={{'display': 'none'}}
-        tableStyle={{border: 'none'}}
-        containerStyle={{border: 'none'}}
-        bodyStyle={{border: 'none'}}
+        headerStyle={{ 'display': 'none' }}
+        tableStyle={{ border: 'none' }}
+        containerStyle={{ border: 'none' }}
+        bodyStyle={{ border: 'none' }}
         trClassName={rowClassNameFormat}
         data={recentResults}>
         <TableHeaderColumn dataField='id' isKey hidden>ID</TableHeaderColumn>
-        <TableHeaderColumn dataAlign='center' dataField='test_name' dataFormat={formatName(deckIcons)}/>
-        <TableHeaderColumn dataAlign='center' dataField='test_start_time' dataFormat={formatTime}/>
-        <TableHeaderColumn width='150' dataAlign='center' dataField='asn'/>
-        <TableHeaderColumn width='100' dataAlign='center' dataField='country_code'/>
-        <TableHeaderColumn width='40' dataAlign='center' dataField='result' dataFormat={formatResult}/>
+        <TableHeaderColumn dataAlign='center' dataField='test_name' dataFormat={formatName(deckIcons)} />
+        <TableHeaderColumn dataAlign='center' dataField='test_start_time' dataFormat={formatTime} />
+        <TableHeaderColumn width='150' dataAlign='center' dataField='asn' />
+        <TableHeaderColumn width='100' dataAlign='center' dataField='country_code' />
+        <TableHeaderColumn width='40' dataAlign='center' dataField='result' dataFormat={formatResult} />
       </BootstrapTable>
       <Link to='/measurements' className='btn btn-primary'>View your measurements</Link>
     </div>

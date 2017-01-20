@@ -91,6 +91,7 @@ const MeasurementList = ({
             <TableHeaderColumn dataField='id' isKey hidden>ID</TableHeaderColumn>
             <TableHeaderColumn dataField='running' hidden>Running</TableHeaderColumn>
             <TableHeaderColumn dataField='stale' hidden>Stale</TableHeaderColumn>
+            <TableHeaderColumn dataField='anomaly' hidden>Anomaly</TableHeaderColumn>
           </BootstrapTable>
         </div>
       }
