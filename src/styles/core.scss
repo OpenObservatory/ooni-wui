@@ -109,8 +109,12 @@ strong {
   color: $color-ooni-blue;
 }
 
-.tr-row-anomaly {
+.tr-row-anomaly-danger {
   color: $color-status-bad-red;
+}
+
+.tr-row-anomaly-warning {
+  color: $color-status-warning-orange;
 }
 
 .wordwrap

@@ -62,7 +62,11 @@ export const formatViewButton = (onClick) => (cell, row) => {
 export const rowClassNameFormat = (row, rowIdx) => {
   let className = 'tr-row'
   if (row.anomaly === true || row.result === 'error') {
-    className += ' tr-row-anomaly'
+    if (row.anomaly_type && row.anomaly_type === 'warning') {
+      className += ' tr-row-anomaly-warning'
+    } else {
+      className += ' tr-row-anomaly-danger'
+    }
   } else if (row.anomaly === false || row.result === 'ok') {
     className += ' tr-row-normal'
   }
