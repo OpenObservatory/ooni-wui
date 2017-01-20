@@ -7,6 +7,8 @@ import HttpHeaderFieldManipulationDetails from './nettests/HttpHeaderFieldManipu
 import HttpInvalidRequestLineDetails from './nettests/HttpInvalidRequestLine'
 import WhatsappDetails from './nettests/Whatsapp'
 import NdtDetails from './nettests/Ndt'
+import VanillaTorDetails from './nettests/VanillaTor'
+import TcpConnectDetails from './nettests/TcpConnect'
 
 import './MeasurementDetails.scss'
 
@@ -37,7 +39,9 @@ const NETTEST_HANDLERS = {
   'http_header_field_manipulation': (measurement) => (<HttpHeaderFieldManipulationDetails measurement={measurement} />),
   'http_invalid_request_line': (measurement) => (<HttpInvalidRequestLineDetails measurement={measurement} />),
   'whatsapp': (measurement) => (<WhatsappDetails measurement={measurement} />),
-  'ndt': (measurement) => (<NdtDetails measurement={measurement} />)
+  'ndt': (measurement) => (<NdtDetails measurement={measurement} />),
+  'vanilla_tor': (measurement) => (<VanillaTorDetails measurement={measurement} />),
+  'tcp_connect': (measurement) => (<TcpConnectDetails measurement={measurement} />)
 }
 
 export const getNettestDetails = (measurement) => {

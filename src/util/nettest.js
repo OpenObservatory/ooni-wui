@@ -14,7 +14,9 @@ const NETTEST_PRETTY_NAMES = {
   'http_invalid_request_line': 'HTTP Invalid Request Line',
   'whatsapp': 'WhatsApp',
   'ndt': 'NDT Speed Test',
-  'meek_fronted_requests_test': 'Meek Circumvention Test'
+  'meek_fronted_requests_test': 'Meek Circumvention Test',
+  'vanilla_tor': 'Vanilla Tor',
+  'tcp_connect': 'TCP Connect'
 }
 
 export const getPrettyNettestName = (testName) => {

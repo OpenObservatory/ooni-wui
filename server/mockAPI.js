@@ -881,6 +881,37 @@ const mockMeasurements = [
     'size': -1,
     'running': false,
     'country_code': 'GR',
+    'test_name': 'vanilla_tor',
+    'test_start_time': '20161213T090551Z',
+    'completed': true,
+    'keep': false,
+    'asn': 'AS1241',
+    'stale': false,
+    'id': '20161213T090551Z-GR-AS1241-vanilla_tor',
+    'result': 'ok',
+    'deck_id': 'web',
+    'summary': {
+      'test_start_time': '2017-01-12 00:29:22',
+      'anomaly': false,
+      'country_code': 'GR',
+      'asn': 'AS10',
+      'test_name': 'vanilla_tor',
+      'results': [
+        { 'url': null, 'idx': 0 }
+      ]
+    },
+    'sample_measurements': [
+      getSampleMeasurement('vanilla_tor', {
+        'success': true,
+        'tor_version': '0.2.24',
+        'tor_log': 'Tor log line 1\nTor log line 2\n'
+      })
+    ]
+  },
+  {
+    'size': -1,
+    'running': false,
+    'country_code': 'GR',
     'test_name': 'http_invalid_request_line',
     'test_start_time': '20161214T080551Z',
     'completed': true,
