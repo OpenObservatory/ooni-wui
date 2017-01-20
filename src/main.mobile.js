@@ -7,40 +7,39 @@ import './styles/mobile.scss'
 // ========================================================
 // Mobile specific wrapping
 // ========================================================
-const initialState = window.___INITIAL_STATE__
-
 class MeasurementWrapper extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            measurement: null,
-            error: null
-        }
+  constructor (props) {
+    super(props)
+    this.state = {
+      measurement: null,
+      error: null
     }
+  }
 
-    componentDidMount() {
-        try {
-            const measurement = JSON.parse(MeasurementJSON.get())
-            this.setState({measurement: measurement})
-        } catch (e) {
-            this.setState({error: e})
-        }
+  componentDidMount () {
+    try {
+      // eslint-disable-next-line no-undef
+      const measurement = JSON.parse(MeasurementJSON.get())
+      this.setState({ measurement: measurement })
+    } catch (e) {
+      this.setState({ error: e })
     }
+  }
 
-    render() {
-        if (!this.state.measurement) {
-            return <h2>Loading</h2>
-        }
-        if (this.state.error !== null) {
-            return <div>
-                <h2>Error in loading measurement</h2>
-                <pre>{this.state.error.toString()}</pre>
-            </div>
-        }
-        return <div className="container">
-            <MeasurementDetails measurement={this.state.measurement} />
-        </div>
+  render () {
+    if (!this.state.measurement) {
+      return <h2>Loading</h2>
     }
+    if (this.state.error !== null) {
+      return <div>
+        <h2>Error in loading measurement</h2>
+        <pre>{this.state.error.toString()}</pre>
+      </div>
+    }
+    return <div className='container'>
+      <MeasurementDetails measurement={this.state.measurement} />
+    </div>
+  }
 }
 
 // ========================================================

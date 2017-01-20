@@ -16,7 +16,7 @@ export const WhatsappDetails = ({ measurement }) => {
       measurement.test_keys.facebook_tcp_blocking === true ||
       measurement.test_keys.registration_server_status === 'blocked') &&
       <div>
-        <h2 className='result-success'><i className='fa fa-check-circle-o'/> Evidence of censorship</h2>
+        <h2 className='result-success'><i className='fa fa-check-circle-o' /> Evidence of censorship</h2>
       </div>
       }
 

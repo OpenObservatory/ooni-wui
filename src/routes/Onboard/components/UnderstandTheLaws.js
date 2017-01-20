@@ -15,7 +15,7 @@ const UnderstandTheLaws = ({ currentStep, onNextClick }) => {
           OONI’s HTTP invalid request line test might trigger the suspicion of your ISP and could be viewed
           as a form of “hacking”.</p>
 
-        <i className='large-icon fa fa-bomb' style={{ marginTop: '1rem', marginBottom: '2rem' }}/>
+        <i className='large-icon fa fa-bomb' style={{ marginTop: '1rem', marginBottom: '2rem' }} />
 
         <p>Unless you configure your settings otherwise, all data collected from your tests will by default be
           published by OONI and might include some personally- identifiable information (though OONI

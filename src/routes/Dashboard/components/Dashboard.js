@@ -120,7 +120,7 @@ export const Dashboard = ({
     {!loadingRecentResults && !loadingRecentResultsFailed && recentResults.length === 0 &&
     <div className='row recent-results'>
       <div className='col-md-3 offset-md-3'>
-        <img src={OONILogoImage} width='200px' height='200px' className='ooni-logo'/>
+        <img src={OONILogoImage} width='200px' height='200px' className='ooni-logo' />
       </div>
       <div className='col-md-3'>
         <h2>Your recent test results will appear here once the tests have finished running!
