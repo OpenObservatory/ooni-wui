@@ -1,9 +1,1 @@
-# Check it out: http://humanstxt.org/
-
-# TEAM
-
-    <name> -- <role> -- <twitter>
-
-# THANKS
-
-    <name>
+This is an instance of ooniprobe. For more information on what this project is about visit: https://ooni.torproject.org/
