@@ -10,6 +10,8 @@ export const CLOSE_MEASUREMENT = 'CLOSE_MEASUREMENT'
 export const SHOW_HIDE_DECK = 'SHOW_HIDE_DECK'
 export const SELECTED_MEASUREMENTS = 'SELECTED_MEASUREMENTS'
 
+export const TOGGLE_NORMAL_MEASUREMENTS = 'TOGGLE_NORMAL_MEASUREMENTS'
+
 export const loadingMeasurementList = () => ({
   type: LOADING_MEASUREMENT_LIST
 })
@@ -23,6 +25,10 @@ export const loadingMeasurementListFailed = () => ({
 export const showHideDeck = (deckId) => ({
   type: SHOW_HIDE_DECK,
   deckId
+})
+
+export const toggleNormalMeasurements = () => ({
+  type: TOGGLE_NORMAL_MEASUREMENTS
 })
 
 export const selectMeasurements = (measurementId) => (dispatch, getState) => {

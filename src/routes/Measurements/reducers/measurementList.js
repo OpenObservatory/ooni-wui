@@ -5,7 +5,8 @@ import {
   LOADING_MEASUREMENT_LIST_FAILED,
   LOADING_MEASUREMENT_LIST,
   OPENNED_MEASUREMENT,
-  CLOSE_MEASUREMENT
+  CLOSE_MEASUREMENT,
+  TOGGLE_NORMAL_MEASUREMENTS
 } from '../actions/measurementList'
 
 const ACTION_HANDLERS = {
@@ -19,6 +20,9 @@ const ACTION_HANDLERS = {
       visibilityFilter.hiddenDecks.splice(idx, 1)
     }
     return ({ ...state, visibilityFilter })
+  },
+  [TOGGLE_NORMAL_MEASUREMENTS]: (state) => {
+    return ({ ...state, showNormal: !state.showNormal })
   },
   [SELECTED_MEASUREMENTS]: (state, action) => {
     return ({ ...state, selectedMeasurements: action.measurements })
@@ -41,7 +45,8 @@ const initialState = {
   isMeasurementOpen: false,
   visibilityFilter: {
     hiddenDecks: []
-  }
+  },
+  showNormal: true
 }
 
 export function measurementListReducer (state = initialState, action) {

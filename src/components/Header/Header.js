@@ -16,9 +16,10 @@ export const Header = () => (
       <Link to='/measurements' activeClassName='route--active' className='btn btn-primary'>
           Measurements
         </Link>
-      <Link to='/settings' activeClassName='route--active' className='btn btn-primary'>
+      {/* <Link to='/settings' activeClassName='route--active' className='btn btn-primary'>
           Settings
         </Link>
+       */}
       <Link to='/logs' activeClassName='route--active' className='btn btn-primary'>
           Logs
         </Link>

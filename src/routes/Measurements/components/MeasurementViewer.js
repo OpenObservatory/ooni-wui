@@ -17,8 +17,11 @@ const MeasurementViewer = ({
   onRowClick,
   onBackClick,
   onCloseClick,
+  onToggleNormal,
   isMeasurementOpen,
-  openMeasurement
+  openMeasurement,
+  visibleMeasurements,
+  showNormal
 }) => {
   let tableOptions = {
     onRowClick: (row) => {
@@ -41,13 +44,16 @@ const MeasurementViewer = ({
               {formatDate(selectedMeasurements.test_start_time)} {' | '}
               Location: {selectedMeasurements.country_code} ({selectedMeasurements.asn})
             </div>
+            <button className='btn btn-secondary' onClick={() => onToggleNormal()}>
+              {showNormal ? 'Hide' : 'Show'} normal
+            </button>
           </div>
 
           <BootstrapTable
             tableStyle={{ border: 'none' }}
             containerStyle={{ border: 'none' }}
             trClassName={rowClassNameFormat}
-            data={selectedMeasurements.results}>
+            data={visibleMeasurements}>
             <TableHeaderColumn dataAlign='center' dataField='url'>
               <strong>Url</strong>
             </TableHeaderColumn>
@@ -89,11 +95,14 @@ const MeasurementViewer = ({
 
 MeasurementViewer.propTypes = {
   selectedMeasurements: React.PropTypes.object,
+  visibleMeasurements: React.PropTypes.array,
   onRowClick: React.PropTypes.func,
   onBackClick: React.PropTypes.func,
   onCloseClick: React.PropTypes.func,
+  onToggleNormal: React.PropTypes.func,
   isMeasurementOpen: React.PropTypes.bool,
-  openMeasurement: React.PropTypes.object
+  openMeasurement: React.PropTypes.object,
+  showNormal: React.PropTypes.bool
 }
 
 export default MeasurementViewer

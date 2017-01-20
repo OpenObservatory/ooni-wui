@@ -2,6 +2,8 @@ import { createSelector } from 'reselect'
 
 const getVisibilityFilter = (state) => state.measurementList.visibilityFilter
 const getMeasurements = (state) => state.measurement.measurements
+const getShowNormal = (state) => state.measurementList.showNormal
+const getSelectedMeasurements = (state) => state.measurementList.selectedMeasurements
 
 export const getVisibleMeasurements = createSelector(
   [getVisibilityFilter, getMeasurements],
@@ -10,3 +12,14 @@ export const getVisibleMeasurements = createSelector(
   }
 )
 
+export const getVisibileSelectedMeasurements = createSelector(
+  [getShowNormal, getSelectedMeasurements],
+  (showNormal, selectedMeasurements) => {
+    return selectedMeasurements.results.filter(measurement => {
+      if (showNormal) {
+        return true
+      }
+      return !!measurement.anomaly
+    })
+  }
+)
