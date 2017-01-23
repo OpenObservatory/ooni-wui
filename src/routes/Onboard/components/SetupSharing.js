@@ -26,7 +26,7 @@ const SetupSharing = ({ onNextClick, onSettingsChange, settings }) => {
       <div className='row next-step'>
         <button onClick={onNextClick} className='btn btn-primary mx-auto'
           style={{ 'display': 'block' }}>
-        I'm all "set" - let's run a test!
+        I'm all set!
       </button>
       </div>
 

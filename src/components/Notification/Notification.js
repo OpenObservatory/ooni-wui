@@ -6,9 +6,6 @@ import { ToastContainer, ToastMessage } from 'react-toastr'
 let ToastMessageFactory = React.createFactory(ToastMessage.animation)
 
 class Notification extends Component {
-  propTypes = {
-    messages: React.PropTypes.array
-  }
 
   constructor (props) {
     super(props)
@@ -42,6 +39,10 @@ class Notification extends Component {
       }
     )
   }
+}
+
+Notification.propTypes = {
+  messages: React.PropTypes.array
 }
 
 function mapStateToProps (state) {

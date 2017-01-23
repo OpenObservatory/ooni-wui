@@ -11,10 +11,10 @@ const FullControls = ({ deckId, enabled, running, runningScheduled, openDeckInfo
     </div>
     <div className='col-md-2'>
       {runningScheduled &&
-      <i className='icon-btn icon-btn-cancel fa fa-circle-o-notch fa-spin' />
+      <i className='fa fa-circle-o-notch fa-spin' />
       }
       {enabled && !runningScheduled &&
-      <i className='icon-btn icon-btn-on fa fa-clock-o' onClick={() => onDeckToggled(deckId)} />
+      <i className='icon-btn-on fa fa-clock-o' onClick={() => onDeckToggled(deckId)} />
       }
       {!enabled && !runningScheduled &&
       <i className='icon-btn icon-btn-off fa fa-clock-o' onClick={() => onDeckToggled(deckId)} />
@@ -22,7 +22,7 @@ const FullControls = ({ deckId, enabled, running, runningScheduled, openDeckInfo
     </div>
     <div className='col-md-2'>
       {running
-        ? <i className='icon-btn-cancel fa fa-spinner fa-pulse' />
+        ? <i className='fa fa-spinner fa-pulse' />
         : <i className='icon-btn fa fa-play' onClick={() => onDeckRun(deckId)} />
       }
     </div>
