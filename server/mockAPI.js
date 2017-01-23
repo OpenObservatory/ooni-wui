@@ -98,7 +98,13 @@ app.get('/notify', function (req, res) {
     'type': 'error'
   }
   setTimeout(function () {
-    notifyIdx += 1
+    // notifyIdx += 1
+    // Always return null message
+    if (notifyIdx === 0) {
+      res.json(nullMessage)
+      return
+    }
+    // This code is never reached.
     if (notifyIdx % 11 === 0) {
       res.json(successMessage)
     } else if (notifyIdx % 13 === 0) {
