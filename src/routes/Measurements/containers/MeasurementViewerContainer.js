@@ -21,7 +21,8 @@ const mapDispatchToProps = (dispatch) => ({
   onCloseClick: () => {
     dispatch(closeMeasurement())
   },
-  onToggleNormal: () => {
+  onToggleNormal: (evt) => {
+    evt.preventDefault()
     dispatch(toggleNormalMeasurements())
   }
 })

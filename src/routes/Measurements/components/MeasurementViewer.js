@@ -44,9 +44,6 @@ const MeasurementViewer = ({
               {formatDate(selectedMeasurements.test_start_time)} {' | '}
               Location: {selectedMeasurements.country_code} ({selectedMeasurements.asn})
             </div>
-            <button className='btn btn-secondary' onClick={() => onToggleNormal()}>
-              {showNormal ? 'Hide' : 'Show'} normal
-            </button>
           </div>
 
           <BootstrapTable
@@ -55,7 +52,11 @@ const MeasurementViewer = ({
             trClassName={rowClassNameFormat}
             data={visibleMeasurements}>
             <TableHeaderColumn dataAlign='center' dataField='url'>
-              <strong>Url</strong>
+              <strong>Url (
+                <a href='#' onClick={(evt) => onToggleNormal(evt)}>
+                  {showNormal ? 'Hide' : 'Show'} normal
+                </a>
+                )</strong>
             </TableHeaderColumn>
             <TableHeaderColumn width='100' dataAlign='center' dataField='anomaly'
               dataFormat={formatViewButton(tableOptions.onRowClick)}>
