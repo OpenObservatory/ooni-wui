@@ -49,7 +49,7 @@ const BasicControls = ({ deckId, enabled, openDeckInfo, onDeckToggled }) => (
         icons={{
           checked: <i style={{
             'color': 'rgb(255, 255, 255)',
-            'font-size': '1.2em',
+            'fontSize': '1.2em',
             'position': 'absolute',
             'top': '-4px',
             'left': '0'
