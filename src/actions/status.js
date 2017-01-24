@@ -17,6 +17,9 @@ export const updatingStatusSucceeded = (status) => ({
     asn: status.asn
   }
 })
+export const updatingStatusFailed = () => ({
+  type: UPDATING_STATUS_FAILED
+})
 
 export const fetchStatus = () => (dispatch) => {
   return fetch('/api/status')
@@ -33,6 +36,6 @@ export const startStatusPoller = () => (dispatch, getStatus) => {
     dispatch(updatingStatusSucceeded(json))
   }, (error) => {
     dispatch(receivedNotification('Error in status update', error.toString(), 'error'))
-    dispatch({ ...getStatus(), running: false })
+    dispatch(updatingStatusFailed())
   })
 }
