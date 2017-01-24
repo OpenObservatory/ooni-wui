@@ -7,7 +7,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
       {measurement.test_keys.accessible !== false && measurement.test_keys.blocking === false &&
       <div>
         <h2 className='result-success'><i className='fa fa-check-circle-o' /> No censorship detected</h2>
-        <p>The website <code>http://google.com/</code> is accessible and uncensored from this network.</p>
+        <p>The website is accessible and uncensored from this network.</p>
       </div>
       }
       {(measurement.test_keys.accessible === true || measurement.test_keys.accessible === null) &&

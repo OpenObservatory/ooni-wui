@@ -73,9 +73,11 @@ export const Dashboard = ({
           <p className='text-danger'>
             <i className='fa fa-exclamation-circle' /> failed to load decks
           </p>
+          <p>Try clicking on the reload <strong><i className='fa fa-refresh' /></strong> button in the upper
+            right corner</p>
         </div>
       }
-      { loadingDecks &&
+      { loadingDecks && !loadingDecksFailed &&
         <div className='text-xs-center' style={{ marginTop: '2rem' }}>
           <i className='fa fa-spinner fa-pulse fa-3x fa-fw' /> loading decks
         </div>
@@ -103,17 +105,19 @@ export const Dashboard = ({
       nettests={nettests}
       deck={activeDeck} />
 
-    {loadingRecentResults &&
+    {loadingRecentResults && !loadingRecentResultsFailed &&
     <div className='text-xs-center' style={{ marginTop: '2rem' }}>
       <i className='fa fa-spinner fa-pulse fa-3x fa-fw' /> loading recent results
     </div>
     }
 
-    {loadingRecentResultsFailed &&
+    {loadingRecentResultsFailed && !loadingRecentResults &&
     <div className='text-xs-center' style={{ marginTop: '2rem' }}>
       <p className='text-danger'>
         <i className='fa fa-exclamation-circle' /> failed to load recent results
       </p>
+      <p>Try clicking on the reload <strong><i className='fa fa-refresh' /></strong> button in the upper
+        right corner</p>
     </div>
     }
 
@@ -129,7 +133,7 @@ export const Dashboard = ({
     </div>
     }
 
-    {!loadingRecentResults && !loadingRecentResultsFailed && recentResults.length >= 0 &&
+    {!loadingRecentResults && !loadingRecentResultsFailed && recentResults.length > 0 &&
     <div className='row recent-results text-xs-center'>
       <h2>Last {recentResults.length} tests</h2>
       <BootstrapTable
