@@ -9,7 +9,7 @@ export const Footer = () => (
           <a href='https://ooni.torproject.org/about/'>About OONI</a>
         </li>
         <li>
-          <a href='https://ooni.torproject.org/about/data-policy/'>Legal</a>
+          <a href='https://ooni.torproject.org/about/data-policy/'>Data policy</a>
         </li>
         <li>
           <a href='mailto:contact@openobservatory.org'>Help</a>
