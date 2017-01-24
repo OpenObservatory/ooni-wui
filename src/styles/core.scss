@@ -88,6 +88,10 @@ strong {
   content: "\f00d";
 }
 
+.icon-btn-disabled:hover {
+  cursor: not-allowed;
+}
+
 .modal-dialog {
   overflow-y: initial !important
 }

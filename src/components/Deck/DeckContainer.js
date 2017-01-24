@@ -12,6 +12,7 @@ export default class DeckContainer extends React.Component {
       running: React.PropTypes.bool
     }).isRequired,
     fullControls: React.PropTypes.bool,
+    directorStarted: React.PropTypes.bool,
     onDeckToggled: React.PropTypes.func,
     onDeckRun: React.PropTypes.func
   };
@@ -35,6 +36,7 @@ export default class DeckContainer extends React.Component {
     return (
       <Deck
         deck={this.props.deck}
+        directorStarted={this.props.directorStarted}
         infoBoxOpen={this.state.infoBoxOpen}
         // XXX: https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md
         // eslint-disable-next-line

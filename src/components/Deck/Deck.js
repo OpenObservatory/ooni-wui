@@ -8,38 +8,58 @@ const FullControls = ({
   deckId, enabled, running, runningScheduled,
   directorStarted,
   openDeckInfo, onDeckToggled, onDeckRun
-}) => (
-  <div className='row'>
-    <div className='col-md-2 offset-md-3' onClick={openDeckInfo}>
-      <i className='icon-btn fa fa-info-circle' />
+}) => {
+  let scheduleClassName, runClassName
+
+  if (runningScheduled) {
+    scheduleClassName = 'fa fa-circle-o-notch fa-spin'
+  } else if (enabled) {
+    scheduleClassName = 'icon-btn-on fa fa-clock-o'
+  } else if (!enabled) {
+    scheduleClassName = 'icon-btn-off fa fa-clock-o'
+  }
+
+  if (running) {
+    runClassName = 'fa fa-spinner fa-pulse'
+  } else {
+    runClassName = 'icon-btn fa fa-play'
+  }
+
+  if (!directorStarted) {
+    scheduleClassName += ' icon-btn-disabled'
+    runClassName += ' icon-btn-disabled'
+  }
+
+  return (
+    <div className='row'>
+      <div className='col-md-2 offset-md-3' onClick={openDeckInfo}>
+        <i className='icon-btn fa fa-info-circle'/>
+      </div>
+      <div className='col-md-2'>
+        {runningScheduled && directorStarted &&
+        <i className={scheduleClassName} />
+        }
+        {!runningScheduled && directorStarted &&
+        <i className={scheduleClassName} onClick={() => onDeckToggled(deckId)} />
+        }
+        {!directorStarted &&
+        <i className={scheduleClassName} />
+        }
+      </div>
+      <div className='col-md-2'>
+        {!directorStarted &&
+        <i className={runClassName} />
+        }
+        {running && directorStarted &&
+        <i className={runClassName} />
+        }
+        {!running && directorStarted &&
+        <i className={runClassName} onClick={() => onDeckRun(deckId)} />
+        }
+      </div>
     </div>
-    <div className='col-md-2'>
-      {!directorStarted &&
-      <i className='fa fa-close' />
-      }
-      {runningScheduled && directorStarted &&
-      <i className='fa fa-circle-o-notch fa-spin' />
-      }
-      {enabled && !runningScheduled && directorStarted &&
-      <i className='icon-btn-on fa fa-clock-o' onClick={() => onDeckToggled(deckId)} />
-      }
-      {!enabled && !runningScheduled && directorStarted &&
-      <i className='icon-btn icon-btn-off fa fa-clock-o' onClick={() => onDeckToggled(deckId)} />
-      }
-    </div>
-    <div className='col-md-2'>
-      {!directorStarted &&
-        <i className='fa fa-close' />
-      }
-      {running && directorStarted &&
-        <i className='fa fa-spinner fa-pulse' />
-      }
-      {!running && directorStarted &&
-        <i className='icon-btn fa fa-play' onClick={() => onDeckRun(deckId)} />
-      }
-    </div>
-  </div>
-)
+  )
+}
 FullControls.propTypes = {
   deckId: React.PropTypes.string,
   enabled: React.PropTypes.bool,
