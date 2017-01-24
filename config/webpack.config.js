@@ -190,7 +190,12 @@ webpackConfig.module.loaders.push(
   { test: /\.otf(\?.*)?$/,   loader: 'file?prefix=fonts/&name=fonts/[name].[hash].[ext]&limit=10000&mimetype=font/opentype' },
   { test: /\.ttf(\?.*)?$/,   loader: 'url?prefix=fonts/&name=fonts/[name].[hash].[ext]&limit=10000&mimetype=application/octet-stream' },
   { test: /\.eot(\?.*)?$/,   loader: 'file?prefix=fonts/&name=fonts/[name].[hash].[ext]' },
-  { test: /\.svg(\?.*)?$/,   loader: 'url?prefix=fonts/&name=fonts/[name].[hash].[ext]&limit=10000&mimetype=image/svg+xml' },
+  { test: /\.svg(\?.*)?$/,
+      loaders: [
+          'url?prefix=fonts/&name=fonts/[name].[hash].[ext]&limit=10000&mimetype=image/svg+xml',
+          'svgo'
+      ]
+  },
   { test: /\.(png|jpg)$/,    loader: 'url?limit=8192' }
 )
 /* eslint-enable */

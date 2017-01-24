@@ -80,7 +80,7 @@ config.globals = {
   },
   'NODE_ENV'     : config.env,
   '__DEV__'      : config.env === 'development',
-  '__PROD__'     : config.env === 'production',
+  '__PROD__'     : config.env === 'production' || config.env === 'mobile',
   '__TEST__'     : config.env === 'test',
   '__COVERAGE__' : !argv.watch && config.env === 'test',
   '__BASENAME__' : JSON.stringify(process.env.BASENAME || '')
