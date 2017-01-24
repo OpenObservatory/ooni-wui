@@ -4,26 +4,38 @@ import Modal from 'react-modal'
 
 import './Deck.scss'
 
-const FullControls = ({ deckId, enabled, running, runningScheduled, openDeckInfo, onDeckToggled, onDeckRun }) => (
+const FullControls = ({
+  deckId, enabled, running, runningScheduled,
+  directorStarted,
+  openDeckInfo, onDeckToggled, onDeckRun
+}) => (
   <div className='row'>
     <div className='col-md-2 offset-md-3' onClick={openDeckInfo}>
       <i className='icon-btn fa fa-info-circle' />
     </div>
     <div className='col-md-2'>
-      {runningScheduled &&
+      {!directorStarted &&
+      <i className='fa fa-close' />
+      }
+      {runningScheduled && directorStarted &&
       <i className='fa fa-circle-o-notch fa-spin' />
       }
-      {enabled && !runningScheduled &&
+      {enabled && !runningScheduled && directorStarted &&
       <i className='icon-btn-on fa fa-clock-o' onClick={() => onDeckToggled(deckId)} />
       }
-      {!enabled && !runningScheduled &&
+      {!enabled && !runningScheduled && directorStarted &&
       <i className='icon-btn icon-btn-off fa fa-clock-o' onClick={() => onDeckToggled(deckId)} />
       }
     </div>
     <div className='col-md-2'>
-      {running
-        ? <i className='fa fa-spinner fa-pulse' />
-        : <i className='icon-btn fa fa-play' onClick={() => onDeckRun(deckId)} />
+      {!directorStarted &&
+        <i className='fa fa-close' />
+      }
+      {running && directorStarted &&
+        <i className='fa fa-spinner fa-pulse' />
+      }
+      {!running && directorStarted &&
+        <i className='icon-btn fa fa-play' onClick={() => onDeckRun(deckId)} />
       }
     </div>
   </div>
@@ -34,6 +46,8 @@ FullControls.propTypes = {
   running: React.PropTypes.bool,
   runningScheduled: React.PropTypes.bool,
   openDeckInfo: React.PropTypes.func,
+
+  directorStarted: React.PropTypes.bool,
 
   onDeckToggled: React.PropTypes.func,
   onDeckRun: React.PropTypes.func
@@ -71,6 +85,7 @@ BasicControls.propTypes = {
 
 export const Deck = ({
   deck, fullControls,
+  directorStarted,
   openDeckInfo, closeDeckInfo,
   infoBoxOpen, onDeckToggled,
   onDeckRun
@@ -82,6 +97,7 @@ export const Deck = ({
       <i className={`medium-icon fa ${deck.icon}`} />
       {fullControls
         ? <FullControls
+          directorStarted={directorStarted}
           deckId={deck.id}
           enabled={deck.enabled}
           running={deck.running}
@@ -133,6 +149,7 @@ Deck.propTypes = {
     enabled: React.PropTypes.bool,
     running: React.PropTypes.bool
   }).isRequired,
+  directorStarted: React.PropTypes.bool,
   fullControls: React.PropTypes.bool,
   openDeckInfo: React.PropTypes.func,
   closeDeckInfo: React.PropTypes.func,

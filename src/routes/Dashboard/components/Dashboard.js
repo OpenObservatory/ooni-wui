@@ -87,6 +87,7 @@ export const Dashboard = ({
           return <Deck
             key={deck.id}
             deck={deck}
+            directorStarted={running}
             onDeckToggled={onDeckToggled}
             onDeckRun={onDeckRun}
             fullControls />
