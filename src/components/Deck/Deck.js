@@ -33,7 +33,7 @@ const FullControls = ({
   return (
     <div className='row'>
       <div className='col-md-2 offset-md-3' onClick={openDeckInfo}>
-        <i className='icon-btn fa fa-info-circle'/>
+        <i className='icon-btn fa fa-info-circle' />
       </div>
       <div className='col-md-2'>
         {runningScheduled && directorStarted &&
