@@ -1,8 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import MeasurementDetails from './routes/Measurements/components/MeasurementDetails'
-import './styles/core.scss'
-import './styles/mobile.scss'
+import './styles/core.mobile.scss'
 
 // ========================================================
 // Mobile specific wrapping
@@ -28,7 +27,9 @@ class MeasurementWrapper extends React.Component {
 
   render () {
     if (!this.state.measurement) {
-      return <h2>Loading</h2>
+      return <div className='container-fluid text-xs-center'>
+        <h2>Loading</h2>
+      </div>
     }
     if (this.state.error !== null) {
       return <div>
@@ -36,7 +37,7 @@ class MeasurementWrapper extends React.Component {
         <pre>{this.state.error.toString()}</pre>
       </div>
     }
-    return <div className='container'>
+    return <div className='container-fluid'>
       <MeasurementDetails measurement={this.state.measurement} />
     </div>
   }

@@ -57,7 +57,7 @@ export const MeasurementDetails = ({
     <div>
       <div>
 
-        <h1 className='text-xs-center'>{getPrettyNettestName(measurement.test_name)}</h1>
+        <h1 className='text-xs-center result-nettest-name'>{getPrettyNettestName(measurement.test_name)}</h1>
 
         <div className='row text-xs-center'>
           <div className='result-metadata'>
