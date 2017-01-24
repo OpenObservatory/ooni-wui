@@ -84,7 +84,7 @@ const initialState = {
   quizOpen: false,
   quizCorrect: null,
   settings: {
-    uploadMethod: 'tor_hidden_service',
+    uploadMethod: 'onion',
     includeNetwork: true,
     includeCountry: true,
     includeIP: false,
