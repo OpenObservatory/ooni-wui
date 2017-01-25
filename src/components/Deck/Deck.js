@@ -14,9 +14,9 @@ const FullControls = ({
   if (runningScheduled) {
     scheduleClassName = 'fa fa-circle-o-notch fa-spin'
   } else if (enabled) {
-    scheduleClassName = 'icon-btn-on fa fa-clock-o'
+    scheduleClassName = 'icon-btn icon-btn-on fa fa-clock-o'
   } else if (!enabled) {
-    scheduleClassName = 'icon-btn-off fa fa-clock-o'
+    scheduleClassName = 'icon-btn icon-btn-off fa fa-clock-o'
   }
 
   if (running) {
