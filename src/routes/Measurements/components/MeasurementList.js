@@ -44,7 +44,7 @@ const MeasurementList = ({
       }
       {(!selectedMeasurements || (selectedMeasurements.results && selectedMeasurements.results.length === 1)) &&
         <div className='text-xs-center'>
-          <h1>Past measurements</h1>
+          <h1>Measurements</h1>
           <div className='row'>
             {
               decks.map((deck) => {
@@ -68,19 +68,24 @@ const MeasurementList = ({
             trClassName={rowClassNameFormat}
             data={measurements}>
             <TableHeaderColumn dataAlign='center' dataFormat={getPrettyNettestName}
-              dataField='test_name'><strong>Name</strong></TableHeaderColumn>
+              caretRender={renderCarret} dataSort dataField='test_name'>
+              <strong>Name</strong>
+            </TableHeaderColumn>
             <TableHeaderColumn dataAlign='center'
               caretRender={renderCarret}
               dataSort dataField='test_start_time' dataFormat={formatTime}>
               <strong>Date</strong>
             </TableHeaderColumn>
-            <TableHeaderColumn width='100' dataAlign='center' dataField='asn'>
+            <TableHeaderColumn width='100'
+              caretRender={renderCarret} dataSort dataAlign='center' dataField='asn'>
               <strong>Network</strong>
             </TableHeaderColumn>
-            <TableHeaderColumn width='100' dataAlign='center' dataField='country_code'>
+            <TableHeaderColumn width='100'
+              caretRender={renderCarret} dataSort dataAlign='center' dataField='country_code'>
               <strong>Country</strong>
             </TableHeaderColumn>
-            <TableHeaderColumn width='150' dataAlign='center' dataFormat={formatDeckName(deckIcons, deckNames)}
+            <TableHeaderColumn width='150'
+              caretRender={renderCarret} dataSort dataAlign='center' dataFormat={formatDeckName(deckIcons, deckNames)}
               dataField='deck_id'>
               <strong>Test Deck</strong>
             </TableHeaderColumn>
