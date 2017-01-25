@@ -27,6 +27,7 @@ export const Header = () => (
         <i className='icon-btn fa fa-refresh' onClick={() => refresh()} />
       </div>
     </div>
+    <div className='clearfix' />
   </div>
 )
 
