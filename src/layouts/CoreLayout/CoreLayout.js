@@ -6,13 +6,16 @@ import Footer from '../../components/Footer'
 import Notification from '../../components/Notification'
 
 export const CoreLayout = ({ children }) => (
-  <div>
-    <Header />
-    <Notification />
-    <div className='container'>
-      <div className='core-layout__viewport'>
-        {children}
+  <div style={{height: '100%'}}>
+    <div className='wrapper'>
+      <Header />
+      <Notification />
+      <div className='container'>
+        <div className='core-layout__viewport'>
+          {children}
+        </div>
       </div>
+      <div className='push' />
     </div>
     <Footer />
   </div>
