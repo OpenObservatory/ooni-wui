@@ -52,7 +52,7 @@ const MeasurementList = ({
                 return (
                   <div key={deck.id} className='col-md-3'>
                     <div className={className} onClick={() => onShowHideDeck(deck.id)}>
-                      <h2>{deck.name}</h2>
+                      <h6>{deck.name}</h6>
                       <i className={`medium-icon icon-btn fa ${deck.icon}`} />
                     </div>
                   </div>
