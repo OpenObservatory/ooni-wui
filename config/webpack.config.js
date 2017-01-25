@@ -8,6 +8,7 @@ const debug = require('debug')('app:config:webpack')
 
 const __DEV__ = project.globals.__DEV__
 const __PROD__ = project.globals.__PROD__
+const __MOBILE__ = project.globals.__MOBILE__
 const __TEST__ = project.globals.__TEST__
 
 debug('Creating configuration.')
@@ -184,15 +185,23 @@ webpackConfig.postcss = [
 
 // File loaders
 /* eslint-disable */
+
+let fontPrefix = 'fonts/'
+let fontName = 'fonts/[name].[hash].[ext]'
+if (__MOBILE__) {
+  fontPrefix = ''
+  fontName = 'font-[name].[hash].[ext]'
+}
+
 webpackConfig.module.loaders.push(
-  { test: /\.woff(\?.*)?$/,  loader: 'url?prefix=fonts/&name=fonts/[name].[hash].[ext]&limit=10000&mimetype=application/font-woff' },
-  { test: /\.woff2(\?.*)?$/, loader: 'url?prefix=fonts/&name=fonts/[name].[hash].[ext]&limit=10000&mimetype=application/font-woff2' },
-  { test: /\.otf(\?.*)?$/,   loader: 'file?prefix=fonts/&name=fonts/[name].[hash].[ext]&limit=10000&mimetype=font/opentype' },
-  { test: /\.ttf(\?.*)?$/,   loader: 'url?prefix=fonts/&name=fonts/[name].[hash].[ext]&limit=10000&mimetype=application/octet-stream' },
-  { test: /\.eot(\?.*)?$/,   loader: 'file?prefix=fonts/&name=fonts/[name].[hash].[ext]' },
+  { test: /\.woff(\?.*)?$/,  loader: `url?prefix=${fontPrefix}&name=${fontName}&limit=10000&mimetype=application/font-woff` },
+  { test: /\.woff2(\?.*)?$/, loader: `url?prefix=${fontPrefix}&name=${fontName}&limit=10000&mimetype=application/font-woff2` },
+  { test: /\.otf(\?.*)?$/,   loader: `file?prefix=${fontPrefix}&name=${fontName}&limit=10000&mimetype=font/opentype` },
+  { test: /\.ttf(\?.*)?$/,   loader: `url?prefix=${fontPrefix}&name=${fontName}&limit=10000&mimetype=application/octet-stream` },
+  { test: /\.eot(\?.*)?$/,   loader: `file?prefix=${fontPrefix}&name=${fontName}` },
   { test: /\.svg(\?.*)?$/,
       loaders: [
-          'url?prefix=fonts/&name=fonts/[name].[hash].[ext]&limit=10000&mimetype=image/svg+xml',
+          'url?prefix=${fontPrefix}&name=${fontName}&limit=10000&mimetype=image/svg+xml',
           'svgo'
       ]
   },
