@@ -180,14 +180,14 @@ export class NdtDetails extends React.Component {
               <span className='result-item-value-big'>
                 {(measurement.test_keys.advanced.avg_rtt).toFixed(0)}
               </span>
-              <span className='result-item-unit'>%</span>
+              <span className='result-item-unit'>ms</span>
             </div>
             <div className='col-md-6 result-item'>
               <span className='result-item-name'>Max Ping</span>
               <span className='result-item-value-big'>
                 {(measurement.test_keys.advanced.max_rtt).toFixed(0)}
               </span>
-              <span className='result-item-unit'>%</span>
+              <span className='result-item-unit'>ms</span>
             </div>
           </div>
 
