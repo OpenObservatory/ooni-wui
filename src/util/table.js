@@ -1,6 +1,19 @@
 import React from 'react'
 import moment from 'moment'
 
+
+const rowToAnomalyType = (row) => {
+  if (row.anomaly === true || row.result === 'error') {
+    if (row.anomaly_type && row.anomaly_type === 'warning') {
+      return 'warning'
+    } else {
+      return 'danger'
+    }
+  } else if (row.anomaly === false || row.result === 'ok') {
+    return 'success'
+  }
+}
+
 export const formatDate = (d) => {
   return moment(d).format('lll')
 }
@@ -40,11 +53,15 @@ export const formatTime = (cell, row) => {
 }
 
 export const formatResult = (cell, row) => {
-  if (cell === 'ok') {
-    return <i className='icon-ok fa fa-check-circle-o' />
-  } else if (cell === 'error') {
+  const anomalyType = rowToAnomalyType(row)
+  if (anomalyType === 'warning') {
     return <i className='icon-error fa fa-warning' />
+  } else if (anomalyType === 'danger') {
+    return <i className='icon-error fa fa-warning' />
+  } else if (anomalyType === 'success') {
+    return <i className='icon-ok fa fa-check-circle-o' />
   }
+  return <i className='icon-error fa fa-warning' />
 }
 
 export const formatViewButton = (onClick) => (cell, row) => {
@@ -61,13 +78,12 @@ export const formatViewButton = (onClick) => (cell, row) => {
 
 export const rowClassNameFormat = (row, rowIdx) => {
   let className = 'tr-row'
-  if (row.anomaly === true || row.result === 'error') {
-    if (row.anomaly_type && row.anomaly_type === 'warning') {
-      className += ' tr-row-anomaly-warning'
-    } else {
-      className += ' tr-row-anomaly-danger'
-    }
-  } else if (row.anomaly === false || row.result === 'ok') {
+  const anomalyType = rowToAnomalyType(row)
+  if (anomalyType === 'warning') {
+    className += ' tr-row-anomaly-warning'
+  } else if (anomalyType === 'danger') {
+    className += ' tr-row-anomaly-danger'
+  } else if (anomalyType === 'success') {
     className += ' tr-row-normal'
   }
   return className

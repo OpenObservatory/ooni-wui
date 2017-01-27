@@ -74,13 +74,12 @@ const Quiz = ({
             <div className='success text-xs-center'>
               <i className='medium-icon fa fa-thumbs-o-up' />
               <h2>Good job!</h2>
-              <p>You have answered the quiz correctly!</p>
             </div>
             }
             {(quizCorrect === false) &&
             <div className='failure text-xs-center'>
               <i className='medium-icon fa fa-book' />
-              <p>A little bit more reading is required for you to proceed.</p>
+              <h2>Wrong answer.</h2>
             </div>
             }
           </div>

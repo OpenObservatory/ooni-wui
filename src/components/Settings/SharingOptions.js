@@ -21,7 +21,7 @@ const SharingOptions = ({
       </div>
 
       <div className='five-cols'>
-        <h6>Can we include your network information?</h6>
+        <h6>Include your network information?</h6>
         <i className='medium-icon fa fa-server' />
         <div className='row'>
           <Toggle
@@ -31,7 +31,7 @@ const SharingOptions = ({
       </div>
 
       <div className='five-cols'>
-        <h6>Can we include your country name?</h6>
+        <h6>Include your country name?</h6>
         <i className='medium-icon fa fa-globe' />
         <div className='row'>
           <Toggle
@@ -41,7 +41,7 @@ const SharingOptions = ({
       </div>
 
       <div className='five-cols'>
-        <h6>Can we share your results publicly?</h6>
+        <h6>Share results publicly?</h6>
         <i className='medium-icon fa fa-share-square-o' />
         <div className='row'>
           <Toggle
@@ -51,7 +51,7 @@ const SharingOptions = ({
       </div>
 
       <div className='five-cols'>
-        <h6>Can we include your IP with the results?</h6>
+        <h6>Include your IP?</h6>
         <i className='medium-icon fa fa-cube' />
         <div className='row'>
           <Toggle
