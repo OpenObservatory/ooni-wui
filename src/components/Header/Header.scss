@@ -1,0 +1,45 @@
+@import '../../styles/variables/colors';
+
+.route--active {
+  background-color: $color-white;
+  color: $color-ooni-blue;
+}
+
+.header {
+  background-color: $color-ooni-blue;
+  width: 100%;
+
+  .ooni-logo {
+    height: 4rem;
+  }
+
+  .navigation {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .btn:hover,
+  .btn:active,
+  .btn:focus {
+    background-color: $color-white;
+    color: $color-ooni-blue;
+    border-color: $color-white;
+  }
+}
+
+.refresh-button {
+  i {
+    color: $color-white !important;
+    padding: 0.5rem;
+  }
+  display: inline-block;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.refresh-button:hover {
+  i {
+    color: $color-ooni-blue !important;
+  }
+  background-color: $color-white;
+}

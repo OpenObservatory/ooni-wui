@@ -1,0 +1,22 @@
+@import 'base';
+@import 'fonts';
+
+// Bootstrap overrides go here
+
+@import '~normalize.css/normalize';
+@import '~bootstrap/scss/bootstrap';
+
+// We exclude these from the mobile css file
+//@import '~animate.css/animate.css';
+//@import '~react-toggle/style.css';
+//@import '~react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
+
+@import 'common';
+
+body {
+    margin-top: 20px;
+}
+
+.result-nettest-name {
+  display: none;
+}

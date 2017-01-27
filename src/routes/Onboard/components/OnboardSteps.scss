@@ -1,0 +1,47 @@
+@import '../../../styles/variables/colors';
+@import '~animate.css/animate.css';
+
+.onboard__steps {
+  width: 300vw;
+}
+
+.onboard__step {
+  float: left;
+  width: 100vw;
+}
+
+.onboard__step > div {
+}
+
+.onboard__viewport {
+  padding-top: 4rem;
+  overflow: hidden;
+
+  h1 {
+    margin-bottom: 2rem;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.next-step {
+  margin-top: 2rem;
+}
+
+.onboard__transition-enter {
+  animation-duration: 0.8s;
+  animation-name: slideInLeft;
+  animation-fill-mode: both;
+}
+/*
+ * XXX currently the leave animation does not work.
+
+.onboard__transition-leave {
+  animation-duration: 0.5s;
+  animation-name: slideOutDown;
+  animation-fill-mode: both;
+}
+
+*/

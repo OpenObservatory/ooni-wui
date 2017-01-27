@@ -4,23 +4,18 @@ These assets are being developed for the purpose of having the web UI for
 ooniprobe and some aspects of the mobile version (mainly the rendering of
 measurement results).
 
+This UI is also used to present the results inside of the mobile UI.
+
 ## Development instructions for OONI web UI
 
 The OONI web UI is based on the following main components:
 
-* [klein](https://klein.readthedocs.org/) for the backend API routing
-* [angular.js](https://angularjs.org/) as the frontend web framework
+* [react.js](https://facebook.github.io/react/) for the rendering of components
 * [webpack](https://webpack.github.io/) for building and dependency management
-* [gulp](http://gulpjs.com/) Gulp for build automation tasks.
 * [bootstrap](http://getbootstrap.com/) to make styling less painful
 * [custom icons](https://github.com/thetorproject/ooni-wui#custom-icons) for all apps and design
 
-## Setting up a development environment
-
-You are expected to already have a working python development environment that
-allows you to develop ooni-probe.
-
-In here are listed only the extra steps that are specific to the web UI.
+## Setup
 
 The dependencies of the web UI are all managed via `npm` and they can be
 installed with:
@@ -32,74 +27,54 @@ npm install
 This requires that you have a recent version of
 [node](https://nodejs.org/en/download/).
 
-## Code architecture
+## Usage
 
-The web UI is highly modular and is based around the concept of angular
-components.
-The reason for doing this is that these components can then be re-used across
-the various web based graphical interfaces that need to work with OONI data,
-such as ooni-explorer, net-probe, ooni-web, etc.
+To improve your development experience better it's recommended that you also
+install the following browser add-ons:
 
-The boilerplate code for a component can be found inside of
-`data/component-template/`.
+* [React developer tools](https://chrome.google.com/webstore/detail/react-developer-tools/)
+* [Redux dev tools](https://github.com/zalmoxisus/redux-devtools-extension)
 
-It consists of the following items:
+### Development server
 
-* xxx.component.js this is the actual [angular
-  component](https://docs.angularjs.org/guide/component) that includes
-  a template, a controller and a stylesheet
+When developing the web UI you generally use the mocked API endpoints and
+have live reloading support.
 
-* xxx.controller.js this is the [angular
-  controller](https://docs.angularjs.org/guide/controller) for the component in
-  question. Put in here all the logic necessary for creating variables that are
-  to be inside of the scope of the template and registering functions that can
-  be called from inside the template.
-  Do not use this for manipulating DOM, sharing code across components.
-
-* xxx.css this is the style-sheet for the component in question (XXX in the
-  future we may want to use some other templating language such as less, sass
-  or whatever people use these days to make our life easier)
-
-* xxx.html this is the HTML template for the component. Refer to the
-  [angular.js documentation on
-  templates](https://docs.angularjs.org/guide/templates) to learn more about
-  what you can do with it.
-
-* xxx.js this is the glue that brings all of the above together. In particular
-  what we do inside of here is setting up the URL routes for the particular
-  component and setting the component name.
-  This is the actual entry point for the component.
-
-## Tips for developing
-
-In order to build the web UI you should run the following command:
+To start the development server do:
 
 ```
-gulp build
+npm run start
 ```
 
-To build the mobile version of the web app do:
+You can now use the development server on `http://localhost:3000`.
+
+### Building Web UI
+
+To build the Web UI to be used by ooniprobe on desktop you should run:
 
 ```
-gulp build --mobile
+npm run deploy:prod
 ```
 
-To build the mobile version of the web app with test fixtures do:
+You will then find the built client inside of the `dist/` directory.
+
+### Building mobile UI
+
+To build the mobile assets for the web UI you should run:
 
 ```
-gulp build --mobile --fixtures
+npm run compile:mobile
 ```
 
-To enable watching do:
+The mobile assets will end up inside of the `dist/` directory.
+
+### Testing
+
+To run the end to end tests you should run:
 
 ```
-gulp build --mobile --fixtures --watch
+npm run test
 ```
-
-This will generate the bundled web application inside of `dist/build`.
-
-The file `dist/build/mobile.html` is the mobile version, while
-`dist/build/index.html` is the index for ooniprobe.
 
 ## Custom Icons
 

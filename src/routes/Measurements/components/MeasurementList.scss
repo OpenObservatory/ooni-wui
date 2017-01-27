@@ -1,0 +1,23 @@
+@import '../../../styles/variables/colors';
+
+.table tbody>tr>td {
+  vertical-align: middle;
+}
+
+.result-metadata {
+  font-size: 1.5em;
+  color: $color-off-black;
+}
+
+.shown-deck {
+  color: $color-ooni-blue
+}
+
+.hidden-deck {
+  h2 {
+    color: $color-grey
+  }
+  .medium-icon {
+    color: $color-grey
+  }
+}
