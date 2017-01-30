@@ -3,10 +3,8 @@ import React from 'react'
 const UnderstandTheLaws = ({ currentStep, onNextClick }) => {
   return (
     <div className='container'>
-      <div className='row text-justify'>
-        <div className='text-xs-center'>
-          <h1>Potential risks</h1>
-        </div>
+      <div className='row text-xs-center'>
+        <h1>Potential risks</h1>
         <p>Anyone monitoring your internet activity (e.g. ISP, government, employer) can know that
           you are running ooniprobe (even though OONI tries to make this hard).
 
@@ -17,9 +15,7 @@ const UnderstandTheLaws = ({ currentStep, onNextClick }) => {
           as a form of “hacking”.
         </p>
 
-        <div className='text-xs-center'>
-          <i className='large-icon fa fa-bomb' style={{ marginTop: '1rem', marginBottom: '2rem' }} />
-        </div>
+        <i className='large-icon fa fa-bomb' style={{ marginTop: '1rem', marginBottom: '2rem' }} />
 
         <p>Unless you configure your settings otherwise, all data collected from your tests will by default be
           published by OONI and might include some personally- identifiable information (though OONI
