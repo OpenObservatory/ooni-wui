@@ -41,7 +41,8 @@ const MeasurementViewer = ({
 
             <h1>{getPrettyNettestName(selectedMeasurements.test_name)}</h1>
             <div className='result-metadata'>
-              {formatDate(selectedMeasurements.test_start_time)} {' | '}
+              {formatDate(selectedMeasurements.test_start_time)}
+              {' | '}
               Location: {selectedMeasurements.country_code} ({selectedMeasurements.asn})
             </div>
           </div>

@@ -101,7 +101,7 @@ const mlabServerToCountry = (serverAddress) => {
 }
 
 const mlabServerToName = (serverAddress) => {
-  return serverAddress.split('.').slice(2, 4).join('.')
+  return serverAddress.split('.').slice(3, 4).join('.')
 }
 
 export class NdtDetails extends React.Component {
@@ -120,12 +120,12 @@ export class NdtDetails extends React.Component {
     return (
       <div>
         <div className='row'>
-          <div className='col-md-6 result-item'>
+          <div className='col-xs-6 result-item'>
             <span className='result-item-name'>Download <i className='fa fa-arrow-circle-o-down' /></span>
             <span className='result-item-value-big'>{(measurement.test_keys.simple.download / 1000).toFixed(2)}</span>
             <span className='result-item-unit'>MBps</span>
           </div>
-          <div className='col-md-6 result-item'>
+          <div className='col-xs-6 result-item'>
             <span className='result-item-name'>Upload <i className='fa fa-arrow-circle-o-up' /></span>
             <span className='result-item-value-big'>{(measurement.test_keys.simple.upload / 1000).toFixed(2)}</span>
             <span className='result-item-unit'>MBps</span>
@@ -133,12 +133,12 @@ export class NdtDetails extends React.Component {
         </div>
 
         <div className='row'>
-          <div className='col-md-6 result-item'>
+          <div className='col-xs-6 result-item'>
             <span className='result-item-name'>Ping <i className='fa fa-exchange' /></span>
             <span className='result-item-value-big'>{(measurement.test_keys.simple.ping).toFixed(1)}</span>
             <span className='result-item-unit'>ms</span>
           </div>
-          <div className='col-md-6 result-item'>
+          <div className='col-xs-6 result-item'>
             <span className='result-item-name'>Server <i className='fa fa-server' /></span>
             <span className='result-item-value-big'>{mlabServerToCountry(measurement.test_keys.server_address)}</span>
             <span className='result-item-unit'>{mlabServerToName(measurement.test_keys.server_address)}</span>
@@ -147,7 +147,7 @@ export class NdtDetails extends React.Component {
 
         {this.state.advancedEnabled ||
         <div className='row'>
-          <div className='col-sm-6'>
+          <div className='col-xs-6'>
             <button className='btn btn-secondary' onClick={() => this.toggledAdvanced()}>
               More
             </button>
@@ -158,14 +158,14 @@ export class NdtDetails extends React.Component {
         <div>
 
           <div className='row'>
-            <div className='col-md-6 result-item'>
+            <div className='col-xs-6 result-item'>
               <span className='result-item-name'>Packet Loss</span>
               <span className='result-item-value-big'>
                 {(measurement.test_keys.advanced.packet_loss * 100).toFixed(3)}
               </span>
               <span className='result-item-unit'>%</span>
             </div>
-            <div className='col-md-6 result-item'>
+            <div className='col-xs-6 result-item'>
               <span className='result-item-name'>Out of order</span>
               <span className='result-item-value-big'>
                 {(measurement.test_keys.advanced.out_of_order * 100).toFixed(1)}
@@ -175,14 +175,14 @@ export class NdtDetails extends React.Component {
           </div>
 
           <div className='row'>
-            <div className='col-md-6 result-item'>
+            <div className='col-xs-6 result-item'>
               <span className='result-item-name'>Average Ping</span>
               <span className='result-item-value-big'>
                 {(measurement.test_keys.advanced.avg_rtt).toFixed(0)}
               </span>
               <span className='result-item-unit'>ms</span>
             </div>
-            <div className='col-md-6 result-item'>
+            <div className='col-xs-6 result-item'>
               <span className='result-item-name'>Max Ping</span>
               <span className='result-item-value-big'>
                 {(measurement.test_keys.advanced.max_rtt).toFixed(0)}
@@ -192,13 +192,13 @@ export class NdtDetails extends React.Component {
           </div>
 
           <div className='row'>
-            <div className='col-md-6 result-item'>
+            <div className='col-xs-6 result-item'>
               <span className='result-item-name'>MSS</span>
               <span className='result-item-value-big'>
                 {measurement.test_keys.advanced.mss}
               </span>
             </div>
-            <div className='col-md-6 result-item'>
+            <div className='col-xs-6 result-item'>
               <span className='result-item-name'>Timeouts</span>
               <span className='result-item-value-big'>
                 {measurement.test_keys.advanced.timeouts}
@@ -207,7 +207,7 @@ export class NdtDetails extends React.Component {
           </div>
 
           <div className='row'>
-            <div className='col-sm-6'>
+            <div className='col-xs-6'>
               <button className='btn btn-secondary' onClick={() => this.toggledAdvanced()}>
                 Less
               </button>
