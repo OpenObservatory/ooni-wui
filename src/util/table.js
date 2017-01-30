@@ -1,7 +1,6 @@
 import React from 'react'
 import moment from 'moment'
 
-
 const rowToAnomalyType = (row) => {
   if (row.anomaly === true || row.result === 'error') {
     if (row.anomaly_type && row.anomaly_type === 'warning') {
@@ -14,7 +13,10 @@ const rowToAnomalyType = (row) => {
   }
 }
 
-export const formatDate = (d) => {
+export const formatDate = (d, how = 'local') => {
+  if (how === 'calendar') {
+    return moment(d).calendar()
+  }
   return moment(d).format('lll')
 }
 
@@ -34,8 +36,11 @@ export const renderCarret = (direction) => {
   )
 }
 
-export const formatName = (deckIcons) => (cell, row) => {
+export const formatName = (deckIcons, includeName = true) => (cell, row) => {
   const deckIcon = deckIcons[row.deck_id]
+  if (includeName === false) {
+    return <span><i className={`fa ${deckIcon}`} /></span>
+  }
   return <span><i className={`fa ${deckIcon}`} />{` ${cell}`}</span>
 }
 
@@ -43,13 +48,13 @@ export const formatDeckName = (deckIcons, deckNames) => (cell, row) => {
   const deckIcon = deckIcons[row.deck_id]
   const deckName = deckNames[row.deck_id]
   if (deckName === undefined) {
-    return <span><i className='fa fa-square' /> none</span>
+    return <span><i className='fa fa-square' /></span>
   }
-  return <span><i className={`fa ${deckIcon}`} />{` ${deckName}`}</span>
+  return <span><i className={`fa ${deckIcon}`} /></span>
 }
 
-export const formatTime = (cell, row) => {
-  return formatDate(cell)
+export const formatTime = (how) => (cell, row) => {
+  return formatDate(cell, how)
 }
 
 export const formatResult = (cell, row) => {

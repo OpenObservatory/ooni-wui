@@ -46,6 +46,12 @@ strong {
   a {
     color: $color-off-black;
     font-weight: 200;
+    font-size: 0.8rem;
+  }
+  @media (min-width: 544px) {
+    a {
+      font-size: 1rem;
+    }
   }
 }
 .copy {
@@ -65,18 +71,23 @@ strong {
 .five-cols {
   @include make-col(1, 5);
 }
-@media (min-width: 768px) {
-  .five-cols-xs {
+@media (min-width: 544px) {
+  .five-cols-sm {
     @include make-col(1, 5);
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .five-cols-md {
     @include make-col(1, 5);
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 992px) {
   .five-cols-lg {
+    @include make-col(1, 5);
+  }
+}
+@media (min-width: 1200px) {
+  .five-cols-xl {
     @include make-col(1, 5);
   }
 }
