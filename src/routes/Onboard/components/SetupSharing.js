@@ -7,20 +7,24 @@ const SetupSharing = ({ onNextClick, onSettingsChange, settings }) => {
     <div className='container'>
 
       <div className='row text-xs-center' style={{ marginBottom: '2rem' }}>
-        <h1>Setup sharing</h1>
-        <p>
-          All measurements are by default sent to OONI's measurement collector and are automatically
-          published on OONI Explorer and OONI's measurement API.
-        </p>
+        <div className='col-xs-12'>
+          <h1>Setup sharing</h1>
+          <p>
+            All measurements are by default sent to OONI's measurement collector and are automatically
+            published on OONI Explorer and OONI's measurement API.
+          </p>
+        </div>
       </div>
 
       <SharingOptions onSettingsChange={onSettingsChange} settings={settings} />
 
       <div className='row text-xs-center' style={{ marginTop: '3rem' }}>
-        <p>Published data will include your approximate location, the time of the test, and
-          the network (ASN) you are connecting from. Other identifying information, such as your
-          IP address, is not deliberately collected, but might be included in HTTP headers or other metadata.
-        </p>
+        <div className='col-xs-12'>
+          <p>Published data will include your approximate location, the time of the test, and
+            the network (ASN) you are connecting from. Other identifying information, such as your
+            IP address, is not deliberately collected, but might be included in HTTP headers or other metadata.
+          </p>
+        </div>
       </div>
 
       <div className='row next-step'>

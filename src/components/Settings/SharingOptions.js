@@ -8,7 +8,7 @@ const SharingOptions = ({
   return (
     <div className='row text-xs-center'>
 
-      <div className='five-cols'>
+      <div className='five-cols-md col-xs-6'>
         <h6>How should we upload your results?</h6>
         <i className='medium-icon fa fa-upload' />
         <div className='row'>
@@ -20,7 +20,7 @@ const SharingOptions = ({
         </div>
       </div>
 
-      <div className='five-cols'>
+      <div className='five-cols-md col-xs-6'>
         <h6>Include your network information?</h6>
         <i className='medium-icon fa fa-server' />
         <div className='row'>
@@ -30,7 +30,7 @@ const SharingOptions = ({
         </div>
       </div>
 
-      <div className='five-cols'>
+      <div className='five-cols-md col-xs-6'>
         <h6>Include your country name?</h6>
         <i className='medium-icon fa fa-globe' />
         <div className='row'>
@@ -40,7 +40,7 @@ const SharingOptions = ({
         </div>
       </div>
 
-      <div className='five-cols'>
+      <div className='five-cols-md col-xs-6'>
         <h6>Share results publicly?</h6>
         <i className='medium-icon fa fa-share-square-o' />
         <div className='row'>
@@ -50,7 +50,7 @@ const SharingOptions = ({
         </div>
       </div>
 
-      <div className='five-cols'>
+      <div className='five-cols-md col-xs-6'>
         <h6>Include your IP?</h6>
         <i className='medium-icon fa fa-cube' />
         <div className='row'>

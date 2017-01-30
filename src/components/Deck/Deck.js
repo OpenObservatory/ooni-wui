@@ -32,10 +32,10 @@ const FullControls = ({
 
   return (
     <div className='row'>
-      <div className='col-md-2 offset-md-3' onClick={openDeckInfo}>
+      <div className='col-xs-2 offset-xs-3' onClick={openDeckInfo}>
         <i className='icon-btn fa fa-info-circle' />
       </div>
-      <div className='col-md-2'>
+      <div className='col-xs-2'>
         {runningScheduled && directorStarted &&
         <i className={scheduleClassName} />
         }
@@ -46,7 +46,7 @@ const FullControls = ({
         <i className={scheduleClassName} />
         }
       </div>
-      <div className='col-md-2'>
+      <div className='col-xs-2'>
         {!directorStarted &&
         <i className={runClassName} />
         }
@@ -75,10 +75,10 @@ FullControls.propTypes = {
 
 const BasicControls = ({ deckId, enabled, openDeckInfo, onDeckToggled }) => (
   <div className='row'>
-    <div className='col-md-3 offset-md-3' onClick={openDeckInfo}>
+    <div className='col-xs-3 offset-xs-3' onClick={openDeckInfo}>
       <i className='icon-btn fa fa-info-circle' />
     </div>
-    <div className='col-md-3'>
+    <div className='col-xs-3'>
       <Toggle
         icons={{
           checked: <i style={{
@@ -112,7 +112,7 @@ export const Deck = ({
 }) => (
   <div>
 
-    <div key={deck.id} className='col-md-3 text-xs-center'>
+    <div key={deck.id} className='col-md-3 col-xs-6 text-xs-center'>
       <h6>{deck.name}</h6>
       <i className={`medium-icon fa ${deck.icon}`} />
       {fullControls

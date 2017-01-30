@@ -61,8 +61,24 @@ strong {
   cursor: pointer;
 }
 
+.five-cols-xs,
 .five-cols {
   @include make-col(1, 5);
+}
+@media (min-width: 768px) {
+  .five-cols-xs {
+    @include make-col(1, 5);
+  }
+}
+@media (min-width: 992px) {
+  .five-cols-md {
+    @include make-col(1, 5);
+  }
+}
+@media (min-width: 1200px) {
+  .five-cols-lg {
+    @include make-col(1, 5);
+  }
 }
 
 .large-icon {
