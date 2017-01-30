@@ -9,9 +9,9 @@ const SetupYourTests = ({ onNextClick, onDeckToggled, decks }) => {
         <h1>Setup your tests!</h1>
         <p>
           Your tests are setup to run daily by default.
-          If you’d like to turn this off, click the <i className='fa fa-clock-o' /> button!
+          If you’d like to turn this off, click the <strong><i className='fa fa-clock-o' /></strong> button!
         </p>
-        <p>To learn more about each test, click the <i className='fa fa-info-circle' /> button.</p>
+        <p>To learn more about each test, click the <strong><i className='fa fa-info-circle' /></strong> button.</p>
       </div>
 
       <div className='row text-xs-center' style={{ marginBottom: '2rem', marginTop: '2rem' }}>

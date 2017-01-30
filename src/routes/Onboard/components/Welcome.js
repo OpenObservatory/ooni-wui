@@ -6,20 +6,17 @@ import OONISparkles from '../assets/OONI-sparkles.svg'
 const Welcome = ({ onNextClick, onSkipClick }) => {
   return (
     <div className='container'>
-      <div className='row text-xs-center welcome'>
-        <h1>Welcome to ooniprobe!</h1>
-        <img src={OONISparkles} className='welcome-logo' />
+      <div className='row text-justify welcome'>
+        <div className='text-xs-center'>
+          <h1>Welcome to ooniprobe!</h1>
+          <img src={OONISparkles} className='welcome-logo' />
+        </div>
         <p>
           Ooniprobe is a free and open source platform that enables you to examine internet censorship in your network!
-        </p>
-        <p>
           You can examine how websites are blocked, and whether censorship and/or surveillance systems
           are present in your network. You can also measure the speed and performance of your network.
-        </p>
-        <p>
           Data collected by ooniprobe can serve as evidence of censorship events.
-        </p>
-        <p>Since ooniprobe is an investigatory tool, using it may pose some risks.</p>
+          Since ooniprobe is an investigatory tool, using it may pose some risks.</p>
       </div>
 
       <div className='row next-step'>
