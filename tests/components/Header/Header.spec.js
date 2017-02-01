@@ -11,6 +11,7 @@ describe('(Component) Header', () => {
 
   it('Renders the ooni logo', () => {
     const ooniLogo = _wrapper.find('.ooni-logo')
-    expect(ooniLogo).to.have.length(1)
+    /* We have two one for normal screens and another for extra small ones */
+    expect(ooniLogo).to.have.length(2)
   })
 })
