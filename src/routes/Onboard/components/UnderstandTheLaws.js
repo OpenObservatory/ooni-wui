@@ -25,7 +25,7 @@ const UnderstandTheLaws = ({ currentStep, onNextClick }) => {
             To our knowledge, no ooniprobe user has ever faced consequences from the use of our platform.
             However, many countries have a lengthy history of targeting and abusing digital rights activists,
             which could leave ooniprobe users subject to severe civil, criminal, or extra-judicial
-            penalties. <a href='https://ooni.torproject.org/about/risks'>Learn more here</a>.
+            penalties. <a href='https://ooni.torproject.org/about/risks' target='_blank'>Learn more here</a>.
             We encourage you to consult with a lawyer prior to installing and running ooniprobe.</p>
         </div>
       </div>
