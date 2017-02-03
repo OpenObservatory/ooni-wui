@@ -13,6 +13,20 @@
 
 @import 'common';
 
+@include media-breakpoint-down(xs) {
+  .result-item  {
+    .result-item-name {
+      font-size: 1.2rem;
+    }
+    .result-item-value-big {
+      font-size: 2.5rem;
+    }
+    .result-item-unit {
+      font-size: 1.2rem;
+    }
+  }
+}
+
 body {
     margin-top: 20px;
 }
