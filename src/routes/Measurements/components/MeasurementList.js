@@ -50,7 +50,7 @@ const MeasurementList = ({
               decks.map((deck) => {
                 const className = hiddenDecks.indexOf(deck.id) === -1 ? 'shown-deck' : 'hidden-deck'
                 return (
-                  <div key={deck.id} className='col-md-3'>
+                  <div key={deck.id} className='col-sm-3 col-xs-6'>
                     <div className={className} onClick={() => onShowHideDeck(deck.id)}>
                       <h6>{deck.name}</h6>
                       <i className={`medium-icon icon-btn fa ${deck.icon}`} />
@@ -60,45 +60,91 @@ const MeasurementList = ({
               })
             }
           </div>
-          <BootstrapTable
-            bordered
-            tableStyle={{ border: 'none' }}
-            containerStyle={{ border: 'none' }}
-            tableBodyClass='measurement-list-table'
-            trClassName={rowClassNameFormat}
-            data={measurements}>
-            <TableHeaderColumn dataAlign='center' dataFormat={getPrettyNettestName}
-              caretRender={renderCarret} dataSort dataField='test_name'>
-              <strong>Name</strong>
-            </TableHeaderColumn>
-            <TableHeaderColumn dataAlign='center'
-              caretRender={renderCarret}
-              dataSort dataField='test_start_time' dataFormat={formatTime}>
-              <strong>Date</strong>
-            </TableHeaderColumn>
-            <TableHeaderColumn width='100'
-              caretRender={renderCarret} dataSort dataAlign='center' dataField='asn'>
-              <strong>Network</strong>
-            </TableHeaderColumn>
-            <TableHeaderColumn width='100'
-              caretRender={renderCarret} dataSort dataAlign='center' dataField='country_code'>
-              <strong>Country</strong>
-            </TableHeaderColumn>
-            <TableHeaderColumn width='150'
-              caretRender={renderCarret} dataSort dataAlign='center' dataFormat={formatDeckName(deckIcons, deckNames)}
-              dataField='deck_id'>
-              <strong>Test Deck</strong>
-            </TableHeaderColumn>
-            <TableHeaderColumn width='100' dataAlign='center' dataField='result'
-              dataFormat={formatViewButton(onRowClick)}>
-              <strong>Result</strong>
-            </TableHeaderColumn>
-            <TableHeaderColumn dataField='id' isKey hidden>ID</TableHeaderColumn>
-            <TableHeaderColumn dataField='running' hidden>Running</TableHeaderColumn>
-            <TableHeaderColumn dataField='stale' hidden>Stale</TableHeaderColumn>
-            <TableHeaderColumn dataField='anomaly' hidden>Anomaly</TableHeaderColumn>
-            <TableHeaderColumn dataField='anomaly_type' hidden>Anomaly Type</TableHeaderColumn>
-          </BootstrapTable>
+          {/* This is for small viewports */}
+          <div className='hidden-sm-up'>
+            <BootstrapTable
+              bordered
+              tableStyle={{ border: 'none' }}
+              containerStyle={{ border: 'none' }}
+              tableBodyClass='measurement-list-table'
+              trClassName={rowClassNameFormat}
+              data={measurements}>
+              <TableHeaderColumn width='100' dataAlign='center' dataField='result'
+                dataFormat={formatViewButton(onRowClick)}>
+                <strong>Result</strong>
+              </TableHeaderColumn>
+              <TableHeaderColumn dataAlign='center' dataFormat={getPrettyNettestName}
+                caretRender={renderCarret} dataSort dataField='test_name'>
+                <strong>Name</strong>
+              </TableHeaderColumn>
+              <TableHeaderColumn dataAlign='center'
+                caretRender={renderCarret}
+                dataSort dataField='test_start_time' dataFormat={formatTime('calendar')}>
+                <strong>Date</strong>
+              </TableHeaderColumn>
+              <TableHeaderColumn width='100'
+                caretRender={renderCarret} dataSort dataAlign='center' dataField='asn'>
+                <strong>Network</strong>
+              </TableHeaderColumn>
+              <TableHeaderColumn width='100'
+                caretRender={renderCarret} dataSort dataAlign='center' dataField='country_code'>
+                <strong>Country</strong>
+              </TableHeaderColumn>
+              <TableHeaderColumn width='80'
+                caretRender={renderCarret} dataSort dataAlign='center' dataFormat={formatDeckName(deckIcons, deckNames)}
+                dataField='deck_id'>
+                <strong>Deck</strong>
+              </TableHeaderColumn>
+
+              <TableHeaderColumn dataField='id' isKey hidden>ID</TableHeaderColumn>
+              <TableHeaderColumn dataField='running' hidden>Running</TableHeaderColumn>
+              <TableHeaderColumn dataField='stale' hidden>Stale</TableHeaderColumn>
+              <TableHeaderColumn dataField='anomaly' hidden>Anomaly</TableHeaderColumn>
+              <TableHeaderColumn dataField='anomaly_type' hidden>Anomaly Type</TableHeaderColumn>
+            </BootstrapTable>
+          </div>
+          {/* This is for bigger viewports */}
+          <div className='hidden-xs-down'>
+            <BootstrapTable
+              bordered
+              tableStyle={{ border: 'none' }}
+              containerStyle={{ border: 'none' }}
+              tableBodyClass='measurement-list-table'
+              trClassName={rowClassNameFormat}
+              data={measurements}>
+              <TableHeaderColumn dataAlign='center' dataFormat={getPrettyNettestName}
+                caretRender={renderCarret} dataSort dataField='test_name'>
+                <strong>Name</strong>
+              </TableHeaderColumn>
+              <TableHeaderColumn dataAlign='center'
+                caretRender={renderCarret}
+                dataSort dataField='test_start_time' dataFormat={formatTime()}>
+                <strong>Date</strong>
+              </TableHeaderColumn>
+              <TableHeaderColumn width='100'
+                caretRender={renderCarret} dataSort dataAlign='center' dataField='asn'>
+                <strong>Network</strong>
+              </TableHeaderColumn>
+              <TableHeaderColumn width='100'
+                caretRender={renderCarret} dataSort dataAlign='center' dataField='country_code'>
+                <strong>Country</strong>
+              </TableHeaderColumn>
+              <TableHeaderColumn width='80'
+                caretRender={renderCarret} dataSort dataAlign='center' dataFormat={formatDeckName(deckIcons, deckNames)}
+                dataField='deck_id'>
+                <strong>Deck</strong>
+              </TableHeaderColumn>
+              <TableHeaderColumn width='100' dataAlign='center' dataField='result'
+                dataFormat={formatViewButton(onRowClick)}>
+                <strong>Result</strong>
+              </TableHeaderColumn>
+              <TableHeaderColumn dataField='id' isKey hidden>ID</TableHeaderColumn>
+              <TableHeaderColumn dataField='running' hidden>Running</TableHeaderColumn>
+              <TableHeaderColumn dataField='stale' hidden>Stale</TableHeaderColumn>
+              <TableHeaderColumn dataField='anomaly' hidden>Anomaly</TableHeaderColumn>
+              <TableHeaderColumn dataField='anomaly_type' hidden>Anomaly Type</TableHeaderColumn>
+            </BootstrapTable>
+          </div>
         </div>
       }
     </div>

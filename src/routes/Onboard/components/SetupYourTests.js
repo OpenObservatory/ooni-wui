@@ -6,12 +6,14 @@ const SetupYourTests = ({ onNextClick, onDeckToggled, decks }) => {
     <div className='container'>
 
       <div className='row text-xs-center'>
-        <h1>Setup your tests!</h1>
-        <p>
-          Your tests are setup to run daily by default.
-          If you’d like to turn this off, click the <i className='fa fa-clock-o' /> button!
-        </p>
-        <p>To learn more about each test, click the <i className='fa fa-info-circle' /> button.</p>
+        <div className='col-xs-12'>
+          <h1>Setup your tests!</h1>
+          <p>
+            Your tests are setup to run daily by default.
+            If you’d like to turn this off, click the <strong><i className='fa fa-clock-o' /></strong> button!
+          </p>
+          <p>To learn more about each test, click the <strong><i className='fa fa-info-circle' /></strong> button.</p>
+        </div>
       </div>
 
       <div className='row text-xs-center' style={{ marginBottom: '2rem', marginTop: '2rem' }}>
@@ -30,9 +32,11 @@ const SetupYourTests = ({ onNextClick, onDeckToggled, decks }) => {
       </div>
 
       <div className='row text-xs-center'>
-        <p>
-          To see the results of your first batch of tests, click <strong>Go to my dashboard!</strong>
-        </p>
+        <div className='col-xs-12'>
+          <p>
+            To see the results of your first batch of tests, click <strong>Go to my dashboard!</strong>
+          </p>
+        </div>
       </div>
 
       <div className='row next-step'>

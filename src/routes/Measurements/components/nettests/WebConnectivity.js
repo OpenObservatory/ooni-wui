@@ -96,7 +96,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
           </p>
           <p>You can find instructions on how to change your DNS resolver to the
             Google DNS resolver through the following URL: <a
-              href='https://developers.google.com/speed/public-dns/docs/using'>
+              href='https://developers.google.com/speed/public-dns/docs/using' target='_blank'>
               https://developers.google.com/speed/public-dns/docs/using</a>
           </p>
         </div>
@@ -105,11 +105,11 @@ export const WebConnectivityDetails = ({ measurement }) => {
           <h3>Use Tor</h3>
           <p>In most cases you should be able to circumvent censorship by
             using <strong>Tor</strong>.
-            To download Tor visit: <a href='https://www.torproject.org/download/download.html.en'>
+            To download Tor visit: <a href='https://www.torproject.org/download/download.html.en' target='_blank'>
               https://www.torproject.org/download/download.html.en</a></p>
           <p>
             If the torproject.org website is blocked in your country you can download Tor from a mirror of it
-            hosted on github: <a href='https://github.com/TheTorProject/gettorbrowser'>
+            hosted on github: <a href='https://github.com/TheTorProject/gettorbrowser' target='_blank'>
               https://github.com/TheTorProject/gettorbrowser</a>
           </p>
         </div>

@@ -75,7 +75,7 @@ Edit at Your Own Risk
 // ------------------------------------
 // N.B.: globals added here must _also_ be added to .eslintrc
 config.globals = {
-  'process.env'  : {
+  'process.env': {
     'NODE_ENV' : JSON.stringify(config.env)
   },
   'NODE_ENV'     : config.env,
@@ -86,7 +86,11 @@ config.globals = {
   '__COVERAGE__' : !argv.watch && config.env === 'test',
   '__BASENAME__' : JSON.stringify(process.env.BASENAME || '')
 }
-
+if (config.globals['__PROD__']) {
+  config.globals['process.env'] = {
+    'NODE_ENV' : JSON.stringify('production')
+  }
+}
 // ------------------------------------
 // Validate Vendor Dependencies
 // ------------------------------------

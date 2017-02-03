@@ -61,8 +61,12 @@ export const MeasurementDetails = ({
 
         <div className='row text-xs-center'>
           <div className='result-metadata'>
-            {measurement.test_runtime.toFixed(2)}s Runtime {' | '}
-            Location: {measurement.probe_cc} ({measurement.probe_asn})
+            <span className='col-sm-6 col-xs-12'>
+              {measurement.test_runtime.toFixed(2)}s Runtime
+            </span>
+            <span className='col-sm-6 col-xs-12'>
+              Location: {measurement.probe_cc} ({measurement.probe_asn})
+            </span>
           </div>
         </div>
 

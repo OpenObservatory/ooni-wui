@@ -4,7 +4,7 @@ import './StepIndicator.scss'
 const StepIndicator = ({ currentStep, lastStep, gotoStep }) => {
   return (
     <div className='row'>
-      <div className='steps-container col-md-4 offset-md-4'>
+      <div className='steps-container col-md-4 offset-md-4 col-xs-8 offset-xs-2'>
         {
           Array.apply(null, Array(lastStep)).map((_, idx) => {
             let className = 'rounded-circle status-circle'

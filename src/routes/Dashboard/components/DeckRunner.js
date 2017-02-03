@@ -154,12 +154,16 @@ const DeckInfo = ({
       {
         deck.nettests && deck.nettests.map((nettestId) => {
           return (
-            <div key={nettestId} className='text-xs-center' style={{ marginTop: '2rem', marginBottom: '2rem' }}>
-              <h2>{nettests[nettestId].name}</h2>
-              <p>{nettests[nettestId].description}</p>
-              <button className='btn btn-secondary' onClick={() => onTestRun(nettestId)}>
-                <i className='fa fa-play' /> Run
-              </button>
+            <div key={nettestId} className='row text-xs-center' style={{ marginTop: '2rem', marginBottom: '2rem' }}>
+              <div className='col-xs-9'>
+                <h2>{nettests[nettestId].name}</h2>
+                <p>{nettests[nettestId].description}</p>
+              </div>
+              <div className='col-xs-3' style={{ marginTop: '1rem' }}>
+                <button className='btn btn-secondary' onClick={() => onTestRun(nettestId)}>
+                  Select <i className='fa fa-arrow-right' />
+                </button>
+              </div>
             </div>
           )
         })
@@ -167,7 +171,7 @@ const DeckInfo = ({
     </div>
     <div className='modal-footer text-xs-center'>
       <button className='btn btn-primary' onClick={onDeckStart}>
-        <i className='fa fa-play' /> Run the whole deck!
+        <i className='fa fa-play' /> Run them all!
       </button>
     </div>
   </div>
