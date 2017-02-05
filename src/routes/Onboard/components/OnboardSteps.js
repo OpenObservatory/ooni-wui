@@ -27,7 +27,7 @@ const OnboardSteps = ({
             component='div'
             transitionName='onboard__transition'
             transitionEnterTimeout={800}
-            transitionLeaveTimeout={500}
+            transitionLeave={false}
           >
             {currentStep === 0 &&
               <div className='onboard__step'>
