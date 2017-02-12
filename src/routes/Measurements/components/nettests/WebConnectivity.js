@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 
 export const WebConnectivityDetails = ({ measurement }) => {
   return (
@@ -6,8 +7,18 @@ export const WebConnectivityDetails = ({ measurement }) => {
       {/* Normal measurement */}
       {measurement.test_keys.accessible !== false && measurement.test_keys.blocking === false &&
       <div>
-        <h2 className='result-success'><i className='fa fa-check-circle-o' /> No censorship detected</h2>
-        <p>The website is accessible and uncensored from this network.</p>
+        <h2 className='result-success'><i className='fa fa-check-circle-o' />
+          <FormattedMessage
+            id='nettests.webConnectivity.noCensorshipDetected'
+            defaultMessage='No censorship detected'
+          />
+        </h2>
+        <p>
+          <FormattedMessage
+            id='nettests.webConnectivity.websiteAccessibleUncensored'
+            defaultMessage='The website is accessible and uncensored from this network.'
+          />
+        </p>
       </div>
       }
       {(measurement.test_keys.accessible === true || measurement.test_keys.accessible === null) &&
