@@ -26,15 +26,15 @@ class MeasurementWrapper extends React.Component {
   }
 
   render () {
+    if (this.state.error !== null) {
+      return <div className='container-fluid text-xs-center'>
+        <h2>Error in loading the measurement</h2>
+        <pre>{this.state.error.toString()}</pre>
+      </div>
+    }
     if (!this.state.measurement) {
       return <div className='container-fluid text-xs-center'>
         <h2>Loading</h2>
-      </div>
-    }
-    if (this.state.error !== null) {
-      return <div>
-        <h2>Error in loading measurement</h2>
-        <pre>{this.state.error.toString()}</pre>
       </div>
     }
     return <div className='container-fluid'>
