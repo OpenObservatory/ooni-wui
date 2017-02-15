@@ -34,9 +34,7 @@ export class HttpInvalidRequestLineDetails extends React.Component {
           <p>
           <FormattedMessage
             id='nettests.httpInvalidRequestLine.trafficManipulation'
-            defaultMessage='When contacting our control servers we noticed that network traffic was manipulated.
-            This means that there could be a {middleBox} which could be responsible for censorship
-            and/or traffic manipulation. Click on "Show exchanges" below to see what our server saw and what was sent.'
+            defaultMessage='When contacting our control servers we noticed that network traffic was manipulated. This means that there could be a {middleBox} which could be responsible for censorship and/or traffic manipulation. Click on "Show exchanges" below to see what our server saw and what was sent.'
             values={{
               middleBox: <strong>“middle box”</strong>
             }}
@@ -56,8 +54,7 @@ export class HttpInvalidRequestLineDetails extends React.Component {
           <p>
           <FormattedMessage
             id='nettests.httpInvalidRequestLine.noAnomaly'
-            defaultMessage='No network anomaly was detected when communicating to our control servers.
-            Click on "Show exchanges" below to see what our server saw and what was sent.'
+            defaultMessage='No network anomaly was detected when communicating to our control servers. Click on "Show exchanges" below to see what our server saw and what was sent.'
             />
           </p>
         </div>
