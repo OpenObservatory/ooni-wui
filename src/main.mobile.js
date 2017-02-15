@@ -6,6 +6,23 @@ import './styles/core.mobile.scss'
 // ========================================================
 // Mobile specific wrapping
 // ========================================================
+
+const ErrorMessage = ({
+    error
+}) => {
+    return (
+      <div className='container-fluid text-xs-center'>
+        <i className='medium-icon fa fa-exclamation-triangle' aria-hidden="true" />
+        <h2>Error in loading the measurement</h2>
+        <p>{error.toString()}</p>
+      </div>
+    )
+}
+
+ErrorMessage.propTypes = {
+    error: React.PropTypes.object
+}
+
 class MeasurementWrapper extends React.Component {
   constructor (props) {
     super(props)
@@ -26,15 +43,12 @@ class MeasurementWrapper extends React.Component {
   }
 
   render () {
+    if (this.state.error !== null) {
+      return <ErrorMessage error={this.state.error} />
+    }
     if (!this.state.measurement) {
       return <div className='container-fluid text-xs-center'>
         <h2>Loading</h2>
-      </div>
-    }
-    if (this.state.error !== null) {
-      return <div>
-        <h2>Error in loading measurement</h2>
-        <pre>{this.state.error.toString()}</pre>
       </div>
     }
     return <div className='container-fluid'>
@@ -49,10 +63,17 @@ class MeasurementWrapper extends React.Component {
 const MOUNT_NODE = document.getElementById('root')
 
 let render = () => {
-  ReactDOM.render(
-    <MeasurementWrapper />,
-    MOUNT_NODE
-  )
+  try {
+    ReactDOM.render(
+      <MeasurementWrapper />,
+      MOUNT_NODE
+    )
+  } catch (error) {
+    ReactDOM.render(
+      <ErrorMessage error={error} />,
+      MOUNT_NODE
+    )
+  }
 }
 
 // ========================================================
