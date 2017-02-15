@@ -36,7 +36,11 @@ export class HttpInvalidRequestLineDetails extends React.Component {
             id='nettests.httpInvalidRequestLine.trafficManipulation'
             defaultMessage='When contacting our control servers we noticed that network traffic was manipulated. This means that there could be a {middleBox} which could be responsible for censorship and/or traffic manipulation. Click on "Show exchanges" below to see what our server saw and what was sent.'
             values={{
-              middleBox: <strong>“middle box”</strong>
+              middleBox: <strong>
+                <FormattedMessage
+                  id='nettests.httpInvalidRequestLine.trafficManipulation.middleBox'
+                  defaultMessage='“middle box”' />
+                </strong>
             }}
           />
           </p>
@@ -104,16 +108,16 @@ export class HttpInvalidRequestLineDetails extends React.Component {
         <div className='row'>
           <div className='col-xs-6'>
             <button className='btn btn-secondary' onClick={() => this.toggleExchanges()}>
-              {this.state.exchangesEnabled ? 
-              <FormattedMessage
-                id='nettests.httpInvalidRequestLine.hide'
-                defaultMessage='Hide'
-              /> 
-            : <FormattedMessage
-                id='nettests.httpInvalidRequestLine.show'
-                defaultMessage='Show'
-              />
-              } exchanges
+              {this.state.exchangesEnabled
+               ? <FormattedMessage
+                   id='nettests.httpInvalidRequestLine.hide'
+                   defaultMessage='Hide exchanges'
+                  /> 
+               : <FormattedMessage
+                   id='nettests.httpInvalidRequestLine.show'
+                   defaultMessage='Show exchanges'
+                  />
+              }
             </button>
           </div>
         </div>
