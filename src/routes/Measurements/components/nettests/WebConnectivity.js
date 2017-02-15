@@ -147,37 +147,75 @@ export const WebConnectivityDetails = ({ measurement }) => {
       {measurement.test_keys.blocking !== false &&
       measurement.test_keys.blocking != null &&
       <div className='circumvention-strategies'>
-        <h3><i className='ooni icon-tor' /> Circumvention strategies</h3>
-        <p>You can try to circumvent the blocking of the site
-          <code>{measurement.input}</code> through the
-          following:
+        <h3><i className='ooni icon-tor' />
+          <FormattedMessage
+            id='nettests.webConnectivity.circumventionStrategies.title'
+            defaultMessage='Circumvention strategies'
+          />
+        </h3>
+        <p>
+          <FormattedMessage
+            id='nettests.webConnectivity.circumventionStrategies.text1'
+            defaultMessage='You can try to circumvent the blocking of the site {site} throught the following:'
+            values={{
+              site: <code>{measurement.input}</code>
+            }}
+          />
         </p>
         {(measurement.test_keys.blocking === 'http-diff' ||
           measurement.test_keys.blocking === 'http-failure') &&
         measurement.input.substr(0, 5) !== 'https' &&
         <div className='circumvention-strategy'>
-          <h3>Use Secure HTTP (HTTPS)</h3>
-          <p>Try visiting the <strong>HTTPS</strong> version of the website in
-            question by accessing it via
-            <a href={`https${measurement.input.substr(4)}`}>https{measurement.input.substr(4)}</a>
+          <h3>
+            <FormattedMessage
+              id='nettests.circumventionStrategies.useHTTPS.title'
+              defaultMessage='Use Secure HTTP (HTTPS)'
+            />
+          </h3>
+          <p>
+            <FormattedMessage
+              id='nettests.circumventionStrategies.useHTTPS.text'
+              defaultMessage='Try visiting the {https} version of the website in question by accessing it via {url}'
+              values={{
+                https: <strong>HTTPS</strong>,
+                url: <a target='_blank'
+                  href={`https${measurement.input.substr(4)}`}>https{measurement.input.substr(4)}</a>
+              }}
+            />
           </p>
         </div>
         }
         {measurement.test_keys.blocking === 'dns' &&
         <div className='circumvention-strategy'>
-          <h3>Change your DNS</h3>
-          <p>Try <strong>changing your DNS resolver</strong> to one that does not
-            implement blocking, such as the Google DNS resolver:
-            <code>8.8.8.8</code>.
+          <h3>
+            <FormattedMessage
+              id='nettests.webConnectivity.circumvention.changeDNS.title'
+              defaultMessage='Change your DNS'
+            />
+          </h3>
+          <p>
+            <FormattedMessage
+              id='nettests.webConnectivity.circumvention.changeDNS.text'
+              defaultMessage='Try {changeDNS} to one that does not
+            implement blocking, such as the OpenDNS ({openDNS}) or Google DNS: {googleDNS}.'
+              values={{
+                changeDNS: <strong><FormattedMessage
+                  id='nettests.webConnectivity.circumvention.changeDNS.text.changeDNS'
+                  defaultMessage='changing your DNS resolver'
+                /></strong>,
+                googleDNS: <code>8.8.8.8</code>,
+                openDNS: <code>208.67.222.222</code>
+              }}
+            />
           </p>
           <p>
             <FormattedMessage
-              id='nettests.webConnectivity.circumvention.googleDNSInstructions'
-              defaultMessage={`You can find instructions on how to change your DNS resolver to the
- Google DNS resolver through the following URL: {instructionsLink}`}
+              id='nettests.webConnectivity.circumvention.changeDNS.instructions'
+              defaultMessage={`You can find instructions on how to change your DNS resolver to the through the
+ following URL: {instructionsLink}`}
               values={{
-                instructionsLink:<a href='https://developers.google.com/speed/public-dns/docs/using' target='_blank'>
-                  https://developers.google.com/speed/public-dns/docs/using
+                instructionsLink:<a href='https://www.opendns.com/setupguide/' target='_blank'>
+                  https://www.opendns.com/setupguide/
                 </a>
               }}
             />
@@ -185,20 +223,56 @@ export const WebConnectivityDetails = ({ measurement }) => {
         </div>
         }
         <div className='circumvention-strategy'>
-          <h3>Use Tor</h3>
-          <p>In most cases you should be able to circumvent censorship by
-            using <strong>Tor</strong>.
-            To download Tor visit: <a href='https://www.torproject.org/download/download.html.en' target='_blank'>
-              https://www.torproject.org/download/download.html.en</a></p>
+          <h3><FormattedMessage
+            id='nettests.webConnectivity.circumvention.useTor.title'
+            defaultMessage='Use Tor'
+          /></h3>
           <p>
-            If the torproject.org website is blocked in your country you can download Tor from a mirror of it
-            hosted on github: <a href='https://github.com/TheTorProject/gettorbrowser' target='_blank'>
-              https://github.com/TheTorProject/gettorbrowser</a>
+            <FormattedMessage
+              id='nettests.webConnectivity.circumvention.useTor.text'
+              defaultMessage='In most cases you should be able to circumvent censorship by using {Tor}.'
+              values={{
+                Tor: <strong>Tor</strong>
+              }} />
+            <FormattedMessage
+              id='nettests.webConnectivity.circumvention.useTor.downloadTor'
+              defaultMessage={`On a computer you can use {torBrowserLink}, on Android {orbotLink} and on
+ iOS {onionBrowserLink}`}
+              values={{
+                torBrowserLink:
+                  <a href='https://www.torproject.org/download/download.html.en' target='_blank'>
+                    Tor Browser
+                  </a>,
+                orbotLink:
+                  <a href='https://play.google.com/store/apps/details?id=org.torproject.android' target='_blank'>
+                    OrBot
+                  </a>,
+                onionBrowser:
+                  <a href='https://itunes.apple.com/it/app/onion-browser-secure-anonymous' target='_blank'>
+                    Onion Browser
+                  </a>
+              }}
+            />
+          </p>
+          <p>
+            <FormattedMessage
+              id='nettests.webConnectivity.circumvention.useTor.torBlocked'
+              defaultMessage={`If the torproject.org website is blocked in your country you can download Tor
+ from a mirror of it hosted on github: {gettorLink}`}
+              values={{
+                gettorLink: <a href='https://github.com/TheTorProject/gettorbrowser' target='_blank'>
+                              https://github.com/TheTorProject/gettorbrowser
+                </a>
+              }}
+            />
           </p>
         </div>
 
         <p>
-          Note: The above techniques might not always work.
+          <FormattedMessage
+            id='nettests.webConnectivity.circumvention.note'
+            defaultMessage='Note: The above techniques might not always work.'
+          />
         </p>
 
       </div>
