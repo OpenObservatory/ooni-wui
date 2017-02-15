@@ -12,8 +12,9 @@ const ErrorMessage = ({
 }) => {
     return (
       <div className='container-fluid text-xs-center'>
+        <i className='medium-icon fa fa-exclamation-triangle' aria-hidden="true" />
         <h2>Error in loading the measurement</h2>
-        <pre>{error.toString()}</pre>
+        <p>{error.toString()}</p>
       </div>
     )
 }
