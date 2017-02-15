@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 
 const MLAB_LOC_TO_COUNTRY = {
   'yyz01': 'CA',

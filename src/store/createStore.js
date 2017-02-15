@@ -6,7 +6,7 @@ import { messages, loadLocaleData } from './locale'
 
 // This allows us to set the locale by defining the global defaultLocale variable in mobile
 const defaultLocale = window.defaultLocale || 'en'
-console.log("Setting default locale to", defaultLocale)
+
 export default (initialState = {
   intl: {
     defaultLocale: defaultLocale,

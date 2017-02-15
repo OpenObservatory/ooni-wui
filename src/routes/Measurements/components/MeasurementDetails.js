@@ -1,5 +1,6 @@
 import React from 'react'
 import JSONTree from 'react-json-tree'
+import { FormattedMessage } from 'react-intl'
 
 import WebConnectivityDetails from './nettests/WebConnectivity'
 import FacebookMessengerDetails from './nettests/FacebookMessenger'
@@ -62,10 +63,16 @@ export const MeasurementDetails = ({
         <div className='row text-xs-center'>
           <div className='result-metadata'>
             <span className='col-sm-6 col-xs-12'>
-              {measurement.test_runtime.toFixed(2)}s Runtime
+              {measurement.test_runtime.toFixed(2)}s <FormattedMessage
+                id='measurementDetails.runtime'
+                defaultMessage='Runtime'
+              />
             </span>
             <span className='col-sm-6 col-xs-12'>
-              Location: {measurement.probe_cc} ({measurement.probe_asn})
+              <FormattedMessage
+                id='measurementDetails.location'
+                defaultMessage='Location: '
+              />{measurement.probe_cc} ({measurement.probe_asn})
             </span>
           </div>
         </div>
@@ -83,7 +90,10 @@ export const MeasurementDetails = ({
       </div>
 
       <div className='technical-data'>
-        <h2><i className='ooni icon-measurement' /> Technical measurement data</h2>
+        <h2><i className='ooni icon-measurement' /> <FormattedMessage
+          id='measurementDetails.technicalMeasurementData'
+          defaultMessage='Technical measurement data'
+        /></h2>
         <JSONTree
           theme={jsonTreeTheme}
           hideRoot
