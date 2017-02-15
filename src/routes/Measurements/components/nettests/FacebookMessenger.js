@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 
 export const FacebookMessengerDetails = ({ measurement }) => {
   return (
