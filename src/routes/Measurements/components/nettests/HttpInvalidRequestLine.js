@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 
 export class HttpInvalidRequestLineDetails extends React.Component {
   constructor (props) {
@@ -25,19 +26,42 @@ export class HttpInvalidRequestLineDetails extends React.Component {
       <div>
         {measurement.test_keys.tampering === true &&
         <div>
-          <h2 className='result-danger'><i className='fa fa-times-circle-o' /> Evidence of network tampering</h2>
-          <p>When contacting our control servers we noticed that our traffic was being manipulated.
-            This means that there could be a <strong>“middle box”</strong> which could be responsible for censorship
-            and/or traffic manipulation. Click on "Show exchanges" below to see what our server saw and what was sent.
+          <h2 className='result-danger'><i className='fa fa-times-circle-o' /> 
+          <FormattedMessage
+            id='nettests.httpInvalidRequestLine.networkTampering'
+            defaultMessage='Evidence of possible network tampering'
+            />
+          </h2>
+          <p>
+          <FormattedMessage
+            id='nettests.httpInvalidRequestLine.trafficManipulation'
+            defaultMessage='When contacting our control servers we noticed that network traffic was manipulated. This means that there could be a {middleBox} which could be responsible for censorship and/or traffic manipulation. Click on "Show exchanges" below to see what our server saw and what was sent.'
+            values={{
+              middleBox: <strong>
+                <FormattedMessage
+                  id='nettests.httpInvalidRequestLine.trafficManipulation.middleBox'
+                  defaultMessage='“middle box”' />
+                </strong>
+            }}
+          />
           </p>
         </div>
         }
         {measurement.test_keys.tampering === false &&
         <div>
-          <h2 className='result-success'><i className='fa fa-check-circle-o' /> Everything is OK</h2>
+          <h2 className='result-success'><i className='fa fa-check-circle-o' /> 
+          <FormattedMessage
+            id='nettests.httpInvalidRequestLine.everythingOk'
+            defaultMessage='Everything is OK'
+          />
+          </h2>
 
-          <p>There was no anomaly in communicating to our control servers.
-            Click on "Show exchanges" below to see what our server saw and what was sent.</p>
+          <p>
+          <FormattedMessage
+            id='nettests.httpInvalidRequestLine.noAnomaly'
+            defaultMessage='No network anomaly was detected when communicating to our control servers. Click on "Show exchanges" below to see what our server saw and what was sent.'
+            />
+          </p>
         </div>
         }
 
@@ -45,10 +69,20 @@ export class HttpInvalidRequestLineDetails extends React.Component {
         <div>
           <div className='row text-xs-center' style={{ marginTop: '20px' }}>
             <div className='col-xs-6'>
-              <h3>I sent</h3>
+              <h3>
+              <FormattedMessage
+                id='nettests.httpInvalidRequestLine.sent'
+                defaultMessage='I sent'
+                />
+              </h3>
             </div>
             <div className='col-xs-6'>
-              <h3>I received</h3>
+              <h3>
+              <FormattedMessage
+                id='nettests.httpInvalidRequestLine.received'
+                defaultMessage='I received'
+                />
+              </h3>
             </div>
           </div>
           {measurement.test_keys.sent.map((sentData, index) => {
@@ -75,7 +109,16 @@ export class HttpInvalidRequestLineDetails extends React.Component {
         <div className='row'>
           <div className='col-xs-6'>
             <button className='btn btn-secondary' onClick={() => this.toggleExchanges()}>
-              {this.state.exchangesEnabled ? 'Hide' : 'Show'} exchanges
+              {this.state.exchangesEnabled
+               ? <FormattedMessage
+                   id='nettests.httpInvalidRequestLine.hide'
+                   defaultMessage='Hide exchanges'
+                  /> 
+               : <FormattedMessage
+                   id='nettests.httpInvalidRequestLine.show'
+                   defaultMessage='Show exchanges'
+                  />
+              }
             </button>
           </div>
         </div>

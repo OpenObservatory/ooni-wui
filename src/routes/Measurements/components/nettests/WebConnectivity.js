@@ -16,7 +16,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
         <p>
           <FormattedMessage
             id='nettests.webConnectivity.websiteAccessibleUncensored'
-            defaultMessage='The website is accessible and uncensored from this network.'
+            defaultMessage='The website appears to be accessible and uncensored from this network.'
           />
         </p>
       </div>
@@ -33,7 +33,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
         <p>
           <FormattedMessage
             id='nettests.webConnectivity.websiteUp'
-            defaultMessage='The website is up, however there was a problem in assessing if whether or not it is being censored.'
+            defaultMessage='This website is up, but there was a problem in assessing whether or not it is being censored.'
           />
         </p>
         }
@@ -62,7 +62,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
           <p>
             <FormattedMessage
               id='nettests.webConnectivity.websiteUnavailableDesc'
-              defaultMessage='The website appears to not be available at the moment. Requests from the control vantage point are also failing.'
+              defaultMessage='This website does not appear to be available at the moment. Requests from the control vantage point are also failing.'
             />
           </p>
         </div>
@@ -84,7 +84,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
       <p>
         <FormattedMessage
           id='nettests.webConnectivity.censorshipDNSBased'
-          defaultMessage='The site appears to be blocked due to {reason}.'
+          defaultMessage='This site appears to be blocked due to {reason}.'
           values={{
             dnsCensorship: <strong><FormattedMessage
               id='nettest.webConnectivity.censorshipDNSBased.reason'
@@ -98,7 +98,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
       <p>
         <FormattedMessage
           id='nettests.webConnectivity.httpDiff'
-          defaultMessage='The site appears to be blocked because it presents a {reason}.'
+          defaultMessage='This site appears to be blocked because it presents a {reason}.'
           values={{
             reason: <strong>
               <FormattedMessage
@@ -115,7 +115,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
       <p>
         <FormattedMessage
           id='nettests.webConnectivity.httpFailure'
-          defaultMessage='The site appears to be blocked because the {what} with {errorMessage}.'
+          defaultMessage='This site appears to be blocked because the {what} with {errorMessage}.'
           values={{
             what: <strong><FormattedMessage
               id='nettests.webConnectivity.httpFailure.what'
@@ -131,7 +131,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
       <p>
         <FormattedMessage
           id='nettests.webConnectivity.tcpIP'
-          defaultMessage='The site appears to be blocked by means of {reason}'
+          defaultMessage='This site appears to be blocked by means of {reason}'
           values={{
             reason: <strong><FormattedMessage
               id='nettests.webConnectivity.tcpIP.reason'
@@ -154,7 +154,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
         <p>
           <FormattedMessage
             id='nettests.webConnectivity.circumventionStrategies.text1'
-            defaultMessage='You can try to circumvent the blocking of the site {site} throught the following:'
+            defaultMessage='You can try to circumvent the blocking of the site {site} through the following:'
             values={{
               site: <code>{measurement.input}</code>
             }}
@@ -209,7 +209,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
           <p>
             <FormattedMessage
               id='nettests.webConnectivity.circumvention.changeDNS.instructions'
-              defaultMessage='You can find instructions on how to change your DNS resolver to the through the following URL: {instructionsLink}'
+              defaultMessage='You can find instructions on how to change your DNS resolver through the following URL: {instructionsLink}'
               values={{
                 instructionsLink:<a href='https://www.opendns.com/setupguide/' target='_blank'>
                   https://www.opendns.com/setupguide/
@@ -253,7 +253,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
           <p>
             <FormattedMessage
               id='nettests.webConnectivity.circumvention.useTor.torBlocked'
-              defaultMessage='If the torproject.org website is blocked in your country you can download Tor from a mirror of it hosted on github: {gettorLink}'
+              defaultMessage='If the torproject.org website is blocked in your country, you can download Tor from a mirror of it hosted on github: {gettorLink}'
               values={{
                 gettorLink: <a href='https://github.com/TheTorProject/gettorbrowser' target='_blank'>
                               https://github.com/TheTorProject/gettorbrowser
