@@ -122,7 +122,7 @@ export class NdtDetails extends React.Component {
         <div>
           <h2 className='result-warning'><i className='fa fa-exclamation-circle' /> Error in measurement</h2>
           <p>We were not able to properly run the NDT test: <code>{measurement.test_keys.failure}</code></p>
-          <p>This usually happens when the NDT service is blocked by your ISP</p>
+          <p>This usually happens when the port used by NDT is blocked by your ISP</p>
         </div>
       )
     }
