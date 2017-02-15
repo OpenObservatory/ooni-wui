@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 
 export const WhatsappDetails = ({ measurement }) => {
   return (
@@ -22,7 +23,17 @@ export const WhatsappDetails = ({ measurement }) => {
 
       {measurement.test_keys.whatsapp_endpoints_status === 'blocked'
       ? <p>
-        The WhatsApp application is <strong className='text-danger'>blocked</strong>
+        <FormattedMessage
+          id='nettests.whatsapp.applicationBlocked'
+          defaultMessage='The WhatsApp application is {status}'
+          values={{
+            status: <strong className='text-danger'>
+              <FormattedMessage
+                id='nettests.whatsapp.applicationBlocked.statusBlocked'
+                defaultMessage='blocked'
+              /></strong>
+          }}
+        />
       </p>
       : <p>
         The WhatsApp application is <strong className='text-success'>working properly</strong>
