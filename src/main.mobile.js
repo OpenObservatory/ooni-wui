@@ -6,6 +6,22 @@ import './styles/core.mobile.scss'
 // ========================================================
 // Mobile specific wrapping
 // ========================================================
+
+const ErrorMessage = ({
+    error
+}) => {
+    return (
+      <div className='container-fluid text-xs-center'>
+        <h2>Error in loading the measurement</h2>
+        <pre>{error.toString()}</pre>
+      </div>
+    )
+}
+
+ErrorMessage.propTypes = {
+    error: React.PropTypes.object
+}
+
 class MeasurementWrapper extends React.Component {
   constructor (props) {
     super(props)
@@ -27,10 +43,7 @@ class MeasurementWrapper extends React.Component {
 
   render () {
     if (this.state.error !== null) {
-      return <div className='container-fluid text-xs-center'>
-        <h2>Error in loading the measurement</h2>
-        <pre>{this.state.error.toString()}</pre>
-      </div>
+      return <ErrorMessage error={this.state.error} />
     }
     if (!this.state.measurement) {
       return <div className='container-fluid text-xs-center'>
@@ -49,10 +62,17 @@ class MeasurementWrapper extends React.Component {
 const MOUNT_NODE = document.getElementById('root')
 
 let render = () => {
-  ReactDOM.render(
-    <MeasurementWrapper />,
-    MOUNT_NODE
-  )
+  try {
+    ReactDOM.render(
+      <MeasurementWrapper />,
+      MOUNT_NODE
+    )
+  } catch (error) {
+    ReactDOM.render(
+      <ErrorMessage error={error} />,
+      MOUNT_NODE
+    )
+  }
 }
 
 // ========================================================
