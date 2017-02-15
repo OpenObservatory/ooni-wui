@@ -84,7 +84,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
       <p>
         <FormattedMessage
           id='nettests.webConnectivity.censorshipDNSBased'
-          defaultMessage='This site appears to be blocked due to {reason}.'
+          defaultMessage='This site appears to be blocked due to {dnsCensorship}.'
           values={{
             dnsCensorship: <strong><FormattedMessage
               id='nettest.webConnectivity.censorshipDNSBased.reason'
@@ -98,9 +98,9 @@ export const WebConnectivityDetails = ({ measurement }) => {
       <p>
         <FormattedMessage
           id='nettests.webConnectivity.httpDiff'
-          defaultMessage='This site appears to be blocked because it presents a {reason}.'
+          defaultMessage='This site appears to be blocked because it presents a {differentHTTPResponse}.'
           values={{
-            reason: <strong>
+            differentHTTPResponse: <strong>
               <FormattedMessage
                 id='nettests.webConnectivity.httpDiff.reason'
                 defaultMessage='different HTTP response'
@@ -115,9 +115,9 @@ export const WebConnectivityDetails = ({ measurement }) => {
       <p>
         <FormattedMessage
           id='nettests.webConnectivity.httpFailure'
-          defaultMessage='This site appears to be blocked because the {what} with {errorMessage}.'
+          defaultMessage='This site appears to be blocked because the {HTTPRequestFailed} with {errorMessage}.'
           values={{
-            what: <strong><FormattedMessage
+            HTTPRequestFailed: <strong><FormattedMessage
               id='nettests.webConnectivity.httpFailure.what'
               defaultMessage='HTTP request failed'
             /></strong>,
@@ -131,9 +131,9 @@ export const WebConnectivityDetails = ({ measurement }) => {
       <p>
         <FormattedMessage
           id='nettests.webConnectivity.tcpIP'
-          defaultMessage='This site appears to be blocked by means of {reason}'
+          defaultMessage='This site appears to be blocked by means of {TCPIPBasedBlocking}'
           values={{
-            reason: <strong><FormattedMessage
+            TCPIPBasedBlocking: <strong><FormattedMessage
               id='nettests.webConnectivity.tcpIP.reason'
               defaultMessage='TCP/IP based blocking'
             /></strong>
@@ -154,9 +154,9 @@ export const WebConnectivityDetails = ({ measurement }) => {
         <p>
           <FormattedMessage
             id='nettests.webConnectivity.circumventionStrategies.text1'
-            defaultMessage='You can try to circumvent the blocking of the site {site} through the following:'
+            defaultMessage='You can try to circumvent the blocking of the site {siteURL} through the following:'
             values={{
-              site: <code>{measurement.input}</code>
+              siteURL: <code>{measurement.input}</code>
             }}
           />
         </p>
@@ -194,8 +194,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
           <p>
             <FormattedMessage
               id='nettests.webConnectivity.circumvention.changeDNS.text'
-              defaultMessage='Try {changeDNS} to one that does not
-            implement blocking, such as the OpenDNS ({openDNS}) or Google DNS: {googleDNS}.'
+              defaultMessage='Try {changeDNS} to one that does not implement blocking, such as OpenDNS ({openDNS}) or Google DNS: {googleDNS}.'
               values={{
                 changeDNS: <strong><FormattedMessage
                   id='nettests.webConnectivity.circumvention.changeDNS.text.changeDNS'
