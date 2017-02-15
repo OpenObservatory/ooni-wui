@@ -9,8 +9,16 @@ import { sync as mkdirpSync } from 'mkdirp'
 
 const project = require(path.resolve(__dirname, 'config/project.config'))
 
-const MESSAGES_PATTERN = path.resolve(project.paths.dist(), 'messages/**/*.json');
-const LANG_DIR         = path.resolve(project.paths.dist(), 'lang/');
+const MESSAGES_PATTERN = path.resolve(
+  project.paths.dist(),
+  'messages/**/*.json'
+);
+const MESSAGES_PATTERN_MOBILE = path.resolve(
+  project.paths.dist(),
+  'messages/src/routes/Measurements/components/**/*.json'
+);
+
+const LANG_DIR = path.resolve(project.paths.dist(), 'lang/');
 
 const ESCAPED_CHARS = {
     '\\' : '\\\\',
@@ -95,14 +103,35 @@ const translate = () => {
                 if (collection.hasOwnProperty(id)) {
                     throw new Error(`Duplicate message id: ${id}`);
                 }
-
                 collection[id] = defaultMessage;
             });
 
             return collection;
         }, {});
+
+    const defaultMessagesMobile = globSync(MESSAGES_PATTERN_MOBILE)
+        .map((filename) => fs.readFileSync(filename, 'utf8'))
+        .map((file) => JSON.parse(file))
+        .reduce((collection, descriptors) => {
+            descriptors.forEach(({id, defaultMessage}) => {
+                if (collection.hasOwnProperty(id)) {
+                    throw new Error(`Duplicate message id: ${id}`);
+                }
+                collection[id] = defaultMessage;
+            });
+
+            return collection;
+        }, {});
+
     mkdirpSync(LANG_DIR);
-    fs.writeFileSync(path.resolve(LANG_DIR, 'en.json'), JSON.stringify(defaultMessages, null, 2));
+    fs.writeFileSync(
+            path.resolve(LANG_DIR, 'en.json'),
+            JSON.stringify(defaultMessages, null, 2)
+    );
+    fs.writeFileSync(
+            path.resolve(LANG_DIR, 'en.mobile.json'),
+            JSON.stringify(defaultMessages, null, 2)
+    );
 }
 
 translate()
