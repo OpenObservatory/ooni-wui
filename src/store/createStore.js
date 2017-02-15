@@ -2,8 +2,21 @@ import { applyMiddleware, compose, createStore } from 'redux'
 import thunk from 'redux-thunk'
 import makeRootReducer from './reducers'
 import { updateLocation, history } from './location'
+import { messages, loadLocaleData } from './locale'
 
-export default (initialState = {}) => {
+// This allows us to set the locale by defining the global defaultLocale variable in mobile
+const defaultLocale = window.defaultLocale || 'en'
+console.log("Setting default locale to", defaultLocale)
+export default (initialState = {
+  intl: {
+    defaultLocale: defaultLocale,
+    locale: defaultLocale,
+    messages: messages[defaultLocale]
+  }
+}) => {
+  // local locale data
+  loadLocaleData()
+
   // ======================================================
   // Middleware Configuration
   // ======================================================

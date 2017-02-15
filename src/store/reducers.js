@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
+import { intlReducer } from 'react-intl-redux'
 import locationReducer from './location'
 import { statusReducer } from '../reducers/status'
 import { notificationReducer } from '../reducers/notification'
@@ -10,6 +11,7 @@ export const makeRootReducer = (asyncReducers) => {
     status: statusReducer,
     notification: notificationReducer,
     form: formReducer,
+    intl: intlReducer,
     ...asyncReducers
   })
 }

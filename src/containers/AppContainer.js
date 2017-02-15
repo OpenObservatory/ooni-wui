@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { Router } from 'react-router'
-import { Provider } from 'react-redux'
-import { IntlProvider } from 'react-intl'
+import { Provider } from 'react-intl-redux'
 
 import Modal from 'react-modal'
 import { history } from '../store/location'
@@ -23,11 +22,9 @@ class AppContainer extends Component {
 
     return (
       <Provider store={store}>
-        <IntlProvider locale={navigator.language}>
-          <div style={{ height: '100%' }}>
-            <Router history={history} children={routes} />
-          </div>
-        </IntlProvider>
+        <div style={{ height: '100%' }}>
+          <Router history={history} children={routes} />
+        </div>
       </Provider>
     )
   }

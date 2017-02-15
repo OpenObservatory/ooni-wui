@@ -1,0 +1,4 @@
+{
+  "nettests.webConnectivity.noCensorshipDetected": "No censorship detected",
+  "nettests.webConnectivity.websiteAccessibleUncensored": "The website is accessible and uncensored from this network."
+}

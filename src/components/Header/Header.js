@@ -1,10 +1,18 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { IndexLink, Link } from 'react-router'
+import { updateIntl } from 'react-intl-redux'
+
+import { refresh } from '../../store/location'
+import { messages, supportedLanguages } from '../../store/locale'
+
 import './Header.scss'
 import OONILogoImage from './assets/ooni-logo.svg'
-import { refresh } from '../../store/location'
 
-export const Header = () => (
+export const Header = ({
+  selectedLocale,
+  onLocaleChange
+}) => (
   <div className='header'>
     {/* This is for small viewports */}
     <div className='hidden-sm-up'>
@@ -53,6 +61,15 @@ export const Header = () => (
           Logs
         </Link>
         <div className='refresh-button rounded-circle'>
+          <select value={selectedLocale} onChange={(event) => onLocaleChange(event.target.value)}>
+            {supportedLanguages.map((locale) => {
+              return (
+                <option key={locale.code} value={locale.code}>{locale.name}</option>
+              )
+            })}
+          </select>
+        </div>
+        <div className='refresh-button rounded-circle'>
           <i className='icon-btn fa fa-refresh' onClick={() => refresh()} />
         </div>
       </div>
@@ -61,4 +78,24 @@ export const Header = () => (
   </div>
 )
 
-export default Header
+Header.propTypes = {
+  selectedLocale: React.PropTypes.string,
+  onLocaleChange: React.PropTypes.func
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  onLocaleChange: (locale) => {
+    dispatch(updateIntl({
+      locale: locale,
+      messages: messages[locale]
+    }))
+  }
+})
+
+const mapStateToProps = (state) => {
+  return {
+    selectedLocale: state.intl.locale
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
