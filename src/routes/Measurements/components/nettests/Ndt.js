@@ -149,8 +149,8 @@ export class NdtDetails extends React.Component {
           <div className='col-xs-6 result-item'>
             <span className='result-item-name'>
               <FormattedMessage
-                id='nettests.ndt.Ping'
-                defaultValue='Ping'
+                id='nettests.ndt.ping'
+                defaultMessage='Ping'
               />
               <i className='fa fa-exchange' />
             </span>
@@ -161,7 +161,7 @@ export class NdtDetails extends React.Component {
             <span className='result-item-name'>
               <FormattedMessage
                 id='nettests.ndt.Server'
-                defaultValue='Server'
+                defaultMessage='Server'
               />
               <i className='fa fa-server' />
             </span>
@@ -176,7 +176,7 @@ export class NdtDetails extends React.Component {
             <button className='btn btn-secondary' onClick={() => this.toggledAdvanced()}>
               <FormattedMessage
                 id='nettests.ndt.More'
-                defaultValue='More'
+                defaultMessage='More'
               />
             </button>
           </div>
@@ -190,7 +190,7 @@ export class NdtDetails extends React.Component {
               <span className='result-item-name'>
                 <FormattedMessage
                   id='nettests.ndt.PacketLoss'
-                  defaultValue='Packet Loss'
+                  defaultMessage='Packet Loss'
                 />
               </span>
               <span className='result-item-value-big'>
@@ -202,7 +202,7 @@ export class NdtDetails extends React.Component {
               <span className='result-item-name'>
                 <FormattedMessage
                   id='nettests.net.OutOfOrder'
-                  defaultValue='Out of order'
+                  defaultMessage='Out of order'
                 />
               </span>
               <span className='result-item-value-big'>
@@ -217,7 +217,7 @@ export class NdtDetails extends React.Component {
               <span className='result-item-name'>
                 <FormattedMessage
                   id='nettests.ndt.AveragePing'
-                  defaultValue='Average Ping'
+                  defaultMessage='Average Ping'
                 />
               </span>
               <span className='result-item-value-big'>
@@ -229,7 +229,7 @@ export class NdtDetails extends React.Component {
               <span className='result-item-name'>
                 <FormattedMessage
                   id='nettests.ndt.MaxPing'
-                  defaultValue='Max Ping'
+                  defaultMessage='Max Ping'
                 />
               </span>
               <span className='result-item-value-big'>
@@ -244,7 +244,7 @@ export class NdtDetails extends React.Component {
               <span className='result-item-name'>
                 <FormattedMessage
                   id='nettests.ndt.Mss'
-                  defaultValue='MSS'
+                  defaultMessage='MSS'
                 />
               </span>
               <span className='result-item-value-big'>
@@ -255,7 +255,7 @@ export class NdtDetails extends React.Component {
               <span className='result-item-name'>
                 <FormattedMessage
                   id='nettests.ndt.Timeouts'
-                  defaultValue='Timeouts'
+                  defaultMessage='Timeouts'
                 />
               </span>
               <span className='result-item-value-big'>
@@ -269,7 +269,7 @@ export class NdtDetails extends React.Component {
               <button className='btn btn-secondary' onClick={() => this.toggledAdvanced()}>
                 <FormattedMessage
                   id='nettests.ndt.Less'
-                  defaultValue='Less'
+                  defaultMessage='Less'
                 />
               </button>
             </div>

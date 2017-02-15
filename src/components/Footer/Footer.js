@@ -8,25 +8,25 @@ export const Footer = () => (
         <li>
           <a href='https://ooni.torproject.org/about/' target='_blank'>
             <FormattedMessage
-             id='footer.AboutOoni'
-             defaultValue='About OONI'
+              id='footer.AboutOoni'
+              defaultMessage='About OONI'
             />
           </a>
         </li>
         <li>
           <a href='https://ooni.torproject.org/about/data-policy/'
-             target='_blank'>
-               <FormattedMessage
-                 id='footer.DataPolicy'
-                 defaultValue='Data policy'
-               />
+            target='_blank'>
+            <FormattedMessage
+              id='footer.DataPolicy'
+              defaultMessage='Data policy'
+            />
           </a>
         </li>
         <li>
           <a href='mailto:contact@openobservatory.org' target='_blank'>
             <FormattedMessage
               id='footer.Help'
-              defaultValue='Help'
+              defaultMessage='Help'
             />
           </a>
         </li>
@@ -34,7 +34,7 @@ export const Footer = () => (
           <a href='https://explorer.ooni.torproject.org/' target='_blank'>
             <FormattedMessage
               id='footer.ExploreData'
-              defaultValue='Explore data'
+              defaultMessage='Explore data'
             />
           </a>
         </li>

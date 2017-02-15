@@ -55,7 +55,7 @@ export const WhatsappDetails = ({ measurement }) => {
                 id='nettests.whatsapp.notBlocked.workingProperly'
                 defaultMessage='working properly'
               /></strong>
-        }}
+          }}
       />
       </p>
       }
