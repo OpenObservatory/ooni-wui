@@ -76,6 +76,7 @@ export class VanillaTorDetails extends React.Component {
                id='nettests.vanillaTor.show'
                defaultMessage='Show'
              />
+           }
              tor log
         </button>
 
