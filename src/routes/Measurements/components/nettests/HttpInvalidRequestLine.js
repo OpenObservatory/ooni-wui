@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 
 export class HttpInvalidRequestLineDetails extends React.Component {
   constructor (props) {
