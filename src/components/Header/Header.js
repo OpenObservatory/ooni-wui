@@ -31,20 +31,20 @@ export const Header = ({
           <Link to='/measurements' activeClassName='route--active' className='btn btn-primary'>
             <FormattedMessage
               id='header.smallViewports.Measurements'
-              defaultValue='Measurements'
+              defaultMessage='Measurements'
             />
           </Link>
           {/* <Link to='/settings' activeClassName='route--active' className='btn btn-primary'>
              <FormattedMessage
                id='header.smallViewports.Settings'
-               defaultValue='Settings'
+               defaultMessage='Settings'
              />
            </Link>
            */}
           <Link to='/logs' activeClassName='route--active' className='btn btn-primary'>
             <FormattedMessage
               id='header.smallViewports.Logs'
-              defaultValue='Logs'
+              defaultMessage='Logs'
             />
           </Link>
           <div className='refresh-button rounded-circle'>
