@@ -24,7 +24,7 @@ const ErrorMessage = ({
 }) => {
   return (
     <div className='container-fluid text-xs-center'>
-      <i className='medium-icon fa fa-exclamation-triangle' aria-hidden="true" />
+      <i className='medium-icon fa fa-exclamation-triangle' aria-hidden='true' />
       <h2>Error in loading the measurement</h2>
       <p>{error.toString()}</p>
     </div>
@@ -49,8 +49,9 @@ class MeasurementWrapper extends React.Component {
   }
 
   componentDidMount () {
-    if (this.props.error !== null) {
-      return this.setState({ error: this.props.error})
+    if (this.props.error) {
+      this.setState({ error: this.props.error })
+      return
     }
     try {
       // eslint-disable-next-line no-undef
@@ -62,7 +63,7 @@ class MeasurementWrapper extends React.Component {
   }
 
   render () {
-    if (this.state.error !== null) {
+    if (this.state.error) {
       return <ErrorMessage error={this.state.error} />
     }
     if (!this.state.measurement) {
@@ -94,7 +95,7 @@ class MobileContainer extends React.Component {
         defaultLocale={defaultLocale}
         locale={getUserLocale()}
         messages={messages[getUserLocale()]}>
-        <MeasurementWrapper error={error}/>
+        <MeasurementWrapper error={error} />
       </IntlProvider>
     )
   }
