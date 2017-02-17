@@ -36,6 +36,10 @@ ErrorMessage.propTypes = {
 }
 
 class MeasurementWrapper extends React.Component {
+  static propTypes = {
+    error: React.PropTypes.object
+  }
+
   constructor (props) {
     super(props)
     this.state = {
@@ -45,6 +49,9 @@ class MeasurementWrapper extends React.Component {
   }
 
   componentDidMount () {
+    if (this.props.error !== null) {
+      return this.setState({ error: this.props.error})
+    }
     try {
       // eslint-disable-next-line no-undef
       const measurement = JSON.parse(MeasurementJSON.get())
@@ -82,23 +89,12 @@ class MobileContainer extends React.Component {
     const { error } = this.props
     loadLocaleData()
 
-    // XXX this can be refactored
-    if (error !== null) {
-      return (
-        <IntlProvider
-          defaultLocale={defaultLocale}
-          locale={getUserLocale()}
-          messages={messages[getUserLocale()]}>
-          <ErrorMessage error={error} />
-        </IntlProvider>
-      )
-    }
     return (
       <IntlProvider
         defaultLocale={defaultLocale}
         locale={getUserLocale()}
         messages={messages[getUserLocale()]}>
-        <MeasurementWrapper />
+        <MeasurementWrapper error={error}/>
       </IntlProvider>
     )
   }
