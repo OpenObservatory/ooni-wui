@@ -1,5 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+
+import {
+  IntlProvider
+} from 'react-intl'
+
+import {
+  messages,
+  loadLocaleData,
+  getUserLocale,
+  defaultLocale
+} from './store/locale'
+
 import MeasurementDetails from './routes/Measurements/components/MeasurementDetails'
 import './styles/core.mobile.scss'
 
@@ -43,6 +55,27 @@ class MeasurementWrapper extends React.Component {
   }
 }
 
+class MobileContainer extends React.Component {
+
+  shouldComponentUpdate () {
+    return false
+  }
+
+  render () {
+    loadLocaleData()
+
+    return (
+      <IntlProvider
+        defaultLocale={defaultLocale}
+        locale={getUserLocale()}
+        messages={messages[getUserLocale()]}>
+        <MeasurementWrapper />
+      </IntlProvider>
+    )
+  }
+
+}
+
 // ========================================================
 // Render Setup
 // ========================================================
@@ -50,7 +83,7 @@ const MOUNT_NODE = document.getElementById('root')
 
 let render = () => {
   ReactDOM.render(
-    <MeasurementWrapper />,
+    <MobileContainer />,
     MOUNT_NODE
   )
 }
