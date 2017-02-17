@@ -33,10 +33,10 @@ const config = {
   compiler_babel : {
     cacheDirectory : true,
     plugins: [
-        ['react-intl', {
-            'messagesDir': path.resolve(__dirname, '..', 'dist', 'messages')
-        }],
-        'transform-runtime'
+      'transform-runtime',
+      ['react-intl', {
+        'messagesDir': path.resolve(__dirname, '..', 'dist', 'messages')
+      }]
     ],
     presets: ['es2015', 'react', 'stage-0']
   },

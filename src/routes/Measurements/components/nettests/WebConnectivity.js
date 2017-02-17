@@ -8,7 +8,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
       {measurement.test_keys.accessible !== false && measurement.test_keys.blocking === false &&
       <div>
         <h2 className='result-success'><i className='fa fa-check-circle-o' />
-          <FormattedMessage
+          {' '}<FormattedMessage
             id='nettests.webConnectivity.noCensorshipDetected'
             defaultMessage='No censorship detected'
           />
@@ -25,7 +25,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
       measurement.test_keys.blocking === null &&
       <div>
         <h2 className='result-warning'><i className='fa fa-exclamation-circle' />
-          <FormattedMessage
+          {' '}<FormattedMessage
             id='nettests.webConnectivity.errorInMeasurement'
             defaultMessage='Error in measurement' />
         </h2>
@@ -54,7 +54,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
         ) &&
         <div>
           <h2 className='result-warning'><i className='fa fa-exclamation-circle' />
-            <FormattedMessage
+            {' '}<FormattedMessage
               id='nettests.webConnectivity.websiteUnavailable'
               defaultMessage='Website unavailable'
             />
@@ -72,7 +72,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
       {measurement.test_keys.blocking !== null && measurement.test_keys.blocking !== false &&
       <div>
         <h2 className='result-danger'><i className='fa fa-times-circle-o' />
-          <FormattedMessage
+          {' '}<FormattedMessage
             id='nettests.webConnectivity.evidenceOfCensorship'
             defaultMessage='Evidence of possible censorship'
           />
@@ -146,7 +146,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
       measurement.test_keys.blocking != null &&
       <div className='circumvention-strategies'>
         <h3><i className='ooni icon-tor' />
-          <FormattedMessage
+          {' '}<FormattedMessage
             id='nettests.webConnectivity.circumventionStrategies.title'
             defaultMessage='Circumvention strategies'
           />
@@ -165,7 +165,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
         measurement.input.substr(0, 5) !== 'https' &&
         <div className='circumvention-strategy'>
           <h3>
-            <FormattedMessage
+            {' '}<FormattedMessage
               id='nettests.circumventionStrategies.useHTTPS.title'
               defaultMessage='Use Secure HTTP (HTTPS)'
             />
@@ -186,7 +186,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
         {measurement.test_keys.blocking === 'dns' &&
         <div className='circumvention-strategy'>
           <h3>
-            <FormattedMessage
+            {' '}<FormattedMessage
               id='nettests.webConnectivity.circumvention.changeDNS.title'
               defaultMessage='Change your DNS'
             />
