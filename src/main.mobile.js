@@ -18,6 +18,23 @@ import './styles/core.mobile.scss'
 // ========================================================
 // Mobile specific wrapping
 // ========================================================
+
+const ErrorMessage = ({
+    error
+}) => {
+  return (
+    <div className='container-fluid text-xs-center'>
+      <i className='medium-icon fa fa-exclamation-triangle' aria-hidden="true" />
+      <h2>Error in loading the measurement</h2>
+      <p>{error.toString()}</p>
+    </div>
+  )
+}
+
+ErrorMessage.propTypes = {
+  error: React.PropTypes.object
+}
+
 class MeasurementWrapper extends React.Component {
   constructor (props) {
     super(props)
@@ -38,15 +55,12 @@ class MeasurementWrapper extends React.Component {
   }
 
   render () {
+    if (this.state.error !== null) {
+      return <ErrorMessage error={this.state.error} />
+    }
     if (!this.state.measurement) {
       return <div className='container-fluid text-xs-center'>
         <h2>Loading</h2>
-      </div>
-    }
-    if (this.state.error !== null) {
-      return <div>
-        <h2>Error in loading measurement</h2>
-        <pre>{this.state.error.toString()}</pre>
       </div>
     }
     return <div className='container-fluid'>
@@ -56,14 +70,29 @@ class MeasurementWrapper extends React.Component {
 }
 
 class MobileContainer extends React.Component {
+  static propTypes = {
+    error: React.PropTypes.object
+  }
 
   shouldComponentUpdate () {
     return false
   }
 
   render () {
+    const { error } = this.props
     loadLocaleData()
 
+    // XXX this can be refactored
+    if (error !== null) {
+      return (
+        <IntlProvider
+          defaultLocale={defaultLocale}
+          locale={getUserLocale()}
+          messages={messages[getUserLocale()]}>
+          <ErrorMessage error={error} />
+        </IntlProvider>
+      )
+    }
     return (
       <IntlProvider
         defaultLocale={defaultLocale}
@@ -82,10 +111,17 @@ class MobileContainer extends React.Component {
 const MOUNT_NODE = document.getElementById('root')
 
 let render = () => {
-  ReactDOM.render(
-    <MobileContainer />,
-    MOUNT_NODE
-  )
+  try {
+    ReactDOM.render(
+      <MobileContainer />,
+      MOUNT_NODE
+    )
+  } catch (error) {
+    ReactDOM.render(
+      <MobileContainer error={error} />,
+      MOUNT_NODE
+    )
+  }
 }
 
 // ========================================================
