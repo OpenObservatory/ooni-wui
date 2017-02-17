@@ -7,6 +7,8 @@ import en from 'react-intl/locale-data/en'
 import it from 'react-intl/locale-data/it'
 // import ru from 'react-intl/locale-data/ru'
 
+export const defaultLocale = 'en'
+
 export const messages = {
   // 'el': require('../languages/el.json'),
   'en': require('../languages/en.json'),
@@ -34,4 +36,19 @@ export const loadLocaleData = () => {
     ...it
     // ...ru
   ])
+}
+
+export const getUserLocale = () => {
+  let language = defaultLocale
+
+  if (window.userLocale) {
+    language = window.userLocale
+  } else if (navigator.language) {
+    language = navigator.language
+  }
+
+  if (language in messages) {
+    return language
+  }
+  return defaultLocale
 }
