@@ -5,6 +5,7 @@ import { updateIntl } from 'react-intl-redux'
 
 import { refresh } from '../../store/location'
 import { messages, supportedLanguages } from '../../store/locale'
+import { FormattedMessage } from 'react-intl'
 
 import './Header.scss'
 import OONILogoImage from './assets/ooni-logo.svg'
@@ -22,17 +23,29 @@ export const Header = ({
       <div className='navigation row'>
         <div className='col-xs-12'>
           <IndexLink to='/' activeClassName='route--active' className='btn btn-primary'>
-            Dashboard
+            <FormattedMessage
+              id='header.smallViewports.Dashboard'
+              defaultMessage='Dashboard'
+            />
           </IndexLink>
           <Link to='/measurements' activeClassName='route--active' className='btn btn-primary'>
-            Measurements
+            <FormattedMessage
+              id='header.smallViewports.Measurements'
+              defaultMessage='Measurements'
+            />
           </Link>
           {/* <Link to='/settings' activeClassName='route--active' className='btn btn-primary'>
-           Settings
+             <FormattedMessage
+               id='header.smallViewports.Settings'
+               defaultMessage='Settings'
+             />
            </Link>
            */}
           <Link to='/logs' activeClassName='route--active' className='btn btn-primary'>
-            Logs
+            <FormattedMessage
+              id='header.smallViewports.Logs'
+              defaultMessage='Logs'
+            />
           </Link>
           <div className='refresh-button rounded-circle'>
             <i className='icon-btn fa fa-refresh' onClick={() => refresh()} />
@@ -48,17 +61,29 @@ export const Header = ({
       </div>
       <div className='navigation pull-right'>
         <IndexLink to='/' activeClassName='route--active' className='btn btn-primary'>
-          Dashboard
+          <FormattedMessage
+            id='header.biggerViewports.Dashboard'
+            defaultMessage='Dashboard'
+          />
         </IndexLink>
         <Link to='/measurements' activeClassName='route--active' className='btn btn-primary'>
-          Measurements
+          <FormattedMessage
+            id='header.biggerViewports.Measurements'
+            defaultMessage='Measurements'
+          />
         </Link>
         {/* <Link to='/settings' activeClassName='route--active' className='btn btn-primary'>
-         Settings
+           <FormattedMessage
+             id='header.biggerViewports.Settings'
+             defaultMessage='Settings'
+           />
          </Link>
          */}
         <Link to='/logs' activeClassName='route--active' className='btn btn-primary'>
-          Logs
+          <FormattedMessage
+            id='header.biggerViewPorts.Logs'
+            defaultMessage='Logs'
+          />
         </Link>
         <div className='refresh-button rounded-circle'>
           <select value={selectedLocale} onChange={(event) => onLocaleChange(event.target.value)}>
