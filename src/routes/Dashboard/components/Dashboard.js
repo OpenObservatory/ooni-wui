@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
+import { FormattedMessage } from 'react-intl'
 
 import Deck from '../../../components/Deck'
 import DeckRunner from './DeckRunner'
@@ -49,21 +50,45 @@ export const Dashboard = ({
   <div>
 
     <div className='row text-xs-center'>
-      <h1>ooniprobe Dashboard</h1>
+      <h1>
+        <FormattedMessage
+          id='dashboard.title'
+          defaultMessage='ooniprobe Dashboard'
+        />
+      </h1>
       <div className='status'>
         ooniprobe {softwareVersion} { '| ' }
         {running === true &&
         <span className='status-running'>
-            running <i className='fa fa-check-circle-o' />
+          <FormattedMessage
+            id='dashboard.status.running'
+            defaultMessage='running {iconRunning}'
+            values={{
+              iconRunning: <i className='fa fa-check-circle-o' />
+            }}
+          />
         </span>
         }
         {running === false &&
         <span className='status-not-running'>
-              not running <i className='fa fa-close' />
+          <FormattedMessage
+            id='dashboard.status.notRunning'
+            defaultMessage='not running {iconNotRunning}'
+            values={{
+              iconNotRunning: <i className='fa fa-close' />
+            }}
+          />
         </span>
         }
         { ' | ' }
-        Location: {countryCode} { `(${asn})` }
+        <FormattedMessage
+          id='dashboard.status.location'
+          defaultMessage='Location: {countryCode} ({asNumber})'
+          values={{
+            countryCode: countryCode,
+            asNumber: asn
+          }}
+        />
       </div>
     </div>
 
@@ -71,15 +96,34 @@ export const Dashboard = ({
       { loadingDecksFailed &&
         <div className='text-xs-center' style={{ marginTop: '2rem' }}>
           <p className='text-danger'>
-            <i className='fa fa-exclamation-circle' /> failed to load decks
+            <FormattedMessage
+              id='dashboard.failedToLoadDecks'
+              defaultMessage='{iconFailure} failed to load decks'
+              values={{
+                iconFailure: <i className='fa fa-exclamation-circle' />
+              }}
+            />
           </p>
-          <p>Try clicking on the reload <strong><i className='fa fa-refresh' /></strong> button in the upper
-            right corner</p>
+          <p>
+            <FormattedMessage
+              id='dashboard.failedToLoadDecks.message'
+              defaultMessage='Try clicking on the reload {iconReload} button in the upper right corner'
+              values={{
+                iconReload: <strong><i className='fa fa-refresh' /></strong>
+              }}
+            />
+          </p>
         </div>
       }
       { loadingDecks && !loadingDecksFailed &&
         <div className='text-xs-center' style={{ marginTop: '2rem' }}>
-          <i className='fa fa-spinner fa-pulse fa-3x fa-fw' /> loading decks
+          <FormattedMessage
+            id='dashboard.loadingDecks'
+            defaultMessage='{iconSpinner} loading decks'
+            values={{
+              iconSpinner: <i className='fa fa-spinner fa-pulse fa-3x fa-fw' />
+            }}
+          />
         </div>
       }
       { !loadingDecks && !loadingDecksFailed &&
@@ -108,17 +152,36 @@ export const Dashboard = ({
 
     {loadingRecentResults && !loadingRecentResultsFailed &&
     <div className='text-xs-center' style={{ marginTop: '2rem' }}>
-      <i className='fa fa-spinner fa-pulse fa-3x fa-fw' /> loading recent results
+      <FormattedMessage
+        id='dashboard.loadingRecentResults'
+        defaultMessage='{iconSpinner} loading recent results'
+        values={{
+          iconSpinner: <i className='fa fa-spinner fa-pulse fa-3x fa-fw' />
+        }}
+      />
     </div>
     }
 
     {loadingRecentResultsFailed && !loadingRecentResults &&
     <div className='text-xs-center' style={{ marginTop: '2rem' }}>
       <p className='text-danger'>
-        <i className='fa fa-exclamation-circle' /> failed to load recent results
+        <FormattedMessage
+          id='dashboard.loadingRecentResults.failed'
+          defaultMessage='{iconFailure} failed to load recent results'
+          values={{
+            iconFailure: <i className='fa fa-exclamation-circle' />
+          }}
+        />
       </p>
-      <p>Try clicking on the reload <strong><i className='fa fa-refresh' /></strong> button in the upper
-        right corner</p>
+      <p>
+        <FormattedMessage
+          id='dashboard.loadingRecentResults.failed.message'
+          defaultMessage='Try clicking on the reload {iconReload} button in the upper right corner'
+          values={{
+            iconReload: <strong><i className='fa fa-refresh' /></strong>
+          }}
+        />
+      </p>
     </div>
     }
 
@@ -128,15 +191,27 @@ export const Dashboard = ({
         <img src={OONILogoImage} width='200px' height='200px' className='ooni-logo' />
       </div>
       <div className='col-md-3'>
-        <h2>Your recent test results will appear here once the tests have finished running!
-          As you run more tests, you can view past results in the "Measurements" page.</h2>
+        <h2>
+          <FormattedMessage
+            id='dashboard.recentResults.zeroState'
+            defaultMessage='Your recent test results will appear here once the tests have finished running! As you run more tests, you can view past results in the "Measurements" page.'
+          />
+        </h2>
       </div>
     </div>
     }
 
     {!loadingRecentResults && !loadingRecentResultsFailed && recentResults.length > 0 &&
     <div className='row recent-results text-xs-center'>
-      <h2>Last {recentResults.length} tests</h2>
+      <h2>
+        <FormattedMessage
+          id='dashboard.recentResults.title'
+          defaultMessage='Last {numberResultCount} tests'
+          values={{
+            numberResultCount: recentResults.length
+          }}
+        />
+      </h2>
       {/* This is for small viewports */}
       <div className='hidden-sm-up'>
         <BootstrapTable
@@ -174,7 +249,12 @@ export const Dashboard = ({
           <TableHeaderColumn width='40' dataAlign='center' dataField='result' dataFormat={formatResult} />
         </BootstrapTable>
       </div>
-      <Link to='/measurements' className='btn btn-primary'>View your measurements</Link>
+      <Link to='/measurements' className='btn btn-primary'>
+        <FormattedMessage
+          id='dashboard.recentResults.viewButton'
+          defaultMessage='View your measurements'
+        />
+      </Link>
     </div>
     }
 
