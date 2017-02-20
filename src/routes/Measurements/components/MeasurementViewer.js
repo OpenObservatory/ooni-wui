@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 import Modal from 'react-modal'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 
@@ -34,7 +35,13 @@ const MeasurementViewer = ({
         <div>
           <div className='text-xs-left'>
             <a className='text-primary clickable' onClick={onBackClick}>
-              <i className='fa fa-arrow-circle-o-left' /> Return
+              <FormattedMessage
+                id='measurements.measurementViewer.returnButton'
+                defaultMessage='{iconArrowLeft} Return'
+                values={{
+                  iconArrowLeft: <i className='fa fa-arrow-circle-o-left' />
+                }}
+              />
             </a>
           </div>
           <div className='text-xs-center'>
@@ -43,7 +50,14 @@ const MeasurementViewer = ({
             <div className='result-metadata'>
               {formatDate(selectedMeasurements.test_start_time)}
               {' | '}
-              Location: {selectedMeasurements.country_code} ({selectedMeasurements.asn})
+              <FormattedMessage
+                id='measurements.measurementViewer.location'
+                defaultMessage='Location: {countryCode} ({asNumber})'
+                values={{
+                  countryCode: selectedMeasurements.country_code,
+                  asNumber: selectedMeasurements.asn
+                }}
+              />
             </div>
           </div>
 
@@ -53,15 +67,33 @@ const MeasurementViewer = ({
             trClassName={rowClassNameFormat}
             data={visibleMeasurements}>
             <TableHeaderColumn dataAlign='center' dataField='url'>
-              <strong>Url (
+              <strong>
+                <FormattedMessage
+                  id='measurements.measurementViewer.url'
+                  defaultMessage='Url'
+                /> (
                 <a href='#' onClick={(evt) => onToggleNormal(evt)}>
-                  {showNormal ? 'Hide' : 'Show'} normal
+                  {showNormal
+                   ? <FormattedMessage
+                       id='measurements.measurementViewer.hideNormal'
+                       defaultMessage='Hide normal'
+                     />
+                   : <FormattedMessage
+                       id='measurements.measurementViewer.showNormal'
+                       defaultMessage='Show normal'
+                     />
+                  }
                 </a>
                 )</strong>
             </TableHeaderColumn>
             <TableHeaderColumn width='100' dataAlign='center' dataField='anomaly'
               dataFormat={formatViewButton(tableOptions.onRowClick)}>
-              <strong>Result</strong>
+              <strong>
+                <FormattedMessage
+                  id='measurements.measurementViewer.result'
+                  defaultMessage='Result'
+                />
+              </strong>
             </TableHeaderColumn>
             <TableHeaderColumn dataField='idx' isKey hidden />
           </BootstrapTable>
@@ -86,7 +118,10 @@ const MeasurementViewer = ({
           </div>
           <div className='modal-footer text-xs-center'>
             <button className='btn btn-primary' onClick={onCloseClick}>
-              Return
+              <FormattedMessage
+                id='measurements.measurementViewer.returnButtonNoIcon'
+                defaultMessage='Return'
+              />
             </button>
           </div>
         </div>

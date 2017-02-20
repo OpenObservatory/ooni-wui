@@ -1,4 +1,6 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
+
 import Modal from 'react-modal'
 import './Quiz.scss'
 
@@ -29,15 +31,21 @@ const Quiz = ({
           <div className='modal-body'>
             {(quizCorrect == null) &&
             <div className='questions'>
-              <p>Question 1: Anyone monitoring my internet activity (e.g. ISP, government or employer)
-                might be able to see that I am running ooniprobe, even though OONI takes precautions to make
-                this hard?</p>
+              <p>
+                <FormattedMessage
+                  id='onboard.quiz.question1'
+                  defaultMessage='Question 1: Anyone monitoring my internet activity (e.g. ISP, government or employer) might be able to see that I am running ooniprobe, even though OONI takes precautions to make this hard?'
+                />
+              </p>
               <div className='radio'>
                 <label>
                   <input type='radio' value
                     onChange={onAnswerChange('question1')}
                     checked={quizAnswers.question1 === true} />
-                    True
+                      <FormattedMessage
+                        id='onboard.quiz.true'
+                        defaultMessage='True'
+                      />
                   </label>
               </div>
               <div className='radio'>
@@ -45,19 +53,29 @@ const Quiz = ({
                   <input type='radio'
                     onChange={onAnswerChange('question1')}
                     value={false} checked={quizAnswers.question1 === false} />
-                    False
+                    <FormattedMessage
+                      id='onboard.quiz.false'
+                      defaultMessage='False'
+                    />
                   </label>
               </div>
 
-              <p>Question 2: My measurements will by default get published by OONI and might include
-                personally-identifiable information?</p>
+              <p>
+                <FormattedMessage
+                  id='onboard.quiz.question2'
+                  defaultMessage='Question 2: My measurements will by default get published by OONI and might include personally-identifiable information?'
+                />
+              </p>
               <div className='radio'>
                 <label>
                   <input type='radio'
                     onChange={onAnswerChange('question2')}
                     value
                     checked={quizAnswers.question2 === true} />
-                    True
+                    <FormattedMessage
+                      id='onboard.quiz.true'
+                      defaultMessage='True'
+                    />
                   </label>
               </div>
               <div className='radio'>
@@ -65,7 +83,10 @@ const Quiz = ({
                   <input type='radio'
                     onChange={onAnswerChange('question2')}
                     value={false} checked={quizAnswers.question2 === false} />
-                    False
+                    <FormattedMessage
+                      id='onboard.quiz.false'
+                      defaultMessage='True'
+                    />
                   </label>
               </div>
             </div>
@@ -73,30 +94,49 @@ const Quiz = ({
             {(quizCorrect === true) &&
             <div className='success text-xs-center'>
               <i className='medium-icon fa fa-thumbs-o-up' />
-              <h2>Good job!</h2>
+              <h2>
+              <FormattedMessage
+                id='onboard.quiz.goodJob'
+                defaultMessage='Good job!'
+              />
+              </h2>
             </div>
             }
             {(quizCorrect === false) &&
             <div className='failure text-xs-center'>
               <i className='medium-icon fa fa-book' />
-              <h2>Wrong answer.</h2>
+              <h2>
+                <FormattedMessage
+                  id='onboard.quiz.wrongAnswer'
+                  defaultMessage='Wrong answer.'
+                />
+              </h2>
             </div>
             }
           </div>
           <div className='modal-footer text-xs-center'>
             {(quizCorrect == null) &&
             <button className='btn btn-primary' onClick={onAnswerQuiz}>
-              How did I do?
+              <FormattedMessage
+                id='onboard.quiz.howDidIDoButton'
+                defaultMessage='How did I do?'
+              />
             </button>
             }
             {(quizCorrect === true) &&
             <button className='btn btn-primary' onClick={onNextClick}>
-              Let's setup sharing!
+              <FormattedMessage
+                id='onboard.quiz.setupSharing'
+                defaultMessage='Let\'s setup sharing'
+              />
             </button>
             }
             {(quizCorrect === false) &&
             <button className='btn btn-primary' onClick={onCloseQuiz}>
-              Read the risks again
+              <FormattedMessage
+                id='onboard.quiz.setupSharing'
+                defaultMessage='Read the risks again'
+              />
             </button>
             }
           </div>
