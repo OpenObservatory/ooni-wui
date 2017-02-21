@@ -3,7 +3,7 @@ import './LanguagePicker.scss'
 
 export default class LanguagePicker extends React.Component {
   static propTypes = {
-    options: React.PropTypes.object,
+    options: React.PropTypes.array,
     onClickOption: React.PropTypes.func,
     selectedLocale: React.PropTypes.string,
     inline: React.PropTypes.bool

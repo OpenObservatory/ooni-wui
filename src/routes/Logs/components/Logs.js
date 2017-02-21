@@ -5,7 +5,7 @@ import fetch from 'isomorphic-fetch'
 import './Logs.scss'
 
 class LogViewer extends React.Component {
-  propTypes = {
+  static propTypes = {
     logData: React.PropTypes.string
   }
 
