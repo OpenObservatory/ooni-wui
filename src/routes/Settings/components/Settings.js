@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 
 import SharingOptions from '../../../components/Settings/SharingOptions'
 
@@ -14,7 +15,12 @@ const Settings = ({ settings }) => {
   return (
     <div>
       <div className='row text-xs-center'>
-        <h1>Settings</h1>
+        <h1>
+          <FormattedMessage
+            id='settings.title'
+            defaultMessage='Settings'
+          />
+        </h1>
       </div>
       <SharingOptions onSettingsChange={onSettingsChange} settings={settings} />
     </div>

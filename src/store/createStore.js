@@ -2,8 +2,23 @@ import { applyMiddleware, compose, createStore } from 'redux'
 import thunk from 'redux-thunk'
 import makeRootReducer from './reducers'
 import { updateLocation, history } from './location'
+import {
+  messages,
+  loadLocaleData,
+  getUserLocale,
+  defaultLocale
+} from './locale'
 
-export default (initialState = {}) => {
+export default (initialState = {
+  intl: {
+    defaultLocale: defaultLocale,
+    locale: getUserLocale(),
+    messages: messages[getUserLocale()]
+  }
+}) => {
+  // local locale data
+  loadLocaleData()
+
   // ======================================================
   // Middleware Configuration
   // ======================================================

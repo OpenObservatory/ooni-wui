@@ -1,5 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+
+import {
+  IntlProvider
+} from 'react-intl'
+
+import {
+  messages,
+  loadLocaleData,
+  getUserLocale,
+  defaultLocale
+} from './store/locale'
+
 import MeasurementDetails from './routes/Measurements/components/MeasurementDetails'
 import './styles/core.mobile.scss'
 
@@ -10,20 +22,24 @@ import './styles/core.mobile.scss'
 const ErrorMessage = ({
     error
 }) => {
-    return (
-      <div className='container-fluid text-xs-center'>
-        <i className='medium-icon fa fa-exclamation-triangle' aria-hidden="true" />
-        <h2>Error in loading the measurement</h2>
-        <p>{error.toString()}</p>
-      </div>
-    )
+  return (
+    <div className='container-fluid text-xs-center'>
+      <i className='medium-icon fa fa-exclamation-triangle' aria-hidden='true' />
+      <h2>Error in loading the measurement</h2>
+      <p>{error.toString()}</p>
+    </div>
+  )
 }
 
 ErrorMessage.propTypes = {
-    error: React.PropTypes.object
+  error: React.PropTypes.object
 }
 
 class MeasurementWrapper extends React.Component {
+  static propTypes = {
+    error: React.PropTypes.object
+  }
+
   constructor (props) {
     super(props)
     this.state = {
@@ -33,6 +49,10 @@ class MeasurementWrapper extends React.Component {
   }
 
   componentDidMount () {
+    if (this.props.error) {
+      this.setState({ error: this.props.error })
+      return
+    }
     try {
       // eslint-disable-next-line no-undef
       const measurement = JSON.parse(MeasurementJSON.get())
@@ -43,7 +63,7 @@ class MeasurementWrapper extends React.Component {
   }
 
   render () {
-    if (this.state.error !== null) {
+    if (this.state.error) {
       return <ErrorMessage error={this.state.error} />
     }
     if (!this.state.measurement) {
@@ -57,6 +77,31 @@ class MeasurementWrapper extends React.Component {
   }
 }
 
+class MobileContainer extends React.Component {
+  static propTypes = {
+    error: React.PropTypes.object
+  }
+
+  shouldComponentUpdate () {
+    return false
+  }
+
+  render () {
+    const { error } = this.props
+    loadLocaleData()
+
+    return (
+      <IntlProvider
+        defaultLocale={defaultLocale}
+        locale={getUserLocale()}
+        messages={messages[getUserLocale()]}>
+        <MeasurementWrapper error={error} />
+      </IntlProvider>
+    )
+  }
+
+}
+
 // ========================================================
 // Render Setup
 // ========================================================
@@ -65,12 +110,12 @@ const MOUNT_NODE = document.getElementById('root')
 let render = () => {
   try {
     ReactDOM.render(
-      <MeasurementWrapper />,
+      <MobileContainer />,
       MOUNT_NODE
     )
   } catch (error) {
     ReactDOM.render(
-      <ErrorMessage error={error} />,
+      <MobileContainer error={error} />,
       MOUNT_NODE
     )
   }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 
 const MLAB_LOC_TO_COUNTRY = {
   'yyz01': 'CA',
@@ -131,12 +132,24 @@ export class NdtDetails extends React.Component {
       <div>
         <div className='row'>
           <div className='col-xs-6 result-item'>
-            <span className='result-item-name'>Download <i className='fa fa-arrow-circle-o-down' /></span>
+            <span className='result-item-name'>
+              <FormattedMessage
+                id='nettests.ndt.Download'
+                defaultMessage='Download'
+              />
+              <i className='fa fa-arrow-circle-o-down' />
+            </span>
             <span className='result-item-value-big'>{(measurement.test_keys.simple.download / 1000).toFixed(2)}</span>
             <span className='result-item-unit'>MBps</span>
           </div>
           <div className='col-xs-6 result-item'>
-            <span className='result-item-name'>Upload <i className='fa fa-arrow-circle-o-up' /></span>
+            <span className='result-item-name'>
+              <FormattedMessage
+                id='nettests.ndt.Upload'
+                defaultMessage='Upload'
+              />
+              <i className='fa fa-arrow-circle-o-up' />
+            </span>
             <span className='result-item-value-big'>{(measurement.test_keys.simple.upload / 1000).toFixed(2)}</span>
             <span className='result-item-unit'>MBps</span>
           </div>
@@ -144,12 +157,24 @@ export class NdtDetails extends React.Component {
 
         <div className='row'>
           <div className='col-xs-6 result-item'>
-            <span className='result-item-name'>Ping <i className='fa fa-exchange' /></span>
+            <span className='result-item-name'>
+              <FormattedMessage
+                id='nettests.ndt.ping'
+                defaultMessage='Ping'
+              />
+              <i className='fa fa-exchange' />
+            </span>
             <span className='result-item-value-big'>{(measurement.test_keys.simple.ping).toFixed(1)}</span>
             <span className='result-item-unit'>ms</span>
           </div>
           <div className='col-xs-6 result-item'>
-            <span className='result-item-name'>Server <i className='fa fa-server' /></span>
+            <span className='result-item-name'>
+              <FormattedMessage
+                id='nettests.ndt.Server'
+                defaultMessage='Server'
+              />
+              <i className='fa fa-server' />
+            </span>
             <span className='result-item-value-big'>{mlabServerToCountry(measurement.test_keys.server_address)}</span>
             <span className='result-item-unit'>{mlabServerToName(measurement.test_keys.server_address)}</span>
           </div>
@@ -159,7 +184,10 @@ export class NdtDetails extends React.Component {
         <div className='row'>
           <div className='col-xs-6'>
             <button className='btn btn-secondary' onClick={() => this.toggledAdvanced()}>
-              More
+              <FormattedMessage
+                id='nettests.ndt.More'
+                defaultMessage='More'
+              />
             </button>
           </div>
         </div>
@@ -169,14 +197,24 @@ export class NdtDetails extends React.Component {
 
           <div className='row'>
             <div className='col-xs-6 result-item'>
-              <span className='result-item-name'>Packet Loss</span>
+              <span className='result-item-name'>
+                <FormattedMessage
+                  id='nettests.ndt.PacketLoss'
+                  defaultMessage='Packet Loss'
+                />
+              </span>
               <span className='result-item-value-big'>
                 {(measurement.test_keys.advanced.packet_loss * 100).toFixed(3)}
               </span>
               <span className='result-item-unit'>%</span>
             </div>
             <div className='col-xs-6 result-item'>
-              <span className='result-item-name'>Out of order</span>
+              <span className='result-item-name'>
+                <FormattedMessage
+                  id='nettests.net.OutOfOrder'
+                  defaultMessage='Out of order'
+                />
+              </span>
               <span className='result-item-value-big'>
                 {(measurement.test_keys.advanced.out_of_order * 100).toFixed(1)}
               </span>
@@ -186,14 +224,24 @@ export class NdtDetails extends React.Component {
 
           <div className='row'>
             <div className='col-xs-6 result-item'>
-              <span className='result-item-name'>Average Ping</span>
+              <span className='result-item-name'>
+                <FormattedMessage
+                  id='nettests.ndt.AveragePing'
+                  defaultMessage='Average Ping'
+                />
+              </span>
               <span className='result-item-value-big'>
                 {(measurement.test_keys.advanced.avg_rtt).toFixed(0)}
               </span>
               <span className='result-item-unit'>ms</span>
             </div>
             <div className='col-xs-6 result-item'>
-              <span className='result-item-name'>Max Ping</span>
+              <span className='result-item-name'>
+                <FormattedMessage
+                  id='nettests.ndt.MaxPing'
+                  defaultMessage='Max Ping'
+                />
+              </span>
               <span className='result-item-value-big'>
                 {(measurement.test_keys.advanced.max_rtt).toFixed(0)}
               </span>
@@ -203,13 +251,23 @@ export class NdtDetails extends React.Component {
 
           <div className='row'>
             <div className='col-xs-6 result-item'>
-              <span className='result-item-name'>MSS</span>
+              <span className='result-item-name'>
+                <FormattedMessage
+                  id='nettests.ndt.Mss'
+                  defaultMessage='MSS'
+                />
+              </span>
               <span className='result-item-value-big'>
                 {measurement.test_keys.advanced.mss}
               </span>
             </div>
             <div className='col-xs-6 result-item'>
-              <span className='result-item-name'>Timeouts</span>
+              <span className='result-item-name'>
+                <FormattedMessage
+                  id='nettests.ndt.Timeouts'
+                  defaultMessage='Timeouts'
+                />
+              </span>
               <span className='result-item-value-big'>
                 {measurement.test_keys.advanced.timeouts}
               </span>
@@ -219,7 +277,10 @@ export class NdtDetails extends React.Component {
           <div className='row'>
             <div className='col-xs-6'>
               <button className='btn btn-secondary' onClick={() => this.toggledAdvanced()}>
-                Less
+                <FormattedMessage
+                  id='nettests.ndt.Less'
+                  defaultMessage='Less'
+                />
               </button>
             </div>
           </div>

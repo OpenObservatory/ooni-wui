@@ -27,6 +27,11 @@
   }
 }
 
+.header-small {
+  .refresh-button {
+    margin-right: 0;
+  }
+}
 .refresh-button {
   i {
     color: $color-white !important;
