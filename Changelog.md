@@ -1,4 +1,4 @@
-# ooni-wui 2.2.0-rc.1 [2017-XX-XX]
+# ooni-wui 2.2.0-rc.1 [2017-02-21]
 
 * Add support for internationalization
 
