@@ -29,12 +29,12 @@ export const FacebookMessengerDetails = ({ measurement }) => {
             defaultMessage='Facebook Messenger appears to be {blocked} via {reason}'
             values={{
               blocked:
-  <strong className='text-danger'>
-    <FormattedMessage
-      id='nettests.facebookMessenger.DnsBlocking.details.blocked'
-      defaultMessage='blocked'
+                <strong className='text-danger'>
+                  <FormattedMessage
+                    id='nettests.facebookMessenger.DnsBlocking.details.blocked'
+                    defaultMessage='blocked'
                   />
-  </strong>,
+                </strong>,
               reason: <strong>DNS</strong>
             }}
           />
@@ -56,12 +56,12 @@ export const FacebookMessengerDetails = ({ measurement }) => {
             defaultMessage='Facebook Messenger appears to be {blocked} via {reason}'
             values={{
               blocked:
-  <strong>
-    <FormattedMessage
-      id='nettests.facebookMessenger.TcpIpBlocking.details.blocked'
-      defaultMessage='blocked'
+                <strong>
+                  <FormattedMessage
+                    id='nettests.facebookMessenger.TcpIpBlocking.details.blocked'
+                    defaultMessage='blocked'
                   />
-  </strong>,
+                </strong>,
               reason: <strong>TCP/IP</strong>
             }}
           />
