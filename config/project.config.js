@@ -17,6 +17,7 @@ const config = {
   path_base: path.resolve(__dirname, '..'),
   dir_client: 'src',
   dir_dist: 'dist',
+  dir_build: 'build',
   dir_public: 'public',
   dir_server: 'server',
   dir_test: 'tests',
@@ -35,7 +36,7 @@ const config = {
     plugins: [
       'transform-runtime',
       ['react-intl', {
-        'messagesDir': path.resolve(__dirname, '..', 'dist', 'messages')
+        'messagesDir': path.resolve(__dirname, '..', 'build', 'messages')
       }]
     ],
     presets: ['es2015', 'react', 'stage-0']
@@ -124,7 +125,8 @@ config.paths = {
   base   : base,
   client : base.bind(null, config.dir_client),
   public : base.bind(null, config.dir_public),
-  dist   : base.bind(null, config.dir_dist)
+  dist   : base.bind(null, config.dir_dist),
+  build  : base.bind(null, config.dir_build)
 }
 
 // ========================================================
