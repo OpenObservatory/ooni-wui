@@ -71,14 +71,13 @@ export class VanillaTorDetails extends React.Component {
           {this.state.showLog
            ? <FormattedMessage
              id='nettests.vanillaTor.hide'
-             defaultMessage='Hide'
+             defaultMessage='Hide tor log'
              />
            : <FormattedMessage
              id='nettests.vanillaTor.show'
-             defaultMessage='Show'
+             defaultMessage='Show tor log'
              />
            }
-             tor log
         </button>
 
       </div>
