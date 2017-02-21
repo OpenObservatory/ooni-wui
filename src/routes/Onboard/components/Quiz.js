@@ -85,7 +85,7 @@ const Quiz = ({
                     value={false} checked={quizAnswers.question2 === false} />
                     <FormattedMessage
                       id='onboard.quiz.false'
-                      defaultMessage='True'
+                      defaultMessage='False'
                     />
                   </label>
               </div>
@@ -126,15 +126,15 @@ const Quiz = ({
             {(quizCorrect === true) &&
             <button className='btn btn-primary' onClick={onNextClick}>
               <FormattedMessage
-                id='onboard.quiz.setupSharing'
-                defaultMessage='Let\'s setup sharing'
+                id='onboard.quiz.setupSharingButton'
+                defaultMessage={'Let\'s setup sharing'}
               />
             </button>
             }
             {(quizCorrect === false) &&
             <button className='btn btn-primary' onClick={onCloseQuiz}>
               <FormattedMessage
-                id='onboard.quiz.setupSharing'
+                id='onboard.quiz.readRisksButton'
                 defaultMessage='Read the risks again'
               />
             </button>

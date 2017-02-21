@@ -143,7 +143,7 @@ const NettestRunner = ({
         <FormattedMessage
           id='dashboard.deckRunner.runButton'
           defaultMessage='{iconRun} Run'
-          values: {{
+          values={{
             iconRun: <i className='fa fa-play' />
           }}
         />

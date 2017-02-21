@@ -18,7 +18,7 @@ const Welcome = ({ onNextClick, onSkipClick }) => {
           <p>
             <FormattedMessage
               id='onboard.welcome.text1'
-              defaultMessage='Ooniprobe is a free and open source platform that enables you to examine internet censorship in your network!\nYou can examine how websites are blocked, and whether censorship and/or surveillance systems are present in your network. You can also measure the speed and performance of your network.\nData collected by ooniprobe can serve as evidence of censorship events.\nSince ooniprobe is an investigatory tool, using it may pose some risks.'
+              defaultMessage={'Ooniprobe is a free and open source platform that enables you to examine internet censorship in your network!\nYou can examine how websites are blocked, and whether censorship and/or surveillance systems are present in your network. You can also measure the speed and performance of your network.\nData collected by ooniprobe can serve as evidence of censorship events.\nSince ooniprobe is an investigatory tool, using it may pose some risks.'}
             />
           </p>
         </div>

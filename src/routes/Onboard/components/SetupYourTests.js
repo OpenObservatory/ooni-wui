@@ -17,7 +17,7 @@ const SetupYourTests = ({ onNextClick, onDeckToggled, decks }) => {
           <p>
             <FormattedMessage
               id='onboard.setupYourTests.text1'
-              defaultMessage='Your tests are setup to run daily by default.\nIf you’d like to turn this off, click the {iconClock} button!'
+              defaultMessage={'Your tests are setup to run daily by default.\nIf you’d like to turn this off, click the {iconClock} button!'}
               values={{
                 iconClock: <strong><i className='fa fa-clock-o' /></strong>
               }}

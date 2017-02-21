@@ -18,7 +18,7 @@ const SetupSharing = ({ onNextClick, onSettingsChange, settings }) => {
           <p>
             <FormattedMessage
               id='onboard.setupSharing.text1'
-              defaultMessage='All measurements are by default sent to OONI\'s measurement collector and are automatically published on OONI Explorer and OONI\'s measurement API.'
+              defaultMessage={'All measurements are by default sent to OONI\'s measurement collector and are automatically published on OONI Explorer and OONI\'s measurement API.'}
             />
           </p>
         </div>
@@ -42,7 +42,7 @@ const SetupSharing = ({ onNextClick, onSettingsChange, settings }) => {
           style={{ 'display': 'block' }}>
           <FormattedMessage
             id='onboard.setupSharing.allSet'
-            defaultMessage='I\'m all set!'
+            defaultMessage={'I\'m all set!'}
           />
       </button>
       </div>
