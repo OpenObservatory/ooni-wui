@@ -67,6 +67,7 @@
     "yargs": "^6.3.0"
   },
   "devDependencies": {
+    "axios": "^0.15.3",
     "babel-eslint": "^7.1.0",
     "babel-plugin-istanbul": "^3.0.0",
     "chai": "^3.4.1",
@@ -84,6 +85,7 @@
     "eslint-plugin-react": "^6.0.0",
     "eslint-plugin-standard": "^2.0.0",
     "express": "^4.14.0",
+    "inquirer": "^3.0.1",
     "karma": "^1.0.0",
     "karma-coverage": "^1.0.0",
     "karma-mocha": "^1.0.1",
@@ -111,6 +113,8 @@
     "dev": "better-npm-run dev",
     "test": "better-npm-run test",
     "test:dev": "npm run test -- --watch",
+    "tx:push": "better-npm-run tx:push",
+    "tx:pull": "better-npm-run tx:pull",
     "deploy": "better-npm-run deploy",
     "deploy:dev": "better-npm-run deploy:dev",
     "deploy:prod": "better-npm-run deploy:prod",
@@ -172,6 +176,12 @@
         "NODE_ENV": "test",
         "DEBUG": "app:*"
       }
+    },
+    "tx:push": {
+      "command": "babel-node bin/tx.js push"
+    },
+    "tx:pull": {
+      "command": "babel-node bin/tx.js pull"
     }
   }
 }
