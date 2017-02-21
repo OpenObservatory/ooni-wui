@@ -39,7 +39,7 @@ const config = {
         'messagesDir': path.resolve(__dirname, '..', 'build', 'messages')
       }]
     ],
-    presets: ['es2015', 'react', 'stage-0']
+    presets: ['es2015', 'react', 'stage-2']
   },
   compiler_devtool         : 'source-map',
   compiler_hash_type       : 'hash',
