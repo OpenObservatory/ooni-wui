@@ -1,0 +1,47 @@
+@import '../../styles/variables/colors';
+
+.language-picker {
+  display: inline-block;
+  padding-right: 10px;
+  padding-left: 10px;
+  position: relative;
+
+  .icon-btn {
+    color: $color-white;
+  }
+}
+
+.language-picker-open {
+  background-color: $color-white;
+  .icon-btn {
+    color: $color-ooni-blue;
+  }
+}
+
+
+.language-picker-inline {
+    .language-picker-menu {
+        position: relative;
+        left: 0;
+        width: 100%;
+    }
+}
+
+.language-picker-menu {
+  position: absolute;
+  left: -70px;
+  width: 100px;
+  background-color: $color-white;
+}
+
+.language-picker-option {
+  color: $color-ooni-blue;
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+.language-picker-option-selected,
+.language-picker-option:hover {
+  background-color: $color-ooni-blue;
+  color: $color-white;
+}

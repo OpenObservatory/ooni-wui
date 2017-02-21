@@ -7,6 +7,7 @@ import { refresh } from '../../store/location'
 import { messages, supportedLanguages } from '../../store/locale'
 import { FormattedMessage } from 'react-intl'
 
+import LanguagePicker from './LanguagePicker'
 import './Header.scss'
 import OONILogoImage from './assets/ooni-logo.svg'
 
@@ -16,43 +17,56 @@ export const Header = ({
 }) => (
   <div className='header'>
     {/* This is for small viewports */}
-    <div className='hidden-sm-up'>
+    <div className='hidden-sm-up header-small'>
       <div className='row text-xs-center'>
         <img src={OONILogoImage} className='ooni-logo' />
       </div>
-      <div className='navigation row'>
-        <div className='col-xs-12'>
-          <IndexLink to='/' activeClassName='route--active' className='btn btn-primary'>
-            <FormattedMessage
-              id='header.smallViewports.Dashboard'
-              defaultMessage='Dashboard'
-            />
-          </IndexLink>
-          <Link to='/measurements' activeClassName='route--active' className='btn btn-primary'>
-            <FormattedMessage
-              id='header.smallViewports.Measurements'
-              defaultMessage='Measurements'
-            />
-          </Link>
-          {/* <Link to='/settings' activeClassName='route--active' className='btn btn-primary'>
-             <FormattedMessage
-               id='header.smallViewports.Settings'
-               defaultMessage='Settings'
-             />
-           </Link>
-           */}
-          <Link to='/logs' activeClassName='route--active' className='btn btn-primary'>
-            <FormattedMessage
-              id='header.smallViewports.Logs'
-              defaultMessage='Logs'
-            />
-          </Link>
-          <div className='refresh-button rounded-circle'>
-            <i className='icon-btn fa fa-refresh' onClick={() => refresh()} />
-          </div>
-        </div>
-        <div className='clearfix' />
+      <div className='row text-xs-center'>
+        <IndexLink to='/' activeClassName='route--active' className='btn btn-primary'>
+          <FormattedMessage
+            id='header.smallViewports.Dashboard'
+            defaultMessage='Dashboard'
+          />
+        </IndexLink>
       </div>
+      <div className='row text-xs-center'>
+        <Link to='/measurements' activeClassName='route--active' className='btn btn-primary'>
+          <FormattedMessage
+            id='header.smallViewports.Measurements'
+            defaultMessage='Measurements'
+          />
+        </Link>
+      </div>
+      <div className='row text-xs-center'>
+      {/* <Link to='/settings' activeClassName='route--active' className='btn btn-primary'>
+         <FormattedMessage
+           id='header.smallViewports.Settings'
+           defaultMessage='Settings'
+         />
+       </Link>
+       */}
+      </div>
+      <div className='row text-xs-center'>
+        <Link to='/logs' activeClassName='route--active' className='btn btn-primary'>
+          <FormattedMessage
+            id='header.smallViewports.Logs'
+            defaultMessage='Logs'
+          />
+        </Link>
+      </div>
+      <div className='row text-xs-center'>
+        <LanguagePicker
+          selectedLocale={selectedLocale}
+          inline={true}
+          options={supportedLanguages}
+          onClickOption={(option) => onLocaleChange(option.code)} />
+      </div>
+      <div className='row text-xs-center'>
+        <div className='refresh-button rounded-circle row'>
+          <i className='icon-btn fa fa-refresh' onClick={() => refresh()} />
+        </div>
+      </div>
+      <div className='clearfix' />
     </div>
     {/* This is for bigger viewports */}
     <div className='hidden-xs-down'>
@@ -85,15 +99,10 @@ export const Header = ({
             defaultMessage='Logs'
           />
         </Link>
-        <div className='refresh-button rounded-circle'>
-          <select value={selectedLocale} onChange={(event) => onLocaleChange(event.target.value)}>
-            {supportedLanguages.map((locale) => {
-              return (
-                <option key={locale.code} value={locale.code}>{locale.name}</option>
-              )
-            })}
-          </select>
-        </div>
+        <LanguagePicker
+          selectedLocale={selectedLocale}
+          options={supportedLanguages}
+          onClickOption={(option) => onLocaleChange(option.code)} />
         <div className='refresh-button rounded-circle'>
           <i className='icon-btn fa fa-refresh' onClick={() => refresh()} />
         </div>
