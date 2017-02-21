@@ -38,7 +38,7 @@ export const Header = ({
         </Link>
       </div>
       <div className='row text-xs-center'>
-      {/* <Link to='/settings' activeClassName='route--active' className='btn btn-primary'>
+        {/* <Link to='/settings' activeClassName='route--active' className='btn btn-primary'>
          <FormattedMessage
            id='header.smallViewports.Settings'
            defaultMessage='Settings'
@@ -57,7 +57,7 @@ export const Header = ({
       <div className='row text-xs-center'>
         <LanguagePicker
           selectedLocale={selectedLocale}
-          inline={true}
+          inline
           options={supportedLanguages}
           onClickOption={(option) => onLocaleChange(option.code)} />
       </div>

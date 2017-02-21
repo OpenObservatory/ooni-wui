@@ -75,12 +75,12 @@ const MeasurementViewer = ({
                 <a href='#' onClick={(evt) => onToggleNormal(evt)}>
                   {showNormal
                    ? <FormattedMessage
-                       id='measurements.measurementViewer.hideNormal'
-                       defaultMessage='Hide normal'
+                     id='measurements.measurementViewer.hideNormal'
+                     defaultMessage='Hide normal'
                      />
                    : <FormattedMessage
-                       id='measurements.measurementViewer.showNormal'
-                       defaultMessage='Show normal'
+                     id='measurements.measurementViewer.showNormal'
+                     defaultMessage='Show normal'
                      />
                   }
                 </a>

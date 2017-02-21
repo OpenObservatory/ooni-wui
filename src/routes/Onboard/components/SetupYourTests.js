@@ -76,7 +76,7 @@ const SetupYourTests = ({ onNextClick, onDeckToggled, decks }) => {
             id='onboard.setupYourTests.goToDashboard'
             defaultMessage='Go to my dashboard!'
           />
-      </button>
+        </button>
       </div>
 
     </div>

@@ -21,7 +21,7 @@ export const supportedLanguages = [
 export const loadLocaleData = () => {
   addLocaleData([
     ...en,
-     ...es,
+    ...es,
     ...it
   ])
 }

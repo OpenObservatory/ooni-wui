@@ -2,6 +2,13 @@ import React from 'react'
 import './LanguagePicker.scss'
 
 export default class LanguagePicker extends React.Component {
+  static propTypes = {
+    options: React.PropTypes.object,
+    onClickOption: React.PropTypes.func,
+    selectedLocale: React.PropTypes.string,
+    inline: React.PropTypes.bool
+  }
+
   constructor (props) {
     super(props)
     this.state = {
@@ -20,7 +27,7 @@ export default class LanguagePicker extends React.Component {
     let { options, onClickOption, selectedLocale } = this.props
     return options.map((option) => {
       let className = 'language-picker-option'
-      if (selectedLocale == option.code) {
+      if (selectedLocale === option.code) {
         className += ' language-picker-option-selected'
       }
       return (
@@ -45,7 +52,7 @@ export default class LanguagePicker extends React.Component {
     return (
       <div className={className}>
         <div className='language-picker-control'
-             onClick={() => this.openClose()}>
+          onClick={() => this.openClose()}>
           <i className='icon-btn fa fa-language' />
         </div>
         {menu}

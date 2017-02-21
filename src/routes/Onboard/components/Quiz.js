@@ -42,22 +42,22 @@ const Quiz = ({
                   <input type='radio' value
                     onChange={onAnswerChange('question1')}
                     checked={quizAnswers.question1 === true} />
-                      <FormattedMessage
-                        id='onboard.quiz.true'
-                        defaultMessage='True'
+                  <FormattedMessage
+                    id='onboard.quiz.true'
+                    defaultMessage='True'
                       />
-                  </label>
+                </label>
               </div>
               <div className='radio'>
                 <label>
                   <input type='radio'
                     onChange={onAnswerChange('question1')}
                     value={false} checked={quizAnswers.question1 === false} />
-                    <FormattedMessage
-                      id='onboard.quiz.false'
-                      defaultMessage='False'
+                  <FormattedMessage
+                    id='onboard.quiz.false'
+                    defaultMessage='False'
                     />
-                  </label>
+                </label>
               </div>
 
               <p>
@@ -72,22 +72,22 @@ const Quiz = ({
                     onChange={onAnswerChange('question2')}
                     value
                     checked={quizAnswers.question2 === true} />
-                    <FormattedMessage
-                      id='onboard.quiz.true'
-                      defaultMessage='True'
+                  <FormattedMessage
+                    id='onboard.quiz.true'
+                    defaultMessage='True'
                     />
-                  </label>
+                </label>
               </div>
               <div className='radio'>
                 <label>
                   <input type='radio'
                     onChange={onAnswerChange('question2')}
                     value={false} checked={quizAnswers.question2 === false} />
-                    <FormattedMessage
-                      id='onboard.quiz.false'
-                      defaultMessage='False'
+                  <FormattedMessage
+                    id='onboard.quiz.false'
+                    defaultMessage='False'
                     />
-                  </label>
+                </label>
               </div>
             </div>
             }
@@ -95,9 +95,9 @@ const Quiz = ({
             <div className='success text-xs-center'>
               <i className='medium-icon fa fa-thumbs-o-up' />
               <h2>
-              <FormattedMessage
-                id='onboard.quiz.goodJob'
-                defaultMessage='Good job!'
+                <FormattedMessage
+                  id='onboard.quiz.goodJob'
+                  defaultMessage='Good job!'
               />
               </h2>
             </div>

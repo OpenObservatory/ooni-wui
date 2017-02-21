@@ -27,9 +27,9 @@ const Welcome = ({ onNextClick, onSkipClick }) => {
       <div className='row next-step'>
         <button onClick={onNextClick} className='btn btn-primary mx-auto'
           style={{ 'display': 'block' }}>
-            <FormattedMessage
-              id='onboard.welcome.learnMore'
-              defaultMessage='Learn more'
+          <FormattedMessage
+            id='onboard.welcome.learnMore'
+            defaultMessage='Learn more'
             />
         </button>
       </div>

@@ -44,7 +44,7 @@ const SetupSharing = ({ onNextClick, onSettingsChange, settings }) => {
             id='onboard.setupSharing.allSet'
             defaultMessage={'I\'m all set!'}
           />
-      </button>
+        </button>
       </div>
 
     </div>

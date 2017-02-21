@@ -81,14 +81,14 @@ class LogViewer extends React.Component {
         <div className='row'>
           {this.state.sharing
             ? <div className='col-xs-3'>
-                <FormattedMessage
-                  id='logs.uploading'
-                  defaultMessage='{iconUploading} uploading'
-                  values={{
-                    iconUploading: <i className='fa fa-spinner fa-pulse fa-3x fa-fw' />
-                  }}
+              <FormattedMessage
+                id='logs.uploading'
+                defaultMessage='{iconUploading} uploading'
+                values={{
+                  iconUploading: <i className='fa fa-spinner fa-pulse fa-3x fa-fw' />
+                }}
                 />
-              </div>
+            </div>
             : <div className='col-xs-3'>
               <button className='btn btn-secondary' onClick={this.onShare}>
                 <FormattedMessage

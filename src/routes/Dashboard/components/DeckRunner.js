@@ -77,12 +77,12 @@ class NettestRunnerOptionsInner extends React.Component {
         <button className='btn btn-secondary' onClick={() => this.toggleAdvanced()}>
           {this.state.showAdvanced
            ? <FormattedMessage
-              id='dashboard.deckRunner.hideAdvanced'
-              defaultMessage='Hide advanced options'
+             id='dashboard.deckRunner.hideAdvanced'
+             defaultMessage='Hide advanced options'
              />
           : <FormattedMessage
-              id='dashboard.deckRunner.showAdvanced'
-              defaultMessage='Show advanced options'
+            id='dashboard.deckRunner.showAdvanced'
+            defaultMessage='Show advanced options'
              />
           }
         </button>
