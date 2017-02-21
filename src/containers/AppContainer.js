@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { Router } from 'react-router'
-import { Provider } from 'react-redux'
+import { Provider } from 'react-intl-redux'
 
 import Modal from 'react-modal'
 import { history } from '../store/location'

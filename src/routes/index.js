@@ -9,7 +9,6 @@ const requireInitialized = (store) => (nextState, replace, next) => {
   const { fetchStatus, startStatusPoller } = require('../actions/status')
   const { startNotificationPoller } = require('../actions/notification')
   const { status } = store.getState()
-  console.log('Initialized status...', status.initialized)
   if (nextState.location.pathname === '/onboard' || status.initialized === true) {
     next()
   } else {
@@ -17,7 +16,6 @@ const requireInitialized = (store) => (nextState, replace, next) => {
     store.dispatch(startNotificationPoller())
     store.dispatch(fetchStatus()).then(() => {
       const { status } = store.getState()
-      console.log('Fetched status, it is', status)
       if (status.initialized === false) {
         replace('/onboard')
         next()

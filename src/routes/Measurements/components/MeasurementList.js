@@ -1,4 +1,6 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
+
 import {
   formatTime,
   formatViewButton,
@@ -39,7 +41,13 @@ const MeasurementList = ({
       }
       {loadingMeasurements &&
         <div className='text-xs-center' style={{ marginTop: '2rem' }}>
-          <i className='fa fa-spinner fa-pulse fa-3x fa-fw' /> loading measurements
+          <FormattedMessage
+            id='measurements.measurementList.loading'
+            defaultMessage='{iconLoading} loading measurements'
+            values={{
+              iconLoading: <i className='fa fa-spinner fa-pulse fa-3x fa-fw' />
+            }}
+          />
         </div>
       }
       {(!selectedMeasurements || (selectedMeasurements.results && selectedMeasurements.results.length === 1)) &&
@@ -71,29 +79,59 @@ const MeasurementList = ({
               data={measurements}>
               <TableHeaderColumn width='100' dataAlign='center' dataField='result'
                 dataFormat={formatViewButton(onRowClick)}>
-                <strong>Result</strong>
+                <strong>
+                  <FormattedMessage
+                    id='measurements.measurementsList.result'
+                    defaultMessage='Result'
+                  />
+                </strong>
               </TableHeaderColumn>
               <TableHeaderColumn dataAlign='center' dataFormat={getPrettyNettestName}
                 caretRender={renderCarret} dataSort dataField='test_name'>
-                <strong>Name</strong>
+                <strong>
+                  <FormattedMessage
+                    id='measurements.measurementsList.name'
+                    defaultMessage='Name'
+                  />
+                </strong>
               </TableHeaderColumn>
               <TableHeaderColumn dataAlign='center'
                 caretRender={renderCarret}
                 dataSort dataField='test_start_time' dataFormat={formatTime('calendar')}>
-                <strong>Date</strong>
+                <strong>
+                  <FormattedMessage
+                    id='measurements.measurementsList.date'
+                    defaultMessage='Date'
+                  />
+                </strong>
               </TableHeaderColumn>
               <TableHeaderColumn width='100'
                 caretRender={renderCarret} dataSort dataAlign='center' dataField='asn'>
-                <strong>Network</strong>
+                <strong>
+                  <FormattedMessage
+                    id='measurements.measurementsList.network'
+                    defaultMessage='Network'
+                  />
+                </strong>
               </TableHeaderColumn>
               <TableHeaderColumn width='100'
                 caretRender={renderCarret} dataSort dataAlign='center' dataField='country_code'>
-                <strong>Country</strong>
+                <strong>
+                  <FormattedMessage
+                    id='measurements.measurementsList.country'
+                    defaultMessage='Country'
+                  />
+                </strong>
               </TableHeaderColumn>
               <TableHeaderColumn width='80'
                 caretRender={renderCarret} dataSort dataAlign='center' dataFormat={formatDeckName(deckIcons, deckNames)}
                 dataField='deck_id'>
-                <strong>Deck</strong>
+                <strong>
+                  <FormattedMessage
+                    id='measurements.measurementsList.deck'
+                    defaultMessage='Deck'
+                  />
+                </strong>
               </TableHeaderColumn>
 
               <TableHeaderColumn dataField='id' isKey hidden>ID</TableHeaderColumn>
@@ -114,29 +152,59 @@ const MeasurementList = ({
               data={measurements}>
               <TableHeaderColumn dataAlign='center' dataFormat={getPrettyNettestName}
                 caretRender={renderCarret} dataSort dataField='test_name'>
-                <strong>Name</strong>
+                <strong>
+                  <FormattedMessage
+                    id='measurements.measurementsList.name.big'
+                    defaultMessage='Name'
+                  />
+                </strong>
               </TableHeaderColumn>
               <TableHeaderColumn dataAlign='center'
                 caretRender={renderCarret}
                 dataSort dataField='test_start_time' dataFormat={formatTime()}>
-                <strong>Date</strong>
+                <strong>
+                  <FormattedMessage
+                    id='measurements.measurementsList.date.big'
+                    defaultMessage='Date'
+                  />
+                </strong>
               </TableHeaderColumn>
               <TableHeaderColumn width='100'
                 caretRender={renderCarret} dataSort dataAlign='center' dataField='asn'>
-                <strong>Network</strong>
+                <strong>
+                  <FormattedMessage
+                    id='measurements.measurementsList.network.big'
+                    defaultMessage='Network'
+                  />
+                </strong>
               </TableHeaderColumn>
               <TableHeaderColumn width='100'
                 caretRender={renderCarret} dataSort dataAlign='center' dataField='country_code'>
-                <strong>Country</strong>
+                <strong>
+                  <FormattedMessage
+                    id='measurements.measurementsList.country.big'
+                    defaultMessage='Country'
+                  />
+                </strong>
               </TableHeaderColumn>
               <TableHeaderColumn width='80'
                 caretRender={renderCarret} dataSort dataAlign='center' dataFormat={formatDeckName(deckIcons, deckNames)}
                 dataField='deck_id'>
-                <strong>Deck</strong>
+                <strong>
+                  <FormattedMessage
+                    id='measurements.measurementsList.deck.big'
+                    defaultMessage='Deck'
+                  />
+                </strong>
               </TableHeaderColumn>
               <TableHeaderColumn width='100' dataAlign='center' dataField='result'
                 dataFormat={formatViewButton(onRowClick)}>
-                <strong>Result</strong>
+                <strong>
+                  <FormattedMessage
+                    id='measurements.measurementsList.result.big'
+                    defaultMessage='Result'
+                  />
+                </strong>
               </TableHeaderColumn>
               <TableHeaderColumn dataField='id' isKey hidden>ID</TableHeaderColumn>
               <TableHeaderColumn dataField='running' hidden>Running</TableHeaderColumn>

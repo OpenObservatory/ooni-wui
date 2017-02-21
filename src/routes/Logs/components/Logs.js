@@ -1,10 +1,11 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 import fetch from 'isomorphic-fetch'
 
 import './Logs.scss'
 
 class LogViewer extends React.Component {
-  propTypes = {
+  static propTypes = {
     logData: React.PropTypes.string
   }
 
@@ -67,18 +68,36 @@ class LogViewer extends React.Component {
         {this.state.shareUrl &&
         <div className='row'>
           <div className='col-xs-8'>
-            Share URL: <a href={this.state.shareUrl}>{this.state.shareUrl}</a>
+            <FormattedMessage
+              id='logs.shareUrl'
+              defaultMessage='Share URL: {urlHref}'
+              values={{
+                urlHref: <a href={this.state.shareUrl}>{this.state.shareUrl}</a>
+              }}
+            />
           </div>
         </div>
         }
         <div className='row'>
           {this.state.sharing
             ? <div className='col-xs-3'>
-              <i className='fa fa-spinner fa-pulse fa-3x fa-fw' /> uploading
-              </div>
+              <FormattedMessage
+                id='logs.uploading'
+                defaultMessage='{iconUploading} uploading'
+                values={{
+                  iconUploading: <i className='fa fa-spinner fa-pulse fa-3x fa-fw' />
+                }}
+                />
+            </div>
             : <div className='col-xs-3'>
               <button className='btn btn-secondary' onClick={this.onShare}>
-                <i className='fa fa-share-square-o' /> share
+                <FormattedMessage
+                  id='logs.shareButton'
+                  defaultMessage='{iconShare} share'
+                  values={{
+                    iconShare: <i className='fa fa-share-square-o' />
+                  }}
+                />
               </button>
             </div>
           }
@@ -101,7 +120,10 @@ const Logs = ({
       <div className='row'>
         <div className='col-xs-8'>
           <button className='btn btn-secondary' onClick={loadOlderLogs}>
-            load older logs
+            <FormattedMessage
+              id='logs.loadOlder'
+              defaultMessage='load older logs'
+            />
           </button>
         </div>
       </div>

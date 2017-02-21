@@ -11,7 +11,6 @@ export class Poller {
   }
 
   start (onNotifySuccess, onNotifyError) {
-    console.log(`Starting long polling on ${this.updateUrl}`)
     if (onNotifySuccess === undefined) {
       onNotifySuccess = (result) => {
         console.log('Unbound onNotifySuccess', result)

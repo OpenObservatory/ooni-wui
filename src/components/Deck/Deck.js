@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 import Toggle from 'react-toggle'
 import Modal from 'react-modal'
 
@@ -151,7 +152,10 @@ export const Deck = ({
           </div>
           <div className='modal-footer text-xs-center'>
             <button className='btn btn-primary' onClick={closeDeckInfo}>
-              Got it!
+              <FormattedMessage
+                id='deck.gotIt'
+                defaultMessage='Got it!'
+              />
             </button>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 import Toggle from 'react-toggle'
 
 const SharingOptions = ({
@@ -9,11 +10,21 @@ const SharingOptions = ({
     <div className='row text-xs-center'>
 
       <div className='five-cols-md col-xs-6'>
-        <h6>How should we upload your results?</h6>
+        <h6>
+          <FormattedMessage
+            id='settings.sharingOptions.uploadMethod'
+            defaultMessage='How should we upload your results?'
+          />
+        </h6>
         <i className='medium-icon fa fa-upload' />
         <div className='row'>
           <select onChange={onSettingsChange('uploadMethod')}>
-            <option value='onion'>Tor Hidden Service</option>
+            <option value='onion'>
+              <FormattedMessage
+                id='settings.sharingOptions.uploadMethod.torHiddenService'
+                defaultMessage='Tor Hidden Service'
+              />
+            </option>
             <option value='https'>HTTPS</option>
             <option value='cloudfront'>Cloudfront</option>
           </select>
@@ -21,7 +32,12 @@ const SharingOptions = ({
       </div>
 
       <div className='five-cols-md col-xs-6'>
-        <h6>Include your network information?</h6>
+        <h6>
+          <FormattedMessage
+            id='settings.sharingOptions.includeNetwork'
+            defaultMessage='Include your network information?'
+          />
+        </h6>
         <i className='medium-icon fa fa-server' />
         <div className='row'>
           <Toggle
@@ -31,7 +47,12 @@ const SharingOptions = ({
       </div>
 
       <div className='five-cols-md col-xs-6'>
-        <h6>Include your country name?</h6>
+        <h6>
+          <FormattedMessage
+            id='settings.sharingOptions.includeCountry'
+            defaultMessage='Include your country name?'
+          />
+        </h6>
         <i className='medium-icon fa fa-globe' />
         <div className='row'>
           <Toggle
@@ -41,7 +62,12 @@ const SharingOptions = ({
       </div>
 
       <div className='five-cols-md col-xs-6'>
-        <h6>Share results publicly?</h6>
+        <h6>
+          <FormattedMessage
+            id='settings.sharingOptions.sharePublicly'
+            defaultMessage='Share results publicly?'
+          />
+        </h6>
         <i className='medium-icon fa fa-share-square-o' />
         <div className='row'>
           <Toggle
@@ -51,7 +77,12 @@ const SharingOptions = ({
       </div>
 
       <div className='five-cols-md col-xs-6'>
-        <h6>Include your IP?</h6>
+        <h6>
+          <FormattedMessage
+            id='settings.sharingOptions.includeIP'
+            defaultMessage='Include your IP?'
+          />
+        </h6>
         <i className='medium-icon fa fa-cube' />
         <div className='row'>
           <Toggle

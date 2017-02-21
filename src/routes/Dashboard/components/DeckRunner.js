@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { FormattedMessage } from 'react-intl'
 import Modal from 'react-modal'
 import { Field, reduxForm } from 'redux-form'
 
@@ -29,7 +30,6 @@ class NettestRunnerOptionsInner extends React.Component {
     if (!Array.isArray(simpleOptions)) {
       simpleOptions = []
     }
-    console.log('Simple options are', simpleOptions)
     return (
       <div>
         <form onSubmit={handleSubmit}>
@@ -75,7 +75,16 @@ class NettestRunnerOptionsInner extends React.Component {
           }
         </form>
         <button className='btn btn-secondary' onClick={() => this.toggleAdvanced()}>
-          {this.state.showAdvanced ? 'Hide' : 'Show' } advanced options
+          {this.state.showAdvanced
+           ? <FormattedMessage
+             id='dashboard.deckRunner.hideAdvanced'
+             defaultMessage='Hide advanced options'
+             />
+          : <FormattedMessage
+            id='dashboard.deckRunner.showAdvanced'
+            defaultMessage='Show advanced options'
+             />
+          }
         </button>
       </div>
     )
@@ -131,7 +140,13 @@ const NettestRunner = ({
     </div>
     <div className='modal-footer text-xs-center'>
       <button className='btn btn-primary' onClick={onTestStart}>
-        <i className='fa fa-play' /> Run
+        <FormattedMessage
+          id='dashboard.deckRunner.runButton'
+          defaultMessage='{iconRun} Run'
+          values={{
+            iconRun: <i className='fa fa-play' />
+          }}
+        />
       </button>
     </div>
   </div>

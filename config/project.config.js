@@ -17,6 +17,7 @@ const config = {
   path_base: path.resolve(__dirname, '..'),
   dir_client: 'src',
   dir_dist: 'dist',
+  dir_build: 'build',
   dir_public: 'public',
   dir_server: 'server',
   dir_test: 'tests',
@@ -32,8 +33,13 @@ const config = {
   // ----------------------------------
   compiler_babel : {
     cacheDirectory : true,
-    plugins        : ['transform-runtime'],
-    presets        : ['es2015', 'react', 'stage-0']
+    plugins: [
+      'transform-runtime',
+      ['react-intl', {
+        'messagesDir': path.resolve(__dirname, '..', 'build', 'messages')
+      }]
+    ],
+    presets: ['es2015', 'react', 'stage-2']
   },
   compiler_devtool         : 'source-map',
   compiler_hash_type       : 'hash',
@@ -119,7 +125,8 @@ config.paths = {
   base   : base,
   client : base.bind(null, config.dir_client),
   public : base.bind(null, config.dir_public),
-  dist   : base.bind(null, config.dir_dist)
+  dist   : base.bind(null, config.dir_dist),
+  build  : base.bind(null, config.dir_build)
 }
 
 // ========================================================

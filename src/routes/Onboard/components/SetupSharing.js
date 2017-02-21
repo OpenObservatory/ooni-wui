@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 
 import SharingOptions from '../../../components/Settings/SharingOptions'
 
@@ -8,10 +9,17 @@ const SetupSharing = ({ onNextClick, onSettingsChange, settings }) => {
 
       <div className='row text-xs-center' style={{ marginBottom: '2rem' }}>
         <div className='col-xs-12'>
-          <h1>Setup sharing</h1>
+          <h1>
+            <FormattedMessage
+              id='onboard.setupSharing.title'
+              defaultMessage='Setup sharing'
+            />
+          </h1>
           <p>
-            All measurements are by default sent to OONI's measurement collector and are automatically
-            published on OONI Explorer and OONI's measurement API.
+            <FormattedMessage
+              id='onboard.setupSharing.text1'
+              defaultMessage={'All measurements are by default sent to OONI\'s measurement collector and are automatically published on OONI Explorer and OONI\'s measurement API.'}
+            />
           </p>
         </div>
       </div>
@@ -20,9 +28,11 @@ const SetupSharing = ({ onNextClick, onSettingsChange, settings }) => {
 
       <div className='row text-xs-center' style={{ marginTop: '3rem' }}>
         <div className='col-xs-12'>
-          <p>Published data will include your approximate location, the time of the test, and
-            the network (ASN) you are connecting from. Other identifying information, such as your
-            IP address, is not deliberately collected, but might be included in HTTP headers or other metadata.
+          <p>
+            <FormattedMessage
+              id='onboard.setupSharing.text2'
+              defaultMessage='Published data will include your approximate location, the time of the test, and the network (ASN) you are connecting from. Other identifying information, such as your IP address, is not deliberately collected, but might be included in HTTP headers or other metadata.'
+            />
           </p>
         </div>
       </div>
@@ -30,8 +40,11 @@ const SetupSharing = ({ onNextClick, onSettingsChange, settings }) => {
       <div className='row next-step'>
         <button onClick={onNextClick} className='btn btn-primary mx-auto'
           style={{ 'display': 'block' }}>
-        I'm all set!
-      </button>
+          <FormattedMessage
+            id='onboard.setupSharing.allSet'
+            defaultMessage={'I\'m all set!'}
+          />
+        </button>
       </div>
 
     </div>
