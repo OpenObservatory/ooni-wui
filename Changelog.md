@@ -1,3 +1,7 @@
+# ooni-wui 2.2.0-rc.2 [2017-02-22]
+
+* Fix setting of locale on Android
+
 # ooni-wui 2.2.0-rc.1 [2017-02-21]
 
 * Add support for internationalization
