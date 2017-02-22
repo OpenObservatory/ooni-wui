@@ -30,7 +30,11 @@ export const getUserLocale = () => {
   let language = defaultLocale
 
   if (window.userLocale) {
-    language = window.userLocale
+    if (typeof window.userLocale.get === 'function') {
+      language = window.userLocale.get()
+    } else {
+      language = window.userLocale
+    }
   } else if (navigator.language) {
     language = navigator.language
   }
