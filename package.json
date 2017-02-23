@@ -1,6 +1,6 @@
 {
   "name": "ooni-wui",
-  "version": "2.2.0-rc2",
+  "version": "2.2.0-rc3",
   "license": "BSD",
   "engines": {
     "node": ">=4.5.0",

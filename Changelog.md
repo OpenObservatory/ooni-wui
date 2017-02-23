@@ -1,3 +1,7 @@
+# ooni-wui 2.2.0-rc.3 [2017-02-23]
+
+* Add support for French
+
 # ooni-wui 2.2.0-rc.2 [2017-02-22]
 
 * Fix setting of locale on Android
