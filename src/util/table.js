@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 import moment from 'moment'
 
 const rowToAnomalyType = (row) => {
@@ -78,7 +79,12 @@ export const formatViewButton = (onClick) => (cell, row) => {
   if (row.stale === true) {
     return <i className='icon-warning fa fa-warning' />
   }
-  return <button className='btn btn-secondary' onClick={() => onClick(row)}>View</button>
+  return <button className='btn btn-secondary' onClick={() => onClick(row)}>
+    <FormattedMessage
+      id='util.viewButton'
+      defaultMessage='View'
+      />
+  </button>
 }
 
 export const rowClassNameFormat = (row, rowIdx) => {
