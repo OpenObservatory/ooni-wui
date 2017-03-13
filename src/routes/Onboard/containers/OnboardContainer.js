@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { updateIntl } from 'react-intl-redux'
 
 import OnboardSteps from '../components/OnboardSteps'
 import {
@@ -17,6 +18,7 @@ import {
 import { fetchStatus } from '../../../actions/status'
 
 import { history } from '../../../store/location'
+import { messages } from '../../../store/locale'
 
 const mapStoreToProps = (state) => {
   return ({
@@ -26,12 +28,19 @@ const mapStoreToProps = (state) => {
     decks: state.onboard.decks,
     quizAnswers: state.onboard.quizAnswers,
     quizOpen: state.onboard.quizOpen,
-    quizCorrect: state.onboard.quizCorrect
+    quizCorrect: state.onboard.quizCorrect,
+    selectedLocale: state.intl.locale
   })
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
+    onLocaleChange: (locale) => {
+      dispatch(updateIntl({
+        locale: locale,
+        messages: messages[locale]
+      }))
+    },
     onNextClick: () => {
       dispatch(nextStep())
     },

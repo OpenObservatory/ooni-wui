@@ -1,9 +1,14 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
+
+import LanguagePicker from '../../../components/LanguagePicker'
+
 import './Welcome.scss'
 import OONISparkles from '../assets/OONI-sparkles.svg'
 
-const Welcome = ({ onNextClick, onSkipClick }) => {
+import { supportedLanguages } from '../../../store/locale'
+
+const Welcome = ({ onNextClick, onSkipClick, onLocaleChange, selectedLocale }) => {
   return (
     <div className='container'>
       <div className='row text-xs-center welcome'>
@@ -22,6 +27,11 @@ const Welcome = ({ onNextClick, onSkipClick }) => {
             />
           </p>
         </div>
+        <LanguagePicker
+          selectedLocale={selectedLocale}
+          options={supportedLanguages}
+          inline
+          onClickOption={(option) => onLocaleChange(option.code)} />
       </div>
 
       <div className='row next-step'>
@@ -49,7 +59,9 @@ const Welcome = ({ onNextClick, onSkipClick }) => {
 
 Welcome.propTypes = {
   onNextClick: React.PropTypes.func.isRequired,
-  onSkipClick: React.PropTypes.func.isRequired
+  onSkipClick: React.PropTypes.func.isRequired,
+  onLocaleChange: React.PropTypes.func.isRequired,
+  selectedLocale: React.PropTypes.string.isRequired
 }
 
 export default Welcome

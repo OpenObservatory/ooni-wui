@@ -13,6 +13,22 @@
   .welcome-logo {
     padding-bottom: 2rem;
   }
+
+  .language-picker {
+    margin-top: 1.5rem;
+    .icon-btn {
+      color: $color-ooni-blue;
+      font-size: 2rem;
+    }
+  }
+
+  .language-picker-open {
+    background-color: $color-white;
+    .icon-btn {
+      color: $color-ooni-blue;
+    }
+  }
+
 }
 
 .skip-to-end {

@@ -17,7 +17,8 @@ const OnboardSteps = ({
   onAnswerQuiz, onCloseQuiz, onAnswerChange,
   quizAnswers,
   quizCorrect, quizOpen,
-  onFinalize
+  onFinalize,
+  onLocaleChange, selectedLocale
 }) => {
   return (
     <div>
@@ -31,7 +32,11 @@ const OnboardSteps = ({
           >
             {currentStep === 0 &&
               <div className='onboard__step'>
-                <Welcome onNextClick={onNextClick} onSkipClick={onSkipClick} />
+                <Welcome
+                  onLocaleChange={onLocaleChange}
+                  selectedLocale={selectedLocale}
+                  onNextClick={onNextClick}
+                  onSkipClick={onSkipClick} />
               </div>
             }
             {currentStep === 1 &&
@@ -95,7 +100,9 @@ OnboardSteps.propTypes = {
   onCloseQuiz: React.PropTypes.func.isRequired,
   onAnswerChange: React.PropTypes.func.isRequired,
   quizOpen: React.PropTypes.bool.isRequired,
-  quizCorrect: React.PropTypes.bool
+  quizCorrect: React.PropTypes.bool,
+  onLocaleChange: React.PropTypes.func.isRequired,
+  selectedLocale: React.PropTypes.string.isRequired
 }
 
 export default OnboardSteps
