@@ -7,7 +7,7 @@ import { refresh } from '../../store/location'
 import { messages, supportedLanguages } from '../../store/locale'
 import { FormattedMessage } from 'react-intl'
 
-import LanguagePicker from './LanguagePicker'
+import LanguagePicker from '../LanguagePicker'
 import './Header.scss'
 import OONILogoImage from './assets/ooni-logo.svg'
 
