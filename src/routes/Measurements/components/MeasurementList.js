@@ -53,10 +53,10 @@ const MeasurementList = ({
       {(!selectedMeasurements || (selectedMeasurements.results && selectedMeasurements.results.length === 1)) &&
         <div className='text-xs-center'>
           <h1>
-          <FormattedMessage
-            id='header.biggerViewports.Measurements'
-            defaultMessage='Measurements'
-          />
+            <FormattedMessage
+              id='header.biggerViewports.Measurements'
+              defaultMessage='Measurements'
+            />
           </h1>
           <div className='row'>
             {
