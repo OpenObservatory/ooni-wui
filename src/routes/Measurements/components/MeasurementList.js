@@ -9,7 +9,10 @@ import {
   rowClassNameFormat
 } from '../../../util/table'
 
-import { getPrettyNettestName } from '../../../util/nettest'
+import {
+  getPrettyNettestName,
+  getDeckIcon
+} from '../../../util/nettest'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 
 import './MeasurementList.scss'
@@ -66,7 +69,7 @@ const MeasurementList = ({
                   <div key={deck.id} className='col-sm-3 col-xs-6'>
                     <div className={className} onClick={() => onShowHideDeck(deck.id)}>
                       <h6>{deck.name}</h6>
-                      <i className={`medium-icon icon-btn fa ${deck.icon}`} />
+                      {getDeckIcon(deck.icon)}
                     </div>
                   </div>
                 )

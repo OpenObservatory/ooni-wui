@@ -6,7 +6,7 @@ let initialized = false
 const newDecksSchema = [
   {
     'id': 'tor',
-    'icon': 'fa-wrench',
+    'icon': 'oo-tor',
     'schedule': '@daily',
     'enabled': true,
     'running': false,

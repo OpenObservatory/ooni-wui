@@ -47,7 +47,7 @@ $fa-font-path: "~font-awesome/fonts/";
     font-weight: normal;
     font-variant: normal;
     text-transform: none;
-    line-height: 1;
+    line-height: 0.9; // This is a fix for overflowing font https://cl.ly/3A0Q2c0F1116
 
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;

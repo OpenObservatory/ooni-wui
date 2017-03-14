@@ -11,6 +11,10 @@ import {
   closedRunDeck
 } from '../../../actions/dashboard'
 
+import {
+  getDeckIcon
+} from '../../../util/nettest'
+
 import './DeckRunner.scss'
 
 class NettestRunnerOptionsInner extends React.Component {
@@ -232,7 +236,7 @@ export const DeckRunner = ({
           <span className='sr-only'>Close</span>
         </button>
         <h1 className='modal-title'>{deck.name}</h1>
-        <i className={`medium-icon fa ${deck.icon}`} />
+        {getDeckIcon(deck.icon)}
       </div>
       {activeNettest
         ? <NettestRunner
