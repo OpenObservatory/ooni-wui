@@ -176,7 +176,13 @@ const DeckInfo = ({
               </div>
               <div className='col-xs-3' style={{ marginTop: '1rem' }}>
                 <button className='btn btn-secondary' onClick={() => onTestRun(nettestId)}>
-                  Select <i className='fa fa-arrow-right' />
+                  <FormattedMessage
+                    id='dashboard.deckRunner.selectButton'
+                    defaultMessage='Select {iconArrowRight}'
+                    values={{
+                      iconArrowRight: <i className='fa fa-arrow-right' />
+                    }}
+                  />
                 </button>
               </div>
             </div>
@@ -186,7 +192,11 @@ const DeckInfo = ({
     </div>
     <div className='modal-footer text-xs-center'>
       <button className='btn btn-primary' onClick={onDeckStart}>
-        <i className='fa fa-play' /> Run them all!
+        <i className='fa fa-play' />
+        <FormattedMessage
+          id='dashboard.deckRunner.runAllButton'
+          defaultMessage='Run them all!'
+        />
       </button>
     </div>
   </div>
