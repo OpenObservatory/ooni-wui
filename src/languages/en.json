@@ -32,6 +32,8 @@
   "dashboard.deckRunner.hideAdvanced": "Hide advanced options",
   "dashboard.deckRunner.showAdvanced": "Show advanced options",
   "dashboard.deckRunner.runButton": "{iconRun} Run",
+  "dashboard.deckRunner.selectButton": "Select {iconArrowRight}",
+  "dashboard.deckRunner.runAllButton": "Run them all!",
   "logs.shareUrl": "Share URL: {urlHref}",
   "logs.uploading": "{iconUploading} uploading",
   "logs.shareButton": "{iconShare} share",
@@ -99,8 +101,8 @@
   "nettests.vanillaTor.working.text": "It took {testRuntime}s to bootstrap Tor version {torVersion}",
   "nettests.vanillaTor.censorship": "Evidence of possible censorship",
   "nettests.vanillaTor.torVersion.blocked": "Tor version {torVersion} appears to be blocked.",
-  "nettests.vanillaTor.hide": "Hide",
-  "nettests.vanillaTor.show": "Show",
+  "nettests.vanillaTor.hide": "Hide tor log",
+  "nettests.vanillaTor.show": "Show tor log",
   "nettests.webConnectivity.noCensorshipDetected": "No censorship detected",
   "nettests.webConnectivity.websiteAccessibleUncensored": "The website appears to be accessible and uncensored from this network.",
   "nettests.webConnectivity.errorInMeasurement": "Error in measurement",
@@ -175,5 +177,6 @@
   "onboard.welcome.text1": "Ooniprobe is a free and open source platform that enables you to examine internet censorship in your network!\nYou can examine how websites are blocked, and whether censorship and/or surveillance systems are present in your network. You can also measure the speed and performance of your network.\nData collected by ooniprobe can serve as evidence of censorship events.\nSince ooniprobe is an investigatory tool, using it may pose some risks.",
   "onboard.welcome.learnMore": "Learn more",
   "onboard.welcome.alreadyUnderstand": "I already understand the risks, take me to my dashboard.",
-  "settings.title": "Settings"
+  "settings.title": "Settings",
+  "util.viewButton": "View"
 }
