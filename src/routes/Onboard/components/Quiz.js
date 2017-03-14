@@ -26,7 +26,12 @@ const Quiz = ({
               <span aria-hidden='true'>&times;</span>
               <span className='sr-only'>Close</span>
             </button>
-            <h1 className='modal-title'>Pop quiz</h1>
+            <h1 className='modal-title'>
+              <FormattedMessage
+                id='onboard.quiz.title'
+                defaultMessage='Pop quiz'
+              />
+            </h1>
           </div>
           <div className='modal-body'>
             {(quizCorrect == null) &&
