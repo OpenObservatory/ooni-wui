@@ -149,6 +149,7 @@
   "nettests.whatsappIs": "WhatsApp appears to be {blocked} by {tcpIP}.",
   "nettests.whatsappIs.blocked": "blocked",
   "nettests.whatsappIs.blocked.byTcp": "TCP/IP",
+  "onboard.quiz.title": "Pop quiz",
   "onboard.quiz.question1": "Question 1: Anyone monitoring my internet activity (e.g. ISP, government or employer) might be able to see that I am running ooniprobe, even though OONI takes precautions to make this hard?",
   "onboard.quiz.true": "True",
   "onboard.quiz.false": "False",
