@@ -39,7 +39,7 @@ const Quiz = ({
               <p>
                 <FormattedMessage
                   id='onboard.quiz.question1'
-                  defaultMessage='Question 1: Anyone monitoring my internet activity (e.g. ISP, government or employer) might be able to see that I am running ooniprobe, even though OONI takes precautions to make this hard?'
+                  defaultMessage='Question 1: Might anyone monitoring my internet activity (e.g. ISP, government or employer) be able to see that I am running ooniprobe, even though OONI takes precautions to make this hard?'
                 />
               </p>
               <div className='radio'>
@@ -68,7 +68,7 @@ const Quiz = ({
               <p>
                 <FormattedMessage
                   id='onboard.quiz.question2'
-                  defaultMessage='Question 2: My measurements will by default get published by OONI and might include personally-identifiable information?'
+                  defaultMessage='Question 2: Will my measurements by default get published by OONI and might they include personally-identifiable information?'
                 />
               </p>
               <div className='radio'>

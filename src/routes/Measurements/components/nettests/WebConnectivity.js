@@ -252,7 +252,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
           <p>
             <FormattedMessage
               id='nettests.webConnectivity.circumvention.useTor.torBlocked'
-              defaultMessage='If the torproject.org website is blocked in your country, you can download Tor from a mirror of it hosted on github: {gettorLink}'
+              defaultMessage='If the torproject.org website is blocked in your country, you can download Tor from a mirror of it hosted on GitHub: {gettorLink}'
               values={{
                 gettorLink: <a href='https://github.com/TheTorProject/gettorbrowser' target='_blank'>
                               https://github.com/TheTorProject/gettorbrowser
