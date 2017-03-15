@@ -41,7 +41,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
         <p>
           <FormattedMessage
             id='nettests.webConnectivity.thereWasAnError'
-            defaultMessage='There was an error in understanding if this site is up and/or censored.'
+            defaultMessage='There was an error in assessing if this site is up and/or censored.'
           />
         </p>
         }

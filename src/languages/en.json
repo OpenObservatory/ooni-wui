@@ -107,7 +107,7 @@
   "nettests.webConnectivity.websiteAccessibleUncensored": "The website appears to be accessible and uncensored from this network.",
   "nettests.webConnectivity.errorInMeasurement": "Error in measurement",
   "nettests.webConnectivity.websiteUp": "This website is up, but there was a problem in assessing whether or not it is being censored.",
-  "nettests.webConnectivity.thereWasAnError": "There was an error in understanding if this site is up and/or censored.",
+  "nettests.webConnectivity.thereWasAnError": "There was an error in assessing if this site is up and/or censored.",
   "nettests.webConnectivity.websiteUnavailable": "Website unavailable",
   "nettests.webConnectivity.websiteUnavailableDesc": "This website does not appear to be available at the moment. Requests from the control vantage point are also failing.",
   "nettests.webConnectivity.evidenceOfCensorship": "Evidence of possible censorship",
