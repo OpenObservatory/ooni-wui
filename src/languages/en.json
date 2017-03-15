@@ -56,7 +56,7 @@
   "measurements.measurementsList.result.big": "Result",
   "measurements.measurementViewer.returnButton": "{iconArrowLeft} Return",
   "measurements.measurementViewer.location": "Location: {countryCode} ({asNumber})",
-  "measurements.measurementViewer.url": "Url",
+  "measurements.measurementViewer.url": "URL",
   "measurements.measurementViewer.hideNormal": "Hide normal",
   "measurements.measurementViewer.showNormal": "Show normal",
   "measurements.measurementViewer.result": "Result",
