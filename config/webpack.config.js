@@ -71,7 +71,21 @@ webpackConfig.plugins = [
     minify   : {
       collapseWhitespace : true
     }
-  })
+  }),
+  // This is to add charset="utf-8" to tags
+  {
+    apply: function (compiler) {
+      compiler.plugin('compilation', function (compilation) {
+        compilation.plugin('html-webpack-plugin-alter-asset-tags', function (obj, callback) {
+          obj.body = obj.body.map(function(tag) {
+            tag.attributes['charset'] = 'utf-8'
+            return tag
+          })
+          callback(null, obj);
+        });
+      });
+    }
+  }
 ]
 
 // Ensure that the compiler exits on errors during testing so that
