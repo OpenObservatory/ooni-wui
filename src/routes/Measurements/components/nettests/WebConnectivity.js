@@ -41,7 +41,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
         <p>
           <FormattedMessage
             id='nettests.webConnectivity.thereWasAnError'
-            defaultMessage='There was an error in understanding if this site is up and/or censored.'
+            defaultMessage='There was an error in assessing if this site is up and/or censored.'
           />
         </p>
         }
@@ -252,7 +252,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
           <p>
             <FormattedMessage
               id='nettests.webConnectivity.circumvention.useTor.torBlocked'
-              defaultMessage='If the torproject.org website is blocked in your country, you can download Tor from a mirror of it hosted on github: {gettorLink}'
+              defaultMessage='If the torproject.org website is blocked in your country, you can download Tor from a mirror of it hosted on GitHub: {gettorLink}'
               values={{
                 gettorLink: <a href='https://github.com/TheTorProject/gettorbrowser' target='_blank'>
                               https://github.com/TheTorProject/gettorbrowser

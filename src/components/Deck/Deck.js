@@ -3,6 +3,10 @@ import { FormattedMessage } from 'react-intl'
 import Toggle from 'react-toggle'
 import Modal from 'react-modal'
 
+import {
+  getDeckIcon
+} from '../../util/nettest'
+
 import './Deck.scss'
 
 const FullControls = ({
@@ -111,11 +115,10 @@ export const Deck = ({
   infoBoxOpen, onDeckToggled,
   onDeckRun
 }) => (
-  <div>
 
     <div key={deck.id} className='col-md-3 col-xs-6 text-xs-center'>
       <h6>{deck.name}</h6>
-      <i className={`medium-icon fa ${deck.icon}`} />
+      {getDeckIcon(deck.icon)}
       {fullControls
         ? <FullControls
           directorStarted={directorStarted}
@@ -145,7 +148,7 @@ export const Deck = ({
               <span className='sr-only'>Close</span>
             </button>
             <h1 className='modal-title'>{deck.name}</h1>
-            <i className={`medium-icon fa ${deck.icon}`} />
+            {getDeckIcon(deck.icon)}
           </div>
           <div className='modal-body'>
             <p>{deck.description}</p>
@@ -161,7 +164,6 @@ export const Deck = ({
         </div>
       </Modal>
     </div>
-  </div>
 )
 
 Deck.propTypes = {

@@ -70,7 +70,7 @@ const MeasurementViewer = ({
               <strong>
                 <FormattedMessage
                   id='measurements.measurementViewer.url'
-                  defaultMessage='Url'
+                  defaultMessage='URL'
                 /> (
                 <a href='#' onClick={(evt) => onToggleNormal(evt)}>
                   {showNormal

@@ -4,6 +4,7 @@ import en from 'react-intl/locale-data/en'
 import es from 'react-intl/locale-data/es'
 import fr from 'react-intl/locale-data/fr'
 import it from 'react-intl/locale-data/it'
+import hi from 'react-intl/locale-data/hi'
 
 export const defaultLocale = 'en'
 
@@ -11,14 +12,16 @@ export const messages = {
   'en': require('../languages/en.json'),
   'es': require('../languages/es.json'),
   'fr': require('../languages/fr.json'),
-  'it': require('../languages/it.json')
+  'it': require('../languages/it.json'),
+  'hi': require('../languages/hi.json')
 }
 
 export const supportedLanguages = [
   { 'code': 'en', 'name': 'English' },
   { 'code': 'es', 'name': 'Español' },
   { 'code': 'fr', 'name': 'Français' },
-  { 'code': 'it', 'name': 'Italiano' }
+  { 'code': 'it', 'name': 'Italiano' },
+  { 'code': 'hi', 'name': 'हिन्दी' }
 ]
 
 export const loadLocaleData = () => {
@@ -26,7 +29,8 @@ export const loadLocaleData = () => {
     ...en,
     ...es,
     ...fr,
-    ...it
+    ...it,
+    ...hi
   ])
 }
 

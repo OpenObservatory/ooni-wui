@@ -1,3 +1,5 @@
+import React from 'react'
+
 export const snakeToHuman = (string) => {
   string = string || ''
   string = string.toString()
@@ -23,4 +25,23 @@ export const getPrettyNettestName = (testName) => {
   const name = NETTEST_PRETTY_NAMES[testName]
 
   return name || snakeToHuman(testName)
+}
+
+const OONI_ICONS = {
+  'oo-tor': 'ooni icon-tor',
+  'oo-unknown': 'ooni icon-censorship-tampering'
+}
+
+export const getDeckIcon = (iconName, other) => {
+  let className = 'medium-icon '
+  console.log('I got', iconName, other)
+  if (iconName && iconName.startsWith('fa-')) {
+    className += `fa ${iconName}`
+  } else {
+    let iconClass = OONI_ICONS[iconName] || OONI_ICONS['oo-unknown']
+    className += iconClass
+  }
+  return (
+    <i className={className} />
+  )
 }

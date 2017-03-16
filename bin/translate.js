@@ -96,7 +96,7 @@ const translate = () => {
         .map((file) => JSON.parse(file))
         .reduce((collection, descriptors) => {
             descriptors.forEach(({id, defaultMessage}) => {
-                if (collection.hasOwnProperty(id)) {
+                if (collection.hasOwnProperty(id) && collection[id] !== defaultMessage) {
                     throw new Error(`Duplicate message id: ${id}`);
                 }
                 collection[id] = defaultMessage;
