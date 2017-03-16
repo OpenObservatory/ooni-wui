@@ -8,6 +8,10 @@ import hi from 'react-intl/locale-data/hi'
 
 export const defaultLocale = 'en'
 
+/* IMPORTANT!
+  When adding a new supported language remember to also add it to main.mobile.js and main.js!
+ */
+
 export const messages = {
   'en': require('../languages/en.json'),
   'es': require('../languages/es.json'),
