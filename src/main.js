@@ -56,4 +56,18 @@ if (__DEV__) {
 // ========================================================
 // Go!
 // ========================================================
-render()
+
+if (!global.Intl) {
+  let importList = ['intl']
+  supportedLanguages.forEach((l) => {
+    importList.push(`intl/locale-data/jsonp/${l.code}.js`)
+  })
+  require.ensure(importList, (require) => {
+    importList.forEach((i) => {
+      require(i)
+    })
+    render()
+  })
+} else {
+  render()
+}
