@@ -1,3 +1,11 @@
+# ooni-wui 2.2.0-rc.5 [2017-03-16]
+
+* Add support for Hindi
+
+# ooni-wui 2.2.0-rc.4 [2017-03-13]
+
+* Add language picker in onboarding
+
 # ooni-wui 2.2.0-rc.3 [2017-02-23]
 
 * Add support for French
