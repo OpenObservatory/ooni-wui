@@ -118,27 +118,6 @@ export const WhatsappDetails = ({ measurement }) => {
       </p>
       }
 
-      {measurement.test_keys.facebook_tcp_blocking === true &&
-      <p>
-        <FormattedMessage
-          id='nettests.whatsappIs'
-          defaultMessage='WhatsApp appears to be {blocked} by {tcpIP}.'
-          values={{
-            blocked: <strong className='text-danger'>
-              <FormattedMessage
-                id='nettests.whatsappIs.blocked'
-                defaultMessage='blocked'
-              /></strong>,
-            tcpIP: <strong>
-              <FormattedMessage
-                id='nettests.whatsappIs.blocked.byTcp'
-                defaultMessage='TCP/IP'
-              /></strong>
-          }}
-        />
-      </p>
-      }
-
     </div>
   )
 }
