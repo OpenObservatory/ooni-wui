@@ -235,15 +235,15 @@ export const WebConnectivityDetails = ({ measurement }) => {
               defaultMessage='On a computer you can use {torBrowserLink}, on Android {orbotLink} and on iOS {onionBrowserLink}'
               values={{
                 torBrowserLink:
-  <a href='https://www.torproject.org/download/download.html.en' target='_blank'>
+                  <a href='https://www.torproject.org/download/download.html.en' target='_blank'>
                     Tor Browser
                   </a>,
                 orbotLink:
-  <a href='https://play.google.com/store/apps/details?id=org.torproject.android' target='_blank'>
+                  <a href='https://play.google.com/store/apps/details?id=org.torproject.android' target='_blank'>
                     OrBot
                   </a>,
                 onionBrowser:
-  <a href='https://itunes.apple.com/it/app/onion-browser-secure-anonymous' target='_blank'>
+                  <a href='https://itunes.apple.com/it/app/onion-browser-secure-anonymous' target='_blank'>
                     Onion Browser
                   </a>
               }}
