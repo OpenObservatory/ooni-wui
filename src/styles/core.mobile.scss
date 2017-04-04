@@ -1,17 +1,9 @@
-@import 'base';
-@import 'fonts';
-
-// Bootstrap overrides go here
-
-@import '~normalize.css/normalize';
-@import '~bootstrap/scss/bootstrap';
+@import 'common';
 
 // We exclude these from the mobile css file
 //@import '~animate.css/animate.css';
 //@import '~react-toggle/style.css';
 //@import '~react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
-
-@import 'common';
 
 @include media-breakpoint-down(xs) {
   .result-item  {
