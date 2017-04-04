@@ -85,7 +85,6 @@ const OnboardSteps = ({
 
 OnboardSteps.propTypes = {
   currentStep: React.PropTypes.number,
-  currentStatus: React.PropTypes.object,
   lastStep: React.PropTypes.number,
   onNextClick: React.PropTypes.func.isRequired,
   onSkipClick: React.PropTypes.func.isRequired,
