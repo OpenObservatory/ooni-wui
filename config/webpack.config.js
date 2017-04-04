@@ -77,13 +77,13 @@ webpackConfig.plugins = [
     apply: function (compiler) {
       compiler.plugin('compilation', function (compilation) {
         compilation.plugin('html-webpack-plugin-alter-asset-tags', function (obj, callback) {
-          obj.body = obj.body.map(function(tag) {
+          obj.body = obj.body.map(function (tag) {
             tag.attributes['charset'] = 'utf-8'
             return tag
           })
-          callback(null, obj);
-        });
-      });
+          callback(null, obj)
+        })
+      })
     }
   }
 ]

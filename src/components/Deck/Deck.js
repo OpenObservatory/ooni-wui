@@ -116,10 +116,10 @@ export const Deck = ({
   onDeckRun
 }) => (
 
-    <div key={deck.id} className='col-md-3 col-xs-6 text-xs-center'>
-      <h6>{deck.name}</h6>
-      {getDeckIcon(deck.icon)}
-      {fullControls
+  <div key={deck.id} className='col-md-3 col-xs-6 text-xs-center'>
+    <h6>{deck.name}</h6>
+    {getDeckIcon(deck.icon)}
+    {fullControls
         ? <FullControls
           directorStarted={directorStarted}
           deckId={deck.id}
@@ -136,34 +136,34 @@ export const Deck = ({
           onDeckToggled={onDeckToggled} />
       }
 
-      <Modal
-        className='Modal__Bootstrap modal-dialog'
-        onRequestClose={closeDeckInfo}
-        contentLabel={`${deck.name} description`}
-        isOpen={infoBoxOpen}>
-        <div className='modal-content'>
-          <div className='modal-header text-xs-center'>
-            <button type='button' className='close' onClick={closeDeckInfo}>
-              <span aria-hidden='true'>&times;</span>
-              <span className='sr-only'>Close</span>
-            </button>
-            <h1 className='modal-title'>{deck.name}</h1>
-            {getDeckIcon(deck.icon)}
-          </div>
-          <div className='modal-body'>
-            <p>{deck.description}</p>
-          </div>
-          <div className='modal-footer text-xs-center'>
-            <button className='btn btn-primary' onClick={closeDeckInfo}>
-              <FormattedMessage
-                id='deck.gotIt'
-                defaultMessage='Got it!'
-              />
-            </button>
-          </div>
+    <Modal
+      className='Modal__Bootstrap modal-dialog'
+      onRequestClose={closeDeckInfo}
+      contentLabel={`${deck.name} description`}
+      isOpen={infoBoxOpen}>
+      <div className='modal-content'>
+        <div className='modal-header text-xs-center'>
+          <button type='button' className='close' onClick={closeDeckInfo}>
+            <span aria-hidden='true'>&times;</span>
+            <span className='sr-only'>Close</span>
+          </button>
+          <h1 className='modal-title'>{deck.name}</h1>
+          {getDeckIcon(deck.icon)}
         </div>
-      </Modal>
-    </div>
+        <div className='modal-body'>
+          <p>{deck.description}</p>
+        </div>
+        <div className='modal-footer text-xs-center'>
+          <button className='btn btn-primary' onClick={closeDeckInfo}>
+            <FormattedMessage
+              id='deck.gotIt'
+              defaultMessage='Got it!'
+              />
+          </button>
+        </div>
+      </div>
+    </Modal>
+  </div>
 )
 
 Deck.propTypes = {
