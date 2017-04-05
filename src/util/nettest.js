@@ -32,15 +32,18 @@ const OONI_ICONS = {
   'oo-unknown': 'ooni icon-censorship-tampering'
 }
 
-export const getDeckIcon = (iconName, other) => {
-  let className = 'medium-icon '
-  console.log('I got', iconName, other)
+export const getDeckIconClassName = (iconName) => {
   if (iconName && iconName.startsWith('fa-')) {
-    className += `fa ${iconName}`
+    return `fa ${iconName}`
   } else {
     let iconClass = OONI_ICONS[iconName] || OONI_ICONS['oo-unknown']
-    className += iconClass
+    return iconClass
   }
+}
+
+export const getDeckIcon = (iconName, other) => {
+  let className = 'medium-icon '
+  className += getDeckIconClassName(iconName)
   return (
     <i className={className} />
   )

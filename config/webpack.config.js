@@ -156,7 +156,7 @@ webpackConfig.module.loaders = [{
 const BASE_CSS_LOADER = 'css-loader?sourceMap&-minimize'
 
 const extractSass = new ExtractTextPlugin(
-  "[name].[contenthash].css",
+  '[name].[contenthash].css',
   { allChunks: true, disable: __DEV__ }
 )
 

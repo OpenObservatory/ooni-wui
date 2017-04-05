@@ -1,6 +1,7 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 import moment from 'moment'
+import { getDeckIconClassName } from './nettest'
 
 const rowToAnomalyType = (row) => {
   if (row.anomaly === true || row.result === 'error') {
@@ -39,10 +40,11 @@ export const renderCarret = (direction) => {
 
 export const formatName = (deckIcons, includeName = true) => (cell, row) => {
   const deckIcon = deckIcons[row.deck_id]
+  const className = getDeckIconClassName(deckIcon)
   if (includeName === false) {
-    return <span><i className={`fa ${deckIcon}`} /></span>
+    return <span><i className={className} /></span>
   }
-  return <span><i className={`fa ${deckIcon}`} />{` ${cell}`}</span>
+  return <span><i className={className} />{` ${cell}`}</span>
 }
 
 export const formatDeckName = (deckIcons, deckNames) => (cell, row) => {
@@ -51,7 +53,8 @@ export const formatDeckName = (deckIcons, deckNames) => (cell, row) => {
   if (deckName === undefined) {
     return <span><i className='fa fa-square' /></span>
   }
-  return <span><i className={`fa ${deckIcon}`} /></span>
+  const className = getDeckIconClassName(deckIcon)
+  return <span><i className={className} /></span>
 }
 
 export const formatTime = (how) => (cell, row) => {
