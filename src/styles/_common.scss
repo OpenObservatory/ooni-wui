@@ -1,6 +1,6 @@
 @import 'fonts';
 @import 'base';
-@import '~normalize.css/normalize';
+
 @import '~bootstrap/scss/bootstrap';
 
 html {
@@ -98,12 +98,12 @@ strong {
 }
 
 .large-icon {
-  font-size: 9rem;
+  font-size: 9rem !important;
   color: $color-ooni-blue;
 }
 
 .medium-icon {
-  font-size: 5rem;
+  font-size: 5rem !important;
   color: $color-ooni-blue;
 }
 
@@ -144,7 +144,7 @@ strong {
 }
 
 .modal-dialog {
-  overflow-y: initial !important
+  overflow-y: initial !important;
 }
 .modal-body {
   max-height: calc(100vh - 300px);

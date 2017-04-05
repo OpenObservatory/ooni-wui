@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom'
 import createStore from './store/createStore'
 import AppContainer from './containers/AppContainer'
 
-import { supportedLanguages } from './store/locale'
-
 // ========================================================
 // Store Instantiation
 // ========================================================
@@ -60,14 +58,21 @@ if (__DEV__) {
 // ========================================================
 
 if (!global.Intl) {
-  let importList = ['intl']
-  supportedLanguages.forEach((l) => {
-    importList.push(`intl/locale-data/jsonp/${l.code}.js`)
-  })
-  require.ensure(importList, (require) => {
-    importList.forEach((i) => {
-      require(i)
-    })
+  require.ensure([
+    'intl',
+    'intl/locale-data/jsonp/en.js',
+    'intl/locale-data/jsonp/es.js',
+    'intl/locale-data/jsonp/fr.js',
+    'intl/locale-data/jsonp/it.js',
+    'intl/locale-data/jsonp/hi.js'
+  ], (require) => {
+    require('intl')
+    require('intl/locale-data/jsonp/en.js')
+    require('intl/locale-data/jsonp/es.js')
+    require('intl/locale-data/jsonp/fr.js')
+    require('intl/locale-data/jsonp/it.js')
+    require('intl/locale-data/jsonp/hi.js')
+
     render()
   })
 } else {

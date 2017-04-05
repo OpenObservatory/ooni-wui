@@ -153,27 +153,39 @@ webpackConfig.module.loaders = [{
 // ------------------------------------
 // We use cssnano with the postcss loader, so we tell
 // css-loader not to duplicate minimization.
-const BASE_CSS_LOADER = 'css?sourceMap&-minimize'
+const BASE_CSS_LOADER = 'css-loader?sourceMap&-minimize'
+
+const extractSass = new ExtractTextPlugin(
+  "[name].[contenthash].css",
+  { allChunks: true, disable: __DEV__ }
+)
 
 webpackConfig.module.loaders.push({
   test    : /\.scss$/,
   exclude : null,
-  loaders : [
-    'style',
-    BASE_CSS_LOADER,
-    'postcss',
-    'sass?sourceMap'
-  ]
+  loader : ExtractTextPlugin.extract(
+    'style-loader',
+    [
+      BASE_CSS_LOADER,
+      'postcss-loader',
+      'sass-loader?sourceMap'
+    ].join('!')
+  )
 })
+
 webpackConfig.module.loaders.push({
   test    : /\.css$/,
   exclude : null,
-  loaders : [
-    'style',
-    BASE_CSS_LOADER,
-    'postcss'
-  ]
+  loader: ExtractTextPlugin.extract(
+    'style-loader',
+    [
+      BASE_CSS_LOADER,
+      'postcss-loader'
+    ].join('!')
+  )
 })
+
+webpackConfig.plugins.push(extractSass)
 
 webpackConfig.sassLoader = {
   includePaths : project.paths.client('styles')
@@ -221,30 +233,5 @@ webpackConfig.module.loaders.push(
   },
   { test: /\.(png|jpg)$/,    loader: 'url?limit=8192' }
 )
-/* eslint-enable */
-
-// ------------------------------------
-// Finalize Configuration
-// ------------------------------------
-// when we don't know the public path (we know it only when HMR is enabled [in development]) we
-// need to use the extractTextPlugin to fix this issue:
-// http://stackoverflow.com/questions/34133808/webpack-ots-parsing-error-loading-fonts/34133809#34133809
-if (!__DEV__) {
-  debug('Applying ExtractTextPlugin to CSS loaders.')
-  webpackConfig.module.loaders.filter((loader) =>
-    loader.loaders && loader.loaders.find((name) => /css/.test(name.split('?')[0]))
-  ).forEach((loader) => {
-    const first = loader.loaders[0]
-    const rest = loader.loaders.slice(1)
-    loader.loader = ExtractTextPlugin.extract(first, rest.join('!'))
-    delete loader.loaders
-  })
-
-  webpackConfig.plugins.push(
-    new ExtractTextPlugin('[name].[contenthash].css', {
-      allChunks : true
-    })
-  )
-}
 
 module.exports = webpackConfig
