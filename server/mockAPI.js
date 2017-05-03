@@ -1108,6 +1108,7 @@ const mockMeasurements = [
           'received_limited': 0.0,
           'sender_limited': 0.0394343507166061
         },
+        'failure': null,
         'simple': {
           'download': 94152.8262005166,
           'upload': 24152.8262005166,

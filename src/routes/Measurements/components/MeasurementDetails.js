@@ -74,7 +74,7 @@ export const MeasurementDetails = ({
               <FormattedMessage
                 id='measurementDetails.location'
                 defaultMessage='Location: '
-              /> {measurement.probe_cc} ({measurement.probe_asn})
+              /> {measurement.probe_cc} <span dir='ltr'>({measurement.probe_asn})</span>
             </span>
           </div>
         </div>

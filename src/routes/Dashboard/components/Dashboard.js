@@ -83,10 +83,10 @@ export const Dashboard = ({
         { ' | ' }
         <FormattedMessage
           id='dashboard.status.location'
-          defaultMessage='Location: {countryCode} ({asNumber})'
+          defaultMessage='Location: {countryCode} {asNumber}'
           values={{
             countryCode: countryCode,
-            asNumber: asn
+            asNumber: <span dir='ltr'>({asn})</span>
           }}
         />
       </div>

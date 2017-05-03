@@ -9,7 +9,8 @@ import {
   messages,
   loadLocaleData,
   getUserLocale,
-  defaultLocale
+  defaultLocale,
+  getDirection
 } from './store/locale'
 
 import MeasurementDetails from './routes/Measurements/components/MeasurementDetails'
@@ -37,7 +38,8 @@ ErrorMessage.propTypes = {
 
 class MeasurementWrapper extends React.Component {
   static propTypes = {
-    error: React.PropTypes.object
+    error: React.PropTypes.object,
+    direction: React.PropTypes.string
   }
 
   constructor (props) {
@@ -63,15 +65,17 @@ class MeasurementWrapper extends React.Component {
   }
 
   render () {
+    const { direction } = this.props
+
     if (this.state.error) {
       return <ErrorMessage error={this.state.error} />
     }
     if (!this.state.measurement) {
-      return <div className='container-fluid text-xs-center'>
+      return <div className='container-fluid text-xs-center' dir={direction}>
         <h2>Loading</h2>
       </div>
     }
-    return <div className='container-fluid'>
+    return <div className='container-fluid' dir={direction}>
       <MeasurementDetails measurement={this.state.measurement} />
     </div>
   }
@@ -89,13 +93,15 @@ class MobileContainer extends React.Component {
   render () {
     const { error } = this.props
     loadLocaleData()
+    const locale = getUserLocale()
+    const direction = getDirection(locale)
 
     return (
       <IntlProvider
         defaultLocale={defaultLocale}
-        locale={getUserLocale()}
-        messages={messages[getUserLocale()]}>
-        <MeasurementWrapper error={error} />
+        locale={locale}
+        messages={messages[locale]}>
+        <MeasurementWrapper error={error} direction={direction} />
       </IntlProvider>
     )
   }

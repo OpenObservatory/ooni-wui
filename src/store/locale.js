@@ -72,3 +72,16 @@ export const getUserLocale = () => {
   }
   return defaultLocale
 }
+
+const RTLLocales = [
+  'ar',
+  'fa',
+  'he'
+]
+
+export const getDirection = (locale) => {
+  if (RTLLocales.indexOf(locale) !== -1) {
+    return 'rtl'
+  }
+  return 'ltr'
+}
