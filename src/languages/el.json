@@ -19,7 +19,7 @@
   "dashboard.title": "Ταμπλό ooniprobe",
   "dashboard.status.running": "Εκτέλεση λογισμικού {iconRunning}",
   "dashboard.status.notRunning": "Δεν τρέχει το λογισμικό {iconNotRunning}",
-  "dashboard.status.location": "Τοποθεσία: {countryCode} ({asNumber})",
+  "dashboard.status.location": "Τοποθεσία: {countryCode} {asNumber}",
   "dashboard.failedToLoadDecks": "{IconFailure} απέτυχε να φορτώσει τα καταστρώματα",
   "dashboard.failedToLoadDecks.message": "Δοκιμάστε να κάνετε κλικ στο κουμπί ανανέωσης {iconReload} στην επάνω δεξιά γωνία",
   "dashboard.loadingDecks": "{IconSpinner} φόρτωση καταστρωμάτων",

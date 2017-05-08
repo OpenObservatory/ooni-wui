@@ -19,7 +19,7 @@
   "dashboard.title": "Dashboard ooniprobe",
   "dashboard.status.running": "attivo {iconRunning}",
   "dashboard.status.notRunning": "inattivo {iconNotRunning}",
-  "dashboard.status.location": "Posizione: {countryCode} ({asNumber})",
+  "dashboard.status.location": "Posizione: {countryCode} {asNumber}",
   "dashboard.failedToLoadDecks": "{iconFailure} errore nel caricare i deck",
   "dashboard.failedToLoadDecks.message": "Prova a cliccare sul bottone ricarica {iconReload} in alto a destra",
   "dashboard.loadingDecks": "{iconSpinner} caricamento decks",

@@ -19,7 +19,7 @@
   "dashboard.title": "پنل ooniprobe",
   "dashboard.status.running": "در حال اجرا {iconRunning}",
   "dashboard.status.notRunning": "در حال اجرا نیست {iconNotRunning}",
-  "dashboard.status.location": "مکان: {countryCode} ({asNumber}) ",
+  "dashboard.status.location": "مکان: {countryCode} {asNumber}",
   "dashboard.failedToLoadDecks": "بارگذاری دک‌ها {iconFailure} ناموفق بود.",
   "dashboard.failedToLoadDecks.message": "سعی کنید در بالا گوشه راست صفحه دکمه بارگذاری {iconReload} را بزنید. ",
   "dashboard.loadingDecks": "در حال {iconSpinner} بارگذاری دِک‌ها.  ",

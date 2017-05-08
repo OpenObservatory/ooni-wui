@@ -19,7 +19,7 @@
   "dashboard.title": "Panel de instrumentos de ooniprobe",
   "dashboard.status.running": "en ejecución {iconRunning}",
   "dashboard.status.notRunning": "detenido {iconNotRunning}",
-  "dashboard.status.location": "Ubicación: {countryCode} ({asNumber})",
+  "dashboard.status.location": "Ubicación: {countryCode} {asNumber}",
   "dashboard.failedToLoadDecks": "{iconFailure} no se pudieron cargar empaquetados",
   "dashboard.failedToLoadDecks.message": "Pruebe a pulsar el botón recargar {iconReload} en la esquina superior derecha",
   "dashboard.loadingDecks": "{iconSpinner} cargando empaquetados",

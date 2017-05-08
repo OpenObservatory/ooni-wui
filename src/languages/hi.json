@@ -19,7 +19,7 @@
   "dashboard.title": "ऊनीप्रोब डैशबोर्ड",
   "dashboard.status.running": "चल रहा है {iconRunning}",
   "dashboard.status.notRunning": "नहीं चल रहा है {iconNotRunning}",
-  "dashboard.status.location": "स्थान: {countrycode} ({asNumber})",
+  "dashboard.status.location": "स्थान: {countrycode} {asNumber}",
   "dashboard.failedToLoadDecks": "{IconFailure} डेक लोड करने में विफल रहा",
   "dashboard.failedToLoadDecks.message": "ऊपरी दाएं कोने में पुनः लोड {iconReload} बटन पर क्लिक करने का प्रयास करें",
   "dashboard.loadingDecks": "{IconSpinner} लोडिंग डेक",

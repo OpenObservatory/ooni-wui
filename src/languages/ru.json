@@ -19,7 +19,7 @@
   "dashboard.title": "Панель управления ooniprobe ",
   "dashboard.status.running": "в действии (iconRunning)",
   "dashboard.status.notRunning": "не активно (iconNotRunning)",
-  "dashboard.status.location": "Местоположение: {countryCode} ({asNumber})",
+  "dashboard.status.location": "Местоположение: {countryCode} {asNumber}",
   "dashboard.failedToLoadDecks": "{iconFailure} не удалось загрузить  ???",
   "dashboard.failedToLoadDecks.message": "Попробуй нажать на кнопку перезагрузить {iconReload} в верхнем правом углу",
   "dashboard.loadingDecks": "{iconSpinner} загрузка ???",
