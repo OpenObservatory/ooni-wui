@@ -1,3 +1,17 @@
+# ooni-wui 2.2.1 [2017-05-08]
+
+* Add support for RTL languages
+
+* Add support for Russian, Arabic, Persian and Greek
+
+# ooni-wui 2.2.0 [2017-04-05]
+
+* Implement design suggestions based on feedback from designer
+
+* Refactoring of the web UI to use react.js
+
+* Add support for Hindi, French, Italian and Spanish
+
 # ooni-wui 2.2.0-rc.5 [2017-03-16]
 
 * Add support for Hindi
