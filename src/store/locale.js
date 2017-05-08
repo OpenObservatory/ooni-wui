@@ -30,14 +30,14 @@ export const messages = {
 
 export const supportedLanguages = [
   { 'code': 'ar', 'name': 'العَرَبِيَّة‎‎' },
-  { 'code': 'el', 'name': 'ελληνικά' },
+  { 'code': 'el', 'name': 'Ελληνικά' },
   { 'code': 'en', 'name': 'English' },
   { 'code': 'es', 'name': 'Español' },
   { 'code': 'fa', 'name': 'فارسی' },
   { 'code': 'fr', 'name': 'Français' },
   { 'code': 'it', 'name': 'Italiano' },
   { 'code': 'hi', 'name': 'हिन्दी' },
-  { 'code': 'ru', 'name': 'ру́сский' }
+  { 'code': 'ru', 'name': 'Русский' }
 ]
 
 export const loadLocaleData = () => {
