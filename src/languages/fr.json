@@ -41,7 +41,7 @@
   "measurementDetails.runtime": "Temps d'exécution",
   "measurementDetails.location": "Position :",
   "measurementDetails.technicalMeasurementData": "Données techniques de mesure",
-  "measurements.measurementList.loading": "{iconSpinner} chargement des mesures",
+  "measurements.measurementList.loading": "{iconLoading} chargement des mesures",
   "measurements.measurementsList.result": "Résultat",
   "measurements.measurementsList.name": "Nom",
   "measurements.measurementsList.date": "Date",
