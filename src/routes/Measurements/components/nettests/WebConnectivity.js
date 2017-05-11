@@ -230,6 +230,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
               values={{
                 Tor: <strong>Tor</strong>
               }} />
+            {' '}
             <FormattedMessage
               id='nettests.webConnectivity.circumvention.useTor.downloadTor'
               defaultMessage='On a computer you can use {torBrowserLink}, on Android {orbotLink} and on iOS {onionBrowserLink}'
@@ -242,7 +243,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
                   <a href='https://play.google.com/store/apps/details?id=org.torproject.android' target='_blank'>
                     OrBot
                   </a>,
-                onionBrowser:
+                onionBrowserLink:
                   <a href='https://itunes.apple.com/it/app/onion-browser-secure-anonymous' target='_blank'>
                     Onion Browser
                   </a>
