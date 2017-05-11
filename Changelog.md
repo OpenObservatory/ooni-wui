@@ -1,3 +1,9 @@
+# ooni-wui 2.2.2 [2017-05-08]
+
+* Fix some bugs in the Web Connectivity UI
+
+* Fix some typos in the translations
+
 # ooni-wui 2.2.1 [2017-05-08]
 
 * Add support for RTL languages
