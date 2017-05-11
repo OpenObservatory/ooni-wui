@@ -230,6 +230,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
               values={{
                 Tor: <strong>Tor</strong>
               }} />
+            {' '}
             <FormattedMessage
               id='nettests.webConnectivity.circumvention.useTor.downloadTor'
               defaultMessage='On a computer you can use {torBrowserLink}, on Android {orbotLink} and on iOS {onionBrowserLink}'
