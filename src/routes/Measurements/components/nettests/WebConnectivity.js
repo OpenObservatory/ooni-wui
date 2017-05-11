@@ -242,7 +242,7 @@ export const WebConnectivityDetails = ({ measurement }) => {
                   <a href='https://play.google.com/store/apps/details?id=org.torproject.android' target='_blank'>
                     OrBot
                   </a>,
-                onionBrowser:
+                onionBrowserLink:
                   <a href='https://itunes.apple.com/it/app/onion-browser-secure-anonymous' target='_blank'>
                     Onion Browser
                   </a>
