@@ -112,6 +112,7 @@
     "compile:langs": "better-npm-run compile:langs",
     "lint": "eslint bin build config server src tests",
     "lint:fix": "npm run lint -- --fix",
+    "lint:translations": "better-npm-run lint:translations",
     "start": "better-npm-run start",
     "dev": "better-npm-run dev",
     "test": "better-npm-run test",
@@ -167,6 +168,9 @@
         "NODE_ENV": "production",
         "DEBUG": "app:*"
       }
+    },
+    "lint:translations": {
+      "command": "babel bin/lint-translations.js | node"
     },
     "start": {
       "command": "node bin/dev-server",
