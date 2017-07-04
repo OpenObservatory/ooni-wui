@@ -134,7 +134,7 @@
   "nettests.circumventionStrategies.useHTTPS.title": "إستعمال HTTP الآمن (HTTPS)",
   "nettests.circumventionStrategies.useHTTPS.text": "حاول زيارة نسخة {https} للموقع عبر هذا الرابط {url}",
   "nettests.webConnectivity.circumvention.changeDNS.title": "تغيير الDNS ",
-  "nettests.webConnectivity.circumvention.changeDNS.text": "حاول {changeDNS} إلى ({openDNS}) أو  {googleDNS}.",
+  "nettests.webConnectivity.circumvention.changeDNS.text": "حاول تغيير {changeDNS} إلى DNS آخر خالي من الحجب مثل ({openDNS}) أو  {googleDNS}.",
   "nettests.webConnectivity.circumvention.changeDNS.text.changeDNS": "تغيير محلل ال DNS ",
   "nettests.webConnectivity.circumvention.changeDNS.instructions": "يمكنك العثور على إرشادات حول كيفية تغيير محلل الDNS من خلال العنوان التالي: {instructionsLink}",
   "nettests.webConnectivity.circumvention.useTor.title": "استعمل تور ",

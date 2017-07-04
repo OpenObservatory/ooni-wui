@@ -135,25 +135,31 @@ if (!global.Intl) {
   require.ensure([
     'intl',
     'intl/locale-data/jsonp/ar.js',
+    'intl/locale-data/jsonp/de.js',
     'intl/locale-data/jsonp/el.js',
     'intl/locale-data/jsonp/en.js',
     'intl/locale-data/jsonp/es.js',
     'intl/locale-data/jsonp/fa.js',
     'intl/locale-data/jsonp/fr.js',
-    'intl/locale-data/jsonp/it.js',
     'intl/locale-data/jsonp/hi.js',
-    'intl/locale-data/jsonp/ru.js'
+    'intl/locale-data/jsonp/it.js',
+    'intl/locale-data/jsonp/ja.js',
+    'intl/locale-data/jsonp/ru.js',
+    'intl/locale-data/jsonp/zh.js'
   ], function (require) {
     require('intl')
     require('intl/locale-data/jsonp/ar.js')
+    require('intl/locale-data/jsonp/de.js')
     require('intl/locale-data/jsonp/el.js')
     require('intl/locale-data/jsonp/en.js')
     require('intl/locale-data/jsonp/es.js')
     require('intl/locale-data/jsonp/fa.js')
     require('intl/locale-data/jsonp/fr.js')
-    require('intl/locale-data/jsonp/it.js')
     require('intl/locale-data/jsonp/hi.js')
+    require('intl/locale-data/jsonp/it.js')
+    require('intl/locale-data/jsonp/ja.js')
     require('intl/locale-data/jsonp/ru.js')
+    require('intl/locale-data/jsonp/zh.js')
 
     render()
   })
