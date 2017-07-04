@@ -16,6 +16,10 @@ export const LOADING_INITIAL_DECKS = 'LOADING_INITIAL_DECKS'
 export const LOADING_INITIAL_DECKS_SUCCEEDED = 'LOADING_INITIAL_DECKS_SUCCEEDED'
 export const LOADING_INITIAL_DECKS_FAILED = 'LOADING_INITIAL_DECKS_FAILED'
 
+export const INITIALIZING = 'INITIALIZING'
+export const INITIALIZING_SUCCEEDED = 'INITIALIZING_SUCCEEDED'
+export const INITIALIZING_FAILED = 'INITIALIZING_FAILED'
+
 export const lastStep = 3
 export const quizStep = 1
 
@@ -27,6 +31,18 @@ export const nextStep = () => {
 
 export const loadingDecks = () => ({
   type: LOADING_INITIAL_DECKS
+})
+
+export const initializing = () => ({
+  type: INITIALIZING
+})
+
+export const initializingSucceeded = () => ({
+  type: INITIALIZING_SUCCEEDED
+})
+
+export const initializingFailed = () => ({
+  type: INITIALIZING_FAILED
 })
 
 export const loadingDecksSucceeded = (decks) => ({
@@ -49,6 +65,7 @@ export const loadDecks = () => (dispatch, getState) => {
 }
 
 export const finalize = () => {
+  dispatch(initializing())
   return (dispatch, getState) => {
     const { onboard } = getState()
     let options = {
@@ -68,7 +85,11 @@ export const finalize = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(options)
-    })
+    }).then(_ => dispatch(initializingSucceeded()))
+      .catch((ex) => {
+        console.log('Got error while initializing', ex)
+        dispatch(initializingFailed())
+      })
   }
 }
 

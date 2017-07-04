@@ -9,6 +9,9 @@ import {
   LOADING_INITIAL_DECKS_SUCCEEDED,
   LOADING_INITIAL_DECKS_FAILED,
   LOADING_INITIAL_DECKS,
+  INITIALIZING,
+  INITIALIZING_FAILED,
+  INITIALIZING_SUCCEEDED,
   SKIP_TO_END,
   lastStep,
   quizStep
@@ -69,7 +72,17 @@ const ACTION_HANDLERS = {
   },
   [LOADING_INITIAL_DECKS_FAILED]: (state) => {
     return ({ ...state, loadingDecks: false })
+  },
+  [INITIALIZING]: (state) => {
+    return ({ ...state, initializing: true })
+  },
+  [INITIALIZING_SUCCEEDED]: (state) => {
+    return ({ ...state, initializing: false })
+  },
+  [INITIALIZING_FAILED]: (state) => {
+    return ({ ...state, initializing: false })
   }
+
 }
 
 // ------------------------------------
@@ -91,7 +104,8 @@ const initialState = {
     shareResults: true
   },
   loadingDecks: false,
-  decks: []
+  decks: [],
+  initializing: false
 }
 
 export function onboardReducer (state = initialState, action) {

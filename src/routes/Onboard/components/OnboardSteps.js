@@ -18,7 +18,8 @@ const OnboardSteps = ({
   quizAnswers,
   quizCorrect, quizOpen,
   onFinalize,
-  onLocaleChange, selectedLocale
+  onLocaleChange, selectedLocale,
+  initializing
 }) => {
   return (
     <div>
@@ -57,6 +58,7 @@ const OnboardSteps = ({
               <SetupYourTests
                 onDeckToggled={onDeckToggled}
                 decks={decks}
+                initializing={initializing}
                 onNextClick={onFinalize} />
             </div>
             }
@@ -101,7 +103,8 @@ OnboardSteps.propTypes = {
   quizOpen: React.PropTypes.bool.isRequired,
   quizCorrect: React.PropTypes.bool,
   onLocaleChange: React.PropTypes.func.isRequired,
-  selectedLocale: React.PropTypes.string.isRequired
+  selectedLocale: React.PropTypes.string.isRequired,
+  initializing: React.PropTypes.bool
 }
 
 export default OnboardSteps
