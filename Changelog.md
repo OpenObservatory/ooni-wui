@@ -1,3 +1,7 @@
+# ooni-wui 2.2.3 [2017-07-04]
+
+* Add support for German, Chinese and Japanese
+
 # ooni-wui 2.2.2 [2017-05-11]
 
 * Fix some bugs in the Web Connectivity UI
