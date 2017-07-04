@@ -2,7 +2,7 @@ import React from 'react'
 import { FormattedMessage } from 'react-intl'
 import Deck from '../../../components/Deck'
 
-const SetupYourTests = ({ onNextClick, onDeckToggled, decks }) => {
+const SetupYourTests = ({ onNextClick, onDeckToggled, decks, initializing }) => {
   return (
     <div className='container'>
 
@@ -69,7 +69,7 @@ const SetupYourTests = ({ onNextClick, onDeckToggled, decks }) => {
         </div>
       </div>
 
-      <div className='row next-step'>
+      {!initializing && <div className='row next-step'>
         <button onClick={onNextClick} className='btn btn-primary mx-auto'
           style={{ 'display': 'block' }}>
           <FormattedMessage
@@ -77,7 +77,18 @@ const SetupYourTests = ({ onNextClick, onDeckToggled, decks }) => {
             defaultMessage='Go to my dashboard!'
           />
         </button>
-      </div>
+      </div>}
+      {initializing && <div className='row'>
+        <div className='text-xs-center'>
+          <FormattedMessage
+            id='onboard.loading'
+            defaultMessage='{iconSpinner} loading'
+            values={{
+              iconSpinner: <i className='fa fa-spinner fa-pulse fa-3x fa-fw' />
+            }}
+          />
+        </div>
+      </div>}
 
     </div>
   )
@@ -86,7 +97,8 @@ const SetupYourTests = ({ onNextClick, onDeckToggled, decks }) => {
 SetupYourTests.propTypes = {
   onNextClick: React.PropTypes.func.isRequired,
   onDeckToggled: React.PropTypes.func,
-  decks: React.PropTypes.array
+  decks: React.PropTypes.array,
+  initializing: React.PropTypes.bool
 }
 
 export default SetupYourTests

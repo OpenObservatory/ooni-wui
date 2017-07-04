@@ -29,7 +29,8 @@ const mapStoreToProps = (state) => {
     quizAnswers: state.onboard.quizAnswers,
     quizOpen: state.onboard.quizOpen,
     quizCorrect: state.onboard.quizCorrect,
-    selectedLocale: state.intl.locale
+    selectedLocale: state.intl.locale,
+    initializing: state.onboard.initializing
   })
 }
 
