@@ -1069,6 +1069,42 @@ const mockMeasurements = [
   {
     'size': -1,
     'running': false,
+    'country_code': 'IT',
+    'test_name': 'dash',
+    'test_start_time': '20170114T080500Z',
+    'completed': true,
+    'keep': false,
+    'asn': 'AS123',
+    'stale': false,
+    'anomaly': false,
+    'id': '20170114T080500Z-IT-AS123-dash',
+    'result': 'ok',
+    'deck_id': 'web',
+    'summary': {
+      'test_start_time': '2017-01-12 00:29:22',
+      'anomaly': false,
+      'country_code': 'GR',
+      'asn': 'AS10',
+      'test_name': 'ndt',
+      'results': [
+        { 'url': null, 'idx': 0 }
+      ]
+    },
+    'sample_measurements': [
+      getSampleMeasurement('dash', {
+        'server_address': 'ndt.iupui.mlab1.tun01.measurement-lab.org',
+        'failure': null,
+        'simple': {
+          "connect_latency": 0.0201611518859863,
+          "median_bitrate": 2312.0,
+          "min_playout_delay": 3.3804178237915
+        }
+      })
+    ]
+  },
+  {
+    'size': -1,
+    'running': false,
     'country_code': 'GR',
     'test_name': 'ndt',
     'test_start_time': '20161214T080551Z',
