@@ -87,7 +87,7 @@ export class DashDetails extends React.Component {
 
         <div className='row'>
           <div className='col-xs-12'>
-            <p>You can stream up to <strong>{getOptimalVideoRate(measurement.test_keys).type}</strong> video without any bufferring</p>
+            <p>You can stream up to <strong>{getOptimalVideoRate(measurement.test_keys).type}</strong> video without any buffering.</p>
           </div>
         </div>
 
