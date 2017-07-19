@@ -7,7 +7,6 @@ import { mlabServerToCountry, mlabServerToName } from '../../../../util/nettest'
  * This table is derived from:
  * https://support.google.com/youtube/answer/1722171?hl=en-GB
  */
-
 const minimumBitrateForVideo = [
   {
     'sfr_min_bitrate': 600,
@@ -47,13 +46,17 @@ const minimumBitrateForVideo = [
 ]
 
 const getOptimalVideoRate = (test_keys) => {
-  let optimalRate = minimumBitrateForVideo[0]
-
+  let optimalRate = null;
   minimumBitrateForVideo.forEach((rate) => {
-    if (test_keys.simple.median_bitrate >= rate['sfr_min_bitrate']) {
+    // Make sure we select the lowest speed bucket in case they overlap
+    if (optimalRate === null &&
+        test_keys.simple.median_bitrate >= rate['sfr_min_bitrate']) {
       optimalRate = rate
     }
   })
+  if (optimalRate === null) {
+    optimalRate = minimumBitrateForVideo[0]
+  }
   return optimalRate
 }
 
@@ -75,7 +78,6 @@ export class DashDetails extends React.Component {
         <div>
           <h2 className='result-warning'><i className='fa fa-exclamation-circle' /> Error in measurement</h2>
           <p>We were not able to properly run the DASH test: <code>{measurement.test_keys.failure}</code></p>
-          <p>This usually happens when the port used by DASH is blocked by your ISP</p>
         </div>
       )
     }
@@ -94,7 +96,7 @@ export class DashDetails extends React.Component {
           <div className='col-xs-6'>
             <button className='btn btn-secondary' onClick={() => this.toggledAdvanced()}>
               <FormattedMessage
-                id='nettests.ndt.More'
+                id='nettests.dash.More'
                 defaultMessage='More'
               />
             </button>
@@ -132,7 +134,7 @@ export class DashDetails extends React.Component {
             <div className='col-xs-6'>
               <button className='btn btn-secondary' onClick={() => this.toggledAdvanced()}>
                 <FormattedMessage
-                  id='nettests.ndt.Less'
+                  id='nettests.dash.Less'
                   defaultMessage='Less'
                 />
               </button>

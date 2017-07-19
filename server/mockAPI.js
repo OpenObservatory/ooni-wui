@@ -1083,9 +1083,9 @@ const mockMeasurements = [
     'summary': {
       'test_start_time': '2017-01-12 00:29:22',
       'anomaly': false,
-      'country_code': 'GR',
-      'asn': 'AS10',
-      'test_name': 'ndt',
+      'country_code': 'IT',
+      'asn': 'AS123',
+      'test_name': 'dash',
       'results': [
         { 'url': null, 'idx': 0 }
       ]
