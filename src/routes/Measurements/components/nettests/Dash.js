@@ -45,19 +45,14 @@ const minimumBitrateForVideo = [
   },
 ]
 
-const getOptimalVideoRate = (test_keys) => {
-  let optimalRate = null;
+const getMaxQualityForBitrate = (test_keys) => {
+  let rv = minimumBitrateForVideo[0]
   minimumBitrateForVideo.forEach((rate) => {
-    // Make sure we select the lowest speed bucket in case they overlap
-    if (optimalRate === null &&
-        test_keys.simple.median_bitrate >= rate['sfr_min_bitrate']) {
-      optimalRate = rate
+    if (test_keys.simple.median_bitrate >= rate['sfr_min_bitrate']) {
+      rv = rate
     }
   })
-  if (optimalRate === null) {
-    optimalRate = minimumBitrateForVideo[0]
-  }
-  return optimalRate
+  return rv
 }
 
 export class DashDetails extends React.Component {
@@ -87,7 +82,7 @@ export class DashDetails extends React.Component {
 
         <div className='row'>
           <div className='col-xs-12'>
-            <p>You can stream up to <strong>{getOptimalVideoRate(measurement.test_keys).type}</strong> video without any buffering.</p>
+            <p>You can stream up to <strong>{getMaxQualityForBitrate(measurement.test_keys).type}</strong> video without any buffering.</p>
           </div>
         </div>
 
