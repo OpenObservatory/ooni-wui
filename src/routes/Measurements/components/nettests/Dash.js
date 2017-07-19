@@ -45,14 +45,15 @@ const minimumBitrateForVideo = [
   },
 ]
 
-const getMaxQualityForBitrate = (test_keys) => {
-  let rv = minimumBitrateForVideo[0]
+const getOptimalQualityForBitrate = (test_keys) => {
+  let optimalQuality = minimumBitrateForVideo[0]
   minimumBitrateForVideo.forEach((rate) => {
+    // Note: we use SFR rather than HFR because SFR is more common
     if (test_keys.simple.median_bitrate >= rate['sfr_min_bitrate']) {
-      rv = rate
+      optimalQuality = rate
     }
   })
-  return rv
+  return optimalQuality
 }
 
 export class DashDetails extends React.Component {
@@ -82,7 +83,7 @@ export class DashDetails extends React.Component {
 
         <div className='row'>
           <div className='col-xs-12'>
-            <p>You can stream up to <strong>{getMaxQualityForBitrate(measurement.test_keys).type}</strong> video without any buffering.</p>
+            <p>You can stream up to <strong>{getOptimalQualityForBitrate(measurement.test_keys).type}</strong> video without any buffering.</p>
           </div>
         </div>
 
