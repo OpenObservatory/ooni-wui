@@ -95,8 +95,9 @@ export class DashDetails extends React.Component {
         <div className='row'>
           <div className='col-xs-6'>
             <button className='btn btn-secondary' onClick={() => this.toggledAdvanced()}>
+              {/* Note: re-using NDT IDs by purpose */}
               <FormattedMessage
-                id='nettests.dash.More'
+                id='nettests.ndt.More'
                 defaultMessage='More'
               />
             </button>
@@ -133,8 +134,9 @@ export class DashDetails extends React.Component {
           <div className='row'>
             <div className='col-xs-6'>
               <button className='btn btn-secondary' onClick={() => this.toggledAdvanced()}>
+                {/* Note: re-using NDT IDs by purpose */}
                 <FormattedMessage
-                  id='nettests.dash.Less'
+                  id='nettests.ndt.Less'
                   defaultMessage='Less'
                 />
               </button>
