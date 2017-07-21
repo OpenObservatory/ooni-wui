@@ -1,3 +1,7 @@
+# ooni-wui 2.2.4-beta.1 [2017-07-04]
+
+* Add support for dash UI
+
 # ooni-wui 2.2.3 [2017-07-04]
 
 * Add support for German, Chinese and Japanese
