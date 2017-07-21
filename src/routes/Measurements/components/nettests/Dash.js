@@ -7,7 +7,6 @@ import { mlabServerToCountry, mlabServerToName } from '../../../../util/nettest'
  * This table is derived from:
  * https://support.google.com/youtube/answer/1722171?hl=en-GB
  */
-
 const minimumBitrateForVideo = [
   {
     'sfr_min_bitrate': 600,
@@ -46,15 +45,15 @@ const minimumBitrateForVideo = [
   },
 ]
 
-const getOptimalVideoRate = (test_keys) => {
-  let optimalRate = minimumBitrateForVideo[0]
-
+const getOptimalQualityForBitrate = (test_keys) => {
+  let optimalQuality = minimumBitrateForVideo[0]
   minimumBitrateForVideo.forEach((rate) => {
+    // Note: we use SFR rather than HFR because SFR is more common
     if (test_keys.simple.median_bitrate >= rate['sfr_min_bitrate']) {
-      optimalRate = rate
+      optimalQuality = rate
     }
   })
-  return optimalRate
+  return optimalQuality
 }
 
 export class DashDetails extends React.Component {
@@ -75,7 +74,6 @@ export class DashDetails extends React.Component {
         <div>
           <h2 className='result-warning'><i className='fa fa-exclamation-circle' /> Error in measurement</h2>
           <p>We were not able to properly run the DASH test: <code>{measurement.test_keys.failure}</code></p>
-          <p>This usually happens when the port used by DASH is blocked by your ISP</p>
         </div>
       )
     }
@@ -85,7 +83,7 @@ export class DashDetails extends React.Component {
 
         <div className='row'>
           <div className='col-xs-12'>
-            <p>You can stream up to <strong>{getOptimalVideoRate(measurement.test_keys).type}</strong> video without any bufferring</p>
+            <p>You can stream up to <strong>{getOptimalQualityForBitrate(measurement.test_keys).type}</strong> video without any buffering.</p>
           </div>
         </div>
 
@@ -93,6 +91,7 @@ export class DashDetails extends React.Component {
         <div className='row'>
           <div className='col-xs-6'>
             <button className='btn btn-secondary' onClick={() => this.toggledAdvanced()}>
+              {/* Note: re-using NDT IDs by purpose */}
               <FormattedMessage
                 id='nettests.ndt.More'
                 defaultMessage='More'
@@ -131,6 +130,7 @@ export class DashDetails extends React.Component {
           <div className='row'>
             <div className='col-xs-6'>
               <button className='btn btn-secondary' onClick={() => this.toggledAdvanced()}>
+                {/* Note: re-using NDT IDs by purpose */}
                 <FormattedMessage
                   id='nettests.ndt.Less'
                   defaultMessage='Less'

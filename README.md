@@ -17,15 +17,20 @@ The OONI web UI is based on the following main components:
 
 ## Setup
 
-The dependencies of the web UI are all managed via `npm` and they can be
+The dependencies of the web UI are all managed via `yarn` and they can be
 installed with:
 
 ```
-npm install
+yarn install
 ```
 
 This requires that you have a recent version of
-[node](https://nodejs.org/en/download/).
+[node](https://nodejs.org/en/download/) and `yarn` installed.
+
+To install `yarn` on macOS with `brew`, you can run `brew install yarn`. On
+Linux systems, you can install `yarn` using `npm`: `npm install yarn`. This
+will install `yarn` locally, so the above command would become
+`./node_modules/.bin/yarn install`.
 
 ## Usage
 
