@@ -11,6 +11,7 @@ import NdtDetails from './nettests/Ndt'
 import VanillaTorDetails from './nettests/VanillaTor'
 import TcpConnectDetails from './nettests/TcpConnect'
 import TelegramDetails from './nettests/Telegram'
+import DashDetails from './nettests/Dash'
 
 import './MeasurementDetails.scss'
 
@@ -44,7 +45,8 @@ const NETTEST_HANDLERS = {
   'ndt': (measurement) => (<NdtDetails measurement={measurement} />),
   'vanilla_tor': (measurement) => (<VanillaTorDetails measurement={measurement} />),
   'tcp_connect': (measurement) => (<TcpConnectDetails measurement={measurement} />),
-  'telegram': (measurement) => (<TelegramDetails measurement={measurement} />)
+  'telegram': (measurement) => (<TelegramDetails measurement={measurement} />),
+  'dash': (measurement) => (<DashDetails measurement={measurement} />)
 }
 
 export const getNettestDetails = (measurement) => {
