@@ -121,9 +121,30 @@ export class NdtDetails extends React.Component {
     if (measurement.test_keys.failure !== null) {
       return (
         <div>
-          <h2 className='result-warning'><i className='fa fa-exclamation-circle' /> Error in measurement</h2>
-          <p>We were not able to properly run the NDT test: <code>{measurement.test_keys.failure}</code></p>
-          <p>This usually happens when the port used by NDT is blocked by your ISP</p>
+          <h2 className='result-warning'><i className='fa fa-exclamation-circle' />
+          {' '}
+          <FormattedMessage
+            id='nettests.ndt.ErrorInMeasurement'
+            {/* Key is shared with NDT */}
+            defaultMessage='Error in measurement'
+            values={{
+              errorCode: <code>{measurement.test_keys.failure}</code>
+            }}
+          /></h2>
+          <p><FormattedMessage
+            id='nettests.ndt.TestError'
+            defaultMessage='We were not able to properly run the NDT test: {errorCode}'
+            values={{
+              errorCode: <code>{measurement.test_keys.failure}</code>
+            }}
+          /></p>
+          <p><FormattedMessage
+            id='nettests.ndt.TestError.reason'
+            defaultMessage='This usually happens when the port used by NDT is blocked by your ISP'
+            values={{
+              errorCode: <code>{measurement.test_keys.failure}</code>
+            }}
+          /></p>
         </div>
       )
     }

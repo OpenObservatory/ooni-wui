@@ -72,8 +72,24 @@ export class DashDetails extends React.Component {
     if (measurement.test_keys.failure !== null) {
       return (
         <div>
-          <h2 className='result-warning'><i className='fa fa-exclamation-circle' /> Error in measurement</h2>
-          <p>We were not able to properly run the DASH test: <code>{measurement.test_keys.failure}</code></p>
+          <h2 className='result-warning'><i className='fa fa-exclamation-circle' />
+          {' '}
+          <FormattedMessage
+            id='nettests.ndt.ErrorInMeasurement'
+            {/* Key is shared with NDT */}
+            defaultMessage='Error in measurement'
+            values={{
+              errorCode: <code>{measurement.test_keys.failure}</code>
+            }}
+          /></h2>
+
+          <p><FormattedMessage
+            id='nettests.dash.TestError'
+            defaultMessage='We were not able to properly run the DASH test: {errorCode}'
+            values={{
+              errorCode: <code>{measurement.test_keys.failure}</code>
+            }}
+          /></p>
         </div>
       )
     }
@@ -83,7 +99,17 @@ export class DashDetails extends React.Component {
 
         <div className='row'>
           <div className='col-xs-12'>
-            <p>You can stream up to <strong>{getOptimalQualityForBitrate(measurement.test_keys).type}</strong> video without any buffering.</p>
+            <p>
+              <FormattedMessage
+                id='nettests.dash.StreamUpTo'
+                defaultMessage='You can stream up to {optimalVideoRate} video without any buffering.'
+                values={{
+                  optimalVideoRate: <strong>
+                    {getOptimalQualityForBitrate(measurement.test_keys).type}
+                  </strong>
+                }}
+              />
+            </p>
           </div>
         </div>
 
