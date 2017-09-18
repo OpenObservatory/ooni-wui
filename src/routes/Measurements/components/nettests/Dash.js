@@ -74,9 +74,9 @@ export class DashDetails extends React.Component {
         <div>
           <h2 className='result-warning'><i className='fa fa-exclamation-circle' />
           {' '}
+          {/* Key is shared with NDT */}
           <FormattedMessage
             id='nettests.ndt.ErrorInMeasurement'
-            {/* Key is shared with NDT */}
             defaultMessage='Error in measurement'
             values={{
               errorCode: <code>{measurement.test_keys.failure}</code>
