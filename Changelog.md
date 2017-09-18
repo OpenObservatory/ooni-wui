@@ -1,3 +1,9 @@
+# ooni-wui 2.2.5 [2017-09-16]
+
+* Update languages
+
+* Consolidate location lookup function for NDT with DASH
+
 # ooni-wui 2.2.4-beta.1 [2017-07-04]
 
 * Add support for dash UI
