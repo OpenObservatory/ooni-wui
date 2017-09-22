@@ -64,33 +64,31 @@ export const loadDecks = () => (dispatch, getState) => {
     })
 }
 
-export const finalize = () => {
+export const finalize = () => (dispatch, getState) => {
   dispatch(initializing())
-  return (dispatch, getState) => {
-    const { onboard } = getState()
-    let options = {
-      include_ip: onboard.settings.includeIP,
-      include_asn: onboard.settings.includeNetwork,
-      include_country: onboard.settings.includeCountry,
-      should_upload: onboard.settings.shareResults,
-      preferred_backend: onboard.settings.uploadMethod,
-      deck_config: {}
-    }
-    onboard.decks.forEach((deck) => {
-      options['deck_config'][deck.id] = deck.enabled
-    })
-    return fetch('/api/initialize', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(options)
-    }).then(_ => dispatch(initializingSucceeded()))
-      .catch((ex) => {
-        console.log('Got error while initializing', ex)
-        dispatch(initializingFailed())
-      })
+  const { onboard } = getState()
+  let options = {
+    include_ip: onboard.settings.includeIP,
+    include_asn: onboard.settings.includeNetwork,
+    include_country: onboard.settings.includeCountry,
+    should_upload: onboard.settings.shareResults,
+    preferred_backend: onboard.settings.uploadMethod,
+    deck_config: {}
   }
+  onboard.decks.forEach((deck) => {
+    options['deck_config'][deck.id] = deck.enabled
+  })
+  return fetch('/api/initialize', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(options)
+  }).then(_ => dispatch(initializingSucceeded()))
+    .catch((ex) => {
+      console.log('Got error while initializing', ex)
+      dispatch(initializingFailed())
+    })
 }
 
 export const gotoStep = (stepNumber) => ({
