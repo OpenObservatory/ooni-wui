@@ -1,3 +1,8 @@
+# ooni-wui 2.2.6 [2017-09-22]
+
+Changed:
+* Add loader on the last step of onboarding
+
 # ooni-wui 2.2.5 [2017-09-16]
 
 * Update languages
