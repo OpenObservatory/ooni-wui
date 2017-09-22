@@ -1095,9 +1095,9 @@ const mockMeasurements = [
         'server_address': 'ndt.iupui.mlab1.tun01.measurement-lab.org',
         'failure': null,
         'simple': {
-          "connect_latency": 0.0201611518859863,
-          "median_bitrate": 2312.0,
-          "min_playout_delay": 3.3804178237915
+          'connect_latency': 0.0201611518859863,
+          'median_bitrate': 2312.0,
+          'min_playout_delay': 3.3804178237915
         }
       })
     ]

@@ -1,8 +1,6 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
-import { mlabServerToCountry, mlabServerToName } from '../../../../util/nettest'
-
 /*
  * This table is derived from:
  * https://support.google.com/youtube/answer/1722171?hl=en-GB
@@ -42,14 +40,14 @@ const minimumBitrateForVideo = [
     'sfr_min_bitrate': 35000,
     'hfr_min_bitrate': 53000,
     'type': '2160p (4k)'
-  },
+  }
 ]
 
-const getOptimalQualityForBitrate = (test_keys) => {
+const getOptimalQualityForBitrate = (testKeys) => {
   let optimalQuality = minimumBitrateForVideo[0]
   minimumBitrateForVideo.forEach((rate) => {
     // Note: we use SFR rather than HFR because SFR is more common
-    if (test_keys.simple.median_bitrate >= rate['sfr_min_bitrate']) {
+    if (testKeys.simple.median_bitrate >= rate['sfr_min_bitrate']) {
       optimalQuality = rate
     }
   })
@@ -73,15 +71,16 @@ export class DashDetails extends React.Component {
       return (
         <div>
           <h2 className='result-warning'><i className='fa fa-exclamation-circle' />
-          {' '}
-          {/* Key is shared with NDT */}
-          <FormattedMessage
-            id='nettests.ndt.ErrorInMeasurement'
-            defaultMessage='Error in measurement'
-            values={{
-              errorCode: <code>{measurement.test_keys.failure}</code>
-            }}
-          /></h2>
+            {' '}
+            {/* Key is shared with NDT */}
+            <FormattedMessage
+              id='nettests.ndt.ErrorInMeasurement'
+              defaultMessage='Error in measurement'
+              values={{
+                errorCode: <code>{measurement.test_keys.failure}</code>
+              }}
+            />
+          </h2>
 
           <p><FormattedMessage
             id='nettests.dash.TestError'

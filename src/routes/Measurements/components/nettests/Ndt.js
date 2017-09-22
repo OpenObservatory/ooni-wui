@@ -20,15 +20,16 @@ export class NdtDetails extends React.Component {
       return (
         <div>
           <h2 className='result-warning'><i className='fa fa-exclamation-circle' />
-          {' '}
-          {/* Key is shared with NDT */}
-          <FormattedMessage
-            id='nettests.ndt.ErrorInMeasurement'
-            defaultMessage='Error in measurement'
-            values={{
-              errorCode: <code>{measurement.test_keys.failure}</code>
-            }}
-          /></h2>
+            {' '}
+            {/* Key is shared with NDT */}
+            <FormattedMessage
+              id='nettests.ndt.ErrorInMeasurement'
+              defaultMessage='Error in measurement'
+              values={{
+                errorCode: <code>{measurement.test_keys.failure}</code>
+              }}
+            />
+          </h2>
           <p><FormattedMessage
             id='nettests.ndt.TestError'
             defaultMessage='We were not able to properly run the NDT test: {errorCode}'
