@@ -60,7 +60,7 @@ export class NdtDetails extends React.Component {
               <i className='fa fa-arrow-circle-o-down' />
             </span>
             <span className='result-item-value-big'>{(measurement.test_keys.simple.download / 1000).toFixed(2)}</span>
-            <span className='result-item-unit'>MBps</span>
+            <span className='result-item-unit'>Mbit/s</span>
           </div>
           <div className='col-xs-6 result-item'>
             <span className='result-item-name'>
@@ -71,7 +71,7 @@ export class NdtDetails extends React.Component {
               <i className='fa fa-arrow-circle-o-up' />
             </span>
             <span className='result-item-value-big'>{(measurement.test_keys.simple.upload / 1000).toFixed(2)}</span>
-            <span className='result-item-unit'>MBps</span>
+            <span className='result-item-unit'>Mbit/s</span>
           </div>
         </div>
 

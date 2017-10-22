@@ -138,7 +138,7 @@ export class DashDetails extends React.Component {
                 />
               </span>
               <span className='result-item-value-big'>{(measurement.test_keys.simple.median_bitrate / 1000).toFixed(2)}</span>
-              <span className='result-item-unit'>MBps</span>
+              <span className='result-item-unit'>Mbit/s</span>
             </div>
             <div className='col-xs-6 result-item'>
               <span className='result-item-name'>
