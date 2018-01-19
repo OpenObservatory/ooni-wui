@@ -1,3 +1,9 @@
+# ooni-wui 2.2.7 [2017-09-22]
+
+Fixes:
+
+* Display of Mbit/s instead of MBit/s in performance tests
+
 # ooni-wui 2.2.6 [2017-09-22]
 
 Changed:
