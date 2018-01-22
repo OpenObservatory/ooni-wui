@@ -22,7 +22,7 @@ export const WhatsappDetails = ({ measurement }) => {
       measurement.test_keys.facebook_tcp_blocking === true ||
       measurement.test_keys.registration_server_status === 'blocked') &&
       <div>
-        <h2 className='result-success'><i className='fa fa-check-circle-o' />
+        <h2 className='result-danger'><i className='fa fa-times-circle-o' />
           <FormattedMessage
             id='nettests.whatsapp.censorship'
             defaultMessage='Evidence of possible censorship'
