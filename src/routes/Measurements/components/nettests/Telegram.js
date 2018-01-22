@@ -21,7 +21,7 @@ export const TelegramDetails = ({ measurement }) => {
       measurement.test_keys.telegram_web_status === 'blocked' ||
       measurement.test_keys.telegram_http_blocking === true &&
       <div>
-        <h2 className='result-success'><i className='fa fa-check-circle-o' />
+        <h2 className='result-danger'><i className='fa fa-times-circle-o' />
           <FormattedMessage
             id='nettests.telegram.censorship'
             defaultMessage='Evidence of possible censorship'
