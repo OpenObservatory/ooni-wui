@@ -1,4 +1,10 @@
-# ooni-wui 2.2.7 [2017-09-22]
+# ooni-wui 2.2.8 [2018-01-22]
+
+Fixes:
+
+* UI bug in Telegram & Whatsapp test
+
+# ooni-wui 2.2.7 [2018-01-19]
 
 Fixes:
 
