@@ -194,14 +194,14 @@ export const WebConnectivityDetails = ({ measurement }) => {
           <p>
             <FormattedMessage
               id='nettests.webConnectivity.circumvention.changeDNS.text'
-              defaultMessage='Try {changeDNS} to one that does not implement blocking, such as OpenDNS ({openDNS}) or Google DNS: {googleDNS}.'
+              defaultMessage='Try {changeDNS} to one that does not implement blocking, such as Quad9 ({quad9}) or Google DNS: {googleDNS}.'
               values={{
                 changeDNS: <strong><FormattedMessage
                   id='nettests.webConnectivity.circumvention.changeDNS.text.changeDNS'
                   defaultMessage='changing your DNS resolver'
                 /></strong>,
                 googleDNS: <code>8.8.8.8</code>,
-                openDNS: <code>208.67.222.222</code>
+                quad9: <code>9.9.9.9</code>
               }}
             />
           </p>
@@ -210,8 +210,8 @@ export const WebConnectivityDetails = ({ measurement }) => {
               id='nettests.webConnectivity.circumvention.changeDNS.instructions'
               defaultMessage='You can find instructions on how to change your DNS resolver through the following URL: {instructionsLink}'
               values={{
-                instructionsLink:<a href='https://www.opendns.com/setupguide/' target='_blank'>
-                  https://www.opendns.com/setupguide/
+                instructionsLink:<a href='https://quad9.net/#/#setup-quad9' target='_blank'>
+                  https://quad9.net/#/#setup-quad9
                 </a>
               }}
             />
